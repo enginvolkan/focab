@@ -7,12 +7,30 @@ import javax.persistence.Id;
 
 @Entity
 public class Vocabulary {
-    @Id
+    public Vocabulary(String string) {
+    	Vocabulary v = new Vocabulary();
+    	v.text = string;
+    }
+	public Vocabulary() {
+	}
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String text;
- 
+    
     // standard constructors
+
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+	public String getId() {
+		return id;
+	}
+ 
  
     // standard getters and setters
 }

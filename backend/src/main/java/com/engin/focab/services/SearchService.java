@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.engin.focab.jpa.SearchResult;
 import com.engin.focab.jpa.Vocabulary;
-@Component
+
 public interface SearchService {
 
-	public List<Vocabulary> getSearchResults(String text);
+	public List<SearchResult> getSearchResults(String text);
+
+	public SearchResult getDefinition(String text);
 }

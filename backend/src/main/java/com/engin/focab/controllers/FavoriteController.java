@@ -3,6 +3,7 @@ package com.engin.focab.controllers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,7 +14,7 @@ import com.engin.focab.jpa.Vocabulary;
 import com.engin.focab.services.FavoriteService;
 import com.engin.focab.services.SessionService;
 import com.engin.focab.services.VocabularyService;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class FavoriteController {
 

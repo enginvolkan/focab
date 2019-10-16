@@ -12,7 +12,8 @@ public class FavoriteEntry {
 	@NotNull
 	@OneToOne
 	private Vocabulary vocabulary;
-	
+	public FavoriteEntry() {
+	}	
 	public FavoriteEntry(Vocabulary vocabulary) {
 		super();
 		this.vocabulary = vocabulary;

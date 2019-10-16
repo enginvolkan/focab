@@ -27,6 +27,11 @@ public class FavoriteList implements Serializable{
     @ElementCollection  
     private Set<FavoriteEntry> favoriteEntries = new HashSet<FavoriteEntry>();
 
+    
+	public FavoriteList() {
+		super();
+	}
+
 	public FavoriteList(String name, Customer customer) {
 		super();
 		this.name = name;
@@ -55,6 +60,10 @@ public class FavoriteList implements Serializable{
 
 	public void setFavoriteEntries(Set<FavoriteEntry> favoriteEntries) {
 		this.favoriteEntries = favoriteEntries;
+	}
+
+	public Integer getFavoriteId() {
+		return FavoriteId;
 	}
 	
 

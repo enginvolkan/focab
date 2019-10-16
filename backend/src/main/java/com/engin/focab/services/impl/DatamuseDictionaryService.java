@@ -52,7 +52,7 @@ public class DatamuseDictionaryService implements DictionaryService {
 	}
 
 	private String buildURL(final String word) {
-		final String searchTerm = word.toLowerCase().trim().replace(' ', '+');
+		final String searchTerm = word.toLowerCase().trim().replaceAll("/ /","+");
 		return "https://api.datamuse.com/words?sp=*" + searchTerm+"*&md=dp";
 	}
 

@@ -13,7 +13,7 @@ import com.engin.focab.jpa.FormattedSearchResult;
 import com.engin.focab.jpa.SearchResult;
 import com.engin.focab.services.SearchService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials="true")
 @RestController
 public class SearchController {
 

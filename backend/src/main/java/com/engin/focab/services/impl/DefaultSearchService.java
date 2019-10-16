@@ -35,7 +35,7 @@ public class DefaultSearchService implements SearchService {
 			if (searchResult.getDefs()!=null) {
 				for (Iterator iterator2 = searchResult.getDefs().iterator(); iterator2.hasNext();) {
 					String definitionString = (String) iterator2.next();
-					String tag = definitionString.substring(0, definitionString.indexOf("\t"));
+					String tag = beautifyTag(definitionString.substring(0, definitionString.indexOf("\t")));
 					String definition = definitionString.substring(definitionString.indexOf("\t") + 1,
 							definitionString.length());
 					definitions.add(new DictionaryDefinition(tag, definition));
@@ -46,7 +46,28 @@ public class DefaultSearchService implements SearchService {
 		}
 		return formattedSearchResults;
 	}
-
+	
+	private String beautifyTag(String text) {
+		String resutingText;
+		switch (text) {
+		case "n":
+			resutingText="Noun";
+			break;
+		case "v":
+			resutingText="Verb";
+			break;
+		case "adj":
+			resutingText="Adjective";
+			break;
+		case "adv":
+			resutingText="Adverb";
+			break;
+		default:
+			resutingText=text;
+			break;
+		}
+		return resutingText;
+	}
 	@Override
 	public FormattedSearchResult getDefinition(String text) {
 		return null;

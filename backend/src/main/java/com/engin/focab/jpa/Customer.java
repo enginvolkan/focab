@@ -8,29 +8,47 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name="customer")
+
 public class Customer {
 	public Customer(String string) {
 		super();
-		this.name = string;
-		favorites.add(new FavoriteList("default",this));
+		this.fullname = string;
+//		favorites.add(new FavoriteList("default",this));
 	}
+	
+
+	public Customer() {
+		super();
+	}
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
-	private String name;
-	
+	private Long id;
+	private String fullname;
+	@NotNull
+	private String email;
+	private String password;
+	private boolean enabled;
+
 	@OneToMany
 	private Set<FavoriteList> favorites= new HashSet<FavoriteList>();
 
+	@OneToMany
+	private Set<Role> roles= new HashSet<Role>();
+	
+	
 	public String getName() {
-		return name;
+		return fullname;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.fullname = name;
 	}
 
 	public Set<FavoriteList> getFavorites() {
@@ -41,8 +59,46 @@ public class Customer {
 		this.favorites = favorites;
 	}
 
-	
-	// standard constructors
+	public String getEmail() {
+		return email;
+	}
 
-	// standard getters and setters
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public String getFullname() {
+		return fullname;
+	}
+
 }

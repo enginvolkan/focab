@@ -25,7 +25,7 @@ public class DefaultVocabularyService implements VocabularyService {
 	@Override
 	public Vocabulary createVocabulary(String text) {
 		try {
-			Vocabulary vocabulary = new Vocabulary(convertToID(text));
+			Vocabulary vocabulary = new Vocabulary(text);
 			vocabularyRepository.save(vocabulary);
 			return vocabulary;
 		} catch (EntityExistsException e) {
@@ -36,7 +36,7 @@ public class DefaultVocabularyService implements VocabularyService {
 	}
 
 	private String convertToID(String text) {
-		return text.toLowerCase().trim().replace(' ', '+');
+		return text.toLowerCase().trim().replaceAll("/ /","+");
 	}
-
+	
 }

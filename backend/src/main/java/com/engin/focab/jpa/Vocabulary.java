@@ -1,10 +1,13 @@
 package com.engin.focab.jpa;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Vocabulary {
@@ -16,20 +19,26 @@ public class Vocabulary {
 	
 	@Id
     private String id;
+	private String text;
 	@ElementCollection
     private List<String> definitions;
 
 
 	// standard constructors
-    public Vocabulary(String id, List<String> def) {
-		super();
-		this.id = id;
+    public Vocabulary(String text, List<String> def) {
+		this(text);
 		this.definitions = def;
 	}
-    public Vocabulary(String id) {
-		super();
-		this.id = id;
+
+	public Vocabulary(String text) {
+		this.text = text.toLowerCase().trim();
+		this.id = this.text.replaceAll("/ /","+");
+
 	}   
+    
+    @OneToMany
+	private Set<Example> examples= new HashSet<Example>();
+
     
     // standard getters and setters
 	public List<String> getDefinitions() {
@@ -43,6 +52,21 @@ public class Vocabulary {
 	}
 	public void setId(String id) {
 		this.id=id;
+	}
+	public Set<Example> getExamples() {
+		return examples;
+	}
+	public void setExamples(Set<Example> examples) {
+		this.examples = examples;
+	}
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+	public void setDefinitions(List<String> definitions) {
+		this.definitions = definitions;
 	}
 	
 }

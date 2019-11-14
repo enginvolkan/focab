@@ -1,10 +1,7 @@
 package com.engin.focab.security;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.concurrent.TimeUnit;
 
-import javax.naming.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,23 +15,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import com.engin.focab.jpa.Customer;
-import com.engin.focab.jpa.Role;
 import com.engin.focab.repository.CustomerRepository;
 import com.engin.focab.repository.RoleRepository;
-
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @Configuration
 @EnableWebSecurity
@@ -57,8 +46,9 @@ public class FocabWebSecurityConfig extends WebSecurityConfigurerAdapter {
 		repository.setCookieHttpOnly(false);
 		repository.setCookiePath("/");
 
-		http.httpBasic().and().cors().and().authorizeRequests().antMatchers("/login", "/home", "/search").permitAll()
-				.anyRequest().authenticated().and().logout().and().csrf().csrfTokenRepository(repository)
+		http.httpBasic().and().cors().and().authorizeRequests()
+				.antMatchers("/login", "/home", "/search", "/analyzeMovie").permitAll().anyRequest().authenticated()
+				.and().logout().and().csrf().csrfTokenRepository(repository)
 
 				// /logout is handled by Spring security and OPTIONS request fails to pass CORS
 				// check (401). Code below solves this problem.
@@ -93,19 +83,19 @@ public class FocabWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		if (initializationParameter == "create" || initializationParameter == "create-drop") {
-			Customer customer = new Customer("engin");
-			customer.setEmail("envolkan@gmail.com");
-			customer.setEnabled(true);
-			customer.setPassword(passwordEncoder().encode("123qwe"));
-
-			Role admin = new Role("ADMIN");
-			customer.setRoles(new HashSet<Role>());
-			customer.getRoles().add(admin);
-
-			roleRepository.save(admin);
-			customerRepository.save(customer);
-		}
+//		if (initializationParameter == "create" || initializationParameter == "create-drop") {
+//			Customer customer = new Customer("engin");
+//			customer.setEmail("envolkan@gmail.com");
+//			customer.setEnabled(true);
+//			customer.setPassword(passwordEncoder().encode("123qwe"));
+//
+//			Role admin = new Role("ADMIN");
+//			customer.setRoles(new HashSet<Role>());
+//			customer.getRoles().add(admin);
+//
+//			roleRepository.save(admin);
+//			customerRepository.save(customer);
+//		}
 
 		auth.jdbcAuthentication().dataSource(dataSource)
 //		      .withDefaultSchema()
@@ -113,7 +103,7 @@ public class FocabWebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authoritiesByUsernameQuery(
 						"select customer.email, roles_role_id from customer_roles inner join customer on (customer.id = customer_roles.customer_id) where email=?")
 //		    		      .withUser(User.withUsername("user")
-//		        .password(passwordEncoder().encode("pass"))
+				.passwordEncoder(passwordEncoder())
 //		        .roles("ADMIN"))
 		;
 		// auth

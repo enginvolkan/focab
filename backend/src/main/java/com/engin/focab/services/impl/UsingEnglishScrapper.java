@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.engin.focab.jpa.Example;
+import com.engin.focab.jpa.PhrasalVerbModel;
 import com.engin.focab.jpa.QuoDBResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -32,7 +34,7 @@ public class UsingEnglishScrapper {
 	@Value("${chromedriver.path}")
 	private String chromeDriverPath;
 
-	public Example[] getPhrasalVebs() throws InterruptedException {
+	public PhrasalVerbModel[] getPhrasalVebs() throws InterruptedException {
 
 		// Set the path of the driver to driver executable. For Chrome, set the
 		// properties as following:
@@ -47,13 +49,18 @@ public class UsingEnglishScrapper {
 		driver.get(url);
 
 		List<WebElement> elements = driver.findElements(By.tagName("li"));
-		Example[] examples = new Example[elements.size()];
+		List<WebElement> as = elements.stream().map(x -> x.findElement(By.tagName("a"))).collect(Collectors.toList());
+		PhrasalVerbModel[] phrasalVerbs = new PhrasalVerbModel[elements.size()];
 		int i = 0;
 
-		for (WebElement as : elements) {
+		for (WebElement a : as) {
 //    		<a rel="popover" class="btn btn-mini" data-trigger="hover" onclick="window.context_quotes(43601576,'M568161114')" ;=""><i class="icon-align-center"></i>Context</a>
 
-			String id0 = as.getAttribute("onclick");
+			String verb = a.getText();
+			String reference = a.getAttribute("href");
+			driver.get(reference);
+			List<WebElement> h2 = driver.findElements(By.tagName("h2"));
+
 			String id1 = id0.substring(22, id0.indexOf(','));
 			String id2 = id0.substring(id0.indexOf(',') + 2, id0.indexOf(')') - 1);
 			Example newExample = extractExample(id1, id2, vocabulary.getText());

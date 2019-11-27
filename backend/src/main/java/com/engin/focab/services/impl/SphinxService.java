@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,7 +20,7 @@ import com.google.gson.reflect.TypeToken;
 public class SphinxService implements IndexedSearchService {
 
 	@Override
-	public HashSet<String> findIdiomsByWord(String word) throws MalformedURLException {
+	public HashSet<String> findIdiomsByWord(String word) {
 		try {
 			URL serverUrl = new URL("http://localhost:9080/search?match=" + word.replace(" ", "%20") + "&limit=200");
 			HttpURLConnection urlConnection = (HttpURLConnection) serverUrl.openConnection();

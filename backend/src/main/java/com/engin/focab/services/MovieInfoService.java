@@ -1,14 +1,15 @@
 package com.engin.focab.services;
 
-import java.util.List;
-
 import com.engin.focab.jpa.omdbapi.OmdbApiEpisodeSearchResult;
 import com.engin.focab.jpa.omdbapi.OmdbApiSearchResult;
+import com.engin.focab.jpa.omdbapi.OmdbMovieOrSeriesDetailModel;
 
 public interface MovieInfoService {
 
-	List<OmdbApiSearchResult> findMovieOrSeries(String s);
+	OmdbApiSearchResult findMovieOrSeries(String s);
 
-	List<OmdbApiEpisodeSearchResult> findEpisode(String imdbId, int season);
+	OmdbApiEpisodeSearchResult findEpisode(String imdbId, int season);
+
+	OmdbMovieOrSeriesDetailModel getMovieOrEpisodeDetails(String imdbId);
 
 }

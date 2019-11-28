@@ -1,7 +1,6 @@
 package com.engin.focab.jpa;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,27 +13,33 @@ public class Example {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-    @ManyToOne
-    private Vocabulary vocabulary;
-	
+
 	@NotNull
 	@Column(columnDefinition = "TEXT")
-	private String text;	
-	
+	private String text;
 	private String source;
 	private String reference;
-	
+
+	@ManyToOne
+	private Vocabulary vocabulary;
+	@ManyToOne
+	private Definition definition;
+
 	public Example() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Example(@NotNull String text, String source, String reference) {
-		super();
+	public Example(@NotNull String text, String source, String reference, Vocabulary vocabulary) {
+		this();
 		this.text = text;
 		this.source = source;
 		this.reference = reference;
+		this.vocabulary = vocabulary;
+	}
+
+	public Example(@NotNull String text, String source, String reference, Definition definition) {
+		this(text, source, reference, definition.getVocabulary());
+		this.definition = definition;
 	}
 
 	public String getText() {
@@ -73,5 +78,4 @@ public class Example {
 		return id;
 	}
 
-	
 }

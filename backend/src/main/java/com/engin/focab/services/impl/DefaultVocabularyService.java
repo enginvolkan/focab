@@ -18,8 +18,8 @@ public class DefaultVocabularyService implements VocabularyService {
 
 	@Override
 	public Optional<Vocabulary> findVocabulary(String text) {
-		String id = convertToID(text);
-		return vocabularyRepository.findById(id);
+//		String id = convertToID(text);
+		return vocabularyRepository.findById(text);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class DefaultVocabularyService implements VocabularyService {
 	}
 
 	private String convertToID(String text) {
-		return text.toLowerCase().trim().replaceAll("/ /","+");
+		return text.toLowerCase().trim().replaceAll(" ", "+");
 	}
-	
+
 }

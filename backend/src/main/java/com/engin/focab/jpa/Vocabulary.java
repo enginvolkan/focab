@@ -4,69 +4,62 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+
 public class Vocabulary {
-    public Vocabulary(List<String> def) {
-    	definitions = def;
-    }
+	public Vocabulary(List<Definition> def) {
+		definitions = def;
+	}
+
 	public Vocabulary() {
 	}
-	
+
 	@Id
-    private String id;
-	private String text;
-	@ElementCollection
-    private List<String> definitions;
+	private String id;
+	@OneToMany
+	private List<Definition> definitions;
+	@OneToMany
+	private Set<Example> examples = new HashSet<Example>();
 
-
-	// standard constructors
-    public Vocabulary(String text, List<String> def) {
+	public Vocabulary(String text, List<Definition> def) {
 		this(text);
 		this.definitions = def;
 	}
 
 	public Vocabulary(String text) {
-		this.text = text.toLowerCase().trim();
-		this.id = this.text.replaceAll("/ /","+");
+		this.id = text;
 
-	}   
-    
-    @OneToMany
-	private Set<Example> examples= new HashSet<Example>();
+	}
 
-    
-    // standard getters and setters
-	public List<String> getDefinitions() {
+	public List<Definition> getDefinitions() {
 		return definitions;
 	}
-	public void setText(List<String>  def) {
-		this.definitions = def;
+
+	public void setDefinitions(List<Definition> definitions) {
+		this.definitions = definitions;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id=id;
-	}
+
 	public Set<Example> getExamples() {
 		return examples;
 	}
+
 	public void setExamples(Set<Example> examples) {
 		this.examples = examples;
 	}
-	public String getText() {
-		return text;
+
+	public String getId() {
+		return id;
 	}
-	public void setText(String text) {
-		this.text = text;
+
+	public void setId(String id) {
+		this.id = id;
 	}
-	public void setDefinitions(List<String> definitions) {
-		this.definitions = definitions;
-	}
-	
+
 }

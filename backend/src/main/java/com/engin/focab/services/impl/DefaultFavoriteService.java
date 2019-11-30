@@ -1,10 +1,6 @@
 package com.engin.focab.services.impl;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -15,16 +11,13 @@ import com.engin.focab.jpa.Customer;
 import com.engin.focab.jpa.Example;
 import com.engin.focab.jpa.FavoriteEntry;
 import com.engin.focab.jpa.FavoriteList;
-import com.engin.focab.jpa.SearchResult;
 import com.engin.focab.jpa.Vocabulary;
 import com.engin.focab.repository.CustomerRepository;
 import com.engin.focab.repository.ExampleRepository;
 import com.engin.focab.repository.FavoriteListRepository;
 import com.engin.focab.repository.VocabularyRepository;
-import com.engin.focab.services.DictionaryService;
 import com.engin.focab.services.FavoriteService;
 import com.engin.focab.services.ScrapperService;
-import com.engin.focab.services.SearchService;
 
 @Component
 public class DefaultFavoriteService implements FavoriteService {
@@ -103,7 +96,7 @@ public class DefaultFavoriteService implements FavoriteService {
 		Set<Example> newExamples = vocabulary.getExamples();
 
 		for (Example example : examples) {
-			if (example.getText().toLowerCase().indexOf(vocabulary.getId().replaceAll("/+/"," ")) != -1) {
+			if (example.getText().toLowerCase().indexOf(vocabulary.getText().replaceAll("/+/", " ")) != -1) {
 				example.setVocabulary(vocabulary);
 				exampleRepository.save(example);
 				newExamples.add(example);

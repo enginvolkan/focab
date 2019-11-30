@@ -47,8 +47,8 @@ public class FocabWebSecurityConfig extends WebSecurityConfigurerAdapter {
 		repository.setCookiePath("/");
 
 		http.httpBasic().and().cors().and().authorizeRequests()
-				.antMatchers("/login", "/home", "/search", "/analyzeMovie", "/detectIdiom").permitAll().anyRequest()
-				.authenticated().and().logout().and().csrf().csrfTokenRepository(repository)
+				.antMatchers("/login", "/home", "/search", "/analyzeMovie", "/detectIdiom", "/delete").permitAll()
+				.anyRequest().authenticated().and().logout().and().csrf().csrfTokenRepository(repository)
 
 				// /logout is handled by Spring security and OPTIONS request fails to pass CORS
 				// check (401). Code below solves this problem.

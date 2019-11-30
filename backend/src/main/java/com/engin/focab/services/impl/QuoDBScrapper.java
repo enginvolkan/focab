@@ -48,7 +48,7 @@ public class QuoDBScrapper implements ScrapperService {
 
 		WebDriver driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.get(url + vocabulary.getId().replaceAll("/+/", " ") + parameters);
+		driver.get(url + vocabulary.getText().replaceAll("/+/", " ") + parameters);
 
 		List<WebElement> elements = driver.findElements(By.cssSelector("a[rel='popover']"));
 		Example[] examples = new Example[elements.size()];
@@ -60,7 +60,7 @@ public class QuoDBScrapper implements ScrapperService {
 			String id0 = as.getAttribute("onclick");
 			String id1 = id0.substring(22, id0.indexOf(','));
 			String id2 = id0.substring(id0.indexOf(',') + 2, id0.indexOf(')') - 1);
-			Example newExample = extractExample(id1, id2, vocabulary.getId(), vocabulary);
+			Example newExample = extractExample(id1, id2, vocabulary.getText(), vocabulary);
 			if (newExample != null) {
 				examples[i] = newExample;
 				i++;

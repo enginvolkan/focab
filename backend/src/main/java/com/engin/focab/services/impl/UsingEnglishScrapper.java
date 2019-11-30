@@ -90,7 +90,7 @@ public class UsingEnglishScrapper {
 					}
 					Definition definition = new Definition(text, meaning, isSeparable, sentence, "UsingEnglish");
 					PhrasalVerbModel phrasalVerb = new PhrasalVerbModel();
-					phrasalVerb.setId(text);
+					phrasalVerb.setText(text);
 					List<Definition> definitions = phrasalVerb.getDefinitions();
 					if (definitions == null) {
 						definitions = new ArrayList<Definition>();

@@ -48,7 +48,7 @@ public class LearnController {
 		ModelMapper modelMapper = new ModelMapper();
 		PropertyMap<Example, ExampleDto> exampleMap = new PropertyMap<Example, ExampleDto>() {
 			protected void configure() {
-				map().setVocabulary(source.getVocabulary().getId());
+				map().setVocabulary(source.getVocabulary().getText());
 			};
 		};
 

@@ -24,6 +24,10 @@ public class Definition {
 	@ManyToOne
 	private Vocabulary vocabulary;
 
+	public Definition() {
+		super();
+	}
+
 	public Definition(String text, String definition, boolean isSeparable, String example, String source) {
 		this.definition = definition;
 		this.isSeparable = isSeparable;

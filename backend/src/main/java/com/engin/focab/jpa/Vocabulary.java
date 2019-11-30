@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -22,7 +24,9 @@ public class Vocabulary {
 	}
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long pk;
+	private String text;
 	@OneToMany
 	private List<Definition> definitions;
 	@OneToMany
@@ -34,7 +38,7 @@ public class Vocabulary {
 	}
 
 	public Vocabulary(String text) {
-		this.id = text;
+		this.text = text;
 
 	}
 
@@ -54,12 +58,16 @@ public class Vocabulary {
 		this.examples = examples;
 	}
 
-	public String getId() {
-		return id;
+	public String getText() {
+		return text;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Long getPk() {
+		return pk;
 	}
 
 }

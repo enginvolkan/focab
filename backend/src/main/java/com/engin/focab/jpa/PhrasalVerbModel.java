@@ -9,6 +9,14 @@ import javax.persistence.Table;
 public class PhrasalVerbModel extends Vocabulary {
 
 	@Column(columnDefinition = "boolean default true")
-	private boolean isPhrasalVerb;
+	private boolean isSeparable;
+
+	public boolean isSeperable() {
+		return isSeparable;
+	}
+
+	public void setSeperable(boolean isSeperable) {
+		this.isSeparable = isSeperable;
+	}
 
 }

@@ -16,8 +16,6 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 @Component
 public class SentenceTaggingService {
-	@Value("${stanford.model.path}")
-	private String modelPath;
 	
 	@Value("classpath:english-left3words-distsim.tagger")
     private Resource res;

@@ -17,7 +17,7 @@
 	<description>Focus On Your Vocabulary</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>${jre.version}</java.version>
 	</properties>
 	
 <profiles>
@@ -30,6 +30,7 @@
     </activation>
     <properties>
       <war.directory>C:\tomcat\webapps</war.directory>
+            <jre.version>11</jre.version>
     </properties>
   </profile>
   
@@ -42,6 +43,8 @@
     </activation>
     <properties>
       <war.directory>${user.home}/tomcat/webapps</war.directory>
+                  <jre.version>1.8</jre.version>
+      
     </properties>
   </profile>
 </profiles>

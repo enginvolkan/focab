@@ -10,8 +10,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
-import com.sun.tools.sjavac.Log;
-
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 @Component

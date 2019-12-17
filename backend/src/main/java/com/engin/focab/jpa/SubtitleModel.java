@@ -31,7 +31,7 @@ public class SubtitleModel {
 	@OneToOne
 	private SubtitleModel nextSubtitle;
 
-	private String[] singleWords;
+	private String singleWords;
 	private String[] adjNounTuples;
 
 	@Column(name = "idioms", columnDefinition = "LONGTEXT")

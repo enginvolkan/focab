@@ -1,6 +1,7 @@
 package com.engin.focab.services.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -38,6 +39,12 @@ public class DefaultAnalysisService implements AnalysisService {
 	private IdiomDetectionService idiomDetectionService;
 
 	@Autowired
+	private PhrasalVerbsDetectionService phrasalDetectionService;
+
+	@Autowired
+	private SingleWordDetectionService singleWordsDetectionService;
+
+	@Autowired
 	private SentenceTaggingService sentenceTaggingService;
 
 	@Override
@@ -66,11 +73,23 @@ public class DefaultAnalysisService implements AnalysisService {
 					subtitle.setIdioms(idiomSet);
 				}
 
+				//// find phrasal verbs
+				Set<String> phrasalSet = phrasalDetectionService.detectPhrasalVerbs(taggedSentence, sentence);
+				if (!phrasalSet.isEmpty()) {
+					subtitle.setPhrasalVerbs(phrasalSet);
+				}
+
 //				subtitleRepository.save(subtitle);
 
 				//// find phrasal verbs
 				//// find adj+noun tuples
 				//// detect single words
+
+				Set<String> singleWordSet = new HashSet<String>();
+				singleWordSet.addAll(sentence.lemmas());
+				if (!singleWordSet.isEmpty()) {
+					subtitle.setSingleWords(singleWordSet);
+				}
 			}
 			subtitles = (ArrayList<SubtitleModel>) subtitles.stream().filter(x -> x.getIdioms() != null)
 					.collect(Collectors.toList());

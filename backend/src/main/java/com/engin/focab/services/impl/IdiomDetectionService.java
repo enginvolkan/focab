@@ -39,10 +39,12 @@ public class IdiomDetectionService {
 			String word = taggedSentence[i];
 			log("### Processing " + word, null);
 
-			if (!extractTag(word, false).equals("PRP") && !extractTag(word, false).equals("DT")
-					&& !extractTag(word, false).equals("TO") && !extractTag(word, false).equals("POS")
-					&& !extractTag(word, false).equals(".")) {
-				HashSet<String> idioms = searchWordInIdiomRepository(extractWord(word));
+			if (!sentenceTaggingService.extractTag(word, false).equals("PRP")
+					&& !sentenceTaggingService.extractTag(word, false).equals("DT")
+					&& !sentenceTaggingService.extractTag(word, false).equals("TO")
+					&& !sentenceTaggingService.extractTag(word, false).equals("POS")
+					&& !sentenceTaggingService.extractTag(word, false).equals(".")) {
+				HashSet<String> idioms = searchWordInIdiomRepository(sentenceTaggingService.extractWord(word));
 
 				currentSet.retainAll(idioms);
 				log("@ Current set: ", currentSet);
@@ -81,7 +83,8 @@ public class IdiomDetectionService {
 	private HashSet<String> findValidIdioms(HashSet<String> trackedWords, Sentence sentence) {
 
 		HashSet<String> foundSet = new HashSet<String>();
-		String idiomText = trackedWords.stream().map(x -> extractWord(x)).collect(Collectors.joining(" "));
+		String idiomText = trackedWords.stream().map(x -> sentenceTaggingService.extractWord(x))
+				.collect(Collectors.joining(" "));
 
 		if (!idiomText.equals("")) {
 			HashSet<String> idiomSet = searchWordInIdiomRepository(idiomText);
@@ -131,28 +134,6 @@ public class IdiomDetectionService {
 
 	private HashSet<String> searchWordInIdiomRepository(String word) {
 		return indexedSearchService.findIdiomsByWord(word);
-	}
-
-	private String extractTag(String s, boolean full) {
-		String tag = s.substring(s.indexOf('_') + 1, s.length());
-
-		if (full) {
-			return tag;
-
-		} else {
-			if (tag.length() > 2) {
-				return tag.substring(0, 3);
-			} else {
-				return tag;
-			}
-		}
-	}
-
-	private String extractWord(String s) {
-		if (s.indexOf('_') >= 0) {
-			return s.substring(0, s.indexOf('_'));
-		} else
-			return s;
 	}
 
 	private void log(String message, HashSet<String> set) {

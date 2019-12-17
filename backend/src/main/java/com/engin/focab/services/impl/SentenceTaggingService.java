@@ -23,4 +23,26 @@ public class SentenceTaggingService {
 		return this.tagger.tagString(text).split("\\s|-");
 	}
 
+	public String extractTag(String s, boolean full) {
+		String tag = s.substring(s.indexOf('_') + 1, s.length());
+
+		if (full) {
+			return tag;
+
+		} else {
+			if (tag.length() > 2) {
+				return tag.substring(0, 3);
+			} else {
+				return tag;
+			}
+		}
+	}
+
+	public String extractWord(String s) {
+		if (s.indexOf('_') >= 0) {
+			return s.substring(0, s.indexOf('_'));
+		} else
+			return s;
+	}
+
 }

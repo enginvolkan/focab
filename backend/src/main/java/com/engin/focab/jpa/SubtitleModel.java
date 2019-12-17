@@ -40,8 +40,12 @@ public class SubtitleModel {
 
 //	@Column(name = "idioms", columnDefinition = "LONGTEXT")
 //	private String[] idioms;
-	private String[] phrasalVerbs;
-	private String[] collocations;
+	@Column(name = "phrasals", columnDefinition = "LONGTEXT")
+	@ElementCollection
+	private Set<String> phrasalVerbs;
+	@Column(name = "collocations", columnDefinition = "LONGTEXT")
+	@ElementCollection
+	private Set<String> collocations;
 
 	@Override
 	public String toString() {
@@ -65,19 +69,19 @@ public class SubtitleModel {
 		this.singleWords = singleWords;
 	}
 
-	public String[] getPhrasalVerbs() {
+	public Set<String> getPhrasalVerbs() {
 		return phrasalVerbs;
 	}
 
-	public void setPhrasalVerbs(String[] phrasalVerbs) {
+	public void setPhrasalVerbs(Set<String> phrasalVerbs) {
 		this.phrasalVerbs = phrasalVerbs;
 	}
 
-	public String[] getCollocations() {
+	public Set<String> getCollocations() {
 		return collocations;
 	}
 
-	public void setCollocations(String[] collocations) {
+	public void setCollocations(Set<String> collocations) {
 		this.collocations = collocations;
 	}
 

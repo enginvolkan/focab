@@ -1,0 +1,30 @@
+package com.engin.focab.services.impl;
+
+import java.util.HashSet;
+import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.engin.focab.repository.CommonWordRepository;
+
+@Component
+public class SingleWordDetectionService {
+
+	@Autowired
+	private SentenceTaggingService sentenceTaggingService;
+	@Autowired
+	private CommonWordRepository commonWordRepository;
+
+	private static HashSet<String> commonWords;
+
+	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+
+	public SingleWordDetectionService() {
+		super();
+		commonWords.addAll(commonWordRepository.findAll().stream().map(x -> x.getWord()).collect(Collectors.toList()));
+	}
+
+}

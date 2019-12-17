@@ -6,4 +6,6 @@ public interface IndexedSearchService {
 
 	HashSet<String> findIdiomsByWord(String word);
 
+	HashSet<String> findPhrasalsByWord(String word);
+
 }

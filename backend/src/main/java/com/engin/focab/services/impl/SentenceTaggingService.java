@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -15,16 +16,17 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 @Component
 public class SentenceTaggingService {
 	
-	@Value("classpath:english-left3words-distsim.tagger")
-    private Resource res;
+	//@Value("classpath:english-left3words-distsim.tagger")
+    private Resource res = new ClassPathResource("english-left3words-distsim.tagger");
 	
 	private MaxentTagger tagger;
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
+    @Autowired //necessary for @Value to work
 	public SentenceTaggingService() {
 		try {
-			logger.info("Stanford Model Path: " + res.getURI().getRawPath());
-			this.tagger = new MaxentTagger(res.getURI().getRawPath());
+			logger.info("Stanford Model Path: " + res.getFile().getPath());
+			this.tagger = new MaxentTagger(res.getFile().getPath());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

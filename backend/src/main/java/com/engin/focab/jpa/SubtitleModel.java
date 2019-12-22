@@ -15,11 +15,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "subtitles")
 public class SubtitleModel {
+	//////////////
+	//Constractors
+	//////////////
+	public SubtitleModel() {
+		super();
+	}
+	//////////////
+	//Fields
+	//////////////
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private int pk;
+	
 	private int id;
-
+	
 	@ManyToOne
 	MovieAnalysisModel movie;
 
@@ -31,22 +41,26 @@ public class SubtitleModel {
 	@OneToOne
 	private SubtitleModel nextSubtitle;
 
-	private String singleWords;
 	private String[] adjNounTuples;
 
 	@Column(name = "idioms", columnDefinition = "LONGTEXT")
 	@ElementCollection
 	private Set<String> idioms;
 
-//	@Column(name = "idioms", columnDefinition = "LONGTEXT")
-//	private String[] idioms;
 	@Column(name = "phrasals", columnDefinition = "LONGTEXT")
 	@ElementCollection
 	private Set<String> phrasalVerbs;
+	
 	@Column(name = "collocations", columnDefinition = "LONGTEXT")
 	@ElementCollection
 	private Set<String> collocations;
+	
+	private String singleWords;
 
+	/////////////////////
+	//Getters and Setters
+	/////////////////////
+	
 	@Override
 	public String toString() {
 		return "SubtitleModel [id=" + id + ", startTime=" + startTime + ", endTime=" + endTime + ", text=" + text
@@ -59,14 +73,6 @@ public class SubtitleModel {
 
 	public void setIdioms(Set<String> idioms) {
 		this.idioms = idioms;
-	}
-
-	public String[] getSingleWords() {
-		return singleWords;
-	}
-
-	public void setSingleWords(String[] singleWords) {
-		this.singleWords = singleWords;
 	}
 
 	public Set<String> getPhrasalVerbs() {
@@ -147,6 +153,14 @@ public class SubtitleModel {
 
 	public void setAdjNounTuples(String[] adjNounTuples) {
 		this.adjNounTuples = adjNounTuples;
+	}
+
+	public String getSingleWords() {
+		return singleWords;
+	}
+
+	public void setSingleWords(String singleWords) {
+		this.singleWords = singleWords;
 	}
 
 }

@@ -17,6 +17,10 @@ import javax.validation.constraints.NotNull;
 @Table(name = "movieanalysis")
 
 public class MovieAnalysisModel {
+	
+	//////////////
+	//Constractors
+	//////////////
 	public MovieAnalysisModel(String string) {
 		super();
 		this.imdbId = string;
@@ -26,6 +30,9 @@ public class MovieAnalysisModel {
 		super();
 	}
 
+	//////////////
+	//Fields
+	//////////////
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -35,9 +42,18 @@ public class MovieAnalysisModel {
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<SubtitleModel> idioms = new ArrayList<SubtitleModel>();
 
+	@OneToMany(cascade = CascadeType.PERSIST)
+	private List<SubtitleModel> phrasalVerbs = new ArrayList<SubtitleModel>();
+
+	@OneToMany(cascade = CascadeType.PERSIST)
+	private List<SubtitleModel> singleWords = new ArrayList<SubtitleModel>();
+	
 	@Column(columnDefinition = "LONGTEXT")
 	private String fullSubtitles;
 
+	/////////////////////
+	//Getters and Setters
+	/////////////////////
 	public String getImdbId() {
 		return imdbId;
 	}
@@ -70,8 +86,20 @@ public class MovieAnalysisModel {
 		this.id = id;
 	}
 
-	public void setIdioms(List<SubtitleModel> idioms) {
-		this.idioms = idioms;
+	public List<SubtitleModel> getPhrasalVerbs() {
+		return phrasalVerbs;
+	}
+
+	public void setPhrasalVerbs(List<SubtitleModel> phrasalVerbs) {
+		this.phrasalVerbs = phrasalVerbs;
+	}
+
+	public List<SubtitleModel> getSingleWords() {
+		return singleWords;
+	}
+
+	public void setSingleWords(List<SubtitleModel> singleWords) {
+		this.singleWords = singleWords;
 	}
 
 }

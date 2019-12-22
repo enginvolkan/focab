@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.apache.xmlrpc.XmlRpcException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.engin.focab.jpa.MovieAnalysisModel;
@@ -47,18 +48,27 @@ public class DefaultAnalysisService implements AnalysisService {
 	@Autowired
 	private SentenceTaggingService sentenceTaggingService;
 
+	@Value("${movie.analysis.useStoredAnalysis}")
+	private boolean useStoredAnalysis;
+	
 	@Override
-	public MovieAnalysisModel analyzeMovie(String imdbId) throws XmlRpcException {
-
-		MovieAnalysisModel analysisResult = movieAnalysisRepository.findMovieAnalysisByImdbId(imdbId);
-
-		if (analysisResult == null) {
+	public MovieAnalysisModel analyzeMovie(String imdbId) {
+		MovieAnalysisModel analysisResult = null;
+		
+		if(useStoredAnalysis==true) {
+		analysisResult = movieAnalysisRepository.findMovieAnalysisByImdbId(imdbId);
+		}
+		
+		if (analysisResult == null ) {
 			analysisResult = new MovieAnalysisModel();
 			imdbId = imdbId.substring(2);
 			SubtitleFile file = subtitleService.getASubtitleByImdbId(imdbId); // 0702019 0248654
 			analysisResult.setFullSubtitles(file.getContentAsString("UTF-8"));
 			ArrayList<SubtitleModel> subtitles = srtParserService
 					.getSubtitlesFromString(analysisResult.getFullSubtitles());
+			ArrayList<SubtitleModel> idiomSubtitles = new ArrayList<SubtitleModel>();
+			ArrayList<SubtitleModel> phrasalVerbSubtitles = new ArrayList<SubtitleModel>();
+			ArrayList<SubtitleModel> singleWordSubtitles = new ArrayList<SubtitleModel>();
 
 			//// process each subtitle
 			for (Iterator<SubtitleModel> iterator = subtitles.iterator(); iterator.hasNext();) {
@@ -71,36 +81,43 @@ public class DefaultAnalysisService implements AnalysisService {
 				Set<String> idiomSet = idiomDetectionService.detectIdioms(taggedSentence, sentence);
 				if (!idiomSet.isEmpty()) {
 					subtitle.setIdioms(idiomSet);
+					idiomSubtitles.add(subtitle);
 				}
 
 				//// find phrasal verbs
 				Set<String> phrasalSet = phrasalDetectionService.detectPhrasalVerbs(taggedSentence, sentence);
 				if (!phrasalSet.isEmpty()) {
 					subtitle.setPhrasalVerbs(phrasalSet);
+					phrasalVerbSubtitles.add(subtitle);
+
 				}
 
 //				subtitleRepository.save(subtitle);
 
-				//// find phrasal verbs
-				//// find adj+noun tuples
 				//// detect single words
-
 				Set<String> singleWordSet = new HashSet<String>();
 				singleWordSet.addAll(sentence.lemmas());
+				singleWordSet.removeAll(singleWordsDetectionService.getCommonWords());
 				if (!singleWordSet.isEmpty()) {
-					subtitle.setSingleWords(singleWordSet);
+					subtitle.setSingleWords(singleWordSet.stream().map(Object::toString).collect(Collectors.joining(",")));
+					singleWordSubtitles.add(subtitle);
 				}
+				//// find phrasal verbs
+				//// find adj+noun tuples
+
+
 			}
-			subtitles = (ArrayList<SubtitleModel>) subtitles.stream().filter(x -> x.getIdioms() != null)
-					.collect(Collectors.toList());
+
 			analysisResult.setImdbId(imdbId);
-			analysisResult.setIdioms(subtitles);
+			analysisResult.setIdioms(idiomSubtitles);
+			analysisResult.setPhrasalVerbs(phrasalVerbSubtitles);
+			analysisResult.setSingleWords(singleWordSubtitles);
+
 			movieAnalysisRepository.save(analysisResult);
 //			subtitleRepository.saveAll(subtitles);
 //			movieAnalysisRepository.save(analysisResult);
-			return analysisResult;
 		}
-
+		
 		return analysisResult;
 	}
 

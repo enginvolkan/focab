@@ -35,7 +35,9 @@ public class PhrasalVerbsDetectionService {
 			if (sentenceTaggingService.extractTag(taggedSentence[i], false).equals("VB")) {
 				// find possible phrasal verbs
 				// check the next word
-				if (i + 1 <= taggedSentence.length) {
+				if (i + 1 < taggedSentence.length
+						&& (!sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(".")
+								&& !sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(","))) {
 					String searchTerm = sentenceTaggingService.extractWord(taggedSentence[i]) + " "
 							+ sentenceTaggingService.extractWord(taggedSentence[i + 1]);
 					currentSet = searchWordInPhrasalRepository(searchTerm);
@@ -64,16 +66,18 @@ public class PhrasalVerbsDetectionService {
 		for (Iterator<String> iterator = currentSet.iterator(); iterator.hasNext();) {
 			String string = (String) iterator.next();
 			if (minLength == 0) {
-				minLength = string.length();
+				minLength = string.split(" ").length;
+				shortestOne = string;
 			} else {
 				if (string.length() < minLength) {
-					minLength = string.length();
+					minLength = string.split(" ").length;
 					shortestOne = string;
 				}
 			}
 		}
-		while (currentSet.size() > 1) {
-			searchTerm = searchTerm + sentenceTaggingService.extractWord(taggedSentence[i + 2]);
+		while (currentSet.size() > 1 && (!sentenceTaggingService.extractTag(taggedSentence[i + 2], false).equals(".")
+				&& !sentenceTaggingService.extractTag(taggedSentence[i + 2], false).equals(","))) {
+			searchTerm = searchTerm + " " + sentenceTaggingService.extractWord(taggedSentence[i + 2]);
 			currentSet = searchWordInPhrasalRepository(searchTerm);
 
 		}

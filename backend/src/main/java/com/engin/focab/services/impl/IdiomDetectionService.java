@@ -89,7 +89,7 @@ public class IdiomDetectionService {
 		if (!idiomText.equals("")) {
 			HashSet<String> idiomSet = searchWordInIdiomRepository(idiomText);
 
-			List<String> sentenceLemmas = sentence.lemmas();
+			List<String> sentenceLemmas = sentenceTaggingService.lemmas(sentence);
 
 			for (String idiom : idiomSet) {
 				if (isIdiomValidForSentence(idiom, sentenceLemmas)) {
@@ -104,7 +104,8 @@ public class IdiomDetectionService {
 	private boolean isIdiomValidForSentence(String idiom, List<String> sentenceLemmas) {
 
 		Sentence idiomSentence = new Sentence((String) idiom.toLowerCase());
-		List<String> idiomLemmas = idiomSentence.lemmas();
+		List<String> idiomLemmas = sentenceTaggingService.lemmas(idiomSentence);
+		;
 		int lastSeen = -1;
 		int gap = 0;
 		int counter = 0;

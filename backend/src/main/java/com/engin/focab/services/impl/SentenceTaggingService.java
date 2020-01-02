@@ -1,32 +1,33 @@
 package com.engin.focab.services.impl;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.List;
+import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
+import edu.stanford.nlp.simple.Sentence;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 @Component
 public class SentenceTaggingService {
-	
-	//@Value("classpath:english-left3words-distsim.tagger")
-    private Resource res = new ClassPathResource("english-left3words-distsim.tagger");
-	
+
+	// The statement below works but I found another way and deactivated it
+	// private Resource res = new
+	// ClassPathResource("english-left3words-distsim.tagger");
+
 	private MaxentTagger tagger;
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
-    @Autowired //necessary for @Value to work
+	@Autowired // necessary for @Value to work
 	public SentenceTaggingService() {
 		try {
-			logger.info("Stanford Model Path: " + res.getFile().getPath());
-			this.tagger = new MaxentTagger(res.getFile().getPath());
+//			logger.info("Stanford Model Path: " + res.getFile().getPath());
+//			this.tagger = new MaxentTagger(res.getFile().getPath());
+			this.tagger = new MaxentTagger("english-left3words-distsim.tagger");
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -34,6 +35,12 @@ public class SentenceTaggingService {
 
 	public String[] tagString(String text) {
 		return this.tagger.tagString(text).split("\\s|-");
+	}
+
+	public List<String> lemmas(Sentence sentence) {
+		Properties props = new Properties();
+		props.setProperty("pos.model", "english-left3words-distsim.tagger");
+		return sentence.lemmas(props);
 	}
 
 	public String extractTag(String s, boolean full) {

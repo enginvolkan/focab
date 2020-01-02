@@ -16,20 +16,26 @@ import javax.persistence.Table;
 @Table(name = "subtitles")
 public class SubtitleModel {
 	//////////////
-	//Constractors
+	// Constractors
 	//////////////
 	public SubtitleModel() {
 		super();
 	}
+
+	public SubtitleModel(String s) {
+		this();
+		this.text = s;
+	}
+
 	//////////////
-	//Fields
+	// Fields
 	//////////////
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private int pk;
-	
+
 	private int id;
-	
+
 	@ManyToOne
 	MovieAnalysisModel movie;
 
@@ -50,17 +56,17 @@ public class SubtitleModel {
 	@Column(name = "phrasals", columnDefinition = "LONGTEXT")
 	@ElementCollection
 	private Set<String> phrasalVerbs;
-	
+
 	@Column(name = "collocations", columnDefinition = "LONGTEXT")
 	@ElementCollection
 	private Set<String> collocations;
-	
+
 	private String singleWords;
 
 	/////////////////////
-	//Getters and Setters
+	// Getters and Setters
 	/////////////////////
-	
+
 	@Override
 	public String toString() {
 		return "SubtitleModel [id=" + id + ", startTime=" + startTime + ", endTime=" + endTime + ", text=" + text

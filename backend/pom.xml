@@ -150,6 +150,13 @@
 <!-- 			<version>3.9.2</version> -->
 <!-- 			<classifier>models</classifier> -->
 <!-- 		</dependency> -->
+<!-- 	<dependency> -->
+<!-- 		<groupId>engin.edu.stanford.nlp</groupId> -->
+<!-- 		<artifactId>engin.stanford-corenlp</artifactId> -->
+<!-- 		<version>3.9.2</version> -->
+<!-- 		<scope>system</scope> -->
+<!-- 		<systemPath>${project.basedir}/lib/stanford-corenlp-3.9.2-models.jar</systemPath> -->
+<!-- 	</dependency> -->
 	</dependencies>
 
 	<build>

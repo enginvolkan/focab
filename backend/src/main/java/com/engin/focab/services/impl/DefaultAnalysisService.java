@@ -1,12 +1,11 @@
 package com.engin.focab.services.impl;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.apache.xmlrpc.XmlRpcException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -50,16 +49,16 @@ public class DefaultAnalysisService implements AnalysisService {
 
 	@Value("${movie.analysis.useStoredAnalysis}")
 	private boolean useStoredAnalysis;
-	
+
 	@Override
 	public MovieAnalysisModel analyzeMovie(String imdbId) {
 		MovieAnalysisModel analysisResult = null;
-		
-		if(useStoredAnalysis==true) {
-		analysisResult = movieAnalysisRepository.findMovieAnalysisByImdbId(imdbId);
+
+		if (useStoredAnalysis == true) {
+			analysisResult = movieAnalysisRepository.findMovieAnalysisByImdbId(imdbId);
 		}
-		
-		if (analysisResult == null ) {
+
+		if (analysisResult == null) {
 			analysisResult = new MovieAnalysisModel();
 			imdbId = imdbId.substring(2);
 			SubtitleFile file = subtitleService.getASubtitleByImdbId(imdbId); // 0702019 0248654
@@ -95,16 +94,10 @@ public class DefaultAnalysisService implements AnalysisService {
 //				subtitleRepository.save(subtitle);
 
 				//// detect single words
-				Set<String> singleWordSet = new HashSet<String>();
-				singleWordSet.addAll(sentence.lemmas());
-				singleWordSet.removeAll(singleWordsDetectionService.getCommonWords());
-				if (!singleWordSet.isEmpty()) {
-					subtitle.setSingleWords(singleWordSet.stream().map(Object::toString).collect(Collectors.joining(",")));
-					singleWordSubtitles.add(subtitle);
-				}
+				subtitle.setSingleWords(detectSingleWords(sentence));
+
 				//// find phrasal verbs
 				//// find adj+noun tuples
-
 
 			}
 
@@ -117,8 +110,31 @@ public class DefaultAnalysisService implements AnalysisService {
 //			subtitleRepository.saveAll(subtitles);
 //			movieAnalysisRepository.save(analysisResult);
 		}
-		
+
 		return analysisResult;
+	}
+
+	@Override
+	public MovieAnalysisModel analyzeSentence(String sentence, boolean analyseIdioms, boolean analysePhrasalVerbs,
+			boolean analyseSingleWords) {
+		MovieAnalysisModel sentenceAnalysis = new MovieAnalysisModel();
+		SubtitleModel subtitle = new SubtitleModel(sentence);
+
+		if (analyseSingleWords) {
+			subtitle.setSingleWords(detectSingleWords(new Sentence(sentence)));
+		}
+		return sentenceAnalysis;
+	}
+
+	private String detectSingleWords(Sentence sentence) {
+		List<String> singleWordSet = new ArrayList<String>();
+		singleWordSet.addAll(sentenceTaggingService.lemmas(sentence));
+		singleWordSet.removeAll(singleWordsDetectionService.getCommonWords());
+
+		String singleWords = "";
+		singleWords = singleWordSet.stream().map(Object::toString).collect(Collectors.joining(","));
+
+		return singleWords;
 	}
 
 }

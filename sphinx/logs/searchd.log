@@ -1,0 +1,12 @@
+[Tue Dec 24 15:43:45.514 2019] [5235] watchdog: main process 5236 forked ok
+[Tue Dec 24 15:43:45.514 2019] [5236] listening on 127.0.0.1:9306
+[Tue Dec 24 15:43:45.514 2019] [5236] listening on 127.0.0.1:9080
+[Tue Dec 24 15:43:45.524 2019] [5236] accepting connections
+[Tue Dec 24 15:43:45.524 2019] [5255] prereading 2 indexes
+[Tue Dec 24 15:43:45.524 2019] [5255] prereaded 2 indexes in 0.000 sec
+[Thu Dec 26 15:16:20.985 2019] [11405] watchdog: main process 11406 forked ok
+[Thu Dec 26 15:16:20.986 2019] [11406] listening on 127.0.0.1:9306
+[Thu Dec 26 15:16:20.986 2019] [11406] listening on 127.0.0.1:9080
+[Thu Dec 26 15:16:21.019 2019] [11425] prereading 2 indexes
+[Thu Dec 26 15:16:21.019 2019] [11406] accepting connections
+[Thu Dec 26 15:16:21.021 2019] [11425] prereaded 2 indexes in 0.002 sec

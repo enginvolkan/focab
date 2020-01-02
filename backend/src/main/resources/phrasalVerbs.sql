@@ -867,8 +867,6 @@ INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('give up on');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('give up to');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('give way');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('give way to');
-INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('give yourself up');
-INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('give yourself up to');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('gloss over');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('gnaw at');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('gnaw away at');

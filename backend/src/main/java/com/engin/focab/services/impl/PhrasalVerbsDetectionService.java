@@ -2,7 +2,6 @@ package com.engin.focab.services.impl;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.engin.focab.jpa.corpus.PhrasalVerbAnalysis;
 import com.engin.focab.services.IndexedSearchService;
 
 import edu.stanford.nlp.simple.Sentence;
@@ -25,27 +25,37 @@ public class PhrasalVerbsDetectionService {
 	private int gapUnit;
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+	private StringBuilder trace = new StringBuilder();
 
-	public Set<String> detectPhrasalVerbs(String[] taggedSentence, Sentence sentence) {
+	public PhrasalVerbAnalysis detectPhrasalVerbs(String[] taggedSentence, Sentence sentence) {
 
 		HashSet<String> currentSet;
 		HashSet<String> foundSet = new HashSet<String>();
+
+		log("Detect phrasal verbs for: " + taggedSentence.toString(), null);
+		log("###################################", null);
 
 		for (int i = 0; i < taggedSentence.length; i++) {
 			if (sentenceTaggingService.extractTag(taggedSentence[i], false).equals("VB")) {
 				// find possible phrasal verbs
 				// check the next word
+				log("working on " + taggedSentence[i], null);
 				if (i + 1 < taggedSentence.length
 						&& (!sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(".")
 								&& !sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(","))) {
 					String searchTerm = sentenceTaggingService.extractWord(taggedSentence[i]) + " "
 							+ sentenceTaggingService.extractWord(taggedSentence[i + 1]);
+					log("search term: " + searchTerm, null);
+
 					currentSet = searchWordInPhrasalRepository(searchTerm);
+					log("current set : ", currentSet);
 
 					if (currentSet.isEmpty()) {
+						log("current set empty, searching for gaps...", null);
 						currentSet.addAll(searchPhrasalWithGaps(i, taggedSentence));
 					}
 					if (currentSet.size() > 1) {
+						log("current set is too big, reducing...", null);
 						currentSet = reduceCurrentSet(taggedSentence, currentSet, i, searchTerm);
 					}
 
@@ -56,7 +66,7 @@ public class PhrasalVerbsDetectionService {
 			}
 		}
 
-		return foundSet;
+		return new PhrasalVerbAnalysis(foundSet, trace.toString());
 	}
 
 	private HashSet<String> reduceCurrentSet(String[] taggedSentence, HashSet<String> currentSet, int i,
@@ -75,10 +85,14 @@ public class PhrasalVerbsDetectionService {
 				}
 			}
 		}
+		log("shortest phrasal verb is :" + shortestOne, null);
+
 		while (currentSet.size() > 1 && (!sentenceTaggingService.extractTag(taggedSentence[i + 2], false).equals(".")
 				&& !sentenceTaggingService.extractTag(taggedSentence[i + 2], false).equals(","))) {
 			searchTerm = searchTerm + " " + sentenceTaggingService.extractWord(taggedSentence[i + 2]);
+			log("search term: " + searchTerm, null);
 			currentSet = searchWordInPhrasalRepository(searchTerm);
+			log("current set : ", currentSet);
 
 		}
 		if (currentSet.isEmpty() && !shortestOne.equals("")) {
@@ -92,7 +106,11 @@ public class PhrasalVerbsDetectionService {
 		for (int j = 1; j <= gapUnit && i + j < taggedSentence.length; j++) {
 			String searchTerm = sentenceTaggingService.extractWord(taggedSentence[i]) + " "
 					+ sentenceTaggingService.extractWord(taggedSentence[i + j]);
+			log("search term: " + searchTerm, null);
+
 			HashSet<String> currentSet = searchWordInPhrasalRepository(searchTerm);
+			log("current set : ", currentSet);
+
 			if (!currentSet.isEmpty()) {
 				return currentSet;
 			}
@@ -106,8 +124,13 @@ public class PhrasalVerbsDetectionService {
 
 	private void log(String message, HashSet<String> set) {
 		if (set != null) {
-			logger.debug(message + set.stream().collect(Collectors.joining(",")));
+			String s = set.stream().collect(Collectors.joining(","));
+			trace.append(message + s);
+			trace.append(System.lineSeparator());
+			logger.debug(message + s);
 		} else {
+			trace.append(message);
+			trace.append(System.lineSeparator());
 			logger.debug(message);
 		}
 	}

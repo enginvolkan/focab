@@ -43,6 +43,12 @@ public class SentenceTaggingService {
 		return sentence.lemmas(props);
 	}
 
+	public List<String> posTags(Sentence sentence) {
+		Properties props = new Properties();
+		props.setProperty("pos.model", "english-left3words-distsim.tagger");
+		return sentence.posTags(props);
+	}
+
 	public String extractTag(String s, boolean full) {
 		String tag = s.substring(s.indexOf('_') + 1, s.length());
 
@@ -63,6 +69,10 @@ public class SentenceTaggingService {
 			return s.substring(0, s.indexOf('_'));
 		} else
 			return s;
+	}
+
+	public String[] tagString(Sentence sentence) {
+		return (String[]) posTags(sentence).toArray(new String[0]);
 	}
 
 }

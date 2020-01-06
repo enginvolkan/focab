@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "subtitles")
@@ -62,6 +63,9 @@ public class SubtitleModel {
 	private Set<String> collocations;
 
 	private String singleWords;
+
+	@Transient
+	private String trace;
 
 	/////////////////////
 	// Getters and Setters
@@ -167,6 +171,22 @@ public class SubtitleModel {
 
 	public void setSingleWords(String singleWords) {
 		this.singleWords = singleWords;
+	}
+
+	public String getTrace() {
+		return trace;
+	}
+
+	public void setTrace(String trace) {
+		this.trace = trace;
+	}
+
+	public int getPk() {
+		return pk;
+	}
+
+	public MovieAnalysisModel getMovie() {
+		return movie;
 	}
 
 }

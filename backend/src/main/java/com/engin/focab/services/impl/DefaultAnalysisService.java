@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import com.engin.focab.jpa.MovieAnalysisModel;
 import com.engin.focab.jpa.SubtitleModel;
+import com.engin.focab.jpa.corpus.IdiomAnalysis;
+import com.engin.focab.jpa.corpus.PhrasalVerbAnalysis;
 import com.engin.focab.repository.MovieAnalysisRepository;
 import com.engin.focab.repository.SubtitleRepository;
 import com.engin.focab.services.AnalysisService;
@@ -74,17 +76,15 @@ public class DefaultAnalysisService implements AnalysisService {
 				SubtitleModel subtitle = (SubtitleModel) iterator.next();
 				Sentence sentence = new Sentence(subtitle.getText().toLowerCase());
 
-				String[] taggedSentence = sentenceTaggingService.tagString(subtitle.getText());
-
 				//// find idioms
-				Set<String> idiomSet = idiomDetectionService.detectIdioms(taggedSentence, sentence);
+				Set<String> idiomSet = detectIdioms(sentence).getIdiomSet();
 				if (!idiomSet.isEmpty()) {
 					subtitle.setIdioms(idiomSet);
 					idiomSubtitles.add(subtitle);
 				}
 
 				//// find phrasal verbs
-				Set<String> phrasalSet = phrasalDetectionService.detectPhrasalVerbs(taggedSentence, sentence);
+				Set<String> phrasalSet = detectPhrasalVerbs(sentence).getPhrasalVerbSet();
 				if (!phrasalSet.isEmpty()) {
 					subtitle.setPhrasalVerbs(phrasalSet);
 					phrasalVerbSubtitles.add(subtitle);
@@ -115,15 +115,40 @@ public class DefaultAnalysisService implements AnalysisService {
 	}
 
 	@Override
-	public MovieAnalysisModel analyzeSentence(String sentence, boolean analyseIdioms, boolean analysePhrasalVerbs,
+	public SubtitleModel analyzeSentence(String sentence, boolean analyseIdioms, boolean analysePhrasalVerbs,
 			boolean analyseSingleWords) {
-		MovieAnalysisModel sentenceAnalysis = new MovieAnalysisModel();
 		SubtitleModel subtitle = new SubtitleModel(sentence);
+		Sentence nplSentence = new Sentence(sentence);
+		StringBuilder trace = new StringBuilder();
+
+		if (analyseIdioms) {
+			IdiomAnalysis idiomAnalysis = detectIdioms(nplSentence);
+			subtitle.setIdioms(idiomAnalysis.getIdiomSet());
+			trace.append(idiomAnalysis.getTrace());
+			trace.append(System.lineSeparator());
+		}
+
+		if (analysePhrasalVerbs) {
+			PhrasalVerbAnalysis phrasalVerbAnalysis = detectPhrasalVerbs(nplSentence);
+			subtitle.setPhrasalVerbs(phrasalVerbAnalysis.getPhrasalVerbSet());
+			trace.append(phrasalVerbAnalysis.getTrace());
+			trace.append(System.lineSeparator());
+		}
 
 		if (analyseSingleWords) {
-			subtitle.setSingleWords(detectSingleWords(new Sentence(sentence)));
+			subtitle.setSingleWords(detectSingleWords(nplSentence));
 		}
-		return sentenceAnalysis;
+
+		subtitle.setTrace(trace.toString());
+		return subtitle;
+	}
+
+	private PhrasalVerbAnalysis detectPhrasalVerbs(Sentence sentence) {
+		return phrasalDetectionService.detectPhrasalVerbs(sentenceTaggingService.tagString(sentence), sentence);
+	}
+
+	private IdiomAnalysis detectIdioms(Sentence sentence) {
+		return idiomDetectionService.detectIdioms(sentenceTaggingService.tagString(sentence.text()), sentence);
 	}
 
 	private String detectSingleWords(Sentence sentence) {

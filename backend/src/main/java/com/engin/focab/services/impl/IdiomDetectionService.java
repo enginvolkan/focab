@@ -1,8 +1,8 @@
 package com.engin.focab.services.impl;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.engin.focab.jpa.corpus.IdiomAnalysis;
 import com.engin.focab.services.IndexedSearchService;
 
 import edu.stanford.nlp.simple.Sentence;
@@ -25,15 +26,16 @@ public class IdiomDetectionService {
 	private int gapUnit;
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+	private StringBuilder trace;
 
-	public Set<String> detectIdioms(String[] taggedSentence, Sentence sentence) {
+	public IdiomAnalysis detectIdioms(String[] taggedSentence, Sentence sentence) {
 
 		HashSet<String> trackedWords = new HashSet<String>();
 		HashSet<String> previousSet = new HashSet<String>();
 		HashSet<String> currentSet = new HashSet<String>();
 		HashSet<String> foundSet = new HashSet<String>();
-
-		log("Detect idioms for: " + taggedSentence.toString(), null);
+		trace = new StringBuilder();
+		log("Detect idioms for: " + Arrays.toString(taggedSentence), null);
 		log("###################################", null);
 		for (int i = 0; i < taggedSentence.length; i++) {
 			String word = taggedSentence[i];
@@ -77,7 +79,8 @@ public class IdiomDetectionService {
 			foundSet.addAll(findValidIdioms(trackedWords, sentence));
 		}
 
-		return foundSet;
+		return new IdiomAnalysis(foundSet, trace.toString());
+
 	}
 
 	private HashSet<String> findValidIdioms(HashSet<String> trackedWords, Sentence sentence) {
@@ -138,9 +141,15 @@ public class IdiomDetectionService {
 	}
 
 	private void log(String message, HashSet<String> set) {
+
 		if (set != null) {
-			logger.debug(message + set.stream().collect(Collectors.joining(",")));
+			String s = set.stream().collect(Collectors.joining(","));
+			trace.append(message + s);
+			trace.append(System.lineSeparator());
+			logger.debug(message + s);
 		} else {
+			trace.append(message);
+			trace.append(System.lineSeparator());
 			logger.debug(message);
 		}
 	}

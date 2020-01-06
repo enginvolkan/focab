@@ -29,7 +29,8 @@ public class PhrasalVerbDetectionController {
 	public Set<String> detectIdioms(@RequestParam String sentence) {
 		String[] taggedSentence = sentenceTaggingService.tagString(sentence);
 
-		return phrasalDetectionService.detectPhrasalVerbs(taggedSentence, new Sentence(sentence.toLowerCase()));
+		return phrasalDetectionService.detectPhrasalVerbs(taggedSentence, new Sentence(sentence.toLowerCase()))
+				.getPhrasalVerbSet();
 	}
 
 }

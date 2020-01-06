@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.engin.focab.jpa.MovieAnalysisModel;
+import com.engin.focab.jpa.SubtitleModel;
 import com.engin.focab.services.AnalysisService;
 import com.engin.focab.services.impl.IdiomDetectionService;
 import com.engin.focab.services.impl.PhrasalVerbsDetectionService;
@@ -28,7 +28,7 @@ public class SentenceAnalysisController {
 
 	@GetMapping("/detectSentence")
 	@ResponseBody
-	public MovieAnalysisModel analyseSentence(@RequestParam String sentence, @RequestParam boolean analyseIdioms,
+	public SubtitleModel analyseSentence(@RequestParam String sentence, @RequestParam boolean analyseIdioms,
 			@RequestParam boolean analysePhrasalVerbs, @RequestParam boolean analyseSingleWords) {
 //		String[] taggedSentence = sentenceTaggingService.tagString(sentence);
 		return analysisService.analyzeSentence(sentence.toLowerCase(), analyseIdioms, analysePhrasalVerbs,

@@ -35,7 +35,7 @@ public class IdiomDetectionController {
 	@ResponseBody
 	public Set<String> detectIdioms(@RequestParam String sentence) {
 		String[] taggedSentence = sentenceTaggingService.tagString(sentence);
-		return idiomDetectionService.detectIdioms(taggedSentence, new Sentence(sentence.toLowerCase()));
+		return idiomDetectionService.detectIdioms(taggedSentence, new Sentence(sentence.toLowerCase())).getIdiomSet();
 	}
 
 	@GetMapping("/delete")

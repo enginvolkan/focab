@@ -1,7 +1,9 @@
 package com.engin.focab.services.impl;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -25,18 +27,19 @@ public class PhrasalVerbsDetectionService {
 	private int gapUnit;
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-	private StringBuilder trace = new StringBuilder();
+	private StringBuilder trace;
 
 	public PhrasalVerbAnalysis detectPhrasalVerbs(String[] taggedSentence, Sentence sentence) {
 
 		HashSet<String> currentSet;
 		HashSet<String> foundSet = new HashSet<String>();
-
-		log("Detect phrasal verbs for: " + taggedSentence.toString(), null);
+		
+		trace = new StringBuilder("<br>###################################<br>");
+		log("Detect phrasal verbs for: " + Arrays.toString(taggedSentence), null);
 		log("###################################", null);
 
 		for (int i = 0; i < taggedSentence.length; i++) {
-			if (sentenceTaggingService.extractTag(taggedSentence[i], false).equals("VB")) {
+			if (sentenceTaggingService.extractTag(taggedSentence[i], false).startsWith("VB")) {
 				// find possible phrasal verbs
 				// check the next word
 				log("working on " + taggedSentence[i], null);
@@ -45,74 +48,84 @@ public class PhrasalVerbsDetectionService {
 								&& !sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(","))) {
 					String searchTerm = sentenceTaggingService.extractWord(taggedSentence[i]) + " "
 							+ sentenceTaggingService.extractWord(taggedSentence[i + 1]);
-					log("search term: " + searchTerm, null);
+					log("@search term: " + searchTerm, null);
 
 					currentSet = searchWordInPhrasalRepository(searchTerm);
-					log("current set : ", currentSet);
+					log("@current set : ", currentSet);
 
 					if (currentSet.isEmpty()) {
-						log("current set empty, searching for gaps...", null);
+						log("@current set empty, searching for gaps...", null);
 						currentSet.addAll(searchPhrasalWithGaps(i, taggedSentence));
 					}
 					if (currentSet.size() > 1) {
-						log("current set is too big, reducing...", null);
-						currentSet = reduceCurrentSet(taggedSentence, currentSet, i, searchTerm);
+						log("@current set is too big, reducing...", null);
+						currentSet = (HashSet<String>) Set.of(reduceCurrentSet(taggedSentence, currentSet, i, searchTerm));
 					}
 
 					if (currentSet.size() == 1) {
 						foundSet.addAll(currentSet);
 					}
 				}
+				else {
+					log("nothing significant next...",null);
+				}
 			}
 		}
-
+		log("@@@@@ found:",foundSet);
 		return new PhrasalVerbAnalysis(foundSet, trace.toString());
 	}
 
-	private HashSet<String> reduceCurrentSet(String[] taggedSentence, HashSet<String> currentSet, int i,
+	private String reduceCurrentSet(String[] taggedSentence, HashSet<String> currentSet, int i,
 			String searchTerm) {
-		String shortestOne = "";
+		String currentOne = "";
 		int minLength = 0;
 		for (Iterator<String> iterator = currentSet.iterator(); iterator.hasNext();) {
 			String string = (String) iterator.next();
 			if (minLength == 0) {
 				minLength = string.split(" ").length;
-				shortestOne = string;
+				currentOne = string;
 			} else {
-				if (string.length() < minLength) {
+				if (string.split(" ").length < minLength) {
 					minLength = string.split(" ").length;
-					shortestOne = string;
+					currentOne = string;
 				}
 			}
 		}
-		log("shortest phrasal verb is :" + shortestOne, null);
-
-		while (currentSet.size() > 1 && (!sentenceTaggingService.extractTag(taggedSentence[i + 2], false).equals(".")
-				&& !sentenceTaggingService.extractTag(taggedSentence[i + 2], false).equals(","))) {
-			searchTerm = searchTerm + " " + sentenceTaggingService.extractWord(taggedSentence[i + 2]);
-			log("search term: " + searchTerm, null);
-			currentSet = searchWordInPhrasalRepository(searchTerm);
-			log("current set : ", currentSet);
-
+		log("@@@shortest phrasal verb is :" + currentOne, null);
+		
+		for (int j = 1; !currentSet.isEmpty() && i + j < taggedSentence.length; j++) {
+			if(!sentenceTaggingService.extractTag(taggedSentence[i + j], false).equals(".")
+				&& !sentenceTaggingService.extractTag(taggedSentence[i + j], false).equals(",")){
+				searchTerm = searchTerm + " " + sentenceTaggingService.extractWord(taggedSentence[i + j]);
+				log("@@@reducing search term: " + searchTerm, null);
+				currentSet = searchWordInPhrasalRepository(searchTerm);
+				log("@@@reducing current set : ", currentSet);
+				if(currentSet.size()==1) {
+					currentOne=currentSet.iterator().next();
+				}
+			}
 		}
-		if (currentSet.isEmpty() && !shortestOne.equals("")) {
-			currentSet.add(shortestOne);
-		}
-		return currentSet;
+
+		return currentOne;
 	}
 
 	// Couldn't find anything on i+1, will search with i+1 +2 etc...
-	private HashSet<String> searchPhrasalWithGaps(int i, String[] taggedSentence) {
-		for (int j = 1; j <= gapUnit && i + j < taggedSentence.length; j++) {
+	private Set<String> searchPhrasalWithGaps(int i, String[] taggedSentence) {
+		for (int j = 2; j-1 <= gapUnit && i + j < taggedSentence.length; j++) {
 			String searchTerm = sentenceTaggingService.extractWord(taggedSentence[i]) + " "
 					+ sentenceTaggingService.extractWord(taggedSentence[i + j]);
-			log("search term: " + searchTerm, null);
+			log("@@gap search term: " + searchTerm, null);
 
 			HashSet<String> currentSet = searchWordInPhrasalRepository(searchTerm);
-			log("current set : ", currentSet);
+			log("@@gap current set : ", currentSet);
 
 			if (!currentSet.isEmpty()) {
-				return currentSet;
+				if(currentSet.size()==1) {
+					return currentSet;
+				}
+				else {
+					return Set.of(reduceCurrentSet(taggedSentence, currentSet, i+j, searchTerm));
+				}
 			}
 		}
 		return new HashSet<String>();
@@ -126,11 +139,11 @@ public class PhrasalVerbsDetectionService {
 		if (set != null) {
 			String s = set.stream().collect(Collectors.joining(","));
 			trace.append(message + s);
-			trace.append(System.lineSeparator());
+			trace.append("<br>");
 			logger.debug(message + s);
 		} else {
 			trace.append(message);
-			trace.append(System.lineSeparator());
+			trace.append("<br>");
 			logger.debug(message);
 		}
 	}

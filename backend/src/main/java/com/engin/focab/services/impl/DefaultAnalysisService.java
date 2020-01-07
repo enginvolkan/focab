@@ -125,14 +125,12 @@ public class DefaultAnalysisService implements AnalysisService {
 			IdiomAnalysis idiomAnalysis = detectIdioms(nplSentence);
 			subtitle.setIdioms(idiomAnalysis.getIdiomSet());
 			trace.append(idiomAnalysis.getTrace());
-			trace.append(System.lineSeparator());
 		}
 
 		if (analysePhrasalVerbs) {
 			PhrasalVerbAnalysis phrasalVerbAnalysis = detectPhrasalVerbs(nplSentence);
 			subtitle.setPhrasalVerbs(phrasalVerbAnalysis.getPhrasalVerbSet());
 			trace.append(phrasalVerbAnalysis.getTrace());
-			trace.append(System.lineSeparator());
 		}
 
 		if (analyseSingleWords) {
@@ -144,7 +142,7 @@ public class DefaultAnalysisService implements AnalysisService {
 	}
 
 	private PhrasalVerbAnalysis detectPhrasalVerbs(Sentence sentence) {
-		return phrasalDetectionService.detectPhrasalVerbs(sentenceTaggingService.tagString(sentence), sentence);
+		return phrasalDetectionService.detectPhrasalVerbs(sentenceTaggingService.tagString(sentence.text()), sentence);
 	}
 
 	private IdiomAnalysis detectIdioms(Sentence sentence) {

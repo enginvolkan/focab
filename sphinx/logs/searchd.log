@@ -10,3 +10,10 @@
 [Thu Dec 26 15:16:21.019 2019] [11425] prereading 2 indexes
 [Thu Dec 26 15:16:21.019 2019] [11406] accepting connections
 [Thu Dec 26 15:16:21.021 2019] [11425] prereaded 2 indexes in 0.002 sec
+[Tue Jan  7 14:29:44.272 2020] [20484] listening on 127.0.0.1:9306
+[Tue Jan  7 14:29:44.272 2020] [20484] listening on 127.0.0.1:9080
+[Tue Jan  7 14:29:44.319 2020] [20484] accepting connections
+[Tue Jan  7 14:29:44.320 2020] [18992] prereading 2 indexes
+[Tue Jan  7 14:29:44.320 2020] [18992] prereaded 2 indexes in 0.000 sec
+[Tue Jan  7 16:56:36.847 2020] [20484] caught SIGTERM, shutting down
+[Tue Jan  7 16:56:36.916 2020] [20484] shutdown complete

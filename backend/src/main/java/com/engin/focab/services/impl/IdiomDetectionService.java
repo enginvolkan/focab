@@ -34,7 +34,7 @@ public class IdiomDetectionService {
 		HashSet<String> previousSet = new HashSet<String>();
 		HashSet<String> currentSet = new HashSet<String>();
 		HashSet<String> foundSet = new HashSet<String>();
-		trace = new StringBuilder();
+		trace = new StringBuilder("<br>###################################<br>");
 		log("Detect idioms for: " + Arrays.toString(taggedSentence), null);
 		log("###################################", null);
 		for (int i = 0; i < taggedSentence.length; i++) {
@@ -49,19 +49,22 @@ public class IdiomDetectionService {
 				HashSet<String> idioms = searchWordInIdiomRepository(sentenceTaggingService.extractWord(word));
 
 				currentSet.retainAll(idioms);
-				log("@ Current set: ", currentSet);
+				log("@Current set: ", currentSet);
 
 				if (currentSet.isEmpty()) {
 
 					if (!previousSet.isEmpty()) {
+						log("@Previous set: ", previousSet);
+						log("@Last check with tracked words: ", trackedWords);
 						foundSet.addAll(findValidIdioms(trackedWords, sentence));
 					}
 					trackedWords.clear();
 					trackedWords.add(word);
-
 				} else {
 					trackedWords.add(word);
 				}
+				log("@Current tracked words: ", trackedWords);
+
 				if (currentSet.isEmpty() && i < taggedSentence.length - 1) {
 					currentSet.addAll(idioms);
 				} else {
@@ -70,20 +73,21 @@ public class IdiomDetectionService {
 				previousSet.clear();
 				previousSet.addAll(currentSet);
 
-			}
+			}else {
 			log("skipped...", null);
-
+			}
 		}
 		// Sentence is over, check for valid idioms once more
 		if (!currentSet.isEmpty()) {
 			foundSet.addAll(findValidIdioms(trackedWords, sentence));
 		}
-
+		log("@@@@@ found:",foundSet);
 		return new IdiomAnalysis(foundSet, trace.toString());
 
 	}
 
 	private HashSet<String> findValidIdioms(HashSet<String> trackedWords, Sentence sentence) {
+		log("@Validity check for tracked words: ", trackedWords);
 
 		HashSet<String> foundSet = new HashSet<String>();
 		String idiomText = trackedWords.stream().map(x -> sentenceTaggingService.extractWord(x))
@@ -117,7 +121,7 @@ public class IdiomDetectionService {
 			if (!idiomLemma.contains("@") && !idiomLemma.contains("#")) { // no gap
 				int firstIndex = sentenceLemmas.indexOf(idiomLemma);
 				if (firstIndex > -1 && firstIndex > lastSeen) {
-
+burada sorun var
 					gap = lastSeen > -1 ? firstIndex - lastSeen - 1 : 0;
 
 					if (gap > expectedGap * gapUnit || gap < expectedGap) {
@@ -133,6 +137,7 @@ public class IdiomDetectionService {
 			}
 			counter++;
 		}
+		log("@@@Searching for " + idiomLemmas.size() + " words, found " + counter + " words for idiom: " +idiom,null);
 		return counter == idiomLemmas.size() ? true : false;
 	}
 
@@ -145,11 +150,13 @@ public class IdiomDetectionService {
 		if (set != null) {
 			String s = set.stream().collect(Collectors.joining(","));
 			trace.append(message + s);
-			trace.append(System.lineSeparator());
+//			trace.append(System.lineSeparator());
+			trace.append("<br>");
 			logger.debug(message + s);
 		} else {
 			trace.append(message);
-			trace.append(System.lineSeparator());
+//			trace.append(System.lineSeparator());
+			trace.append("<br>");
 			logger.debug(message);
 		}
 	}

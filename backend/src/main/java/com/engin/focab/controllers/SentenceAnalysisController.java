@@ -31,7 +31,7 @@ public class SentenceAnalysisController {
 	public SubtitleModel analyseSentence(@RequestParam String sentence, @RequestParam boolean analyseIdioms,
 			@RequestParam boolean analysePhrasalVerbs, @RequestParam boolean analyseSingleWords) {
 //		String[] taggedSentence = sentenceTaggingService.tagString(sentence);
-		return analysisService.analyzeSentence(sentence.toLowerCase(), analyseIdioms, analysePhrasalVerbs,
+		return analysisService.analyzeSentence(sentence, analyseIdioms, analysePhrasalVerbs,
 				analyseSingleWords);
 	}
 

@@ -23,7 +23,7 @@ public class OmdbApiService implements MovieInfoService {
 	// i=tt0944947&Season=1
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * com.engin.focab.services.impl.MovieInfoService#findMovieOrSeries(java.lang.
 	 * String)
@@ -56,7 +56,7 @@ public class OmdbApiService implements MovieInfoService {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * com.engin.focab.services.impl.MovieInfoService#findEpisode(java.lang.String,
 	 * int)

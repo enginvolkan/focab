@@ -2,6 +2,8 @@ package com.engin.focab.services.impl;
 
 import java.util.List;
 import java.util.Properties;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +42,12 @@ public class SentenceTaggingService {
 	public List<String> lemmas(Sentence sentence) {
 		Properties props = new Properties();
 		props.setProperty("pos.model", "english-left3words-distsim.tagger");
-		return sentence.lemmas(props);
+		List<String> lemmasList = sentence.lemmas(props);
+		// remove all punctuations other than @ or #. Those are special chars for idioms
+		lemmasList = lemmasList.stream()
+				.filter(x -> !Pattern.matches("\\p{Punct}", x) || x.contains("@") || x.contains("#"))
+				.collect(Collectors.toList());
+		return lemmasList;
 	}
 
 	public List<String> posTags(Sentence sentence) {
@@ -72,7 +79,7 @@ public class SentenceTaggingService {
 	}
 
 	public String[] tagString(Sentence sentence) {
-		return (String[]) posTags(sentence).toArray(new String[0]);
+		return posTags(sentence).toArray(new String[0]);
 	}
 
 }

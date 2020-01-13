@@ -1,6 +1,7 @@
 package com.engin.focab.services.impl;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -33,10 +34,10 @@ public class PhrasalVerbsDetectionService {
 
 		HashSet<String> currentSet;
 		HashSet<String> foundSet = new HashSet<String>();
-		
-		trace = new StringBuilder("<br>###################################<br>");
+
+		trace = new StringBuilder("<br>*****************************************************<br>");
 		log("Detect phrasal verbs for: " + Arrays.toString(taggedSentence), null);
-		log("###################################", null);
+		log("*****************************************************", null);
 
 		for (int i = 0; i < taggedSentence.length; i++) {
 			if (sentenceTaggingService.extractTag(taggedSentence[i], false).startsWith("VB")) {
@@ -59,7 +60,7 @@ public class PhrasalVerbsDetectionService {
 					}
 					if (currentSet.size() > 1) {
 						log("@current set is too big, reducing...", null);
-						currentSet = (HashSet<String>) Set.of(reduceCurrentSet(taggedSentence, currentSet, i, searchTerm));
+						currentSet = reduceCurrentSet(taggedSentence, currentSet, i, searchTerm);
 					}
 
 					if (currentSet.size() == 1) {
@@ -75,12 +76,12 @@ public class PhrasalVerbsDetectionService {
 		return new PhrasalVerbAnalysis(foundSet, trace.toString());
 	}
 
-	private String reduceCurrentSet(String[] taggedSentence, HashSet<String> currentSet, int i,
+	private HashSet<String> reduceCurrentSet(String[] taggedSentence, HashSet<String> currentSet, int i,
 			String searchTerm) {
 		String currentOne = "";
 		int minLength = 0;
 		for (Iterator<String> iterator = currentSet.iterator(); iterator.hasNext();) {
-			String string = (String) iterator.next();
+			String string = iterator.next();
 			if (minLength == 0) {
 				minLength = string.split(" ").length;
 				currentOne = string;
@@ -92,7 +93,7 @@ public class PhrasalVerbsDetectionService {
 			}
 		}
 		log("@@@shortest phrasal verb is :" + currentOne, null);
-		
+
 		for (int j = 1; !currentSet.isEmpty() && i + j < taggedSentence.length; j++) {
 			if(!sentenceTaggingService.extractTag(taggedSentence[i + j], false).equals(".")
 				&& !sentenceTaggingService.extractTag(taggedSentence[i + j], false).equals(",")){
@@ -106,7 +107,7 @@ public class PhrasalVerbsDetectionService {
 			}
 		}
 
-		return currentOne;
+		return new HashSet<String>(Collections.singleton(currentOne));
 	}
 
 	// Couldn't find anything on i+1, will search with i+1 +2 etc...
@@ -124,7 +125,7 @@ public class PhrasalVerbsDetectionService {
 					return currentSet;
 				}
 				else {
-					return Set.of(reduceCurrentSet(taggedSentence, currentSet, i+j, searchTerm));
+					return reduceCurrentSet(taggedSentence, currentSet, i + j, searchTerm);
 				}
 			}
 		}

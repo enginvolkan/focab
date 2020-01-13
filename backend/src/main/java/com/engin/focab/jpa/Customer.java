@@ -20,7 +20,7 @@ public class Customer {
 		this.fullname = string;
 //		favorites.add(new FavoriteList("default",this));
 	}
-	
+
 
 	public Customer() {
 		super();
@@ -35,14 +35,15 @@ public class Customer {
 	private String email;
 	private String password;
 	private boolean enabled;
+	private int level;
 
 	@OneToMany
 	private Set<FavoriteList> favorites= new HashSet<FavoriteList>();
 
 	@OneToMany
 	private Set<Role> roles= new HashSet<Role>();
-	
-	
+
+
 	public String getName() {
 		return fullname;
 	}
@@ -99,6 +100,18 @@ public class Customer {
 
 	public String getFullname() {
 		return fullname;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 
 }

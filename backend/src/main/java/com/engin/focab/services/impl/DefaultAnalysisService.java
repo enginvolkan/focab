@@ -1,6 +1,8 @@
 package com.engin.focab.services.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -73,8 +75,8 @@ public class DefaultAnalysisService implements AnalysisService {
 
 			//// process each subtitle
 			for (Iterator<SubtitleModel> iterator = subtitles.iterator(); iterator.hasNext();) {
-				SubtitleModel subtitle = (SubtitleModel) iterator.next();
-				Sentence sentence = new Sentence(subtitle.getText().toLowerCase());
+				SubtitleModel subtitle = iterator.next();
+				Sentence sentence = new Sentence(subtitle.getText());
 
 				//// find idioms
 				Set<String> idiomSet = detectIdioms(sentence).getIdiomSet();
@@ -94,7 +96,11 @@ public class DefaultAnalysisService implements AnalysisService {
 //				subtitleRepository.save(subtitle);
 
 				//// detect single words
-				subtitle.setSingleWords(detectSingleWords(sentence));
+				String singleWordsList = detectSingleWords(sentence);
+				if (singleWordsList != "") {
+					subtitle.setSingleWords(singleWordsList);
+					singleWordSubtitles.add(subtitle);
+				}
 
 				//// find phrasal verbs
 				//// find adj+noun tuples
@@ -150,13 +156,31 @@ public class DefaultAnalysisService implements AnalysisService {
 	}
 
 	private String detectSingleWords(Sentence sentence) {
-		List<String> singleWordSet = new ArrayList<String>();
-		singleWordSet.addAll(sentenceTaggingService.lemmas(sentence));
+		Set<String> singleWordSet = new HashSet<String>();
+		String[] taggedSentence = sentenceTaggingService.tagString(sentence.text());
+		List<String> taggedList = Arrays.asList(taggedSentence);
+
+		singleWordSet.addAll(taggedList.stream() // get rid of irrelevant tags
+				.filter(x -> !sentenceTaggingService.extractTag(x, true).equals("NNP")
+						&& !sentenceTaggingService.extractTag(x, true).equals("NNPS")
+						&& !sentenceTaggingService.extractTag(x, true).equals(",")
+						&& !sentenceTaggingService.extractTag(x, true).equals("."))
+				.collect(Collectors.toSet()));
+		singleWordSet = singleWordSet.stream().map(x -> sentenceTaggingService.extractWord(x).toLowerCase())
+				.collect(Collectors.toSet());
+
+		if (!singleWordSet.isEmpty()) { // convert plural to singular
+			String s = singleWordSet.stream().collect(Collectors.joining(" "));
+			List<String> singleWordList = sentenceTaggingService.lemmas(new Sentence(s));
+			singleWordSet.clear();
+			singleWordSet.addAll(singleWordList);
+		}
+
 		singleWordSet.removeAll(singleWordsDetectionService.getCommonWords());
+		singleWordSet.removeAll(singleWordsDetectionService.getKnownWords());
 
-		String singleWords = "";
-		singleWords = singleWordSet.stream().map(Object::toString).collect(Collectors.joining(","));
 
+		String singleWords = singleWordSet.stream().map(Object::toString).collect(Collectors.joining(","));
 		return singleWords;
 	}
 

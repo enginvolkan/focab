@@ -34,12 +34,12 @@ public class IdiomDetectionService {
 		HashSet<String> previousSet = new HashSet<String>();
 		HashSet<String> currentSet = new HashSet<String>();
 		HashSet<String> foundSet = new HashSet<String>();
-		trace = new StringBuilder("<br>###################################<br>");
+		trace = new StringBuilder("<br>*****************************************************<br>");
 		log("Detect idioms for: " + Arrays.toString(taggedSentence), null);
-		log("###################################", null);
+		log("*****************************************************", null);
 		for (int i = 0; i < taggedSentence.length; i++) {
 			String word = taggedSentence[i];
-			log("### Processing " + word, null);
+			log("############## Processing " + word, null);
 
 			if (!sentenceTaggingService.extractTag(word, false).equals("PRP")
 					&& !sentenceTaggingService.extractTag(word, false).equals("DT")
@@ -110,7 +110,7 @@ public class IdiomDetectionService {
 
 	private boolean isIdiomValidForSentence(String idiom, List<String> sentenceLemmas) {
 
-		Sentence idiomSentence = new Sentence((String) idiom.toLowerCase());
+		Sentence idiomSentence = new Sentence(idiom.toLowerCase());
 		List<String> idiomLemmas = sentenceTaggingService.lemmas(idiomSentence);
 		;
 		int lastSeen = -1;
@@ -120,8 +120,7 @@ public class IdiomDetectionService {
 		for (String idiomLemma : idiomLemmas) {
 			if (!idiomLemma.contains("@") && !idiomLemma.contains("#")) { // no gap
 				int firstIndex = sentenceLemmas.indexOf(idiomLemma);
-				if (firstIndex > -1 && firstIndex > lastSeen) {
-burada sorun var
+				if (firstIndex > lastSeen) {
 					gap = lastSeen > -1 ? firstIndex - lastSeen - 1 : 0;
 
 					if (gap > expectedGap * gapUnit || gap < expectedGap) {

@@ -17,7 +17,11 @@ public class CommonWordModel {
 
 	@Column(columnDefinition = "TEXT")
 	private String word;
+	
+	private int rank;
 
+	public CommonWordModel() {
+	}
 	public CommonWordModel(String word) {
 		super();
 		this.word = word;
@@ -33,6 +37,14 @@ public class CommonWordModel {
 
 	public long getId() {
 		return id;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 
 }

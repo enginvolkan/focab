@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -21,51 +22,32 @@ public class SphinxService implements IndexedSearchService {
 
 	@Override
 	public HashSet<String> findIdiomsByWord(String word) {
-		try {
-			URL serverUrl = new URL(
-					"http://localhost:9080/search?index=idiom&match=" + word.replace(" ", "%20") + "&limit=200");
-			HttpURLConnection urlConnection = (HttpURLConnection) serverUrl.openConnection();
-			urlConnection.setRequestProperty("Accept", "application/json");
 
-			// read the output from the server
-			BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-			StringBuilder stringBuilder = new StringBuilder();
-			String line = null;
-			while ((line = reader.readLine()) != null) {
-				stringBuilder.append(line + "\n");
-			}
-
-			Type listType = new TypeToken<ArrayList<ArrayList<String>>>() {
-			}.getType();
-			Gson gson = new GsonBuilder().registerTypeAdapter(listType, new SphinxResultDeserializer()).create();
-
-			ArrayList<ArrayList<String>> results = gson.fromJson(stringBuilder.toString().trim(), listType);
-
-			HashSet<String> resultSet = new HashSet<String>();
-
-			for (Iterator iterator = results.iterator(); iterator.hasNext();) {
-				ArrayList<String> arrayList = (ArrayList<String>) iterator.next();
-
-				resultSet.add(arrayList.get(1));
-			}
-//			Gson gson = new Gson();
-//			Type listType = new TypeToken<ArrayList<Map<Integer, String>>>() {
-//			}.getType();
-//
-//			ArrayList<Map<Integer, String>> results = gson.fromJson(stringBuilder.toString(), listType);
-			return resultSet;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new HashSet<String>();
-		}
+		String url = "http://localhost:9080/search?index=idiom&match=" + word.replace(" ", "%20") + "&limit=200";
+		HashSet<String> resultSet = new HashSet<String>(runSphinxQuery(url));
+		return resultSet;
 	}
 
 	@Override
 	public HashSet<String> findPhrasalsByWord(String word) {
+
+		String url = "http://localhost:9080/search?index=phrasal&match=" + word.replace(" ", "%20") + "&limit=200";
+		HashSet<String> resultSet = new HashSet<String>(runSphinxQuery(url));
+		return resultSet;
+	}
+
+	@Override
+	public List<String> findCommonWordsByLevel(int level) {
+
+		String url = "http://localhost:9080/sql?query=select%20*%20from%20commonwords%20where%20rank%3C" + level
+				+ "%20limit%20" + level + ";";
+		ArrayList<String> results = runSphinxQuery(url);
+		return results;
+	}
+
+	private ArrayList<String> runSphinxQuery(String url) {
 		try {
-			URL serverUrl = new URL(
-					"http://localhost:9080/search?index=phrasal&match=" + word.replace(" ", "%20") + "&limit=200");
+			URL serverUrl = new URL(url);
 			HttpURLConnection urlConnection = (HttpURLConnection) serverUrl.openConnection();
 			urlConnection.setRequestProperty("Accept", "application/json");
 
@@ -83,25 +65,17 @@ public class SphinxService implements IndexedSearchService {
 
 			ArrayList<ArrayList<String>> results = gson.fromJson(stringBuilder.toString().trim(), listType);
 
-			HashSet<String> resultSet = new HashSet<String>();
+			ArrayList<String> resultList = new ArrayList<String>();
 
-			for (Iterator iterator = results.iterator(); iterator.hasNext();) {
-				ArrayList<String> arrayList = (ArrayList<String>) iterator.next();
+			for (Iterator<ArrayList<String>> iterator = results.iterator(); iterator.hasNext();) {
+				ArrayList<String> arrayList = iterator.next();
 
-				resultSet.add(arrayList.get(1));
+				resultList.add(arrayList.get(1).toLowerCase());
 			}
-//				Gson gson = new Gson();
-//				Type listType = new TypeToken<ArrayList<Map<Integer, String>>>() {
-//				}.getType();
-			//
-//				ArrayList<Map<Integer, String>> results = gson.fromJson(stringBuilder.toString(), listType);
-			return resultSet;
-
+			return resultList;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new HashSet<String>();
+			return new ArrayList<String>();
 		}
-
 	}
-
 }

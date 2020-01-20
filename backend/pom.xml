@@ -18,6 +18,8 @@
 
 	<properties>
 		<java.version>${jre.version}</java.version>
+		<maven.compiler.source>${jre.version}</maven.compiler.source>
+        <maven.compiler.target>${jre.version}</maven.compiler.target>
 	</properties>
 	
 <profiles>
@@ -43,7 +45,7 @@
     </activation>
     <properties>
       <war.directory>${user.home}/tomcat/webapps</war.directory>
-                  <jre.version>1.8</jre.version>
+                  <jre.version>10</jre.version>
       
     </properties>
   </profile>

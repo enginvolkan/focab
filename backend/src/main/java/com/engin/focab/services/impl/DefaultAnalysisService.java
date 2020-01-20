@@ -2,6 +2,7 @@ package com.engin.focab.services.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Component;
 
 import com.engin.focab.jpa.MovieAnalysisModel;
 import com.engin.focab.jpa.SubtitleModel;
+import com.engin.focab.jpa.SummerizedMovieAnalysisModel;
+import com.engin.focab.jpa.corpus.AggregatedIdiom;
 import com.engin.focab.jpa.corpus.IdiomAnalysis;
 import com.engin.focab.jpa.corpus.PhrasalVerbAnalysis;
 import com.engin.focab.repository.MovieAnalysisRepository;
@@ -179,9 +182,36 @@ public class DefaultAnalysisService implements AnalysisService {
 		singleWordSet.removeAll(singleWordsDetectionService.getCommonWords());
 		singleWordSet.removeAll(singleWordsDetectionService.getKnownWords());
 
-
 		String singleWords = singleWordSet.stream().map(Object::toString).collect(Collectors.joining(","));
 		return singleWords;
+	}
+
+	@Override
+	public SummerizedMovieAnalysisModel summerizeMovie(String imdbId) {
+		SummerizedMovieAnalysisModel summerizedMovieAnalysisModel = new SummerizedMovieAnalysisModel(imdbId);
+		summerizedMovieAnalysisModel = aggregateAnalysis(summerizedMovieAnalysisModel, analyzeMovie(imdbId));
+		return summerizedMovieAnalysisModel;
+	}
+
+	private SummerizedMovieAnalysisModel aggregateAnalysis(SummerizedMovieAnalysisModel summerizedMovieAnalysisModel,
+			MovieAnalysisModel movieAnalysis) {
+		Set<String> idiomSet = new HashSet<String>();
+		List<AggregatedIdiom> aggregatedIdiomList = new ArrayList<AggregatedIdiom>
+		
+		HashMap<String,List<String>> idiomMap = new HashMap<String,List<String>>();
+		
+		List<SubtitleModel> idiomSubtitles = movieAnalysis.getIdioms();
+		for (SubtitleModel subtitleModel : idiomSubtitles) {
+			for (String idiom : subtitleModel.getIdioms()) {
+				if(!idiomMap.containsKey(subtitleModel.getText())) {
+					idiomMap.put(subtitleModel.getText(), List.of(subtitleModel.get))
+				}
+			}
+
+			
+		}
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

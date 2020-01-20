@@ -10,7 +10,6 @@ import com.engin.focab.jpa.corpus.CommonWordModel;
 
 @Repository
 public interface CommonWordRepository extends JpaRepository<CommonWordModel, Long> {
-	@Query(value="SELECT * FROM commonwords as c where c.rank < ?1", 
-			  nativeQuery = true) 
-  List<CommonWordModel> findFirstNRecords(int rank);
+	@Query(value = "SELECT * FROM commonwords as c where c.level < ?1", nativeQuery = true)
+	List<CommonWordModel> findFirstNRecords(int level);
 }

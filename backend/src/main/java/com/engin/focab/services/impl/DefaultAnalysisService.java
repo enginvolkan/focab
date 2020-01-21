@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -60,6 +61,8 @@ public class DefaultAnalysisService implements AnalysisService {
 	@Override
 	public MovieAnalysisModel analyzeMovie(String imdbId) {
 		MovieAnalysisModel analysisResult = null;
+		SummerizedMovieAnalysisModel summerizedAnalysis = new SummerizedMovieAnalysisModel(imdbId);
+		Map<AggregatedIdiom> aggregatedIdiomMap = new HashMap<AggregatedIdiom>();
 
 		if (useStoredAnalysis == true) {
 			analysisResult = movieAnalysisRepository.findMovieAnalysisByImdbId(imdbId);
@@ -195,21 +198,21 @@ public class DefaultAnalysisService implements AnalysisService {
 
 	private SummerizedMovieAnalysisModel aggregateAnalysis(SummerizedMovieAnalysisModel summerizedMovieAnalysisModel,
 			MovieAnalysisModel movieAnalysis) {
-		Set<String> idiomSet = new HashSet<String>();
-		List<AggregatedIdiom> aggregatedIdiomList = new ArrayList<AggregatedIdiom>
-		
-		HashMap<String,List<String>> idiomMap = new HashMap<String,List<String>>();
-		
-		List<SubtitleModel> idiomSubtitles = movieAnalysis.getIdioms();
-		for (SubtitleModel subtitleModel : idiomSubtitles) {
-			for (String idiom : subtitleModel.getIdioms()) {
-				if(!idiomMap.containsKey(subtitleModel.getText())) {
-					idiomMap.put(subtitleModel.getText(), List.of(subtitleModel.get))
-				}
-			}
-
-			
-		}
+//		Set<String> idiomSet = new HashSet<String>();
+//		List<AggregatedIdiom> aggregatedIdiomList = new ArrayList<AggregatedIdiom>
+//		
+//		HashMap<String,List<String>> idiomMap = new HashMap<String,List<String>>();
+//		
+//		List<SubtitleModel> idiomSubtitles = movieAnalysis.getIdioms();
+//		for (SubtitleModel subtitleModel : idiomSubtitles) {
+//			for (String idiom : subtitleModel.getIdioms()) {
+//				if(!idiomMap.containsKey(subtitleModel.getText())) {
+//					idiomMap.put(subtitleModel.getText(), List.of(subtitleModel.get))
+//				}
+//			}
+//
+//			
+//		}
 		// TODO Auto-generated method stub
 		return null;
 	}

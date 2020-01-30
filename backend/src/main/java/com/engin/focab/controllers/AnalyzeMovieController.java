@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.engin.focab.jpa.Customer;
-import com.engin.focab.jpa.MovieAnalysisModel;
 import com.engin.focab.jpa.SummerizedMovieAnalysisModel;
 import com.engin.focab.repository.CustomerRepository;
 import com.engin.focab.repository.RoleRepository;
@@ -36,26 +35,12 @@ public class AnalyzeMovieController {
 
 	@GetMapping("/analyzeMovie")
 	@ResponseBody
-	public MovieAnalysisModel analyzeMovie(@RequestParam String imdbId) throws MalformedURLException, XmlRpcException {
-		Customer customer = sessionService.getCurrentCustomer();
-
-		if (customer != null) {
-			return analysisService.analyzeMovie(imdbId);
-		} else {
-			return new MovieAnalysisModel("");
-
-		}
-
-	}
-
-	@GetMapping("/summerizeMovie")
-	@ResponseBody
-	public SummerizedMovieAnalysisModel summerizeMovie(@RequestParam String imdbId)
+	public SummerizedMovieAnalysisModel analyzeMovie(@RequestParam String imdbId)
 			throws MalformedURLException, XmlRpcException {
 		Customer customer = sessionService.getCurrentCustomer();
 
 		if (customer != null) {
-			return analysisService.summerizeMovie(imdbId);
+			return analysisService.analyzeMovie(imdbId);
 		} else {
 			return new SummerizedMovieAnalysisModel("");
 

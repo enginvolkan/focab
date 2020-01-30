@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Component;
 import com.engin.focab.jpa.MovieAnalysisModel;
 import com.engin.focab.jpa.SubtitleModel;
 import com.engin.focab.jpa.SummerizedMovieAnalysisModel;
-import com.engin.focab.jpa.corpus.AggregatedIdiom;
 import com.engin.focab.jpa.corpus.IdiomAnalysis;
 import com.engin.focab.jpa.corpus.PhrasalVerbAnalysis;
 import com.engin.focab.repository.MovieAnalysisRepository;
@@ -59,10 +57,12 @@ public class DefaultAnalysisService implements AnalysisService {
 	private boolean useStoredAnalysis;
 
 	@Override
-	public MovieAnalysisModel analyzeMovie(String imdbId) {
+	public SummerizedMovieAnalysisModel analyzeMovie(String imdbId) {
 		MovieAnalysisModel analysisResult = null;
-		SummerizedMovieAnalysisModel summerizedAnalysis = new SummerizedMovieAnalysisModel(imdbId);
-		Map<AggregatedIdiom> aggregatedIdiomMap = new HashMap<AggregatedIdiom>();
+
+		HashMap<String, List<String>> aggregatedIdiomMap = new HashMap<String, List<String>>();
+		HashMap<String, List<String>> aggregatedPhrasalverbMap = new HashMap<String, List<String>>();
+		HashMap<String, List<String>> aggregatedSingleWordMap = new HashMap<String, List<String>>();
 
 		if (useStoredAnalysis == true) {
 			analysisResult = movieAnalysisRepository.findMovieAnalysisByImdbId(imdbId);
@@ -89,6 +89,10 @@ public class DefaultAnalysisService implements AnalysisService {
 				if (!idiomSet.isEmpty()) {
 					subtitle.setIdioms(idiomSet);
 					idiomSubtitles.add(subtitle);
+					for (String idiom : idiomSet) {
+						addToMap(aggregatedIdiomMap, idiom, sentence.text());
+					}
+
 				}
 
 				//// find phrasal verbs
@@ -96,16 +100,21 @@ public class DefaultAnalysisService implements AnalysisService {
 				if (!phrasalSet.isEmpty()) {
 					subtitle.setPhrasalVerbs(phrasalSet);
 					phrasalVerbSubtitles.add(subtitle);
-
+					for (String phrasal : phrasalSet) {
+						addToMap(aggregatedPhrasalverbMap, phrasal, sentence.text());
+					}
 				}
 
 //				subtitleRepository.save(subtitle);
-
 				//// detect single words
-				String singleWordsList = detectSingleWords(sentence);
-				if (singleWordsList != "") {
-					subtitle.setSingleWords(singleWordsList);
+				Set<String> singleWordsSet = detectSingleWords(sentence);
+				if (!singleWordsSet.isEmpty()) {
+					subtitle.setSingleWords(
+							singleWordsSet.stream().map(Object::toString).collect(Collectors.joining(",")));
 					singleWordSubtitles.add(subtitle);
+					for (String singleWord : singleWordsSet) {
+						addToMap(aggregatedSingleWordMap, singleWord, sentence.text());
+					}
 				}
 
 				//// find phrasal verbs
@@ -123,7 +132,11 @@ public class DefaultAnalysisService implements AnalysisService {
 //			movieAnalysisRepository.save(analysisResult);
 		}
 
-		return analysisResult;
+		SummerizedMovieAnalysisModel summerizedAnalysis = new SummerizedMovieAnalysisModel(imdbId);
+		summerizedAnalysis.setIdioms(aggregatedIdiomMap);
+		summerizedAnalysis.setPhrasalVerbs(aggregatedPhrasalverbMap);
+		summerizedAnalysis.setSingleWords(aggregatedSingleWordMap);
+		return summerizedAnalysis;
 	}
 
 	@Override
@@ -146,7 +159,8 @@ public class DefaultAnalysisService implements AnalysisService {
 		}
 
 		if (analyseSingleWords) {
-			subtitle.setSingleWords(detectSingleWords(nplSentence));
+			subtitle.setSingleWords(
+					detectSingleWords(nplSentence).stream().map(Object::toString).collect(Collectors.joining(",")));
 		}
 
 		subtitle.setTrace(trace.toString());
@@ -161,7 +175,7 @@ public class DefaultAnalysisService implements AnalysisService {
 		return idiomDetectionService.detectIdioms(sentenceTaggingService.tagString(sentence.text()), sentence);
 	}
 
-	private String detectSingleWords(Sentence sentence) {
+	private Set<String> detectSingleWords(Sentence sentence) {
 		Set<String> singleWordSet = new HashSet<String>();
 		String[] taggedSentence = sentenceTaggingService.tagString(sentence.text());
 		List<String> taggedList = Arrays.asList(taggedSentence);
@@ -185,36 +199,17 @@ public class DefaultAnalysisService implements AnalysisService {
 		singleWordSet.removeAll(singleWordsDetectionService.getCommonWords());
 		singleWordSet.removeAll(singleWordsDetectionService.getKnownWords());
 
-		String singleWords = singleWordSet.stream().map(Object::toString).collect(Collectors.joining(","));
-		return singleWords;
+		return singleWordSet;
 	}
 
-	@Override
-	public SummerizedMovieAnalysisModel summerizeMovie(String imdbId) {
-		SummerizedMovieAnalysisModel summerizedMovieAnalysisModel = new SummerizedMovieAnalysisModel(imdbId);
-		summerizedMovieAnalysisModel = aggregateAnalysis(summerizedMovieAnalysisModel, analyzeMovie(imdbId));
-		return summerizedMovieAnalysisModel;
-	}
-
-	private SummerizedMovieAnalysisModel aggregateAnalysis(SummerizedMovieAnalysisModel summerizedMovieAnalysisModel,
-			MovieAnalysisModel movieAnalysis) {
-//		Set<String> idiomSet = new HashSet<String>();
-//		List<AggregatedIdiom> aggregatedIdiomList = new ArrayList<AggregatedIdiom>
-//		
-//		HashMap<String,List<String>> idiomMap = new HashMap<String,List<String>>();
-//		
-//		List<SubtitleModel> idiomSubtitles = movieAnalysis.getIdioms();
-//		for (SubtitleModel subtitleModel : idiomSubtitles) {
-//			for (String idiom : subtitleModel.getIdioms()) {
-//				if(!idiomMap.containsKey(subtitleModel.getText())) {
-//					idiomMap.put(subtitleModel.getText(), List.of(subtitleModel.get))
-//				}
-//			}
-//
-//			
-//		}
-		// TODO Auto-generated method stub
-		return null;
+	private void addToMap(HashMap<String, List<String>> m, String key, String value) {
+		if (m.containsKey(key)) {
+			List<String> list = m.get(key);
+			list.add(value);
+			m.put(key, list);
+		} else {
+			m.put(key, List.of(value));
+		}
 	}
 
 }

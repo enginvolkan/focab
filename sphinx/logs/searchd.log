@@ -260,3 +260,15 @@
 [Sun Jan 19 15:21:48.467 2020] [16470] prereading 3 indexes
 [Sun Jan 19 15:21:48.467 2020] [16444] accepting connections
 [Sun Jan 19 15:21:48.468 2020] [16470] prereaded 3 indexes in 0.000 sec
+[Tue Jan 21 21:25:05.383 2020] [2258] watchdog: main process 2259 forked ok
+[Tue Jan 21 21:25:05.386 2020] [2259] listening on 127.0.0.1:9306
+[Tue Jan 21 21:25:05.386 2020] [2259] listening on 127.0.0.1:9080
+[Tue Jan 21 21:25:05.413 2020] [2288] prereading 3 indexes
+[Tue Jan 21 21:25:05.413 2020] [2259] accepting connections
+[Tue Jan 21 21:25:05.416 2020] [2288] prereaded 3 indexes in 0.003 sec
+[Sat Jan 25 07:22:50.117 2020] [2244] watchdog: main process 2245 forked ok
+[Sat Jan 25 07:22:50.118 2020] [2245] listening on 127.0.0.1:9306
+[Sat Jan 25 07:22:50.119 2020] [2245] listening on 127.0.0.1:9080
+[Sat Jan 25 07:22:50.129 2020] [2245] accepting connections
+[Sat Jan 25 07:22:50.129 2020] [2273] prereading 3 indexes
+[Sat Jan 25 07:22:50.129 2020] [2273] prereaded 3 indexes in 0.000 sec

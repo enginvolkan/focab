@@ -272,3 +272,47 @@
 [Sat Jan 25 07:22:50.129 2020] [2245] accepting connections
 [Sat Jan 25 07:22:50.129 2020] [2273] prereading 3 indexes
 [Sat Jan 25 07:22:50.129 2020] [2273] prereaded 3 indexes in 0.000 sec
+[Fri Jan 31 23:28:11.051 2020] [2247] watchdog: main process 2248 forked ok
+[Fri Jan 31 23:28:11.055 2020] [2248] listening on 127.0.0.1:9306
+[Fri Jan 31 23:28:11.055 2020] [2248] listening on 127.0.0.1:9080
+[Fri Jan 31 23:28:11.074 2020] [2292] prereading 3 indexes
+[Fri Jan 31 23:28:11.074 2020] [2248] accepting connections
+[Fri Jan 31 23:28:11.074 2020] [2292] prereaded 3 indexes in 0.000 sec
+[Sat Feb  1 15:12:18.084 2020] [2349] watchdog: main process 2350 forked ok
+[Sat Feb  1 15:12:18.090 2020] [2350] listening on 127.0.0.1:9306
+[Sat Feb  1 15:12:18.090 2020] [2350] listening on 127.0.0.1:9080
+[Sat Feb  1 15:12:18.101 2020] [2384] prereading 3 indexes
+[Sat Feb  1 15:12:18.101 2020] [2350] accepting connections
+[Sat Feb  1 15:12:18.102 2020] [2384] prereaded 3 indexes in 0.000 sec
+[Sat Feb  1 15:53:19.430 2020] [2334] watchdog: main process 2336 forked ok
+[Sat Feb  1 15:53:19.432 2020] [2336] listening on 127.0.0.1:9306
+[Sat Feb  1 15:53:19.432 2020] [2336] listening on 127.0.0.1:9080
+[Sat Feb  1 15:53:19.449 2020] [2369] prereading 3 indexes
+[Sat Feb  1 15:53:19.449 2020] [2336] accepting connections
+[Sat Feb  1 15:53:19.449 2020] [2369] prereaded 3 indexes in 0.000 sec
+[Sat Feb  8 13:58:01.465 2020] [2336] caught SIGTERM, shutting down
+[Sat Feb  8 13:58:01.481 2020] [2336] shutdown complete
+[Sat Feb  8 13:59:49.686 2020] [2224] watchdog: main process 2225 forked ok
+[Sat Feb  8 13:59:49.687 2020] [2225] listening on 127.0.0.1:9306
+[Sat Feb  8 13:59:49.687 2020] [2225] listening on 127.0.0.1:9080
+[Sat Feb  8 13:59:49.699 2020] [2254] prereading 3 indexes
+[Sat Feb  8 13:59:49.699 2020] [2225] accepting connections
+[Sat Feb  8 13:59:49.699 2020] [2254] prereaded 3 indexes in 0.000 sec
+[Wed Feb 12 21:45:22.070 2020] [2333] watchdog: main process 2334 forked ok
+[Wed Feb 12 21:45:22.073 2020] [2334] listening on 127.0.0.1:9306
+[Wed Feb 12 21:45:22.073 2020] [2334] listening on 127.0.0.1:9080
+[Wed Feb 12 21:45:22.103 2020] [2369] prereading 3 indexes
+[Wed Feb 12 21:45:22.103 2020] [2334] accepting connections
+[Wed Feb 12 21:45:22.112 2020] [2369] prereaded 3 indexes in 0.009 sec
+[Fri Feb 21 22:12:47.694 2020] [2395] watchdog: main process 2396 forked ok
+[Fri Feb 21 22:12:47.700 2020] [2396] listening on 127.0.0.1:9306
+[Fri Feb 21 22:12:47.700 2020] [2396] listening on 127.0.0.1:9080
+[Fri Feb 21 22:12:47.733 2020] [2439] prereading 3 indexes
+[Fri Feb 21 22:12:47.733 2020] [2396] accepting connections
+[Fri Feb 21 22:12:47.746 2020] [2439] prereaded 3 indexes in 0.013 sec
+[Tue Mar 17 23:27:37.348 2020] [2176] watchdog: main process 2177 forked ok
+[Tue Mar 17 23:27:37.358 2020] [2177] listening on 127.0.0.1:9306
+[Tue Mar 17 23:27:37.358 2020] [2177] listening on 127.0.0.1:9080
+[Tue Mar 17 23:27:37.440 2020] [2235] prereading 3 indexes
+[Tue Mar 17 23:27:37.440 2020] [2177] accepting connections
+[Tue Mar 17 23:27:37.460 2020] [2235] prereaded 3 indexes in 0.020 sec

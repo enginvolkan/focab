@@ -82,4 +82,9 @@ public class SentenceTaggingService {
 		return posTags(sentence).toArray(new String[0]);
 	}
 
+	public List<String> lemmas(String s) {
+		Sentence sentence = new Sentence(s);
+		return lemmas(sentence);
+	}
+
 }

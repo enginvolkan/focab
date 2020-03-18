@@ -46,7 +46,8 @@ public class PhrasalVerbsDetectionService {
 				log("working on " + taggedSentence[i], null);
 				if (i + 1 < taggedSentence.length
 						&& (!sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(".")
-								&& !sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(","))) {
+								&& !sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(",")
+								&& !sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(":"))) {
 					String searchTerm = sentenceTaggingService.extractWord(taggedSentence[i]) + " "
 							+ sentenceTaggingService.extractWord(taggedSentence[i + 1]);
 					log("@search term: " + searchTerm, null);
@@ -56,7 +57,9 @@ public class PhrasalVerbsDetectionService {
 
 					if (currentSet.isEmpty()) {
 						log("@current set empty, searching for gaps...", null);
-						currentSet.addAll(searchPhrasalWithGaps(i, taggedSentence));
+						if (!sentenceTaggingService.extractTag(taggedSentence[i + 1], false).startsWith("VB")) {
+							currentSet.addAll(searchPhrasalWithGaps(i, taggedSentence));
+						}
 					}
 					if (currentSet.size() > 1) {
 						log("@current set is too big, reducing...", null);
@@ -81,7 +84,11 @@ public class PhrasalVerbsDetectionService {
 		if (currentSet.size() != 1) {
 			throw new IllegalArgumentException("Validation only works for a single found text!");
 		}
-		if (currentSet.iterator().next().split(" ").length == searchTerm.split(" ").length) {
+		Set<String> foundLemmas = new HashSet<String>(
+				sentenceTaggingService.lemmas((String) currentSet.iterator().next()));
+		Set<String> searchLemmas = new HashSet<String>(sentenceTaggingService.lemmas(searchTerm));
+
+		if (foundLemmas.equals(searchLemmas)) {
 			return true;
 		}
 		return false;

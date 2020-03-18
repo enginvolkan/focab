@@ -917,7 +917,6 @@ INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('go past');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('go round');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('go through');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('go through with');
-INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('go to');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('go together');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('go towards');
 INSERT INTO `focab`.`vocabulary` (`text`) VALUES ('go under');
@@ -3348,7 +3347,6 @@ INSERT INTO `focab`.`phrasal_verbs` (`pk`,`is_separable`) VALUES ((SELECT (`pk`)
 INSERT INTO `focab`.`phrasal_verbs` (`pk`,`is_separable`) VALUES ((SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go round' ),b'0');
 INSERT INTO `focab`.`phrasal_verbs` (`pk`,`is_separable`) VALUES ((SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through' ),b'0');
 INSERT INTO `focab`.`phrasal_verbs` (`pk`,`is_separable`) VALUES ((SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through with' ),b'0');
-INSERT INTO `focab`.`phrasal_verbs` (`pk`,`is_separable`) VALUES ((SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go to' ),b'0');
 INSERT INTO `focab`.`phrasal_verbs` (`pk`,`is_separable`) VALUES ((SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go together' ),b'0');
 INSERT INTO `focab`.`phrasal_verbs` (`pk`,`is_separable`) VALUES ((SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go towards' ),b'0');
 INSERT INTO `focab`.`phrasal_verbs` (`pk`,`is_separable`) VALUES ((SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go under' ),b'0');
@@ -6303,7 +6301,6 @@ INSERT INTO `focab`.`definition` (`id`, `definition`, `is_separable`, `vocabular
 INSERT INTO `focab`.`definition` (`id`, `definition`, `is_separable`, `vocabulary_pk`) VALUES ('1440', 'Consume or spend',b'1',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through'));
 INSERT INTO `focab`.`definition` (`id`, `definition`, `is_separable`, `vocabulary_pk`) VALUES ('1441', 'Perform or carry something out',b'1',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through'));
 INSERT INTO `focab`.`definition` (`id`, `definition`, `is_separable`, `vocabulary_pk`) VALUES ('1442', 'Do or complete something you\'ve agreed to',b'1',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through with'));
-INSERT INTO `focab`.`definition` (`id`, `definition`, `is_separable`, `vocabulary_pk`) VALUES ('1443', 'Allocate money',b'1',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go to'));
 INSERT INTO `focab`.`definition` (`id`, `definition`, `is_separable`, `vocabulary_pk`) VALUES ('1444', 'Harmonize or be compatible',b'1',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go together'));
 INSERT INTO `focab`.`definition` (`id`, `definition`, `is_separable`, `vocabulary_pk`) VALUES ('1445', 'Contibute',b'1',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go towards'));
 INSERT INTO `focab`.`definition` (`id`, `definition`, `is_separable`, `vocabulary_pk`) VALUES ('1446', 'Go bankrupt',b'1',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go under'));
@@ -9823,7 +9820,6 @@ INSERT INTO `focab`.`vocabulary_definitions` (`definitions_id`,`vocabulary_pk`) 
 INSERT INTO `focab`.`vocabulary_definitions` (`definitions_id`,`vocabulary_pk`) VALUES ('1440',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through'));
 INSERT INTO `focab`.`vocabulary_definitions` (`definitions_id`,`vocabulary_pk`) VALUES ('1441',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through'));
 INSERT INTO `focab`.`vocabulary_definitions` (`definitions_id`,`vocabulary_pk`) VALUES ('1442',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through with'));
-INSERT INTO `focab`.`vocabulary_definitions` (`definitions_id`,`vocabulary_pk`) VALUES ('1443',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go to'));
 INSERT INTO `focab`.`vocabulary_definitions` (`definitions_id`,`vocabulary_pk`) VALUES ('1444',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go together'));
 INSERT INTO `focab`.`vocabulary_definitions` (`definitions_id`,`vocabulary_pk`) VALUES ('1445',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go towards'));
 INSERT INTO `focab`.`vocabulary_definitions` (`definitions_id`,`vocabulary_pk`) VALUES ('1446',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go under'));
@@ -13343,7 +13339,6 @@ INSERT INTO `focab`.`example` (`id`, `text`, `definition_id`, `vocabulary_pk`) V
 INSERT INTO `focab`.`example` (`id`, `text`, `definition_id`, `vocabulary_pk`) VALUES ('1440', 'We WENT THROUGH a fortune on our holiday.','1440',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through'));
 INSERT INTO `focab`.`example` (`id`, `text`, `definition_id`, `vocabulary_pk`) VALUES ('1441', 'I WENT THROUGH my work in a daze after I heard the news.','1441',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through'));
 INSERT INTO `focab`.`example` (`id`, `text`, `definition_id`, `vocabulary_pk`) VALUES ('1442', 'He did promise, but I doubt that he\'ll GO THROUGH WITH it.','1442',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go through with'));
-INSERT INTO `focab`.`example` (`id`, `text`, `definition_id`, `vocabulary_pk`) VALUES ('1443', 'About half of my income GOES TO pay the mortgage.','1443',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go to'));
 INSERT INTO `focab`.`example` (`id`, `text`, `definition_id`, `vocabulary_pk`) VALUES ('1444', 'Drinking and driving don\'t GO TOGETHER.','1444',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go together'));
 INSERT INTO `focab`.`example` (`id`, `text`, `definition_id`, `vocabulary_pk`) VALUES ('1445', 'The money WENT TOWARDS my university fees.','1445',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go towards'));
 INSERT INTO `focab`.`example` (`id`, `text`, `definition_id`, `vocabulary_pk`) VALUES ('1446', 'Many small shops are GOING UNDER because they cannot compete with the supermarkets.','1446',(SELECT (`pk`) FROM `focab`.`vocabulary` WHERE `text`='go under'));

@@ -107,7 +107,7 @@ public class DefaultAnalysisService implements AnalysisService {
 
 //				subtitleRepository.save(subtitle);
 				//// detect single words
-				Set<String> singleWordsSet = detectSingleWords(sentence);
+				Set<String> singleWordsSet = detectSingleWords(cleanPunctuation(subtitle.getText()));
 				if (!singleWordsSet.isEmpty()) {
 					subtitle.setSingleWords(
 							singleWordsSet.stream().map(Object::toString).collect(Collectors.joining(",")));
@@ -127,7 +127,7 @@ public class DefaultAnalysisService implements AnalysisService {
 			analysisResult.setPhrasalVerbs(phrasalVerbSubtitles);
 			analysisResult.setSingleWords(singleWordSubtitles);
 
-			movieAnalysisRepository.save(analysisResult);
+//			movieAnalysisRepository.save(analysisResult);
 //			subtitleRepository.saveAll(subtitles);
 //			movieAnalysisRepository.save(analysisResult);
 		}
@@ -159,8 +159,8 @@ public class DefaultAnalysisService implements AnalysisService {
 		}
 
 		if (analyseSingleWords) {
-			subtitle.setSingleWords(
-					detectSingleWords(nplSentence).stream().map(Object::toString).collect(Collectors.joining(",")));
+			subtitle.setSingleWords(detectSingleWords(cleanPunctuation(sentence)).stream().map(Object::toString)
+					.collect(Collectors.joining(",")));
 		}
 
 		subtitle.setTrace(trace.toString());
@@ -175,15 +175,17 @@ public class DefaultAnalysisService implements AnalysisService {
 		return idiomDetectionService.detectIdioms(sentenceTaggingService.tagString(sentence.text()), sentence);
 	}
 
-	private Set<String> detectSingleWords(Sentence sentence) {
+	private Set<String> detectSingleWords(String sentence) {
 		Set<String> singleWordSet = new HashSet<String>();
-		String[] taggedSentence = sentenceTaggingService.tagString(sentence.text());
+		String[] taggedSentence = sentenceTaggingService.tagString(sentence);
 		List<String> taggedList = Arrays.asList(taggedSentence);
 
 		singleWordSet.addAll(taggedList.stream() // get rid of irrelevant tags
 				.filter(x -> !sentenceTaggingService.extractTag(x, true).equals("NNP")
 						&& !sentenceTaggingService.extractTag(x, true).equals("NNPS")
 						&& !sentenceTaggingService.extractTag(x, true).equals(",")
+						&& !sentenceTaggingService.extractTag(x, true).equals(":")
+						&& !sentenceTaggingService.extractTag(x, true).equals("TO")
 						&& !sentenceTaggingService.extractTag(x, true).equals("."))
 				.collect(Collectors.toSet()));
 		singleWordSet = singleWordSet.stream().map(x -> sentenceTaggingService.extractWord(x).toLowerCase())
@@ -208,8 +210,14 @@ public class DefaultAnalysisService implements AnalysisService {
 			list.add(value);
 			m.put(key, list);
 		} else {
-			m.put(key, List.of(value));
+			ArrayList<String> a = new ArrayList<String>();
+			a.add(value);
+			m.put(key, a);
 		}
+	}
+
+	private String cleanPunctuation(String s) {
+		return s.replaceAll("[^a-zA-Z '-]", " ");
 	}
 
 }

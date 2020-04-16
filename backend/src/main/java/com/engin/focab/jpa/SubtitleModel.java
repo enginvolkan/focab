@@ -1,5 +1,6 @@
 package com.engin.focab.jpa;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -56,7 +57,7 @@ public class SubtitleModel {
 
 	@Column(name = "phrasals", columnDefinition = "LONGTEXT")
 	@ElementCollection
-	private Set<String> phrasalVerbs;
+	private List<String> phrasalVerbs;
 
 	@Column(name = "collocations", columnDefinition = "LONGTEXT")
 	@ElementCollection
@@ -85,11 +86,11 @@ public class SubtitleModel {
 		this.idioms = idioms;
 	}
 
-	public Set<String> getPhrasalVerbs() {
+	public List<String> getPhrasalVerbs() {
 		return phrasalVerbs;
 	}
 
-	public void setPhrasalVerbs(Set<String> phrasalVerbs) {
+	public void setPhrasalVerbs(List<String> phrasalVerbs) {
 		this.phrasalVerbs = phrasalVerbs;
 	}
 

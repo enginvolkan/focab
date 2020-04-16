@@ -316,3 +316,61 @@
 [Tue Mar 17 23:27:37.440 2020] [2235] prereading 3 indexes
 [Tue Mar 17 23:27:37.440 2020] [2177] accepting connections
 [Tue Mar 17 23:27:37.460 2020] [2235] prereaded 3 indexes in 0.020 sec
+[Thu Mar 19 22:44:48.866 2020] [2300] watchdog: main process 2301 forked ok
+[Thu Mar 19 22:44:48.868 2020] [2301] listening on 127.0.0.1:9306
+[Thu Mar 19 22:44:48.868 2020] [2301] listening on 127.0.0.1:9080
+[Thu Mar 19 22:44:48.894 2020] [2328] prereading 3 indexes
+[Thu Mar 19 22:44:48.894 2020] [2301] accepting connections
+[Thu Mar 19 22:44:48.900 2020] [2328] prereaded 3 indexes in 0.006 sec
+[Sun Mar 22 22:54:59.908 2020] [2301] caught SIGTERM, shutting down
+[Sun Mar 22 22:54:59.935 2020] [2301] shutdown complete
+[Sun Mar 22 22:55:48.661 2020] [2302] watchdog: main process 2303 forked ok
+[Sun Mar 22 22:55:48.669 2020] [2303] listening on 127.0.0.1:9306
+[Sun Mar 22 22:55:48.669 2020] [2303] listening on 127.0.0.1:9080
+[Sun Mar 22 22:55:48.688 2020] [2303] accepting connections
+[Sun Mar 22 22:55:48.694 2020] [2343] prereading 3 indexes
+[Sun Mar 22 22:55:48.694 2020] [2343] prereaded 3 indexes in 0.000 sec
+[Sun Mar 29 22:36:57.311 2020] [2366] watchdog: main process 2367 forked ok
+[Sun Mar 29 22:36:57.314 2020] [2367] listening on 127.0.0.1:9306
+[Sun Mar 29 22:36:57.314 2020] [2367] listening on 127.0.0.1:9080
+[Sun Mar 29 22:36:57.355 2020] [2367] accepting connections
+[Sun Mar 29 22:36:57.355 2020] [2408] prereading 3 indexes
+[Sun Mar 29 22:36:57.383 2020] [2408] prereaded 3 indexes in 0.028 sec
+[Wed Apr  1 20:47:16.859 2020] [2304] watchdog: main process 2305 forked ok
+[Wed Apr  1 20:47:16.862 2020] [2305] listening on 127.0.0.1:9306
+[Wed Apr  1 20:47:16.863 2020] [2305] listening on 127.0.0.1:9080
+[Wed Apr  1 20:47:16.898 2020] [2305] accepting connections
+[Wed Apr  1 20:47:16.898 2020] [2331] prereading 3 indexes
+[Wed Apr  1 20:47:16.901 2020] [2331] prereaded 3 indexes in 0.003 sec
+[Wed Apr  8 00:38:51.059 2020] [2305] caught SIGTERM, shutting down
+[Wed Apr  8 00:38:51.082 2020] [2305] shutdown complete
+[Wed Apr  8 00:39:41.359 2020] [2277] watchdog: main process 2278 forked ok
+[Wed Apr  8 00:39:41.361 2020] [2278] listening on 127.0.0.1:9306
+[Wed Apr  8 00:39:41.366 2020] [2278] listening on 127.0.0.1:9080
+[Wed Apr  8 00:39:41.409 2020] [2331] prereading 3 indexes
+[Wed Apr  8 00:39:41.409 2020] [2278] accepting connections
+[Wed Apr  8 00:39:41.421 2020] [2331] prereaded 3 indexes in 0.013 sec
+[Sat Apr 11 15:12:45.808 2020] [2561] watchdog: main process 2562 forked ok
+[Sat Apr 11 15:12:45.814 2020] [2562] listening on 127.0.0.1:9306
+[Sat Apr 11 15:12:45.814 2020] [2562] listening on 127.0.0.1:9080
+[Sat Apr 11 15:12:45.855 2020] [2562] accepting connections
+[Sat Apr 11 15:12:45.856 2020] [2605] prereading 3 indexes
+[Sat Apr 11 15:12:45.864 2020] [2605] prereaded 3 indexes in 0.009 sec
+[Mon Apr 13 20:29:49.330 2020] [2350] watchdog: main process 2351 forked ok
+[Mon Apr 13 20:29:49.331 2020] [2351] listening on 127.0.0.1:9306
+[Mon Apr 13 20:29:49.331 2020] [2351] listening on 127.0.0.1:9080
+[Mon Apr 13 20:29:49.345 2020] [2384] prereading 3 indexes
+[Mon Apr 13 20:29:49.345 2020] [2351] accepting connections
+[Mon Apr 13 20:29:49.345 2020] [2384] prereaded 3 indexes in 0.000 sec
+[Wed Apr 15 15:17:54.462 2020] [2249] watchdog: main process 2250 forked ok
+[Wed Apr 15 15:17:54.467 2020] [2250] listening on 127.0.0.1:9306
+[Wed Apr 15 15:17:54.467 2020] [2250] listening on 127.0.0.1:9080
+[Wed Apr 15 15:17:54.485 2020] [2293] prereading 3 indexes
+[Wed Apr 15 15:17:54.485 2020] [2250] accepting connections
+[Wed Apr 15 15:17:54.485 2020] [2293] prereaded 3 indexes in 0.000 sec
+[Wed Apr 15 17:52:54.553 2020] [2271] watchdog: main process 2272 forked ok
+[Wed Apr 15 17:52:54.557 2020] [2272] listening on 127.0.0.1:9306
+[Wed Apr 15 17:52:54.557 2020] [2272] listening on 127.0.0.1:9080
+[Wed Apr 15 17:52:54.568 2020] [2312] prereading 3 indexes
+[Wed Apr 15 17:52:54.568 2020] [2272] accepting connections
+[Wed Apr 15 17:52:54.568 2020] [2312] prereaded 3 indexes in 0.000 sec

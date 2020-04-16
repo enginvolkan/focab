@@ -1,15 +1,16 @@
 package com.engin.focab.controllers;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.engin.focab.services.impl.PhrasalVerbsDetectionService;
+import com.engin.focab.services.PhrasalVerbsDetectionService;
 import com.engin.focab.services.impl.SentenceTaggingService;
 
 import edu.stanford.nlp.simple.Sentence;
@@ -19,6 +20,7 @@ import edu.stanford.nlp.simple.Sentence;
 public class PhrasalVerbDetectionController {
 
 	@Autowired
+	@Qualifier("constituencyParser")
 	private PhrasalVerbsDetectionService phrasalDetectionService;
 
 	@Autowired
@@ -26,11 +28,10 @@ public class PhrasalVerbDetectionController {
 
 	@GetMapping("/detectPhrasalVerb")
 	@ResponseBody
-	public Set<String> detectIdioms(@RequestParam String sentence) {
+	public List<String> detectIdioms(@RequestParam String sentence) {
 		String[] taggedSentence = sentenceTaggingService.tagString(sentence);
 
-		return phrasalDetectionService.detectPhrasalVerbs(taggedSentence, new Sentence(sentence.toLowerCase()))
-				.getPhrasalVerbSet();
+		return phrasalDetectionService.detectPhrasalVerbs(new Sentence(sentence));
 	}
 
 }

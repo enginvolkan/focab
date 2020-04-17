@@ -1,9 +1,9 @@
 package com.engin.focab.services.impl;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -13,13 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.engin.focab.jpa.corpus.PhrasalVerbAnalysis;
 import com.engin.focab.services.IndexedSearchService;
+import com.engin.focab.services.PhrasalVerbsDetectionService;
 
 import edu.stanford.nlp.simple.Sentence;
 
-@Component
-public class PhrasalVerbsDetectionService {
+@Component("manualParser")
+public class ManualPhrasalVerbsDetectionService implements PhrasalVerbsDetectionService {
 	@Autowired
 	private IndexedSearchService indexedSearchService;
 	@Autowired
@@ -30,54 +30,56 @@ public class PhrasalVerbsDetectionService {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 	private StringBuilder trace;
 
-	public PhrasalVerbAnalysis detectPhrasalVerbs(String[] taggedSentence, Sentence sentence) {
+	@Override
+	public List<String> detectPhrasalVerbs(Sentence sentence) {
 
-		Set<String> currentSet;
-		HashSet<String> foundSet = new HashSet<String>();
-
-		trace = new StringBuilder("<br>*****************************************************<br>");
-		log("Detect phrasal verbs for: " + Arrays.toString(taggedSentence), null);
-		log("*****************************************************", null);
-
-		for (int i = 0; i < taggedSentence.length; i++) {
-			if (sentenceTaggingService.extractTag(taggedSentence[i], false).startsWith("VB")) {
-				// find possible phrasal verbs
-				// check the next word
-				log("working on " + taggedSentence[i], null);
-				if (i + 1 < taggedSentence.length
-						&& (!sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(".")
-								&& !sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(",")
-								&& !sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(":"))) {
-					String searchTerm = sentenceTaggingService.extractWord(taggedSentence[i]) + " "
-							+ sentenceTaggingService.extractWord(taggedSentence[i + 1]);
-					log("@search term: " + searchTerm, null);
-
-					currentSet = searchWordInPhrasalRepository(searchTerm);
-					log("@current set : ", currentSet);
-
-					if (currentSet.isEmpty()) {
-						log("@current set empty, searching for gaps...", null);
-						if (!sentenceTaggingService.extractTag(taggedSentence[i + 1], false).startsWith("VB")) {
-							currentSet.addAll(searchPhrasalWithGaps(i, taggedSentence));
-						}
-					}
-					if (currentSet.size() > 1) {
-						log("@current set is too big, reducing...", null);
-						currentSet = reduceCurrentSet(taggedSentence, currentSet, i, searchTerm);
-					}
-
-					if (currentSet.size() == 1) {
-						if (validateCurrentSet(currentSet, searchTerm)) {
-							foundSet.addAll(currentSet);
-						}
-					}
-				} else {
-					log("nothing significant next...", null);
-				}
-			}
-		}
-		log("@@@@@ found:", foundSet);
-		return new PhrasalVerbAnalysis(foundSet, trace.toString());
+//		Set<String> currentSet;
+//		HashSet<String> foundSet = new HashSet<String>();
+//
+//		trace = new StringBuilder("<br>*****************************************************<br>");
+//		log("Detect phrasal verbs for: " + Arrays.toString(taggedSentence), null);
+//		log("*****************************************************", null);
+//
+//		for (int i = 0; i < taggedSentence.length; i++) {
+//			if (sentenceTaggingService.extractTag(taggedSentence[i], false).startsWith("VB")) {
+//				// find possible phrasal verbs
+//				// check the next word
+//				log("working on " + taggedSentence[i], null);
+//				if (i + 1 < taggedSentence.length
+//						&& (!sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(".")
+//								&& !sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(",")
+//								&& !sentenceTaggingService.extractTag(taggedSentence[i + 1], false).equals(":"))) {
+//					String searchTerm = sentenceTaggingService.extractWord(taggedSentence[i]) + " "
+//							+ sentenceTaggingService.extractWord(taggedSentence[i + 1]);
+//					log("@search term: " + searchTerm, null);
+//
+//					currentSet = searchWordInPhrasalRepository(searchTerm);
+//					log("@current set : ", currentSet);
+//
+//					if (currentSet.isEmpty()) {
+//						log("@current set empty, searching for gaps...", null);
+//						if (!sentenceTaggingService.extractTag(taggedSentence[i + 1], false).startsWith("VB")) {
+//							currentSet.addAll(searchPhrasalWithGaps(i, taggedSentence));
+//						}
+//					}
+//					if (currentSet.size() > 1) {
+//						log("@current set is too big, reducing...", null);
+//						currentSet = reduceCurrentSet(taggedSentence, currentSet, i, searchTerm);
+//					}
+//
+//					if (currentSet.size() == 1) {
+//						if (validateCurrentSet(currentSet, searchTerm)) {
+//							foundSet.addAll(currentSet);
+//						}
+//					}
+//				} else {
+//					log("nothing significant next...", null);
+//				}
+//			}
+//		}
+//		log("@@@@@ found:", foundSet);
+//		return new PhrasalVerbAnalysis(foundSet, trace.toString());
+		return null;
 	}
 
 	private boolean validateCurrentSet(Set<String> currentSet, String searchTerm) {

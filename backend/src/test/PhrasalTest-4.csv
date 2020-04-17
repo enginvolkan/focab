@@ -1,0 +1,500 @@
+phrasalVerb,sentence,analyseIdioms,analysePhrasalVerbs,analyseSingleWords
+hang up,I lost my temper and hung up.,FALSE,TRUE,FALSE
+hang up on,"a telesales person called, so I said something rude and hung up on them.",FALSE,TRUE,FALSE
+hang with,he has been hanging with them for a few months.,FALSE,TRUE,FALSE
+hanker after,I'm supposed to be on a diet and I can't stop hankering after some chocolate.,FALSE,TRUE,FALSE
+hanker for,I have always hankered for a soft-top car.,FALSE,TRUE,FALSE
+harp on,I was late twice last week and my boss keeps harping on about it.,FALSE,TRUE,FALSE
+hash out,we hashed out our differences and drew up the agreement.,FALSE,TRUE,FALSE
+hash up,I hashed up the exam.,FALSE,TRUE,FALSE
+hate on,she hates on people who disagree with her ideas.,FALSE,TRUE,FALSE
+have against,I have nothing against their proposals.,FALSE,TRUE,FALSE
+have around,I had the neighbours around for dinner last night.,FALSE,TRUE,FALSE
+have down as,"I had her down as a liberal, but I was very wrong.",FALSE,TRUE,FALSE
+have in,do we have any beer in?,FALSE,TRUE,FALSE
+have in,we had the decorators in last week.,FALSE,TRUE,FALSE
+have in,we had them in last night for dinner.,FALSE,TRUE,FALSE
+have off,I had a couple of days off last week to relax.,FALSE,TRUE,FALSE
+have on,what did jennie have on at the party?,FALSE,TRUE,FALSE
+have on,I have my computer on all the time.,FALSE,TRUE,FALSE
+have on,I have a lot of meetings on next week.,FALSE,TRUE,FALSE
+have on,"they said they'd failed, but they were having me on.",FALSE,TRUE,FALSE
+have on,"I haven't any money on me, but I can get some from the atm.",FALSE,TRUE,FALSE
+have on,I have a lot on him because we used to work together.,FALSE,TRUE,FALSE
+have over,shall we have them over for dinner?,FALSE,TRUE,FALSE
+have round,I had a few friends round yesterday.,FALSE,TRUE,FALSE
+have up,they had him up for armed robbery.,FALSE,TRUE,FALSE
+head for,it's getting late- I'm heading for home.,FALSE,TRUE,FALSE
+head off,the sheriff and his men headed the bandits off at the pass.,FALSE,TRUE,FALSE
+head off,the company made a better offer to head off the moves for a strike.,FALSE,TRUE,FALSE
+head off,"after work, we all headed off to the pub.",FALSE,TRUE,FALSE
+head out,"we're heading out at seven, so don't be late.",FALSE,TRUE,FALSE
+head up,he's heading up the steering committee.,FALSE,TRUE,FALSE
+hear about,have you heard about the company takeover?,FALSE,TRUE,FALSE
+hear from,I haven't heard from them since we left university.,FALSE,TRUE,FALSE
+hear of,"I've heard of the band, but don't know their music.",FALSE,TRUE,FALSE
+hear of,I have heard nothing of them since they moved house.,FALSE,TRUE,FALSE
+hear of,"I said it would be a positive step, but she wouldn't hear of it.",FALSE,TRUE,FALSE
+hear out,I heard them out before I commented.,FALSE,TRUE,FALSE
+heat up,he heated the soup up in the microwave.,FALSE,TRUE,FALSE
+help out,she really helped me out when I was going through my divorce.,FALSE,TRUE,FALSE
+hem in,broadcasters could be hemmed in by legal restrictions.,FALSE,TRUE,FALSE
+hew to,the work hewed to conventional ideas.,FALSE,TRUE,FALSE
+hide away,they hid the money away in secret bank accounts.,FALSE,TRUE,FALSE
+hide away,I'm renting a cottage where I can hide away for the summer.,FALSE,TRUE,FALSE
+hide out,the police think he's hiding out in the woods.,FALSE,TRUE,FALSE
+hinge on,"everything hinges on the results of the negotiations; if they go badly, we'll be in real trouble.",FALSE,TRUE,FALSE
+hinge on,the film hinges on his not being recognised when he's in disguise.,FALSE,TRUE,FALSE
+hinge upon,"everything hinges upon the results of the negotiations; if they go badly, we'll be in real trouble.",FALSE,TRUE,FALSE
+hit back,the president hit back at her critics in a speech last night.,FALSE,TRUE,FALSE
+hit for,they hit the sponsors for a lot of money.,FALSE,TRUE,FALSE
+hit on,I suddenly hit on the solution,FALSE,TRUE,FALSE
+hit on,she hit on him at the party and they went back to her house.,FALSE,TRUE,FALSE
+hit on,a beggar hit on me when I left the restaurant.,FALSE,TRUE,FALSE
+hit out at,the government hit out at the media for their negativity.,FALSE,TRUE,FALSE
+hit up,she's been hitting up for years.,FALSE,TRUE,FALSE
+hit up,he always tries to hit me up for money when we meet.,FALSE,TRUE,FALSE
+hit up on,he's been hitting up on heroin for years.,FALSE,TRUE,FALSE
+hit upon,it took us ages to hit upon a solution.,FALSE,TRUE,FALSE
+hit upon,he tried to hit upon her at the pub.,FALSE,TRUE,FALSE
+hit with,he hit me with the details of their demands.,FALSE,TRUE,FALSE
+hive off,they hived off the retail operations.,FALSE,TRUE,FALSE
+hold against,"he was very rude, but I won't hold it against him.",FALSE,TRUE,FALSE
+hold back,it was really hard to hold back the tears.,FALSE,TRUE,FALSE
+hold back,lack of funding held the project back.,FALSE,TRUE,FALSE
+hold back,the government held back the findings of the report for fear of alienating voters.,FALSE,TRUE,FALSE
+hold back from,I had to hold back from losing my temper with them.,FALSE,TRUE,FALSE
+hold down,he's so unreliable that he can never hold down a job for more than a couple of months.,FALSE,TRUE,FALSE
+hold down,it took four of us to hold him down and stop the fight.,FALSE,TRUE,FALSE
+hold forth,the manager held forth on the topic for about twenty minutes.,FALSE,TRUE,FALSE
+hold off,the rain held off until we'd got back home.,FALSE,TRUE,FALSE
+hold off,chelsea couldn't hold their opponents off and lost the game.,FALSE,TRUE,FALSE
+hold on,could you hold on for a minute; she'll be free in a moment.,FALSE,TRUE,FALSE
+hold on,we held on as the bus started to move.,FALSE,TRUE,FALSE
+hold on to,I held on to my luggage while I was waiting fr the taxi so that it didn't get stolen.,FALSE,TRUE,FALSE
+hold onto,it tried to hold onto my cash during the holiday so I could buy some duty free stuff on the way back.,FALSE,TRUE,FALSE
+hold onto,the mother held onto her daughter's hand to keep together in the crowd.,FALSE,TRUE,FALSE
+hold onto,the mother held onto her daughter's hand to keep together in the crowd.,FALSE,TRUE,FALSE
+hold out,"when the enemy attacked, they held out for six weeks.",FALSE,TRUE,FALSE
+hold out,I held out my hand when she walked in.,FALSE,TRUE,FALSE
+hold out against,the staff are holding out against the plans to reduce the workforce.,FALSE,TRUE,FALSE
+hold out for,we are holding out for a much better deal than the one offered.,FALSE,TRUE,FALSE
+hold out on,he's been holding out on me for weeks and I really need the money.,FALSE,TRUE,FALSE
+hold over,the meeting has been held over till friday.,FALSE,TRUE,FALSE
+hold over,it has been so successful that they have held it over for another fortnight.,FALSE,TRUE,FALSE
+hold to,they're holding us to all the terms of the contract.,FALSE,TRUE,FALSE
+hold together,the society managed to hold together despite the crisis.,FALSE,TRUE,FALSE
+hold up,I was held up by the terrible traffic and arrived half an hour late for my appointment.,FALSE,TRUE,FALSE
+hold up,"two armed men held up the bank in high street this morning and got away with £75,000.",FALSE,TRUE,FALSE
+hold with,I don't hold with their plans.,FALSE,TRUE,FALSE
+hole up,they holed up in a remote cottage while the police were searching for them.,FALSE,TRUE,FALSE
+hollow out,the new law has hollowed out local government.,FALSE,TRUE,FALSE
+home in on,the government is homing in on benefit fraud.,FALSE,TRUE,FALSE
+hone in on,the company honed in on its rival and tried to take it over. (some consider this verb to be wrong and that is confused with 'home in on.),FALSE,TRUE,FALSE
+hook into,she hooked them into coming after all.,FALSE,TRUE,FALSE
+hook up,we hooked up at the conference.,FALSE,TRUE,FALSE
+hook up to,he's hooked up to a ventilator in the hospital.,FALSE,TRUE,FALSE
+hoon around,he was hooning around in his new car last night and the police pulled him.,FALSE,TRUE,FALSE
+horse around,the class were horsing around when the teacher came in and told them to sit down.,FALSE,TRUE,FALSE
+hose down,they hosed the patio down.,FALSE,TRUE,FALSE
+hose down,they have hosed down an obscure start-up up with capital.,FALSE,TRUE,FALSE
+hound out,the press hounded the minister out after the scandal broke.,FALSE,TRUE,FALSE
+hover around,she was hovering around to see what we were talking about.,FALSE,TRUE,FALSE
+hunker down,the troops hunkered down in the building.,FALSE,TRUE,FALSE
+hunt down,the police hunted the killer down.,FALSE,TRUE,FALSE
+hunt out,it took me ages to hunt out the photos.,FALSE,TRUE,FALSE
+hunt up,he hunted up a copy the book in the british library.,FALSE,TRUE,FALSE
+hush up,"the company tried to hush up the scandal, but it still got into the newspapers.",FALSE,TRUE,FALSE
+hutch up,property prices are so high in london that many young people are hutching up.,FALSE,TRUE,FALSE
+ice over,the pond has iced over.,FALSE,TRUE,FALSE
+ice up,the engine had iced up and wouldn't start.,FALSE,TRUE,FALSE
+iron out,the management team ironed out the tax problems before they gave the project the ok.,FALSE,TRUE,FALSE
+issue forth,new initiatives issue forth from the government on a daily basis.,FALSE,TRUE,FALSE
+jabber away,they started jabbering away about file systems and lost me completely.,FALSE,TRUE,FALSE
+jack around,don't listen to him- he always jacks people around.,FALSE,TRUE,FALSE
+jack in,I jacked my job in because my boss refused to give me a raise.,FALSE,TRUE,FALSE
+jack up,we jacked the car up and changed the tyre.,FALSE,TRUE,FALSE
+jack up,they have jacked up the price of oil this month.,FALSE,TRUE,FALSE
+jam on,jack jammed on the brakes when the rabbit ran in front of his car.,FALSE,TRUE,FALSE
+jaw away,"that shows that your interest is not in helping the student, but in jawing away.",FALSE,TRUE,FALSE
+jazz up,the show was getting stale so they jazzed it up with some new scenes.,FALSE,TRUE,FALSE
+jerk around,he was jerking us around and wouldn't give us the facts.,FALSE,TRUE,FALSE
+jerk around,they were jerking around during the lecture.,FALSE,TRUE,FALSE
+jerk off,you should get your work done and stop jerking off.,FALSE,TRUE,FALSE
+jockey into,they jockeyed him into signing a terrible contract.,FALSE,TRUE,FALSE
+jog along,works jogging along- nothing special.,FALSE,TRUE,FALSE
+jog on,jog on and leave me alone.,FALSE,TRUE,FALSE
+join in,we're going to play football- do you want to join in?,FALSE,TRUE,FALSE
+join in,they were playing football and asked us to join in the game.,FALSE,TRUE,FALSE
+joke around,he's always joking around in class.,FALSE,TRUE,FALSE
+jot down,I jotted down her number on a scrap of paper and I can't find it now.,FALSE,TRUE,FALSE
+juice up,I need to buy some memory to juice my computer up.,FALSE,TRUE,FALSE
+jump at,I'd jump at the chance to go and live in japan.,FALSE,TRUE,FALSE
+jump in,he jumped in and told them exactly what he thought.,FALSE,TRUE,FALSE
+jump off,the ipo jumped off on the first day.,FALSE,TRUE,FALSE
+jump on,everyone jumped on me when I raised the issue.,FALSE,TRUE,FALSE
+keel over,the boat keeled over in the storm and the crew drowned.,FALSE,TRUE,FALSE
+keel over,"he was going to confront his boss, but keeled over and didn't mention the matter.",FALSE,TRUE,FALSE
+keel over,the drunk keeled over when trying to leave the pub.,FALSE,TRUE,FALSE
+keep around,I keep a dictionary around when I'm doing my homework.,FALSE,TRUE,FALSE
+keep at,she found the course hard but she kept at it and completed it successfully.,FALSE,TRUE,FALSE
+keep away,medicines should always be kept away from children.,FALSE,TRUE,FALSE
+keep back,the police told the crowd to keep back from the fire.,FALSE,TRUE,FALSE
+keep down,the food was so horrible that I struggled to keep it down.,FALSE,TRUE,FALSE
+keep from,I couldn't keep from arguing with her.,FALSE,TRUE,FALSE
+keep in,the teacher kept the students in after school because they had misbehaved.,FALSE,TRUE,FALSE
+keep in with,I like to keep in with the school inspectors.,FALSE,TRUE,FALSE
+keep off,she kept off the subject of her divorce.,FALSE,TRUE,FALSE
+keep off,"keep off the grass in the park, please.",FALSE,TRUE,FALSE
+keep on,he kept on trying and succeeded in the end.,FALSE,TRUE,FALSE
+keep out,the police kept the demonstrators out of the building.,FALSE,TRUE,FALSE
+keep to,please keep to the path.,FALSE,TRUE,FALSE
+keep up,my neighbours kept me up till after 4 am with their loud music last night.,FALSE,TRUE,FALSE
+keep up,"first I phoned you and left a message that you should phone me; then you phoned and I was out, so you left a message; then...! how long can we keep this up without ever speaking to each other directly?",FALSE,TRUE,FALSE
+keep up at,"learning a language is difficult, but if you keep up at it, you'll succeed in the end.",FALSE,TRUE,FALSE
+keep up with,he walks too fast and it's really hard to keep up with him.,FALSE,TRUE,FALSE
+keep up with,it's hard to keep up with all the latest improvements and breakthroughs in technology nowadays.,FALSE,TRUE,FALSE
+key down,I need to key down before I go to bed.,FALSE,TRUE,FALSE
+key in,it took me ages to key in all the information into the database.,FALSE,TRUE,FALSE
+key in on,they keyed in on the person they believed had done it.,FALSE,TRUE,FALSE
+key on,we will key on the opposing team's lack of skills on defense.,FALSE,TRUE,FALSE
+key to,promotions are keyed to people's abilities.,FALSE,TRUE,FALSE
+key up,the noise got us keyed up.,FALSE,TRUE,FALSE
+kick about,we kicked the idea about at the meeting.,FALSE,TRUE,FALSE
+kick around,we kicked the idea around.,FALSE,TRUE,FALSE
+kick around with,"I used to kick around with them, but haven't seen them for a while.",FALSE,TRUE,FALSE
+kick back,I had to kick ten percent back to the government official to get the contract.,FALSE,TRUE,FALSE
+kick back,they kicked back when we suggested downsizing.,FALSE,TRUE,FALSE
+kick back,"rather than go out tonight, we plan to kick back and watch television.",FALSE,TRUE,FALSE
+kick down,the police kicked the door down.,FALSE,TRUE,FALSE
+kick in,her hayfever didn't feel half as bad once the antihistamines had kicked in.,FALSE,TRUE,FALSE
+kick in,they kicked his head in.,FALSE,TRUE,FALSE
+kick in,I’ll kick in for some of the beer if you will buy the pizza.,FALSE,TRUE,FALSE
+kick in,the budget cuts are starting to kick in and people are struggling.,FALSE,TRUE,FALSE
+kick off,the match kicks off at three o'clock.,FALSE,TRUE,FALSE
+kick off,he kicked off last month when he had a massive heart attack.,FALSE,TRUE,FALSE
+kick off,the fight kicked off when he insulted the guy's girlfriend.,FALSE,TRUE,FALSE
+kick off,he started kicking off big time when the police tried to arrest him.,FALSE,TRUE,FALSE
+kick out,the family kicked the au pair out when they found out that she was planning to move to work for another household.,FALSE,TRUE,FALSE
+kick up,my back kicks up when it gets cold.,FALSE,TRUE,FALSE
+kill off,"there used to be a lot of wolves around here, but most of them have been killed off.",FALSE,TRUE,FALSE
+kip down,"it's too late to get the train, so can I kip down here tonight?",FALSE,TRUE,FALSE
+kip down on,there were so many of us that we had to kip down on the floor.,FALSE,TRUE,FALSE
+kiss off,"he was bugging us, so we told him to kiss off.",FALSE,TRUE,FALSE
+kiss off,he kissed the criticism off.,FALSE,TRUE,FALSE
+kiss up to,he's a creep and is always kissing up to the director.,FALSE,TRUE,FALSE
+knock about,he knocked his brother about after they argued.,FALSE,TRUE,FALSE
+knock around,"we knocked the idea around a bit, but decided not to bother.",FALSE,TRUE,FALSE
+knock back,your holiday must have knocked you back a bit.,FALSE,TRUE,FALSE
+knock back,the pub was closing so we knocked our drinks back and left.,FALSE,TRUE,FALSE
+knock back,it really knocked me back when I heard they had been killed.,FALSE,TRUE,FALSE
+knock down,they knocked down the old church and built a block of flats in its place.,FALSE,TRUE,FALSE
+knock down,the car knocked her down and she broke her arm.,FALSE,TRUE,FALSE
+knock down,"a clever lawyer can knock down 40,000 yuan in a good year.",FALSE,TRUE,FALSE
+knock off,we knocked off early on friday to avoid the rush hour queues.,FALSE,TRUE,FALSE
+knock off,they knocked ten pounds off when I asked for a discount.,FALSE,TRUE,FALSE
+knock off,the new road knocks an hour off the journey.,FALSE,TRUE,FALSE
+knock off,he knocked it off and sold it.,FALSE,TRUE,FALSE
+knock off,I knocked the essay off in an hour.,FALSE,TRUE,FALSE
+knock out,the reigning middleweight champion knocked out the challenger in the fourth round of the fight.,FALSE,TRUE,FALSE
+knock out,they're knocking hundreds out a day in the sales.,FALSE,TRUE,FALSE
+knock over,the gang knocked over a betting office yesterday afternoon.,FALSE,TRUE,FALSE
+knock together,they knocked together two outbuilding and turned them into a home.,FALSE,TRUE,FALSE
+knock up,she got knocked up when she was on holiday.,FALSE,TRUE,FALSE
+knock up,the teams knocked up for a few minutes before the final.,FALSE,TRUE,FALSE
+knock up,they knocked a model up over the weekend.,FALSE,TRUE,FALSE
+knuckle down,"I've got my exams next week and I haven't done much work, so I'd better knuckle down.",FALSE,TRUE,FALSE
+knuckle under,the teacher made the students knuckle under and hand their projects in on time.,FALSE,TRUE,FALSE
+land in,he landed me in it when he told them what I had done wrong.,FALSE,TRUE,FALSE
+land up in,"we set out for manchester, but landed up in liverpool.",FALSE,TRUE,FALSE
+land with,he landed me with the job of proofreading the whole thing.,FALSE,TRUE,FALSE
+lap up,he lapped up their praise.,FALSE,TRUE,FALSE
+lark about,the children made me angry because they were larking about.,FALSE,TRUE,FALSE
+lark around,the students wouldn't stop larking around.,FALSE,TRUE,FALSE
+lash down,the rain was lashing down all day and the roads were flooded.,FALSE,TRUE,FALSE
+lash down,we lashed the tarpaulin down to stop the wind blowing it away.,FALSE,TRUE,FALSE
+lash into,he lashed into them for messing thins up.,FALSE,TRUE,FALSE
+lash out,he lashed out and broke the man's nose.,FALSE,TRUE,FALSE
+lash out,he lashes out when things don't go his way.,FALSE,TRUE,FALSE
+lash out,I lashed out in the sales last week.,FALSE,TRUE,FALSE
+lash out against,the press has lashed out against the policy.,FALSE,TRUE,FALSE
+lash out at,he lashed out at me when I laughed at him.,FALSE,TRUE,FALSE
+lash out at,she lashed out at her colleagues when she was sacked.,FALSE,TRUE,FALSE
+lash out on,I lashed out a lot on a new car.,FALSE,TRUE,FALSE
+latch on,"they were lying, but it took her ages to latch on.",FALSE,TRUE,FALSE
+latch on to,the police didn't latch on to what the crooks were doing for years.,FALSE,TRUE,FALSE
+latch onto,the gecko latched onto the ceiling.,FALSE,TRUE,FALSE
+latch onto,oil companies have latched onto environmental ideas.,FALSE,TRUE,FALSE
+laugh off,he laughed off the sprained finger but it obviously affected his golf game.,FALSE,TRUE,FALSE
+lay down,the rules of the sport were laid down early in the nineteenth century.,FALSE,TRUE,FALSE
+lay down,he got laid down in a turf war about supplying drugs.,FALSE,TRUE,FALSE
+lay into,his partner laid into him when he arrived two hours late..,FALSE,TRUE,FALSE
+lay off,the hotel laid off twenty staff because tourist numbers were down.,FALSE,TRUE,FALSE
+lay on,they laid on a buffet lunch at the conference.,FALSE,TRUE,FALSE
+lay out,they laid out thousands of pounds on their wedding reception.,FALSE,TRUE,FALSE
+lead on,she led him on about her desire to get married.,FALSE,TRUE,FALSE
+lead to,the investigation led to the arrest of a number of suspects.,FALSE,TRUE,FALSE
+leak out,the company's plans to close the factory leaked out and they were very embarrassed.,FALSE,TRUE,FALSE
+lean on,the government has denied leaning on the attorney general to get his approval of the war.,FALSE,TRUE,FALSE
+leap at,he leaped at the chance to visit.,FALSE,TRUE,FALSE
+leap on,they have leapt on the bandwagon to increase sales.,FALSE,TRUE,FALSE
+leap out at,her face leapt out at me the second I saw the photo.,FALSE,TRUE,FALSE
+leap upon,they have leapt upon a couple of errors in the document and want to invalidate the agreement.,FALSE,TRUE,FALSE
+leave on,leave the tv on; I want to hear the football results.,FALSE,TRUE,FALSE
+leave out,he was left out of the side because he hasn't been playing too well lately.,FALSE,TRUE,FALSE
+let down,she failed to turn up and I felt badly let down.,FALSE,TRUE,FALSE
+let down,"he's grown so much, we'll have to let his trousers down.",FALSE,TRUE,FALSE
+let in,the doorstaff didn't let him in the nightclub because he was wearing jeans.,FALSE,TRUE,FALSE
+let in on,they let me in on what they were planning.,FALSE,TRUE,FALSE
+let off,the judge let him off with a fine rather than a prison sentence since it was his first offence.,FALSE,TRUE,FALSE
+let on,I didn't mean to let on about the party; I just said it without thinking.,FALSE,TRUE,FALSE
+let out,the convict was let out of prison after serving five years of an eight-year sentence.,FALSE,TRUE,FALSE
+let out,he let out a huge sigh of relief when he heard the results.,FALSE,TRUE,FALSE
+let out,I've put on so much weight that I'm going to have to let my suits out.,FALSE,TRUE,FALSE
+level off,"the pilot leveled off at 5,000 meters.",FALSE,TRUE,FALSE
+level out,"the pilot leveled out at 5,000 meters.",FALSE,TRUE,FALSE
+level up,you can level up the hero in the game.,FALSE,TRUE,FALSE
+level up,the government has levelled up gambling taxes.,FALSE,TRUE,FALSE
+level with,I levelled with him about what happened that night.,FALSE,TRUE,FALSE
+lie around,most days he would usually just lie around the house.,FALSE,TRUE,FALSE
+lie down,I'm going to lie down for a few minutes before we have to go out.,FALSE,TRUE,FALSE
+lie with,the decision about the contract lies with the courts.,FALSE,TRUE,FALSE
+lift off,5-4-3-2-1- we have lift-off!,FALSE,TRUE,FALSE
+light out,when zeke found out they were coming for him he lit out for the border.,FALSE,TRUE,FALSE
+light up,asif lit up as soon as he got out of the building.,FALSE,TRUE,FALSE
+light up,they light up the streets at christmas time.,FALSE,TRUE,FALSE
+lighten up,I told them to lighten up but they continued complaining about it.,FALSE,TRUE,FALSE
+limber up,the team limbered up for a few minutes before the game started.,FALSE,TRUE,FALSE
+limber up for,they are limbering up for the end of the financial year.,FALSE,TRUE,FALSE
+line up,the police got them to line up against the wall.,FALSE,TRUE,FALSE
+line up,he lined the bottles up against the wall.,FALSE,TRUE,FALSE
+line up,we have lined up a lot of meetings for them.,FALSE,TRUE,FALSE
+link up,the train links up the cities.,FALSE,TRUE,FALSE
+link up with,we linked up with the firm over the web.,FALSE,TRUE,FALSE
+listen out for,they put their coats on and listened out for the minicab.,FALSE,TRUE,FALSE
+listen up,"listen up, men! here are your new assignments.",FALSE,TRUE,FALSE
+live by,he tries hard to live by the bible.,FALSE,TRUE,FALSE
+live down,"if I fail the test and everyone else passes, I'll never be able to live it down.",FALSE,TRUE,FALSE
+live for,he lives for football.,FALSE,TRUE,FALSE
+live in,the university has a residential halls where students can live in.,FALSE,TRUE,FALSE
+live off,they find it hard to live off the money they make.,FALSE,TRUE,FALSE
+live off,he’s 40 and he still lives off his parents.,FALSE,TRUE,FALSE
+live on,they have to live on $200 a week.,FALSE,TRUE,FALSE
+live on,"he's been dead for many years, but his name lives on.",FALSE,TRUE,FALSE
+live out,she lived out her final years in a nursing home.,FALSE,TRUE,FALSE
+live out,many parents try to live out their dreams through their children.,FALSE,TRUE,FALSE
+live out,in my final year at university I lived out with some friends in a flat we rented.,FALSE,TRUE,FALSE
+live through,"it was hard to live through the recession, but we managed it.",FALSE,TRUE,FALSE
+live together,we lived together for a few years before we got married.,FALSE,TRUE,FALSE
+live up to,the concert didn't live up to my expectations.,FALSE,TRUE,FALSE
+live with,it's hard to live with the pain of a serious illness.,FALSE,TRUE,FALSE
+live with,I lived with her for a couple of years before the relationship went sour.,FALSE,TRUE,FALSE
+liven up,their arrival livened things up.,FALSE,TRUE,FALSE
+liven up,"I was feeling miserable at first, but livened myself up later on.",FALSE,TRUE,FALSE
+load down,I was loaded down with all the stuff I had to take there.,FALSE,TRUE,FALSE
+load up,he's been loading up for years.,FALSE,TRUE,FALSE
+load up,we loaded the car up and left for our holiday.,FALSE,TRUE,FALSE
+load up on,the athletes loaded up on carbohydrates before the race.,FALSE,TRUE,FALSE
+lock away,he locked the gun away in a drawer.,FALSE,TRUE,FALSE
+lock away,they locked him away for life after the murders.,FALSE,TRUE,FALSE
+lock down,"if you lock down your computer properly, it is very difficult for people to access it.",FALSE,TRUE,FALSE
+lock in,they locked him in the room until he had calmed down.,FALSE,TRUE,FALSE
+lock in,they are locked in now that they have paid their subscription.,FALSE,TRUE,FALSE
+lock onto,the missile locked onto the plane and blew it out of the sky.,FALSE,TRUE,FALSE
+lock out,the management locked the staff out because they had turned down the pay offer.,FALSE,TRUE,FALSE
+lock out,I lost my key and locked myself out.,FALSE,TRUE,FALSE
+lock up,she locked up after everyone had left and went home.,FALSE,TRUE,FALSE
+lock up,I locked my money up in the safe.,FALSE,TRUE,FALSE
+lock up,they locked him up for burglary.,FALSE,TRUE,FALSE
+lock yourself away,I lock myself away for a few weeks before exams.,FALSE,TRUE,FALSE
+log in,I had forgotten my password and couldn't log in.,FALSE,TRUE,FALSE
+log into,I logged into the staff intranet to check my email.,FALSE,TRUE,FALSE
+log off,"when she'd finished working on the spreadsheet, she logged off and left the office.",FALSE,TRUE,FALSE
+log on,he entered his password for the college intranet and logged on.,FALSE,TRUE,FALSE
+log out,danny closed the programs and logged out when it was time to go home.,FALSE,TRUE,FALSE
+look after,their auntie looked after them while their mother was in hospital.,FALSE,TRUE,FALSE
+look back,old people often look back on over their lives.,FALSE,TRUE,FALSE
+look down on,he looks down on his colleagues because he thinks he's better than they are.,FALSE,TRUE,FALSE
+look for,"I've been looking for all their hidden files, but I can't find them anywhere.",FALSE,TRUE,FALSE
+look forward to,I'm looking forward to meeting you.,FALSE,TRUE,FALSE
+look in,I'll look in on my way home.,FALSE,TRUE,FALSE
+look in on,I'm going to look in on grannie on the way home tonight as she's been a bit unwell recently.,FALSE,TRUE,FALSE
+look into,we'll look into the problem and come back to you when we have the information.,FALSE,TRUE,FALSE
+look on,the crowd just looked on as the old lady was mugged.,FALSE,TRUE,FALSE
+look on as,I look on her as a close friend.,FALSE,TRUE,FALSE
+look out,look out; you're going to drop that!,FALSE,TRUE,FALSE
+look out for,she looked out for her sister when she started school.,FALSE,TRUE,FALSE
+look out for,we we told to look out for any suspicious behaviour.,FALSE,TRUE,FALSE
+look over,they came to look the house over with a view to buying it.,FALSE,TRUE,FALSE
+look round,we looked round the house and decided that we didn't like it enough to buy it.,FALSE,TRUE,FALSE
+look through,I looked through the article.,FALSE,TRUE,FALSE
+look to,the company is looking to increase its sales in asia.,FALSE,TRUE,FALSE
+look up,I didn't know the correct spelling so I had to look it up in the dictionary.,FALSE,TRUE,FALSE
+look up,the economy is looking up.,FALSE,TRUE,FALSE
+look up,I looked him up when I went back to cambridge.,FALSE,TRUE,FALSE
+look up to,she's looks up to her mother.,FALSE,TRUE,FALSE
+look upon as,I look upon him as a close friend.,FALSE,TRUE,FALSE
+loose off,they loosed several rounds off at the police.,FALSE,TRUE,FALSE
+loose on,they loosed the investigators on their enemies.,FALSE,TRUE,FALSE
+loose upon,they loosed the reporters upon the family even thought they had done nothing.,FALSE,TRUE,FALSE
+loosen up,he was very shy at first but has loosened up and is more talkative now.,FALSE,TRUE,FALSE
+lose out,many people lost out when the new regulations were enforced.,FALSE,TRUE,FALSE
+lose out on,"because I left the company, I lost out on my bonus.",FALSE,TRUE,FALSE
+lose out to,people without it skills often lose out to those with the skills.,FALSE,TRUE,FALSE
+luck into,we lucked into getting the answer.,FALSE,TRUE,FALSE
+luck out,I really lucked out when I met my partner.,FALSE,TRUE,FALSE
+lust after,he secretly lusts after his friend’s wife.,FALSE,TRUE,FALSE
+lust after,he lusts after a rolex.,FALSE,TRUE,FALSE
+magic away,he magicked the bill away and paid for us all before I could get my wallet out.,FALSE,TRUE,FALSE
+make after,the police made after the stolen car.,FALSE,TRUE,FALSE
+make away with,the thieves made away with the painting.,FALSE,TRUE,FALSE
+make do with,"there's no coffee, so we'll have to make do with tea.",FALSE,TRUE,FALSE
+make for,we made for home when it started raining.,FALSE,TRUE,FALSE
+make for,the low quality of the service made for a lot of dissatisfaction.,FALSE,TRUE,FALSE
+make into,many churches have been made into flats in recent years.,FALSE,TRUE,FALSE
+make of,what do you make of your new boss?,FALSE,TRUE,FALSE
+make off,they made off when they heard the police siren.,FALSE,TRUE,FALSE
+make off with,thieves made off with over a million dollars in the robbery.,FALSE,TRUE,FALSE
+make out,please make the cheque out to rgm productions ltd.,FALSE,TRUE,FALSE
+make out,he made out that he was ill so that he didn't have to go to school.,FALSE,TRUE,FALSE
+make out,how are your children making out at the new school?,FALSE,TRUE,FALSE
+make out,they were making out at the party last night.,FALSE,TRUE,FALSE
+make out,I can just make out the outline of a flying saucer in this photo.,FALSE,TRUE,FALSE
+make out,can you make out what she's saying?,FALSE,TRUE,FALSE
+make out,he's strange; I can't make him out.,FALSE,TRUE,FALSE
+make over,the beauty salon gave her a makeover before the party.,FALSE,TRUE,FALSE
+make over,she made over her property to her children.,FALSE,TRUE,FALSE
+make towards,we made towards the centre.,FALSE,TRUE,FALSE
+make up,"they are always arguing, but they make up again very quickly.",FALSE,TRUE,FALSE
+make up,she went to the bathroom to make her face up.,FALSE,TRUE,FALSE
+make up,they made up an excuse for being late.,FALSE,TRUE,FALSE
+make up for,I sent her a present to try to make up for my appalling behaviour.,FALSE,TRUE,FALSE
+make up to,"the charity collected £24,517.57, and the anonymous donor made the total up to £25,000'",FALSE,TRUE,FALSE
+make with,make with the money you owe me.,FALSE,TRUE,FALSE
+man down,he manned down and didn't come with us.,FALSE,TRUE,FALSE
+man up,she told her anonymous critics to man up and speak publicly.,FALSE,TRUE,FALSE
+mark down,"students who gave obviously rehearsed answers were marked down, while those who spoke naturally were rewarded accordingly.",FALSE,TRUE,FALSE
+mark down,I'll buy a lot more if you mark them down a bit.,FALSE,TRUE,FALSE
+mark down as,"I marked them down as conservatives, but they're very liberal.",FALSE,TRUE,FALSE
+mark off,I marked off the items on the list as I finished them.,FALSE,TRUE,FALSE
+mark out,they marked out the pitch.,FALSE,TRUE,FALSE
+mark out for,his dedication marked him out for great things.,FALSE,TRUE,FALSE
+mark out from,her speed marks her out from the rest of the group.,FALSE,TRUE,FALSE
+mark up,they mark the goods up by 25% before they sell them.,FALSE,TRUE,FALSE
+marry in,many religions encourage their followers to marry in.,FALSE,TRUE,FALSE
+marry off,they married her off to a rich friend.,FALSE,TRUE,FALSE
+marry out,her parents disowned her and refused to speak to her when she married out.,FALSE,TRUE,FALSE
+marry up,the two lists did not marry up.,FALSE,TRUE,FALSE
+marry up,we married up the lists so that we all had the same names.,FALSE,TRUE,FALSE
+marry up,he tried to meet a rich woman so that he could marry up.,FALSE,TRUE,FALSE
+mash up,he mashed up some bananas for the dessert.,FALSE,TRUE,FALSE
+mash up,she mashed up the songs into a single track.,FALSE,TRUE,FALSE
+mash up,he mashed up my mp3 player and lost my files.,FALSE,TRUE,FALSE
+max out,she maxed out her credit cards.,FALSE,TRUE,FALSE
+measure against,the work doesn't look good if you measure it against what our competitors have done.,FALSE,TRUE,FALSE
+measure off,the tailor measured off the material for my suit.,FALSE,TRUE,FALSE
+measure off,he measured off a metre of the silk.,FALSE,TRUE,FALSE
+measure out,he measured out the flour for the bread.,FALSE,TRUE,FALSE
+measure out,she measured out a hundred grammes of the powder.,FALSE,TRUE,FALSE
+measure up,the estate agent measured up all the rooms.,FALSE,TRUE,FALSE
+measure up,"she didn't measure up in her probationary period, so we didn't extend her contract.",FALSE,TRUE,FALSE
+measure up,"they made her a director, but she didn't measure up.",FALSE,TRUE,FALSE
+measure up,they measured up the room.,FALSE,TRUE,FALSE
+measure up to,I hope to measure up to the confidence you have in me.,FALSE,TRUE,FALSE
+meet up,we're meeting up on friday- I haven't seen them for ages.,FALSE,TRUE,FALSE
+meet up with,I met up with her a couple of days ago.,FALSE,TRUE,FALSE
+meet with,they met with some problems they hadn't anticipated.,FALSE,TRUE,FALSE
+meet with,the show met with poor reviews.,FALSE,TRUE,FALSE
+melt down,they melted the gold statue down and turned it into gold bars.,FALSE,TRUE,FALSE
+mess about,the children were messing about with the tv remote control and broke it.,FALSE,TRUE,FALSE
+mess about,he is always messing me about and never does what he promises.,FALSE,TRUE,FALSE
+mess about,he's not faithful- he's been messing about since they were married.,FALSE,TRUE,FALSE
+mess about with,she's been messing about with another guy she knows from work.,FALSE,TRUE,FALSE
+mess about with,the computer was working fine until he started messing about with it.,FALSE,TRUE,FALSE
+mess around,I was messing around on the internet because I couldn't be bothered to do any work.,FALSE,TRUE,FALSE
+mess around,she is always messing me around and never does what she promises.,FALSE,TRUE,FALSE
+mess around,she's not faithful- she's been messing about since they got married.,FALSE,TRUE,FALSE
+mess around with,he's been messing about with a woman he works with.,FALSE,TRUE,FALSE
+mess around with,the computer was working fine until they started messing about with it.,FALSE,TRUE,FALSE
+mess over,they messed her over when she applied for the job.,FALSE,TRUE,FALSE
+mess up,they messed up the discussions and the contract fell through.,FALSE,TRUE,FALSE
+mess up,they messed up the room and left stuff all over the place.,FALSE,TRUE,FALSE
+mess up,he took a lot of lsd and it really messed him up.,FALSE,TRUE,FALSE
+mess with,he's been messing with cocaine.,FALSE,TRUE,FALSE
+mess with,don't mess with me or there will be trouble.,FALSE,TRUE,FALSE
+mess with,he's been messing with some dangerous people.,FALSE,TRUE,FALSE
+mess with,she's been messing with it for hours and it still doesn't work.,FALSE,TRUE,FALSE
+mete out,they meted out savage penalties to anyone who broke the law.,FALSE,TRUE,FALSE
+mill around,there were a lot of people milling around waiting for the bus.,FALSE,TRUE,FALSE
+miss out,it'll be great; you'll be missing out if you don't come.,FALSE,TRUE,FALSE
+miss out,make sure you don't miss anyone out when you call their names.,FALSE,TRUE,FALSE
+miss out on,trudy missed out on the promotion.,FALSE,TRUE,FALSE
+mix up,I always mix those two sisters up because they look so like each other.,FALSE,TRUE,FALSE
+mix up,the dj mixed up the night with some hard techno.,FALSE,TRUE,FALSE
+mock up,they mocked up an example to show us what they would look like.,FALSE,TRUE,FALSE
+moggy off,we moggied off early.,FALSE,TRUE,FALSE
+monkey around,the police officer told the drunks to stop monkeying around and go home quietly.,FALSE,TRUE,FALSE
+mooch about,I mooched about the whole afternoon because I didn't feel like working.,FALSE,TRUE,FALSE
+mooch around,I mooched around the house all day.,FALSE,TRUE,FALSE
+mop up,he was left to mop up the mess after they resigned.,FALSE,TRUE,FALSE
+mop up,"after the battle, it took them a couple of weeks to mop up the remaining rebels.",FALSE,TRUE,FALSE
+mop up,the sauce was so delicious that I ordered some bread to mop it up.,FALSE,TRUE,FALSE
+mop up,I used a cloth to mop up the coffee I had knocked over.,FALSE,TRUE,FALSE
+mope about,she didn't get the job and has been moping about all afternoon.,FALSE,TRUE,FALSE
+mope around,he's been moping around since his girlfriend left him.,FALSE,TRUE,FALSE
+mount up,my debts mounted up while I was at university.,FALSE,TRUE,FALSE
+mouth off,I always get angry and start mouthing off when the news is on tv.,FALSE,TRUE,FALSE
+move ahead,the construction can move ahead now that permisson has been granted.,FALSE,TRUE,FALSE
+move along,the police told the people watching to move along.,FALSE,TRUE,FALSE
+move along,the project's moving along and everything should be ready on time.,FALSE,TRUE,FALSE
+move away,I moved away when the factory shut down.,FALSE,TRUE,FALSE
+move away from,they're moving away from windows and are using linux.,FALSE,TRUE,FALSE
+move down,he was finding the course too difficult so they moved him down.,FALSE,TRUE,FALSE
+move in,"the house was empty for ages, but some new tenants moved in a few weeks ago.",FALSE,TRUE,FALSE
+move in on,"as he watched, the hyenas began to move in on the hapless wildebeest.",FALSE,TRUE,FALSE
+move into,they moved into the house as soon as it was ready.,FALSE,TRUE,FALSE
+move on,she moved on to another company where the salary was considerably better.,FALSE,TRUE,FALSE
+move on,the police moved the crowd on because they were holding up the traffic.,FALSE,TRUE,FALSE
+move out,she's tired of living there and is moving out.,FALSE,TRUE,FALSE
+move out,the president said they would move the troops out next year.,FALSE,TRUE,FALSE
+move out,I moved out to overtake the bus.,FALSE,TRUE,FALSE
+move towards,the government are moving towards free elections.,FALSE,TRUE,FALSE
+move up,could you move up and let me sit down?,FALSE,TRUE,FALSE
+move up,they moved her up to senior management.,FALSE,TRUE,FALSE
+muddle along,"if you're ambitious, you cannot muddle along.",FALSE,TRUE,FALSE
+muddle through,we didn't know what to expect and just muddled through.,FALSE,TRUE,FALSE
+muddle up,my cleaner muddled up my books and I can't find anything.,FALSE,TRUE,FALSE
+muddle up,I muddle her and her sister up.,FALSE,TRUE,FALSE
+mug up,I have to mug up before the exam.,FALSE,TRUE,FALSE
+mug up on,I need to mug up on my history for the test.,FALSE,TRUE,FALSE
+mull over,she said that she'd had to mull it over before deciding what was,FALSE,TRUE,FALSE
+muscle in,"we tried to exclude him of the committee, but he muscled in.",FALSE,TRUE,FALSE
+muscle in on,she muscled in on the deal even though we wanted to do it without her.,FALSE,TRUE,FALSE
+muscle into,they are muscling into our market and there is very little we can do to stop them.,FALSE,TRUE,FALSE
+muscle out,they used their contacts in local government to muscle the competitors out.,FALSE,TRUE,FALSE
+naff off,"he was making a fuss, so I told him to naff off.",FALSE,TRUE,FALSE
+nag at,my boss is always nagging at me about my arriving a few minutes late for work.,FALSE,TRUE,FALSE
+nail down,they are having trouble nailing down the contract.,FALSE,TRUE,FALSE
+nail down,"I can't nail down what's wrong with their idea, but I'm sure it won't work.",FALSE,TRUE,FALSE
+nail down,I can't nail them down about when they're going to finish the project.,FALSE,TRUE,FALSE
+nail down,I nailed the job down in the first interview.,FALSE,TRUE,FALSE
+name after,I was named after my uncle who died in the war.,FALSE,TRUE,FALSE
+narrow down,"I am not sure which university to apply to, but I have narrowed my list down to three.",FALSE,TRUE,FALSE
+nerd out,I'm going to nerd out and not go on the river trip.,FALSE,TRUE,FALSE
+nerd out,I had to nerd out when they asked about conditionals and deontic modality.,FALSE,TRUE,FALSE
+nip off,I'm nipping off to get some milk.,FALSE,TRUE,FALSE
+nip out,she'll be back in a minute- she's just nipped out to the shops.,FALSE,TRUE,FALSE
+nod off,I nodded off during the speech.,FALSE,TRUE,FALSE
+nod through,parliament nodded the bill through.,FALSE,TRUE,FALSE
+nose about,the police are nosing about to see if they can find anything against the gang.,FALSE,TRUE,FALSE
+nose around,the boss keeps nosing around our office when we are out at lunch.,FALSE,TRUE,FALSE
+nose out,he nosed out their plans.,FALSE,TRUE,FALSE
+nose out,the other candidate nosed him out by a few votes.,FALSE,TRUE,FALSE
+note down,she noted down my fax number so that she could send me the documents when she got to the office.,FALSE,TRUE,FALSE
+nut out,the management and unions had a meeting to nut things out.,FALSE,TRUE,FALSE
+nuzzle up,the puppy nuzzled up and slept in my arms.,FALSE,TRUE,FALSE
+nuzzle up to,the calf nuzzled up to her mother's teat.,FALSE,TRUE,FALSE
+occur to,didn't it occur to you to help me when you saw how much trouble I was in?,FALSE,TRUE,FALSE
+open up,she hates to open up and discuss her feelings.,FALSE,TRUE,FALSE
+open up,they open up at seven in the morning.,FALSE,TRUE,FALSE
+open up,"before they joined the wto, they had to open up their markets.",FALSE,TRUE,FALSE

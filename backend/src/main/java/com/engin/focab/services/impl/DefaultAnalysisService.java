@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -17,10 +18,10 @@ import com.engin.focab.jpa.MovieAnalysisModel;
 import com.engin.focab.jpa.SubtitleModel;
 import com.engin.focab.jpa.SummerizedMovieAnalysisModel;
 import com.engin.focab.jpa.corpus.IdiomAnalysis;
-import com.engin.focab.jpa.corpus.PhrasalVerbAnalysis;
 import com.engin.focab.repository.MovieAnalysisRepository;
 import com.engin.focab.repository.SubtitleRepository;
 import com.engin.focab.services.AnalysisService;
+import com.engin.focab.services.PhrasalVerbsDetectionService;
 import com.engin.focab.services.SrtParserService;
 import com.engin.focab.services.SubtitleService;
 import com.github.wtekiela.opensub4j.response.SubtitleFile;
@@ -45,6 +46,7 @@ public class DefaultAnalysisService implements AnalysisService {
 	private IdiomDetectionService idiomDetectionService;
 
 	@Autowired
+	@Qualifier("constituencyParser")
 	private PhrasalVerbsDetectionService phrasalDetectionService;
 
 	@Autowired
@@ -96,7 +98,7 @@ public class DefaultAnalysisService implements AnalysisService {
 				}
 
 				//// find phrasal verbs
-				Set<String> phrasalSet = detectPhrasalVerbs(sentence).getPhrasalVerbSet();
+				List<String> phrasalSet = detectPhrasalVerbs(sentence);
 				if (!phrasalSet.isEmpty()) {
 					subtitle.setPhrasalVerbs(phrasalSet);
 					phrasalVerbSubtitles.add(subtitle);
@@ -153,9 +155,9 @@ public class DefaultAnalysisService implements AnalysisService {
 		}
 
 		if (analysePhrasalVerbs) {
-			PhrasalVerbAnalysis phrasalVerbAnalysis = detectPhrasalVerbs(nplSentence);
-			subtitle.setPhrasalVerbs(phrasalVerbAnalysis.getPhrasalVerbSet());
-			trace.append(phrasalVerbAnalysis.getTrace());
+			List<String> phrasalVerbAnalysis = detectPhrasalVerbs(nplSentence);
+			subtitle.setPhrasalVerbs(phrasalVerbAnalysis);
+			// trace.append(phrasalVerbAnalysis.getTrace());
 		}
 
 		if (analyseSingleWords) {
@@ -167,8 +169,8 @@ public class DefaultAnalysisService implements AnalysisService {
 		return subtitle;
 	}
 
-	private PhrasalVerbAnalysis detectPhrasalVerbs(Sentence sentence) {
-		return phrasalDetectionService.detectPhrasalVerbs(sentenceTaggingService.tagString(sentence.text()), sentence);
+	private List<String> detectPhrasalVerbs(Sentence sentence) {
+		return phrasalDetectionService.detectPhrasalVerbs(sentence);
 	}
 
 	private IdiomAnalysis detectIdioms(Sentence sentence) {

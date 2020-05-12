@@ -390,3 +390,58 @@
 [Thu Apr 16 09:41:07.238 2020] [7792] prereading 3 indexes
 [Thu Apr 16 09:41:07.241 2020] [7792] prereaded 3 indexes in 0.003 sec
 [Thu Apr 16 20:54:46.018 2020] [7376] shutdown complete
+[Thu Apr 16 20:56:27.572 2020] [3760] listening on 127.0.0.1:9306
+[Thu Apr 16 20:56:27.572 2020] [3760] listening on 127.0.0.1:9080
+[Thu Apr 16 20:56:27.627 2020] [16764] prereading 3 indexes
+[Thu Apr 16 20:56:27.627 2020] [3760] accepting connections
+[Thu Apr 16 20:56:27.627 2020] [16764] prereaded 3 indexes in 0.000 sec
+[Fri Apr 17 22:53:25.219 2020] [3760] shutdown complete
+[Fri Apr 17 22:59:36.192 2020] [27624] listening on 127.0.0.1:9306
+[Fri Apr 17 22:59:36.192 2020] [27624] listening on 127.0.0.1:9080
+[Fri Apr 17 22:59:36.283 2020] [27624] accepting connections
+[Fri Apr 17 22:59:36.284 2020] [9180] prereading 3 indexes
+[Fri Apr 17 22:59:36.284 2020] [9180] prereaded 3 indexes in 0.000 sec
+[Mon Apr 20 20:26:22.910 2020] [27624] shutdown complete
+[Mon Apr 20 20:26:55.877 2020] [6792] listening on 127.0.0.1:9306
+[Mon Apr 20 20:26:55.877 2020] [6792] listening on 127.0.0.1:9080
+[Mon Apr 20 20:26:55.911 2020] [6792] accepting connections
+[Mon Apr 20 20:26:55.912 2020] [7348] prereading 3 indexes
+[Mon Apr 20 20:26:55.920 2020] [7348] prereaded 3 indexes in 0.008 sec
+[Sat Apr 25 00:41:09.024 2020] [6792] shutdown complete
+[Sat Apr 25 00:41:34.761 2020] [6556] listening on 127.0.0.1:9306
+[Sat Apr 25 00:41:34.762 2020] [6556] listening on 127.0.0.1:9080
+[Sat Apr 25 00:41:34.780 2020] [6556] accepting connections
+[Sat Apr 25 00:41:34.780 2020] [6768] prereading 3 indexes
+[Sat Apr 25 00:41:34.788 2020] [6768] prereaded 3 indexes in 0.007 sec
+[Sun May  3 16:20:57.872 2020] [6556] shutdown complete
+[Sun May  3 16:23:39.278 2020] [33688] listening on 127.0.0.1:9306
+[Sun May  3 16:23:39.278 2020] [33688] listening on 127.0.0.1:9080
+[Sun May  3 16:23:39.737 2020] [30800] prereading 3 indexes
+[Sun May  3 16:23:39.737 2020] [33688] accepting connections
+[Sun May  3 16:23:39.738 2020] [30800] prereaded 3 indexes in 0.000 sec
+[Sun May  3 21:49:34.529 2020] [33688] shutdown complete
+[Sun May  3 21:49:52.590 2020] [30860] listening on 127.0.0.1:9306
+[Sun May  3 21:49:52.590 2020] [30860] listening on 127.0.0.1:9080
+[Sun May  3 21:49:53.152 2020] [34016] prereading 3 indexes
+[Sun May  3 21:49:53.152 2020] [30860] accepting connections
+[Sun May  3 21:49:53.153 2020] [34016] prereaded 3 indexes in 0.000 sec
+[Sun May  3 22:09:22.859 2020] [30860] shutdown complete
+[Sun May  3 22:09:35.706 2020] [30464] listening on 127.0.0.1:9306
+[Sun May  3 22:09:35.706 2020] [30464] listening on 127.0.0.1:9080
+[Sun May  3 22:09:36.315 2020] [30464] accepting connections
+[Sun May  3 22:09:36.315 2020] [31544] prereading 3 indexes
+[Sun May  3 22:09:36.315 2020] [31544] prereaded 3 indexes in 0.000 sec
+[Mon May  4 09:50:07.663 2020] [15036] WARNING: http error (client=127.0.0.1:61646(128)), error: 10054 'WSA error 10054', sock=1720
+[Mon May  4 09:50:07.663 2020] [15036] WARNING: http error (client=127.0.0.1:61644(127)), error: 10054 'WSA error 10054', sock=1728
+[Mon May  4 09:50:07.663 2020] [15036] WARNING: http error (client=127.0.0.1:61647(129)), error: 10054 'WSA error 10054', sock=1988
+[Mon May  4 19:13:04.702 2020] [30464] shutdown complete
+[Mon May  4 19:13:40.665 2020] [6748] listening on 127.0.0.1:9306
+[Mon May  4 19:13:40.666 2020] [6748] listening on 127.0.0.1:9080
+[Mon May  4 19:13:40.728 2020] [6748] accepting connections
+[Mon May  4 19:13:40.729 2020] [7704] prereading 3 indexes
+[Mon May  4 19:13:40.735 2020] [7704] prereaded 3 indexes in 0.007 sec
+[Mon May 11 15:39:54.389 2020] [6364] listening on 127.0.0.1:9306
+[Mon May 11 15:39:54.390 2020] [6364] listening on 127.0.0.1:9080
+[Mon May 11 15:39:54.494 2020] [6364] accepting connections
+[Mon May 11 15:39:54.496 2020] [6952] prereading 3 indexes
+[Mon May 11 15:39:54.525 2020] [6952] prereaded 3 indexes in 0.029 sec

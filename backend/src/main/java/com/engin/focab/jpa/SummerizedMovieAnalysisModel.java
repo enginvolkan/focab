@@ -41,6 +41,10 @@ public class SummerizedMovieAnalysisModel {
 
 	private HashMap<String, List<String>> singleWords = new HashMap<String, List<String>>();
 
+	private long idiomAverageDuration;
+	private long phrasalAverageDuration;
+	private long commonWordAverageDuration;
+
 	/////////////////////
 	// Getters and Setters
 	/////////////////////
@@ -75,6 +79,30 @@ public class SummerizedMovieAnalysisModel {
 
 	public void setSingleWords(HashMap<String, List<String>> singleWords) {
 		this.singleWords = singleWords;
+	}
+
+	public long getIdiomAverageDuration() {
+		return idiomAverageDuration;
+	}
+
+	public void setIdiomAverageDuration(long idiomAverageDuration) {
+		this.idiomAverageDuration = idiomAverageDuration;
+	}
+
+	public long getPhrasalAverageDuration() {
+		return phrasalAverageDuration;
+	}
+
+	public void setPhrasalAverageDuration(long phrasalAverageDuration) {
+		this.phrasalAverageDuration = phrasalAverageDuration;
+	}
+
+	public long getCommonWordAverageDuration() {
+		return commonWordAverageDuration;
+	}
+
+	public void setCommonWordAverageDuration(long commonWordAverageDuration) {
+		this.commonWordAverageDuration = commonWordAverageDuration;
 	}
 
 }

@@ -4,50 +4,33 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+
+import com.engin.focab.cronjob.IdiomRegexBuilderCronJob;
 
 @SpringBootApplication
-//@ComponentScan(basePackages = "com")
-//@EnableJpaRepositories(basePackages = "com.engIN.focab.repository")
-//@EntityScan(basePackages ="com.engIN.focab.jpa")
-
+@EnableScheduling
 public class FocabApplication {
+
+	@Autowired
+	IdiomRegexBuilderCronJob idiomLemmaBuilderCronJob;
 
 	public static void main(String[] args) {
 		SpringApplication.run(FocabApplication.class, args);
 	}
 
-//	@Bean
-//    public DataSource dataSource() {
-//        HikariDataSource ds = new HikariDataSource();
-//        ds.setMaximumPoolSize(100);
-//        ds.setDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlDataSource");
-//        ds.addDataSourceProperty("url", "jdbc:mysql://localhost:3306/focab?serverTimezone=UTC");
-//        ds.addDataSourceProperty("user", "focab");
-//        ds.addDataSourceProperty("password", "123456");
-//        ds.addDataSourceProperty("cachePrepStmts", true);
-//        ds.addDataSourceProperty("prepStmtCacheSize", 250);
-//        ds.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);
-//        ds.addDataSourceProperty("useServerPrepStmts", true);
-//        return ds;
-//    }
-//	@Bean
-//	@ConfigurationProperties("sprINg.datasource")
-//	public HikariDataSource dataSource() {
-//		return DataSourceBuilder.create().type(HikariDataSource.class).build();
-//	}
-//	@Bean(name = "entityManagerFactory")
-//	public EntityManagerFactory entityManagerFactory() {
-//		LocalContaINerEntityManagerFactoryBean emf = new LocalContaINerEntityManagerFactoryBean();
-//		emf.setDataSource(dataSource());
-//		emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-//		emf.setPackagesToScan("com.engIN.focab");
-//		emf.setPersistenceUnitName("default");
-//		emf.afterPropertiesSet();
-//		return emf.getObject();
-//	}
+	@Scheduled(cron = "0 0 22 * * *")
+//	@Scheduled(fixedDelay = 1000)
+	public void scheduleFixedDelayTask() {
+		System.out.println("IdiomLemmaBuilderCronJob is running...");
+		idiomLemmaBuilderCronJob.fillNullLemmas();
+	}
+
 	@Bean
 	public LinkedHashMap<String, String> phrasalVerbTagRules() {
 		LinkedHashMap<String, String> map = new LinkedHashMap<>();

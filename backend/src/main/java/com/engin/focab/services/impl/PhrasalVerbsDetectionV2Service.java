@@ -23,8 +23,6 @@ public class PhrasalVerbsDetectionV2Service implements PhrasalVerbsDetectionServ
 	@Autowired
 	private IndexedSearchService indexedSearchService;
 	@Autowired
-	private SentenceTaggingService sentenceTaggingService;
-	@Autowired
 	@Qualifier("phrasalVerbTagRules")
 	private LinkedHashMap<String, String> phrasalVerbTagRules;
 	@Autowired

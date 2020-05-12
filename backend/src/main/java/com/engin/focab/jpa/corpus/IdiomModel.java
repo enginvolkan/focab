@@ -21,6 +21,13 @@ public class IdiomModel {
 	@Column(columnDefinition = "TEXT")
 	private String description;
 
+	@Column(columnDefinition = "TEXT")
+	private String regex;
+
+	public IdiomModel() {
+		super();
+	}
+
 	public IdiomModel(String idiom) {
 		super();
 		this.idiom = idiom;
@@ -33,6 +40,14 @@ public class IdiomModel {
 
 	public String getIdiom() {
 		return idiom;
+	}
+
+	public void setRegex(String regex) {
+		this.regex = regex;
+	}
+
+	public String getRegex() {
+		return regex;
 	}
 
 	@Override

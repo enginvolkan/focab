@@ -2,8 +2,6 @@ package com.engin.focab.services.impl;
 
 import java.util.List;
 import java.util.Properties;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +26,7 @@ public class SentenceTaggingService {
 		try {
 //			logger.info("Stanford Model Path: " + res.getFile().getPath());
 //			this.tagger = new MaxentTagger(res.getFile().getPath());
-			this.tagger = new MaxentTagger("english-left3words-distsim.tagger");
+//			this.tagger = new MaxentTagger("english-left3words-distsim.tagger");
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -39,16 +37,16 @@ public class SentenceTaggingService {
 		return this.tagger.tagString(text).split("\\s|-");
 	}
 
-	public List<String> lemmas(Sentence sentence) {
-		Properties props = new Properties();
-		props.setProperty("pos.model", "english-left3words-distsim.tagger");
-		List<String> lemmasList = sentence.lemmas(props);
-		// remove all punctuations other than @ or #. Those are special chars for idioms
-		lemmasList = lemmasList.stream()
-				.filter(x -> !Pattern.matches("\\p{Punct}", x) || x.contains("@") || x.contains("#"))
-				.collect(Collectors.toList());
-		return lemmasList;
-	}
+//	public List<String> lemmas(Sentence sentence) {
+//		Properties props = new Properties();
+//		props.setProperty("pos.model", "english-left3words-distsim.tagger");
+//		List<String> lemmasList = sentence.lemmas(props);
+//		// remove all punctuations other than @ or #. Those are special chars for idioms
+//		lemmasList = lemmasList.stream()
+//				.filter(x -> !Pattern.matches("\\p{Punct}", x) || x.contains("@") || x.contains("#"))
+//				.collect(Collectors.toList());
+//		return lemmasList;
+//	}
 
 	public List<String> posTags(Sentence sentence) {
 		Properties props = new Properties();
@@ -82,9 +80,9 @@ public class SentenceTaggingService {
 		return posTags(sentence).toArray(new String[0]);
 	}
 
-	public List<String> lemmas(String s) {
-		Sentence sentence = new Sentence(s);
-		return lemmas(sentence);
-	}
+//	public List<String> lemmas(String s) {
+//		Sentence sentence = new Sentence(s);
+//		return lemmas(sentence);
+//	}
 
 }

@@ -1,14 +1,16 @@
 package com.engin.focab.services.impl;
 
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Properties;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.engin.focab.jpa.corpus.IdiomAnalysis;
@@ -18,146 +20,42 @@ import edu.stanford.nlp.simple.Sentence;
 
 @Component
 public class IdiomDetectionService {
+
 	@Autowired
 	private IndexedSearchService indexedSearchService;
-	@Autowired
-	private SentenceTaggingService sentenceTaggingService;
-	@Value("${idiom.detector.gapUnit}")
-	private int gapUnit;
 
+	private static final Set<String> WORDS_TO_SKIP = Set.of("the", "a", "in", "of", "to", "on", "be", "and", "out",
+			"have", "for", "it", "not", "at", "or", "you");
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-	private StringBuilder trace;
+	private final Pattern punctuationPattern = Pattern.compile(".*\\p{Punct}.*");
 
-	public IdiomAnalysis detectIdioms(String[] taggedSentence, Sentence sentence) {
-
-		HashSet<String> trackedWords = new HashSet<String>();
-		HashSet<String> previousSet = new HashSet<String>();
-		HashSet<String> currentSet = new HashSet<String>();
+	public IdiomAnalysis detectIdioms(Sentence sentence) {
 		HashSet<String> foundSet = new HashSet<String>();
-		trace = new StringBuilder("<br>*****************************************************<br>");
-		log("Detect idioms for: " + Arrays.toString(taggedSentence), null);
-		log("*****************************************************", null);
-		for (int i = 0; i < taggedSentence.length; i++) {
-			String word = taggedSentence[i];
-			log("############## Processing " + word, null);
+		Properties props = new Properties();
+		props.setProperty("pos.model", "english-left3words-distsim.tagger");
+		List<String> sentenceLemmas = sentence.lemmas(props);
+		String sentenceInLemmas = String.join(" ", sentenceLemmas);
 
-			if (!sentenceTaggingService.extractTag(word, false).equals("PRP")
-					&& !sentenceTaggingService.extractTag(word, false).equals("DT")
-					&& !sentenceTaggingService.extractTag(word, false).equals("TO")
-					&& !sentenceTaggingService.extractTag(word, false).equals("POS")
-					&& !sentenceTaggingService.extractTag(word, false).equals(".")) {
-				HashSet<String> idioms = searchWordInIdiomRepository(sentenceTaggingService.extractWord(word));
-
-				currentSet.retainAll(idioms);
-				log("@Current set: ", currentSet);
-
-				if (currentSet.isEmpty()) {
-
-					if (!previousSet.isEmpty()) {
-						log("@Previous set: ", previousSet);
-						log("@Last check with tracked words: ", trackedWords);
-						foundSet.addAll(findValidIdioms(trackedWords, sentence));
-					}
-					trackedWords.clear();
-					trackedWords.add(word);
-				} else {
-					trackedWords.add(word);
-				}
-				log("@Current tracked words: ", trackedWords);
-
-				if (currentSet.isEmpty() && i < taggedSentence.length - 1) {
-					currentSet.addAll(idioms);
-				} else {
-
-				}
-				previousSet.clear();
-				previousSet.addAll(currentSet);
-
-			}else {
-			log("skipped...", null);
+		// Loop for each word and find the candidate idioms, keep them in a map with
+		// associated word index
+		HashMap<String, String> idioms = new HashMap<>();
+		StringBuilder lemmaString = new StringBuilder();
+		for (int i = 0; i < sentenceLemmas.size(); i++) {
+			String lemma = sentenceLemmas.get(i);
+			Matcher m = punctuationPattern.matcher(lemma);
+			if (!m.matches() && !WORDS_TO_SKIP.contains(lemma)) {
+				lemmaString.append("|" + lemma);
 			}
 		}
-		// Sentence is over, check for valid idioms once more
-		if (!currentSet.isEmpty()) {
-			foundSet.addAll(findValidIdioms(trackedWords, sentence));
-		}
-		log("@@@@@ found:",foundSet);
-		return new IdiomAnalysis(foundSet, trace.toString());
-
-	}
-
-	private HashSet<String> findValidIdioms(HashSet<String> trackedWords, Sentence sentence) {
-		log("@Validity check for tracked words: ", trackedWords);
-
-		HashSet<String> foundSet = new HashSet<String>();
-		String idiomText = trackedWords.stream().map(x -> sentenceTaggingService.extractWord(x))
-				.collect(Collectors.joining(" "));
-
-		if (!idiomText.equals("")) {
-			HashSet<String> idiomSet = searchWordInIdiomRepository(idiomText);
-
-			List<String> sentenceLemmas = sentenceTaggingService.lemmas(sentence);
-
-			for (String idiom : idiomSet) {
-				if (isIdiomValidForSentence(idiom, sentenceLemmas)) {
-					foundSet.add(idiom);
+		if (lemmaString.length() > 1) {
+			idioms.putAll(indexedSearchService.findIdiomsByWordWithRegex(lemmaString.toString().substring(1)));
+			idioms.forEach((k, v) -> {
+				if (sentenceInLemmas.matches(v)) {
+					foundSet.add(k);
 				}
-			}
+			});
 		}
-		return foundSet;
 
+		return new IdiomAnalysis(foundSet, "");
 	}
-
-	private boolean isIdiomValidForSentence(String idiom, List<String> sentenceLemmas) {
-
-		Sentence idiomSentence = new Sentence(idiom.toLowerCase());
-		List<String> idiomLemmas = sentenceTaggingService.lemmas(idiomSentence);
-		;
-		int lastSeen = -1;
-		int gap = 0;
-		int counter = 0;
-		int expectedGap = 0;
-		for (String idiomLemma : idiomLemmas) {
-			if (!idiomLemma.contains("@") && !idiomLemma.contains("#")) { // no gap
-				int firstIndex = sentenceLemmas.indexOf(idiomLemma);
-				if (firstIndex > lastSeen) {
-					gap = lastSeen > -1 ? firstIndex - lastSeen - 1 : 0;
-
-					if (gap > expectedGap * gapUnit || gap < expectedGap) {
-						break;
-					}
-					expectedGap = 0;
-					lastSeen = firstIndex;
-				} else {
-					break;
-				}
-			} else { // expect gap
-				expectedGap++;
-			}
-			counter++;
-		}
-		log("@@@Searching for " + idiomLemmas.size() + " words, found " + counter + " words for idiom: " +idiom,null);
-		return counter == idiomLemmas.size() ? true : false;
-	}
-
-	private HashSet<String> searchWordInIdiomRepository(String word) {
-		return indexedSearchService.findIdiomsByWord(word);
-	}
-
-	private void log(String message, HashSet<String> set) {
-
-		if (set != null) {
-			String s = set.stream().collect(Collectors.joining(","));
-			trace.append(message + s);
-//			trace.append(System.lineSeparator());
-			trace.append("<br>");
-			logger.debug(message + s);
-		} else {
-			trace.append(message);
-//			trace.append(System.lineSeparator());
-			trace.append("<br>");
-			logger.debug(message);
-		}
-	}
-
 }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.engin.focab.services.PhrasalVerbsDetectionService;
-import com.engin.focab.services.impl.SentenceTaggingService;
 
 import edu.stanford.nlp.simple.Sentence;
 
@@ -23,14 +22,9 @@ public class PhrasalVerbDetectionController {
 	@Qualifier("constituencyParser")
 	private PhrasalVerbsDetectionService phrasalDetectionService;
 
-	@Autowired
-	private SentenceTaggingService sentenceTaggingService;
-
 	@GetMapping("/detectPhrasalVerb")
 	@ResponseBody
 	public List<String> detectIdioms(@RequestParam String sentence) {
-		String[] taggedSentence = sentenceTaggingService.tagString(sentence);
-
 		return phrasalDetectionService.detectPhrasalVerbs(new Sentence(sentence));
 	}
 

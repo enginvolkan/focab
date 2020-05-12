@@ -16,7 +16,6 @@ import com.engin.focab.jpa.Definition;
 import com.engin.focab.jpa.Vocabulary;
 import com.engin.focab.repository.VocabularyRepository;
 import com.engin.focab.services.impl.IdiomDetectionService;
-import com.engin.focab.services.impl.SentenceTaggingService;
 
 import edu.stanford.nlp.simple.Sentence;
 
@@ -27,15 +26,12 @@ public class IdiomDetectionController {
 	@Autowired
 	private IdiomDetectionService idiomDetectionService;
 	@Autowired
-	private SentenceTaggingService sentenceTaggingService;
-	@Autowired
 	private VocabularyRepository rep;
 
 	@GetMapping("/detectIdiom")
 	@ResponseBody
 	public Set<String> detectIdioms(@RequestParam String sentence) {
-		String[] taggedSentence = sentenceTaggingService.tagString(sentence);
-		return idiomDetectionService.detectIdioms(taggedSentence, new Sentence(sentence.toLowerCase())).getIdiomSet();
+		return idiomDetectionService.detectIdioms(new Sentence(sentence)).getIdiomSet();
 	}
 
 	@GetMapping("/delete")

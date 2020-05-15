@@ -445,3 +445,32 @@
 [Mon May 11 15:39:54.494 2020] [6364] accepting connections
 [Mon May 11 15:39:54.496 2020] [6952] prereading 3 indexes
 [Mon May 11 15:39:54.525 2020] [6952] prereaded 3 indexes in 0.029 sec
+[Tue May 12 09:27:23.015 2020] [6856] listening on 127.0.0.1:9306
+[Tue May 12 09:27:23.015 2020] [6856] listening on 127.0.0.1:9080
+[Tue May 12 09:27:23.036 2020] [6856] accepting connections
+[Tue May 12 09:27:23.051 2020] [7112] prereading 3 indexes
+[Tue May 12 09:27:23.053 2020] [7112] prereaded 3 indexes in 0.001 sec
+[Tue May 12 17:00:04.855 2020] [6856] shutdown complete
+[Tue May 12 17:01:37.653 2020] [19464] listening on 127.0.0.1:9306
+[Tue May 12 17:01:37.653 2020] [19464] listening on 127.0.0.1:9080
+[Tue May 12 17:01:37.745 2020] [19464] rotating index 'idiom': success
+[Tue May 12 17:01:37.824 2020] [19464] rotating index 'phrasal': success
+[Tue May 12 17:01:37.903 2020] [19464] rotating index 'commonwords': success
+[Tue May 12 17:01:37.910 2020] [16128] prereading 3 indexes
+[Tue May 12 17:01:37.910 2020] [19464] accepting connections
+[Tue May 12 17:01:37.910 2020] [16128] prereaded 3 indexes in 0.000 sec
+[Tue May 12 21:49:23.460 2020] [19464] shutdown complete
+[Tue May 12 21:49:42.656 2020] [4648] listening on 127.0.0.1:9306
+[Tue May 12 21:49:42.657 2020] [4648] listening on 127.0.0.1:9080
+[Tue May 12 21:49:42.778 2020] [4648] rotating index 'idiom': success
+[Tue May 12 21:49:42.881 2020] [4648] rotating index 'phrasal': success
+[Tue May 12 21:49:42.992 2020] [4648] rotating index 'commonwords': success
+[Tue May 12 21:49:43.000 2020] [4084] prereading 3 indexes
+[Tue May 12 21:49:43.000 2020] [4648] accepting connections
+[Tue May 12 21:49:43.000 2020] [4084] prereaded 3 indexes in 0.000 sec
+[Fri May 15 14:22:24.767 2020] [4648] shutdown complete
+[Fri May 15 14:22:47.669 2020] [6864] listening on 127.0.0.1:9306
+[Fri May 15 14:22:47.669 2020] [6864] listening on 127.0.0.1:9080
+[Fri May 15 14:22:47.712 2020] [6864] accepting connections
+[Fri May 15 14:22:47.730 2020] [7188] prereading 3 indexes
+[Fri May 15 14:22:47.738 2020] [7188] prereaded 3 indexes in 0.007 sec

@@ -1,8 +1,11 @@
 package com.engin.focab;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +15,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import com.engin.focab.cronjob.IdiomRegexBuilderCronJob;
+import com.engin.focab.jpa.corpus.CommonWordModel;
+import com.engin.focab.repository.CommonWordRepository;
 
 @SpringBootApplication
 @EnableScheduling
@@ -19,6 +24,8 @@ public class FocabApplication {
 
 	@Autowired
 	IdiomRegexBuilderCronJob idiomLemmaBuilderCronJob;
+	@Autowired
+	CommonWordRepository commonWordRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(FocabApplication.class, args);
@@ -41,6 +48,19 @@ public class FocabApplication {
 		map.put("PRP NN", "NN");
 		map.put("JJ CD", "CD");
 		return map;
+	}
+
+	@Bean
+	public List<Set<String>> commonWords() {
+		List<CommonWordModel> commonWords = commonWordRepository.findAll();
+		List<Set<String>> listOfSets = new ArrayList<Set<String>>();
+
+		for (int i = 0; i < 5; i++) {
+			listOfSets.add(new HashSet<String>());
+		}
+
+		commonWords.stream().forEach(x -> listOfSets.get(x.getLevel()).add(x.getWord()));
+		return listOfSets;
 	}
 
 	@Bean

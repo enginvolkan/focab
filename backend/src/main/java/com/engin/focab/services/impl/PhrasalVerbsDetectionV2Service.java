@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -36,14 +35,11 @@ public class PhrasalVerbsDetectionV2Service implements PhrasalVerbsDetectionServ
 	private StringBuilder trace = new StringBuilder();
 
 	@Override
-	public List<String> detectPhrasalVerbs(Sentence sentence) {
+	public List<String> detectPhrasalVerbs(Sentence sentence, List<String> sentenceLemmas) {
 //		props.setProperty("parse.model", "englishPCFG.ser.gz");
 //		Tree tree = sentence.parse(props);
 
 		List<String> words = sentence.words();
-		Properties props = new Properties();
-		props.setProperty("pos.model", "english-left3words-distsim.tagger");
-		List<String> lemmas = sentence.lemmas(props);
 		List<String> tags = sentence.posTags();
 		List<InnerPhrasalVerb> candidates = new LinkedList<InnerPhrasalVerb>();
 		List<String> found = new ArrayList<String>();
@@ -53,7 +49,7 @@ public class PhrasalVerbsDetectionV2Service implements PhrasalVerbsDetectionServ
 			if (verbIndex == 0) {
 				// check if it is a verb
 				if (tags.get(i).startsWith("VB")) {
-					candidates = findCandidates(lemmas.get(i));
+					candidates = findCandidates(sentenceLemmas.get(i));
 
 					if (!candidates.isEmpty()) {
 						// validate candidates for the verb in focus
@@ -65,7 +61,7 @@ public class PhrasalVerbsDetectionV2Service implements PhrasalVerbsDetectionServ
 
 							for (int j = i + 1; j < words.size(); j++) {
 								// loop for the rest of the words and record matched words
-								if (phrasalVerb.words[lastMatch + 1].equals(lemmas.get(j))) {
+								if (phrasalVerb.words[lastMatch + 1].equals(sentenceLemmas.get(j))) {
 									matchIndex[lastMatch + 1] = j;
 									lastMatch++;
 									if (lastMatch + 1 == phrasalVerb.words.length) {

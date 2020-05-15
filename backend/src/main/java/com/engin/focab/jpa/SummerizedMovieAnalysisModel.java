@@ -43,7 +43,8 @@ public class SummerizedMovieAnalysisModel {
 
 	private long idiomAverageDuration;
 	private long phrasalAverageDuration;
-	private long commonWordAverageDuration;
+	private long singleAverageDuration;
+	private long singleMassDuration;
 
 	/////////////////////
 	// Getters and Setters
@@ -97,12 +98,20 @@ public class SummerizedMovieAnalysisModel {
 		this.phrasalAverageDuration = phrasalAverageDuration;
 	}
 
-	public long getCommonWordAverageDuration() {
-		return commonWordAverageDuration;
+	public long getSingleAverageDuration() {
+		return singleAverageDuration;
 	}
 
-	public void setCommonWordAverageDuration(long commonWordAverageDuration) {
-		this.commonWordAverageDuration = commonWordAverageDuration;
+	public void setSingleAverageDuration(long singleAverageDuration) {
+		this.singleAverageDuration = singleAverageDuration;
+	}
+
+	public long getSingleMassDuration() {
+		return singleMassDuration;
+	}
+
+	public void setSingleMassDuration(long singleMassDuration) {
+		this.singleMassDuration = singleMassDuration;
 	}
 
 }

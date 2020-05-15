@@ -6,6 +6,6 @@ import edu.stanford.nlp.simple.Sentence;
 
 public interface PhrasalVerbsDetectionService {
 
-	List<String> detectPhrasalVerbs(Sentence sentence);
+	List<String> detectPhrasalVerbs(Sentence sentence, List<String> sentenceLemmas);
 
 }

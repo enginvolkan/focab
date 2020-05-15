@@ -3,7 +3,6 @@ package com.engin.focab.services.impl;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Properties;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,11 +28,9 @@ public class IdiomDetectionService {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 	private final Pattern punctuationPattern = Pattern.compile(".*\\p{Punct}.*");
 
-	public IdiomAnalysis detectIdioms(Sentence sentence) {
+	public IdiomAnalysis detectIdioms(Sentence sentence, List<String> sentenceLemmas) {
 		HashSet<String> foundSet = new HashSet<String>();
-		Properties props = new Properties();
-		props.setProperty("pos.model", "english-left3words-distsim.tagger");
-		List<String> sentenceLemmas = sentence.lemmas(props);
+
 		String sentenceInLemmas = String.join(" ", sentenceLemmas);
 
 		// Loop for each word and find the candidate idioms, keep them in a map with

@@ -59,7 +59,7 @@ public class FocabApplication {
 			listOfSets.add(new HashSet<String>());
 		}
 
-		commonWords.stream().forEach(x -> listOfSets.get(x.getLevel()).add(x.getWord()));
+		commonWords.stream().forEach(x -> listOfSets.get(x.getLevel()).add(x.getText()));
 		return listOfSets;
 	}
 

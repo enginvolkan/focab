@@ -2,45 +2,16 @@ package com.engin.focab.jpa.corpus;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.engin.focab.jpa.Vocabulary;
 
 @Entity
 @Table(name = "idioms")
-public class IdiomModel {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-
-	@Column(columnDefinition = "TEXT")
-	private String idiom;
-
-	@Column(columnDefinition = "TEXT")
-	private String description;
+public class IdiomModel extends Vocabulary {
 
 	@Column(columnDefinition = "TEXT")
 	private String regex;
-
-	public IdiomModel() {
-		super();
-	}
-
-	public IdiomModel(String idiom) {
-		super();
-		this.idiom = idiom;
-	}
-
-	public IdiomModel(String string, String string2) {
-		this(string2);
-		this.id = Integer.parseInt(string);
-	}
-
-	public String getIdiom() {
-		return idiom;
-	}
 
 	public void setRegex(String regex) {
 		this.regex = regex;
@@ -52,7 +23,7 @@ public class IdiomModel {
 
 	@Override
 	public String toString() {
-		return idiom;
+		return super.getText();
 	}
 
 }

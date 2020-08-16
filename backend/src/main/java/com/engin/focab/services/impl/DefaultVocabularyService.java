@@ -7,6 +7,7 @@ import javax.persistence.EntityExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.engin.focab.jpa.SingleWord;
 import com.engin.focab.jpa.Vocabulary;
 import com.engin.focab.repository.VocabularyRepository;
 import com.engin.focab.services.VocabularyService;
@@ -25,7 +26,7 @@ public class DefaultVocabularyService implements VocabularyService {
 	@Override
 	public Vocabulary createVocabulary(String text) {
 		try {
-			Vocabulary vocabulary = new Vocabulary(text);
+			SingleWord vocabulary = new SingleWord(text);
 			vocabularyRepository.save(vocabulary);
 			return vocabulary;
 		} catch (EntityExistsException e) {

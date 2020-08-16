@@ -474,3 +474,553 @@
 [Fri May 15 14:22:47.712 2020] [6864] accepting connections
 [Fri May 15 14:22:47.730 2020] [7188] prereading 3 indexes
 [Fri May 15 14:22:47.738 2020] [7188] prereaded 3 indexes in 0.007 sec
+[Fri May 15 22:28:37.523 2020] [17278] watchdog: main process 17279 forked ok
+[Fri May 15 22:28:37.523 2020] [17279] listening on 127.0.0.1:9306
+[Fri May 15 22:28:37.524 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:28:40.527 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:28:43.528 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:28:46.532 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:28:49.535 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:28:52.538 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:28:55.542 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:28:58.545 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:29:01.548 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:29:04.551 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:29:07.553 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:29:10.557 2020] [17279] bind() failed on 127.0.0.1, retrying...
+[Fri May 15 22:29:13.557 2020] [17279] FATAL: bind() failed on 127.0.0.1: Address already in use
+[Fri May 15 22:29:13.557 2020] [17279] shutdown complete
+[Fri May 15 22:29:13.558 2020] [17278] watchdog: main process 17279 exited cleanly (exit code 1), shutting down
+[Fri May 15 22:40:57.089 2020] [19299] watchdog: main process 19300 forked ok
+[Fri May 15 22:40:57.090 2020] [19300] listening on 127.0.0.1:9306
+[Fri May 15 22:40:57.090 2020] [19300] listening on 127.0.0.1:9080
+[Fri May 15 22:40:57.101 2020] [19300] WARNING: rotating index 'idiom': .new preload failed: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'
+[Fri May 15 22:40:57.101 2020] [19300] FATAL: rotating index 'idiom': rollback rename '/home/engin/focab/sphinx/indexes/idiom/idiom.sdh' to '/home/engin/focab/sphinx/indexes/idiom/idiom.new.sdh' failed: No such file or directory
+[Fri May 15 22:40:57.101 2020] [19300] shutdown complete
+[Fri May 15 22:40:57.101 2020] [19299] watchdog: main process 19300 exited cleanly (exit code 1), shutting down
+[Fri May 15 22:41:43.998 2020] [19345] watchdog: main process 19346 forked ok
+[Fri May 15 22:41:43.998 2020] [19346] listening on 127.0.0.1:9306
+[Fri May 15 22:41:43.998 2020] [19346] listening on 127.0.0.1:9080
+[Fri May 15 22:41:44.020 2020] [19346] rotating index 'idiom': success
+[Fri May 15 22:41:44.023 2020] [19346] rotating index 'phrasal': success
+[Fri May 15 22:41:44.025 2020] [19346] rotating index 'commonwords': success
+[Fri May 15 22:41:44.026 2020] [19365] prereading 3 indexes
+[Fri May 15 22:41:44.026 2020] [19346] accepting connections
+[Fri May 15 22:41:44.026 2020] [19365] prereaded 3 indexes in 0.001 sec
+[Sun May 17 15:43:36.061 2020] [2428] watchdog: main process 2429 forked ok
+[Sun May 17 15:43:36.061 2020] [2429] FATAL: failed to create pid file '/home/engin/focab/sphinx/searchd.pid': Permission denied
+[Sun May 17 15:43:36.063 2020] [2429] shutdown complete
+[Sun May 17 15:43:36.063 2020] [2428] watchdog: main process 2429 exited cleanly (exit code 1), shutting down
+[Mon May 18 15:14:08.147 2020] [2202] watchdog: main process 2203 forked ok
+[Mon May 18 15:14:08.151 2020] [2203] listening on 127.0.0.1:9306
+[Mon May 18 15:14:08.151 2020] [2203] listening on 127.0.0.1:9080
+[Mon May 18 15:14:08.168 2020] [2203] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Mon May 18 15:14:08.169 2020] [2203] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Mon May 18 15:14:08.170 2020] [2203] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Mon May 18 15:14:08.170 2020] [2203] FATAL: no valid indexes to serve
+[Mon May 18 15:14:08.172 2020] [2203] shutdown complete
+[Mon May 18 15:14:08.173 2020] [2202] watchdog: main process 2203 exited cleanly (exit code 1), shutting down
+[Thu May 21 08:16:10.078 2020] [2224] watchdog: main process 2225 forked ok
+[Thu May 21 08:16:10.080 2020] [2225] listening on 127.0.0.1:9306
+[Thu May 21 08:16:10.080 2020] [2225] listening on 127.0.0.1:9080
+[Thu May 21 08:16:10.108 2020] [2225] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 08:16:10.112 2020] [2225] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 08:16:10.114 2020] [2225] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 08:16:10.114 2020] [2225] FATAL: no valid indexes to serve
+[Thu May 21 08:16:10.115 2020] [2225] shutdown complete
+[Thu May 21 08:16:10.116 2020] [2224] watchdog: main process 2225 exited cleanly (exit code 1), shutting down
+[Thu May 21 14:30:02.185 2020] [2247] watchdog: main process 2248 forked ok
+[Thu May 21 14:30:02.187 2020] [2248] listening on 127.0.0.1:9306
+[Thu May 21 14:30:02.188 2020] [2248] listening on 127.0.0.1:9080
+[Thu May 21 14:30:02.210 2020] [2248] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:30:02.212 2020] [2248] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:30:02.219 2020] [2248] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:30:02.219 2020] [2248] FATAL: no valid indexes to serve
+[Thu May 21 14:30:02.220 2020] [2248] shutdown complete
+[Thu May 21 14:30:02.221 2020] [2247] watchdog: main process 2248 exited cleanly (exit code 1), shutting down
+[Thu May 21 14:30:29.754 2020] [3235] watchdog: main process 3236 forked ok
+[Thu May 21 14:30:29.755 2020] [3236] listening on 127.0.0.1:9306
+[Thu May 21 14:30:29.755 2020] [3236] listening on 127.0.0.1:9080
+[Thu May 21 14:30:29.766 2020] [3236] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:30:29.767 2020] [3236] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:30:29.768 2020] [3236] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:30:29.768 2020] [3236] FATAL: no valid indexes to serve
+[Thu May 21 14:30:29.768 2020] [3236] shutdown complete
+[Thu May 21 14:30:29.769 2020] [3235] watchdog: main process 3236 exited cleanly (exit code 1), shutting down
+[Thu May 21 14:31:24.055 2020] [4429] watchdog: main process 4430 forked ok
+[Thu May 21 14:31:24.055 2020] [4430] listening on 127.0.0.1:9306
+[Thu May 21 14:31:24.055 2020] [4430] listening on 127.0.0.1:9080
+[Thu May 21 14:31:24.064 2020] [4430] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:31:24.065 2020] [4430] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:31:24.065 2020] [4430] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:31:24.065 2020] [4430] FATAL: no valid indexes to serve
+[Thu May 21 14:31:24.066 2020] [4430] shutdown complete
+[Thu May 21 14:31:24.066 2020] [4429] watchdog: main process 4430 exited cleanly (exit code 1), shutting down
+[Thu May 21 14:32:21.293 2020] [6596] watchdog: main process 6597 forked ok
+[Thu May 21 14:32:21.293 2020] [6597] listening on 127.0.0.1:9306
+[Thu May 21 14:32:21.293 2020] [6597] listening on 127.0.0.1:9080
+[Thu May 21 14:32:21.302 2020] [6597] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:32:21.303 2020] [6597] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:32:21.303 2020] [6597] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:32:21.303 2020] [6597] FATAL: no valid indexes to serve
+[Thu May 21 14:32:21.304 2020] [6597] shutdown complete
+[Thu May 21 14:32:21.304 2020] [6596] watchdog: main process 6597 exited cleanly (exit code 1), shutting down
+[Thu May 21 14:33:50.284 2020] [2215] watchdog: main process 2216 forked ok
+[Thu May 21 14:33:50.288 2020] [2216] listening on 127.0.0.1:9306
+[Thu May 21 14:33:50.288 2020] [2216] listening on 127.0.0.1:9080
+[Thu May 21 14:33:50.309 2020] [2216] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:33:50.312 2020] [2216] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:33:50.313 2020] [2216] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:33:50.313 2020] [2216] FATAL: no valid indexes to serve
+[Thu May 21 14:33:50.314 2020] [2216] shutdown complete
+[Thu May 21 14:33:50.315 2020] [2215] watchdog: main process 2216 exited cleanly (exit code 1), shutting down
+[Thu May 21 14:35:22.796 2020] [2222] watchdog: main process 2223 forked ok
+[Thu May 21 14:35:22.799 2020] [2223] listening on 127.0.0.1:9306
+[Thu May 21 14:35:22.799 2020] [2223] listening on 127.0.0.1:9080
+[Thu May 21 14:35:22.820 2020] [2223] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:35:22.824 2020] [2223] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:35:22.826 2020] [2223] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 14:35:22.826 2020] [2223] FATAL: no valid indexes to serve
+[Thu May 21 14:35:22.828 2020] [2223] shutdown complete
+[Thu May 21 14:35:22.828 2020] [2222] watchdog: main process 2223 exited cleanly (exit code 1), shutting down
+[Thu May 21 20:54:42.848 2020] [2187] watchdog: main process 2188 forked ok
+[Thu May 21 20:54:42.851 2020] [2188] listening on 127.0.0.1:9306
+[Thu May 21 20:54:42.851 2020] [2188] listening on 127.0.0.1:9080
+[Thu May 21 20:54:42.864 2020] [2188] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 20:54:42.866 2020] [2188] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 20:54:42.867 2020] [2188] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 20:54:42.867 2020] [2188] FATAL: no valid indexes to serve
+[Thu May 21 20:54:42.868 2020] [2188] shutdown complete
+[Thu May 21 20:54:42.868 2020] [2187] watchdog: main process 2188 exited cleanly (exit code 1), shutting down
+[Thu May 21 20:55:32.212 2020] [4254] watchdog: main process 4256 forked ok
+[Thu May 21 20:55:32.213 2020] [4256] listening on 127.0.0.1:9306
+[Thu May 21 20:55:32.213 2020] [4256] listening on 127.0.0.1:9080
+[Thu May 21 20:55:32.221 2020] [4256] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 20:55:32.222 2020] [4256] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 20:55:32.223 2020] [4256] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 20:55:32.223 2020] [4256] FATAL: no valid indexes to serve
+[Thu May 21 20:55:32.223 2020] [4256] shutdown complete
+[Thu May 21 20:55:32.224 2020] [4254] watchdog: main process 4256 exited cleanly (exit code 1), shutting down
+[Thu May 21 21:00:01.807 2020] [11814] watchdog: main process 11815 forked ok
+[Thu May 21 21:00:01.811 2020] [11815] listening on 127.0.0.1:9306
+[Thu May 21 21:00:01.811 2020] [11815] listening on 127.0.0.1:9080
+[Thu May 21 21:00:01.819 2020] [11815] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 21:00:01.820 2020] [11815] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 21:00:01.820 2020] [11815] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 21:00:01.820 2020] [11815] FATAL: no valid indexes to serve
+[Thu May 21 21:00:01.822 2020] [11815] shutdown complete
+[Thu May 21 21:00:01.823 2020] [11814] watchdog: main process 11815 exited cleanly (exit code 1), shutting down
+[Thu May 21 21:04:33.358 2020] [2222] watchdog: main process 2224 forked ok
+[Thu May 21 21:04:33.362 2020] [2224] listening on 127.0.0.1:9306
+[Thu May 21 21:04:33.362 2020] [2224] listening on 127.0.0.1:9080
+[Thu May 21 21:04:33.386 2020] [2224] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 21:04:33.387 2020] [2224] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 21:04:33.388 2020] [2224] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 21 21:04:33.388 2020] [2224] FATAL: no valid indexes to serve
+[Thu May 21 21:04:33.389 2020] [2224] shutdown complete
+[Thu May 21 21:04:33.390 2020] [2222] watchdog: main process 2224 exited cleanly (exit code 1), shutting down
+[Fri May 22 10:28:18.323 2020] [2228] watchdog: main process 2229 forked ok
+[Fri May 22 10:28:18.325 2020] [2229] listening on 127.0.0.1:9306
+[Fri May 22 10:28:18.325 2020] [2229] listening on 127.0.0.1:9080
+[Fri May 22 10:28:18.343 2020] [2229] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Fri May 22 10:28:18.346 2020] [2229] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Fri May 22 10:28:18.350 2020] [2229] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Fri May 22 10:28:18.350 2020] [2229] FATAL: no valid indexes to serve
+[Fri May 22 10:28:18.351 2020] [2229] shutdown complete
+[Fri May 22 10:28:18.352 2020] [2228] watchdog: main process 2229 exited cleanly (exit code 1), shutting down
+[Sun May 24 14:34:24.752 2020] [2229] watchdog: main process 2230 forked ok
+[Sun May 24 14:34:24.758 2020] [2230] listening on 127.0.0.1:9306
+[Sun May 24 14:34:24.758 2020] [2230] listening on 127.0.0.1:9080
+[Sun May 24 14:34:24.776 2020] [2230] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Sun May 24 14:34:24.778 2020] [2230] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Sun May 24 14:34:24.783 2020] [2230] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Sun May 24 14:34:24.783 2020] [2230] FATAL: no valid indexes to serve
+[Sun May 24 14:34:24.787 2020] [2230] shutdown complete
+[Sun May 24 14:34:24.787 2020] [2229] watchdog: main process 2230 exited cleanly (exit code 1), shutting down
+[Tue May 26 00:48:17.581 2020] [2209] watchdog: main process 2210 forked ok
+[Tue May 26 00:48:17.585 2020] [2210] listening on 127.0.0.1:9306
+[Tue May 26 00:48:17.586 2020] [2210] listening on 127.0.0.1:9080
+[Tue May 26 00:48:17.607 2020] [2210] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Tue May 26 00:48:17.609 2020] [2210] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Tue May 26 00:48:17.616 2020] [2210] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Tue May 26 00:48:17.616 2020] [2210] FATAL: no valid indexes to serve
+[Tue May 26 00:48:17.617 2020] [2210] shutdown complete
+[Tue May 26 00:48:17.618 2020] [2209] watchdog: main process 2210 exited cleanly (exit code 1), shutting down
+[Tue May 26 08:26:10.084 2020] [2238] watchdog: main process 2239 forked ok
+[Tue May 26 08:26:10.086 2020] [2239] listening on 127.0.0.1:9306
+[Tue May 26 08:26:10.086 2020] [2239] listening on 127.0.0.1:9080
+[Tue May 26 08:26:10.111 2020] [2239] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Tue May 26 08:26:10.115 2020] [2239] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Tue May 26 08:26:10.118 2020] [2239] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Tue May 26 08:26:10.118 2020] [2239] FATAL: no valid indexes to serve
+[Tue May 26 08:26:10.120 2020] [2239] shutdown complete
+[Tue May 26 08:26:10.122 2020] [2238] watchdog: main process 2239 exited cleanly (exit code 1), shutting down
+[Wed May 27 09:22:18.878 2020] [2224] watchdog: main process 2225 forked ok
+[Wed May 27 09:22:18.884 2020] [2225] listening on 127.0.0.1:9306
+[Wed May 27 09:22:18.884 2020] [2225] listening on 127.0.0.1:9080
+[Wed May 27 09:22:18.899 2020] [2225] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed May 27 09:22:18.903 2020] [2225] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed May 27 09:22:18.904 2020] [2225] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed May 27 09:22:18.905 2020] [2225] FATAL: no valid indexes to serve
+[Wed May 27 09:22:18.905 2020] [2225] shutdown complete
+[Wed May 27 09:22:18.906 2020] [2224] watchdog: main process 2225 exited cleanly (exit code 1), shutting down
+[Thu May 28 09:30:08.065 2020] [2202] watchdog: main process 2203 forked ok
+[Thu May 28 09:30:08.071 2020] [2203] listening on 127.0.0.1:9306
+[Thu May 28 09:30:08.071 2020] [2203] listening on 127.0.0.1:9080
+[Thu May 28 09:30:08.095 2020] [2203] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu May 28 09:30:08.098 2020] [2203] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu May 28 09:30:08.100 2020] [2203] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu May 28 09:30:08.100 2020] [2203] FATAL: no valid indexes to serve
+[Thu May 28 09:30:08.101 2020] [2203] shutdown complete
+[Thu May 28 09:30:08.101 2020] [2202] watchdog: main process 2203 exited cleanly (exit code 1), shutting down
+[Sun May 31 20:32:13.038 2020] [2245] watchdog: main process 2246 forked ok
+[Sun May 31 20:32:13.043 2020] [2246] listening on 127.0.0.1:9306
+[Sun May 31 20:32:13.043 2020] [2246] listening on 127.0.0.1:9080
+[Sun May 31 20:32:13.059 2020] [2246] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Sun May 31 20:32:13.062 2020] [2246] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Sun May 31 20:32:13.063 2020] [2246] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Sun May 31 20:32:13.063 2020] [2246] FATAL: no valid indexes to serve
+[Sun May 31 20:32:13.064 2020] [2246] shutdown complete
+[Sun May 31 20:32:13.065 2020] [2245] watchdog: main process 2246 exited cleanly (exit code 1), shutting down
+[Fri Jun  5 17:36:53.482 2020] [2278] watchdog: main process 2279 forked ok
+[Fri Jun  5 17:36:53.485 2020] [2279] listening on 127.0.0.1:9306
+[Fri Jun  5 17:36:53.485 2020] [2279] listening on 127.0.0.1:9080
+[Fri Jun  5 17:36:53.503 2020] [2279] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Fri Jun  5 17:36:53.504 2020] [2279] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Fri Jun  5 17:36:53.505 2020] [2279] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Fri Jun  5 17:36:53.505 2020] [2279] FATAL: no valid indexes to serve
+[Fri Jun  5 17:36:53.506 2020] [2279] shutdown complete
+[Fri Jun  5 17:36:53.507 2020] [2278] watchdog: main process 2279 exited cleanly (exit code 1), shutting down
+[Sat Jun  6 08:46:25.000 2020] [2286] watchdog: main process 2287 forked ok
+[Sat Jun  6 08:46:25.001 2020] [2287] listening on 127.0.0.1:9306
+[Sat Jun  6 08:46:25.001 2020] [2287] listening on 127.0.0.1:9080
+[Sat Jun  6 08:46:25.012 2020] [2287] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Sat Jun  6 08:46:25.013 2020] [2287] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Sat Jun  6 08:46:25.013 2020] [2287] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Sat Jun  6 08:46:25.013 2020] [2287] FATAL: no valid indexes to serve
+[Sat Jun  6 08:46:25.014 2020] [2287] shutdown complete
+[Sat Jun  6 08:46:25.014 2020] [2286] watchdog: main process 2287 exited cleanly (exit code 1), shutting down
+[Tue Jun  9 17:49:15.576 2020] [2256] watchdog: main process 2257 forked ok
+[Tue Jun  9 17:49:15.580 2020] [2257] listening on 127.0.0.1:9306
+[Tue Jun  9 17:49:15.580 2020] [2257] listening on 127.0.0.1:9080
+[Tue Jun  9 17:49:15.603 2020] [2257] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Tue Jun  9 17:49:15.606 2020] [2257] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Tue Jun  9 17:49:15.609 2020] [2257] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Tue Jun  9 17:49:15.609 2020] [2257] FATAL: no valid indexes to serve
+[Tue Jun  9 17:49:15.610 2020] [2257] shutdown complete
+[Tue Jun  9 17:49:15.611 2020] [2256] watchdog: main process 2257 exited cleanly (exit code 1), shutting down
+[Tue Jun 16 18:09:17.132 2020] [2164] watchdog: main process 2165 forked ok
+[Tue Jun 16 18:09:17.135 2020] [2165] listening on 127.0.0.1:9306
+[Tue Jun 16 18:09:17.135 2020] [2165] listening on 127.0.0.1:9080
+[Tue Jun 16 18:09:17.148 2020] [2165] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Tue Jun 16 18:09:17.151 2020] [2165] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Tue Jun 16 18:09:17.152 2020] [2165] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Tue Jun 16 18:09:17.152 2020] [2165] FATAL: no valid indexes to serve
+[Tue Jun 16 18:09:17.152 2020] [2165] shutdown complete
+[Tue Jun 16 18:09:17.153 2020] [2164] watchdog: main process 2165 exited cleanly (exit code 1), shutting down
+[Thu Jun 18 19:14:09.770 2020] [2228] watchdog: main process 2229 forked ok
+[Thu Jun 18 19:14:09.773 2020] [2229] listening on 127.0.0.1:9306
+[Thu Jun 18 19:14:09.773 2020] [2229] listening on 127.0.0.1:9080
+[Thu Jun 18 19:14:09.792 2020] [2229] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu Jun 18 19:14:09.794 2020] [2229] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu Jun 18 19:14:09.796 2020] [2229] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu Jun 18 19:14:09.796 2020] [2229] FATAL: no valid indexes to serve
+[Thu Jun 18 19:14:09.797 2020] [2229] shutdown complete
+[Thu Jun 18 19:14:09.797 2020] [2228] watchdog: main process 2229 exited cleanly (exit code 1), shutting down
+[Wed Jun 24 23:50:48.998 2020] [2258] watchdog: main process 2259 forked ok
+[Wed Jun 24 23:50:49.001 2020] [2259] listening on 127.0.0.1:9306
+[Wed Jun 24 23:50:49.001 2020] [2259] listening on 127.0.0.1:9080
+[Wed Jun 24 23:50:49.010 2020] [2259] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed Jun 24 23:50:49.010 2020] [2259] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed Jun 24 23:50:49.011 2020] [2259] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed Jun 24 23:50:49.011 2020] [2259] FATAL: no valid indexes to serve
+[Wed Jun 24 23:50:49.012 2020] [2259] shutdown complete
+[Wed Jun 24 23:50:49.013 2020] [2258] watchdog: main process 2259 exited cleanly (exit code 1), shutting down
+[Sat Jun 27 21:19:52.821 2020] [2281] watchdog: main process 2282 forked ok
+[Sat Jun 27 21:19:52.827 2020] [2282] listening on 127.0.0.1:9306
+[Sat Jun 27 21:19:52.827 2020] [2282] listening on 127.0.0.1:9080
+[Sat Jun 27 21:19:52.847 2020] [2282] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Sat Jun 27 21:19:52.850 2020] [2282] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Sat Jun 27 21:19:52.851 2020] [2282] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Sat Jun 27 21:19:52.851 2020] [2282] FATAL: no valid indexes to serve
+[Sat Jun 27 21:19:52.852 2020] [2282] shutdown complete
+[Sat Jun 27 21:19:52.852 2020] [2281] watchdog: main process 2282 exited cleanly (exit code 1), shutting down
+[Sun Jun 28 21:40:36.710 2020] [2219] watchdog: main process 2220 forked ok
+[Sun Jun 28 21:40:36.712 2020] [2220] listening on 127.0.0.1:9306
+[Sun Jun 28 21:40:36.712 2020] [2220] listening on 127.0.0.1:9080
+[Sun Jun 28 21:40:36.731 2020] [2220] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Sun Jun 28 21:40:36.732 2020] [2220] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Sun Jun 28 21:40:36.733 2020] [2220] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Sun Jun 28 21:40:36.733 2020] [2220] FATAL: no valid indexes to serve
+[Sun Jun 28 21:40:36.733 2020] [2220] shutdown complete
+[Sun Jun 28 21:40:36.734 2020] [2219] watchdog: main process 2220 exited cleanly (exit code 1), shutting down
+[Thu Jul  2 13:26:26.678 2020] [2201] watchdog: main process 2202 forked ok
+[Thu Jul  2 13:26:26.681 2020] [2202] listening on 127.0.0.1:9306
+[Thu Jul  2 13:26:26.681 2020] [2202] listening on 127.0.0.1:9080
+[Thu Jul  2 13:26:26.691 2020] [2202] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu Jul  2 13:26:26.692 2020] [2202] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu Jul  2 13:26:26.692 2020] [2202] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu Jul  2 13:26:26.692 2020] [2202] FATAL: no valid indexes to serve
+[Thu Jul  2 13:26:26.693 2020] [2202] shutdown complete
+[Thu Jul  2 13:26:26.694 2020] [2201] watchdog: main process 2202 exited cleanly (exit code 1), shutting down
+[Fri Jul  3 09:27:59.438 2020] [2235] watchdog: main process 2236 forked ok
+[Fri Jul  3 09:27:59.442 2020] [2236] listening on 127.0.0.1:9306
+[Fri Jul  3 09:27:59.442 2020] [2236] listening on 127.0.0.1:9080
+[Fri Jul  3 09:27:59.454 2020] [2236] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Fri Jul  3 09:27:59.455 2020] [2236] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Fri Jul  3 09:27:59.455 2020] [2236] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Fri Jul  3 09:27:59.455 2020] [2236] FATAL: no valid indexes to serve
+[Fri Jul  3 09:27:59.456 2020] [2236] shutdown complete
+[Fri Jul  3 09:27:59.457 2020] [2235] watchdog: main process 2236 exited cleanly (exit code 1), shutting down
+[Fri Jul  3 17:14:53.099 2020] [2229] watchdog: main process 2230 forked ok
+[Fri Jul  3 17:14:53.101 2020] [2230] listening on 127.0.0.1:9306
+[Fri Jul  3 17:14:53.101 2020] [2230] listening on 127.0.0.1:9080
+[Fri Jul  3 17:14:53.111 2020] [2230] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Fri Jul  3 17:14:53.112 2020] [2230] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Fri Jul  3 17:14:53.112 2020] [2230] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Fri Jul  3 17:14:53.112 2020] [2230] FATAL: no valid indexes to serve
+[Fri Jul  3 17:14:53.113 2020] [2230] shutdown complete
+[Fri Jul  3 17:14:53.114 2020] [2229] watchdog: main process 2230 exited cleanly (exit code 1), shutting down
+[Tue Jul  7 22:08:33.036 2020] [2226] watchdog: main process 2228 forked ok
+[Tue Jul  7 22:08:33.039 2020] [2228] listening on 127.0.0.1:9306
+[Tue Jul  7 22:08:33.039 2020] [2228] listening on 127.0.0.1:9080
+[Tue Jul  7 22:08:33.054 2020] [2228] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Tue Jul  7 22:08:33.054 2020] [2228] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Tue Jul  7 22:08:33.055 2020] [2228] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Tue Jul  7 22:08:33.055 2020] [2228] FATAL: no valid indexes to serve
+[Tue Jul  7 22:08:33.055 2020] [2228] shutdown complete
+[Tue Jul  7 22:08:33.056 2020] [2226] watchdog: main process 2228 exited cleanly (exit code 1), shutting down
+[Tue Jul  7 22:39:22.250 2020] [2237] watchdog: main process 2242 forked ok
+[Tue Jul  7 22:39:22.258 2020] [2242] listening on 127.0.0.1:9306
+[Tue Jul  7 22:39:22.258 2020] [2242] listening on 127.0.0.1:9080
+[Tue Jul  7 22:39:22.268 2020] [2242] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Tue Jul  7 22:39:22.268 2020] [2242] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Tue Jul  7 22:39:22.269 2020] [2242] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Tue Jul  7 22:39:22.269 2020] [2242] FATAL: no valid indexes to serve
+[Tue Jul  7 22:39:22.269 2020] [2242] shutdown complete
+[Tue Jul  7 22:39:22.272 2020] [2237] watchdog: main process 2242 exited cleanly (exit code 1), shutting down
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        [Thu Jul  9 12:35:38.972 2020] [2158] watchdog: main process 2159 forked ok
+[Thu Jul  9 12:35:38.976 2020] [2159] listening on 127.0.0.1:9306
+[Thu Jul  9 12:35:38.976 2020] [2159] listening on 127.0.0.1:9080
+[Thu Jul  9 12:35:38.988 2020] [2159] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu Jul  9 12:35:38.989 2020] [2159] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu Jul  9 12:35:38.990 2020] [2159] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu Jul  9 12:35:38.990 2020] [2159] FATAL: no valid indexes to serve
+[Thu Jul  9 12:35:38.990 2020] [2159] shutdown complete
+[Thu Jul  9 12:35:38.994 2020] [2158] watchdog: main process 2159 exited cleanly (exit code 1), shutting down
+[Fri Jul 10 09:38:25.501 2020] [4164] watchdog: main process 4165 forked ok
+[Fri Jul 10 09:38:25.505 2020] [4165] listening on 127.0.0.1:9306
+[Fri Jul 10 09:38:25.505 2020] [4165] listening on 127.0.0.1:9080
+[Fri Jul 10 09:38:25.517 2020] [4165] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Fri Jul 10 09:38:25.518 2020] [4165] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Fri Jul 10 09:38:25.519 2020] [4165] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Fri Jul 10 09:38:25.519 2020] [4165] FATAL: no valid indexes to serve
+[Fri Jul 10 09:38:25.519 2020] [4165] shutdown complete
+[Fri Jul 10 09:38:25.520 2020] [4164] watchdog: main process 4165 exited cleanly (exit code 1), shutting down
+[Mon Jul 13 12:13:09.806 2020] [2208] watchdog: main process 2209 forked ok
+[Mon Jul 13 12:13:09.808 2020] [2209] listening on 127.0.0.1:9306
+[Mon Jul 13 12:13:09.808 2020] [2209] listening on 127.0.0.1:9080
+[Mon Jul 13 12:13:09.824 2020] [2209] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Mon Jul 13 12:13:09.824 2020] [2209] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Mon Jul 13 12:13:09.825 2020] [2209] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Mon Jul 13 12:13:09.826 2020] [2209] FATAL: no valid indexes to serve
+[Mon Jul 13 12:13:09.827 2020] [2209] shutdown complete
+[Mon Jul 13 12:13:09.827 2020] [2208] watchdog: main process 2209 exited cleanly (exit code 1), shutting down
+[Mon Jul 13 15:01:05.814 2020] [2211] watchdog: main process 2212 forked ok
+[Mon Jul 13 15:01:05.816 2020] [2212] listening on 127.0.0.1:9306
+[Mon Jul 13 15:01:05.817 2020] [2212] listening on 127.0.0.1:9080
+[Mon Jul 13 15:01:05.827 2020] [2212] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Mon Jul 13 15:01:05.828 2020] [2212] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Mon Jul 13 15:01:05.829 2020] [2212] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Mon Jul 13 15:01:05.829 2020] [2212] FATAL: no valid indexes to serve
+[Mon Jul 13 15:01:05.829 2020] [2212] shutdown complete
+[Mon Jul 13 15:01:05.830 2020] [2211] watchdog: main process 2212 exited cleanly (exit code 1), shutting down
+[Tue Jul 14 12:17:34.538 2020] [2204] watchdog: main process 2205 forked ok
+[Tue Jul 14 12:17:34.543 2020] [2205] listening on 127.0.0.1:9306
+[Tue Jul 14 12:17:34.543 2020] [2205] listening on 127.0.0.1:9080
+[Tue Jul 14 12:17:34.556 2020] [2205] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Tue Jul 14 12:17:34.556 2020] [2205] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Tue Jul 14 12:17:34.557 2020] [2205] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Tue Jul 14 12:17:34.557 2020] [2205] FATAL: no valid indexes to serve
+[Tue Jul 14 12:17:34.558 2020] [2205] shutdown complete
+[Tue Jul 14 12:17:34.558 2020] [2204] watchdog: main process 2205 exited cleanly (exit code 1), shutting down
+[Wed Jul 15 11:55:00.403 2020] [2227] watchdog: main process 2228 forked ok
+[Wed Jul 15 11:55:00.406 2020] [2228] listening on 127.0.0.1:9306
+[Wed Jul 15 11:55:00.406 2020] [2228] listening on 127.0.0.1:9080
+[Wed Jul 15 11:55:00.419 2020] [2228] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 15 11:55:00.420 2020] [2228] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 15 11:55:00.420 2020] [2228] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 15 11:55:00.420 2020] [2228] FATAL: no valid indexes to serve
+[Wed Jul 15 11:55:00.421 2020] [2228] shutdown complete
+[Wed Jul 15 11:55:00.421 2020] [2227] watchdog: main process 2228 exited cleanly (exit code 1), shutting down
+[Wed Jul 15 15:36:27.340 2020] [2179] watchdog: main process 2180 forked ok
+[Wed Jul 15 15:36:27.344 2020] [2180] listening on 127.0.0.1:9306
+[Wed Jul 15 15:36:27.344 2020] [2180] listening on 127.0.0.1:9080
+[Wed Jul 15 15:36:27.361 2020] [2180] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 15 15:36:27.361 2020] [2180] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 15 15:36:27.363 2020] [2180] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 15 15:36:27.363 2020] [2180] FATAL: no valid indexes to serve
+[Wed Jul 15 15:36:27.363 2020] [2180] shutdown complete
+[Wed Jul 15 15:36:27.364 2020] [2179] watchdog: main process 2180 exited cleanly (exit code 1), shutting down
+[Wed Jul 15 23:05:07.353 2020] [2226] watchdog: main process 2227 forked ok
+[Wed Jul 15 23:05:07.357 2020] [2227] listening on 127.0.0.1:9306
+[Wed Jul 15 23:05:07.357 2020] [2227] listening on 127.0.0.1:9080
+[Wed Jul 15 23:05:07.389 2020] [2227] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 15 23:05:07.390 2020] [2227] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 15 23:05:07.390 2020] [2227] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 15 23:05:07.390 2020] [2227] FATAL: no valid indexes to serve
+[Wed Jul 15 23:05:07.391 2020] [2227] shutdown complete
+[Wed Jul 15 23:05:07.391 2020] [2226] watchdog: main process 2227 exited cleanly (exit code 1), shutting down
+[Thu Jul 16 11:12:49.133 2020] [2194] watchdog: main process 2195 forked ok
+[Thu Jul 16 11:12:49.136 2020] [2195] listening on 127.0.0.1:9306
+[Thu Jul 16 11:12:49.136 2020] [2195] listening on 127.0.0.1:9080
+[Thu Jul 16 11:12:49.146 2020] [2195] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu Jul 16 11:12:49.147 2020] [2195] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu Jul 16 11:12:49.148 2020] [2195] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu Jul 16 11:12:49.148 2020] [2195] FATAL: no valid indexes to serve
+[Thu Jul 16 11:12:49.149 2020] [2195] shutdown complete
+[Thu Jul 16 11:12:49.156 2020] [2194] watchdog: main process 2195 exited cleanly (exit code 1), shutting down
+[Sun Jul 19 16:28:21.377 2020] [2310] watchdog: main process 2311 forked ok
+[Sun Jul 19 16:28:21.380 2020] [2311] listening on 127.0.0.1:9306
+[Sun Jul 19 16:28:21.380 2020] [2311] listening on 127.0.0.1:9080
+[Sun Jul 19 16:28:21.397 2020] [2311] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Sun Jul 19 16:28:21.399 2020] [2311] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Sun Jul 19 16:28:21.400 2020] [2311] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Sun Jul 19 16:28:21.400 2020] [2311] FATAL: no valid indexes to serve
+[Sun Jul 19 16:28:21.401 2020] [2311] shutdown complete
+[Sun Jul 19 16:28:21.403 2020] [2310] watchdog: main process 2311 exited cleanly (exit code 1), shutting down
+[Mon Jul 20 21:46:52.561 2020] [2243] watchdog: main process 2244 forked ok
+[Mon Jul 20 21:46:52.564 2020] [2244] listening on 127.0.0.1:9306
+[Mon Jul 20 21:46:52.564 2020] [2244] listening on 127.0.0.1:9080
+[Mon Jul 20 21:46:52.580 2020] [2244] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Mon Jul 20 21:46:52.583 2020] [2244] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Mon Jul 20 21:46:52.589 2020] [2244] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Mon Jul 20 21:46:52.589 2020] [2244] FATAL: no valid indexes to serve
+[Mon Jul 20 21:46:52.591 2020] [2244] shutdown complete
+[Mon Jul 20 21:46:52.591 2020] [2243] watchdog: main process 2244 exited cleanly (exit code 1), shutting down
+[Tue Jul 21 12:29:06.398 2020] [2284] watchdog: main process 2285 forked ok
+[Tue Jul 21 12:29:06.411 2020] [2285] listening on 127.0.0.1:9306
+[Tue Jul 21 12:29:06.411 2020] [2285] listening on 127.0.0.1:9080
+[Tue Jul 21 12:29:06.429 2020] [2285] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Tue Jul 21 12:29:06.430 2020] [2285] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Tue Jul 21 12:29:06.438 2020] [2285] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Tue Jul 21 12:29:06.438 2020] [2285] FATAL: no valid indexes to serve
+[Tue Jul 21 12:29:06.439 2020] [2285] shutdown complete
+[Tue Jul 21 12:29:06.440 2020] [2284] watchdog: main process 2285 exited cleanly (exit code 1), shutting down
+[Wed Jul 22 09:32:18.124 2020] [2233] watchdog: main process 2234 forked ok
+[Wed Jul 22 09:32:18.127 2020] [2234] listening on 127.0.0.1:9306
+[Wed Jul 22 09:32:18.127 2020] [2234] listening on 127.0.0.1:9080
+[Wed Jul 22 09:32:18.144 2020] [2234] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 22 09:32:18.146 2020] [2234] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 22 09:32:18.147 2020] [2234] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 22 09:32:18.147 2020] [2234] FATAL: no valid indexes to serve
+[Wed Jul 22 09:32:18.148 2020] [2234] shutdown complete
+[Wed Jul 22 09:32:18.148 2020] [2233] watchdog: main process 2234 exited cleanly (exit code 1), shutting down
+[Thu Jul 23 13:27:26.553 2020] [2244] watchdog: main process 2245 forked ok
+[Thu Jul 23 13:27:26.558 2020] [2245] listening on 127.0.0.1:9306
+[Thu Jul 23 13:27:26.558 2020] [2245] listening on 127.0.0.1:9080
+[Thu Jul 23 13:27:26.584 2020] [2245] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu Jul 23 13:27:26.585 2020] [2245] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu Jul 23 13:27:26.586 2020] [2245] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu Jul 23 13:27:26.586 2020] [2245] FATAL: no valid indexes to serve
+[Thu Jul 23 13:27:26.587 2020] [2245] shutdown complete
+[Thu Jul 23 13:27:26.587 2020] [2244] watchdog: main process 2245 exited cleanly (exit code 1), shutting down
+[Fri Jul 24 14:11:25.478 2020] [2265] watchdog: main process 2266 forked ok
+[Fri Jul 24 14:11:25.482 2020] [2266] listening on 127.0.0.1:9306
+[Fri Jul 24 14:11:25.483 2020] [2266] listening on 127.0.0.1:9080
+[Fri Jul 24 14:11:25.501 2020] [2266] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Fri Jul 24 14:11:25.502 2020] [2266] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Fri Jul 24 14:11:25.503 2020] [2266] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Fri Jul 24 14:11:25.503 2020] [2266] FATAL: no valid indexes to serve
+[Fri Jul 24 14:11:25.504 2020] [2266] shutdown complete
+[Fri Jul 24 14:11:25.504 2020] [2265] watchdog: main process 2266 exited cleanly (exit code 1), shutting down
+[Sat Jul 25 08:13:14.449 2020] [2285] watchdog: main process 2286 forked ok
+[Sat Jul 25 08:13:14.452 2020] [2286] listening on 127.0.0.1:9306
+[Sat Jul 25 08:13:14.452 2020] [2286] listening on 127.0.0.1:9080
+[Sat Jul 25 08:13:14.474 2020] [2286] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Sat Jul 25 08:13:14.475 2020] [2286] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Sat Jul 25 08:13:14.477 2020] [2286] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Sat Jul 25 08:13:14.477 2020] [2286] FATAL: no valid indexes to serve
+[Sat Jul 25 08:13:14.477 2020] [2286] shutdown complete
+[Sat Jul 25 08:13:14.478 2020] [2285] watchdog: main process 2286 exited cleanly (exit code 1), shutting down
+[Wed Jul 29 00:47:50.481 2020] [2346] watchdog: main process 2347 forked ok
+[Wed Jul 29 00:47:50.489 2020] [2347] listening on 127.0.0.1:9306
+[Wed Jul 29 00:47:50.489 2020] [2347] listening on 127.0.0.1:9080
+[Wed Jul 29 00:47:50.516 2020] [2347] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 29 00:47:50.521 2020] [2347] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 29 00:47:50.524 2020] [2347] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 29 00:47:50.524 2020] [2347] FATAL: no valid indexes to serve
+[Wed Jul 29 00:47:50.525 2020] [2347] shutdown complete
+[Wed Jul 29 00:47:50.527 2020] [2346] watchdog: main process 2347 exited cleanly (exit code 1), shutting down
+[Wed Jul 29 08:23:57.640 2020] [2304] watchdog: main process 2305 forked ok
+[Wed Jul 29 08:23:57.644 2020] [2305] listening on 127.0.0.1:9306
+[Wed Jul 29 08:23:57.644 2020] [2305] listening on 127.0.0.1:9080
+[Wed Jul 29 08:23:57.660 2020] [2305] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 29 08:23:57.662 2020] [2305] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 29 08:23:57.664 2020] [2305] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 29 08:23:57.664 2020] [2305] FATAL: no valid indexes to serve
+[Wed Jul 29 08:23:57.665 2020] [2305] shutdown complete
+[Wed Jul 29 08:23:57.666 2020] [2304] watchdog: main process 2305 exited cleanly (exit code 1), shutting down
+[Wed Jul 29 09:57:52.558 2020] [2260] watchdog: main process 2261 forked ok
+[Wed Jul 29 09:57:52.560 2020] [2261] listening on 127.0.0.1:9306
+[Wed Jul 29 09:57:52.560 2020] [2261] listening on 127.0.0.1:9080
+[Wed Jul 29 09:57:52.577 2020] [2261] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 29 09:57:52.579 2020] [2261] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 29 09:57:52.581 2020] [2261] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed Jul 29 09:57:52.581 2020] [2261] FATAL: no valid indexes to serve
+[Wed Jul 29 09:57:52.582 2020] [2261] shutdown complete
+[Wed Jul 29 09:57:52.583 2020] [2260] watchdog: main process 2261 exited cleanly (exit code 1), shutting down
+[Wed Aug  5 22:41:15.093 2020] [2272] watchdog: main process 2273 forked ok
+[Wed Aug  5 22:41:15.096 2020] [2273] listening on 127.0.0.1:9306
+[Wed Aug  5 22:41:15.096 2020] [2273] listening on 127.0.0.1:9080
+[Wed Aug  5 22:41:15.115 2020] [2273] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed Aug  5 22:41:15.118 2020] [2273] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed Aug  5 22:41:15.119 2020] [2273] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed Aug  5 22:41:15.119 2020] [2273] FATAL: no valid indexes to serve
+[Wed Aug  5 22:41:15.120 2020] [2273] shutdown complete
+[Wed Aug  5 22:41:15.125 2020] [2272] watchdog: main process 2273 exited cleanly (exit code 1), shutting down
+[Thu Aug  6 21:28:56.224 2020] [2391] watchdog: main process 2393 forked ok
+[Thu Aug  6 21:28:56.232 2020] [2393] listening on 127.0.0.1:9306
+[Thu Aug  6 21:28:56.232 2020] [2393] listening on 127.0.0.1:9080
+[Thu Aug  6 21:28:56.246 2020] [2393] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu Aug  6 21:28:56.246 2020] [2393] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu Aug  6 21:28:56.247 2020] [2393] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu Aug  6 21:28:56.247 2020] [2393] FATAL: no valid indexes to serve
+[Thu Aug  6 21:28:56.248 2020] [2393] shutdown complete
+[Thu Aug  6 21:28:56.249 2020] [2391] watchdog: main process 2393 exited cleanly (exit code 1), shutting down
+[Thu Aug  6 23:11:39.701 2020] [2309] watchdog: main process 2310 forked ok
+[Thu Aug  6 23:11:39.705 2020] [2310] listening on 127.0.0.1:9306
+[Thu Aug  6 23:11:39.705 2020] [2310] listening on 127.0.0.1:9080
+[Thu Aug  6 23:11:39.714 2020] [2310] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Thu Aug  6 23:11:39.714 2020] [2310] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Thu Aug  6 23:11:39.715 2020] [2310] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Thu Aug  6 23:11:39.715 2020] [2310] FATAL: no valid indexes to serve
+[Thu Aug  6 23:11:39.715 2020] [2310] shutdown complete
+[Thu Aug  6 23:11:39.717 2020] [2309] watchdog: main process 2310 exited cleanly (exit code 1), shutting down
+[Fri Aug  7 21:18:22.723 2020] [20423] watchdog: main process 20429 forked ok
+[Fri Aug  7 21:18:22.725 2020] [20429] listening on 127.0.0.1:9306
+[Fri Aug  7 21:18:22.725 2020] [20429] listening on 127.0.0.1:9080
+[Fri Aug  7 21:18:22.737 2020] [20429] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Fri Aug  7 21:18:22.738 2020] [20429] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Fri Aug  7 21:18:22.746 2020] [20429] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Fri Aug  7 21:18:22.747 2020] [20429] FATAL: no valid indexes to serve
+[Fri Aug  7 21:18:22.747 2020] [20429] shutdown complete
+[Fri Aug  7 21:18:22.747 2020] [20423] watchdog: main process 20429 exited cleanly (exit code 1), shutting down
+[Wed Aug 12 00:43:53.143 2020] [2262] watchdog: main process 2263 forked ok
+[Wed Aug 12 00:43:53.146 2020] [2263] listening on 127.0.0.1:9306
+[Wed Aug 12 00:43:53.146 2020] [2263] listening on 127.0.0.1:9080
+[Wed Aug 12 00:43:53.163 2020] [2263] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Wed Aug 12 00:43:53.164 2020] [2263] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Wed Aug 12 00:43:53.165 2020] [2263] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Wed Aug 12 00:43:53.165 2020] [2263] FATAL: no valid indexes to serve
+[Wed Aug 12 00:43:53.167 2020] [2263] shutdown complete
+[Wed Aug 12 00:43:53.168 2020] [2262] watchdog: main process 2263 exited cleanly (exit code 1), shutting down
+[Fri Aug 14 15:25:34.923 2020] [2792] watchdog: main process 2793 forked ok
+[Fri Aug 14 15:25:34.926 2020] [2793] listening on 127.0.0.1:9306
+[Fri Aug 14 15:25:34.926 2020] [2793] listening on 127.0.0.1:9080
+[Fri Aug 14 15:25:34.941 2020] [2793] WARNING: index 'idiom': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/idiom/idiom.spa': 'Permission denied'; NOT SERVING
+[Fri Aug 14 15:25:34.941 2020] [2793] WARNING: index 'phrasal': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/phrasal/phrasal.spa': 'Permission denied'; NOT SERVING
+[Fri Aug 14 15:25:34.942 2020] [2793] WARNING: index 'commonwords': prealloc: failed to open file '/home/engin/focab/sphinx/indexes/commonwords/commonwords.spa': 'Permission denied'; NOT SERVING
+[Fri Aug 14 15:25:34.942 2020] [2793] FATAL: no valid indexes to serve
+[Fri Aug 14 15:25:34.942 2020] [2793] shutdown complete
+[Fri Aug 14 15:25:34.943 2020] [2792] watchdog: main process 2793 exited cleanly (exit code 1), shutting down

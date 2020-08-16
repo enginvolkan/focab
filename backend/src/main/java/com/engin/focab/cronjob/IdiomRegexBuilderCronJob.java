@@ -25,7 +25,7 @@ public class IdiomRegexBuilderCronJob {
 	public void fillNullLemmas() {
 		IdiomModel[] idiomModelsWithNoRegex = getIdiomRepository().findNullRegex();
 		for (IdiomModel idiomModel : idiomModelsWithNoRegex) {
-			List<String> lemmaList = new Sentence(idiomModel.getIdiom().toLowerCase(Locale.ENGLISH)).lemmas();
+			List<String> lemmaList = new Sentence(idiomModel.getText().toLowerCase(Locale.ENGLISH)).lemmas();
 
 			ArrayList<String> segments = new ArrayList<>();
 

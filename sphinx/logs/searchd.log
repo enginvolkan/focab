@@ -1024,3 +1024,245 @@
 [Fri Aug 14 15:25:34.942 2020] [2793] FATAL: no valid indexes to serve
 [Fri Aug 14 15:25:34.942 2020] [2793] shutdown complete
 [Fri Aug 14 15:25:34.943 2020] [2792] watchdog: main process 2793 exited cleanly (exit code 1), shutting down
+[Wed Sep 16 09:03:29.227 2020] [7180] listening on 127.0.0.1:9306
+[Wed Sep 16 09:03:29.227 2020] [7180] listening on 127.0.0.1:9080
+[Wed Sep 16 09:03:29.255 2020] [7180] accepting connections
+[Wed Sep 16 09:03:29.256 2020] [7484] prereading 3 indexes
+[Wed Sep 16 09:03:29.269 2020] [7484] prereaded 3 indexes in 0.013 sec
+[Wed Sep 16 19:17:29.644 2020] [7060] listening on 127.0.0.1:9306
+[Wed Sep 16 19:17:29.645 2020] [7060] listening on 127.0.0.1:9080
+[Wed Sep 16 19:17:29.680 2020] [7060] accepting connections
+[Wed Sep 16 19:17:29.680 2020] [7372] prereading 3 indexes
+[Wed Sep 16 19:17:29.681 2020] [7372] prereaded 3 indexes in 0.001 sec
+[Sat Sep 19 00:56:56.370 2020] [7060] shutdown complete
+[Sat Sep 19 00:57:32.246 2020] [6740] listening on 127.0.0.1:9306
+[Sat Sep 19 00:57:32.246 2020] [6740] listening on 127.0.0.1:9080
+[Sat Sep 19 00:57:32.288 2020] [6740] accepting connections
+[Sat Sep 19 00:57:32.298 2020] [7272] prereading 3 indexes
+[Sat Sep 19 00:57:32.300 2020] [7272] prereaded 3 indexes in 0.001 sec
+[Tue Sep 22 20:52:02.910 2020] [7148] listening on 127.0.0.1:9306
+[Tue Sep 22 20:52:02.910 2020] [7148] listening on 127.0.0.1:9080
+[Tue Sep 22 20:52:02.933 2020] [7148] accepting connections
+[Tue Sep 22 20:52:02.934 2020] [7372] prereading 3 indexes
+[Tue Sep 22 20:52:02.935 2020] [7372] prereaded 3 indexes in 0.001 sec
+[Thu Sep 24 09:27:32.136 2020] [7148] shutdown complete
+[Thu Sep 24 09:28:07.588 2020] [7792] listening on 127.0.0.1:9306
+[Thu Sep 24 09:28:07.589 2020] [7792] listening on 127.0.0.1:9080
+[Thu Sep 24 09:28:07.616 2020] [7792] accepting connections
+[Thu Sep 24 09:28:07.624 2020] [8128] prereading 3 indexes
+[Thu Sep 24 09:28:07.625 2020] [8128] prereaded 3 indexes in 0.001 sec
+[Tue Sep 29 19:36:25.387 2020] [7792] shutdown complete
+[Tue Sep 29 19:36:35.551 2020] [7392] listening on 127.0.0.1:9306
+[Tue Sep 29 19:36:35.552 2020] [7392] listening on 127.0.0.1:9080
+[Tue Sep 29 19:36:35.600 2020] [7392] accepting connections
+[Tue Sep 29 19:36:35.605 2020] [7652] prereading 3 indexes
+[Tue Sep 29 19:36:35.701 2020] [7652] prereaded 3 indexes in 0.095 sec
+[Sat Oct  3 00:46:54.817 2020] [7392] shutdown complete
+[Sat Oct  3 00:47:30.391 2020] [3336] listening on 127.0.0.1:9306
+[Sat Oct  3 00:47:30.392 2020] [3336] listening on 127.0.0.1:9080
+[Sat Oct  3 00:47:30.473 2020] [3336] accepting connections
+[Sat Oct  3 00:47:30.473 2020] [8532] prereading 3 indexes
+[Sat Oct  3 00:47:30.474 2020] [8532] prereaded 3 indexes in 0.001 sec
+[Sun Oct  4 00:58:03.734 2020] [3336] shutdown complete
+[Sun Oct  4 00:58:49.554 2020] [7008] listening on 127.0.0.1:9306
+[Sun Oct  4 00:58:49.554 2020] [7008] listening on 127.0.0.1:9080
+[Sun Oct  4 00:58:49.616 2020] [7008] accepting connections
+[Sun Oct  4 00:58:49.617 2020] [7468] prereading 3 indexes
+[Sun Oct  4 00:58:49.618 2020] [7468] prereaded 3 indexes in 0.002 sec
+------- FATAL: CRASH DUMP -------
+[Mon Oct 12 21:07:44.099 2020] [ 5696]
+
+--- crashed SphinxAPI request dump ---
+
+--- request dump end ---
+Sphinx 3.1.1-dev (commit 612d99f)
+minidump located at:  C:/focab/sphinx/searchd.pid.5696.0000000000000000.mdmp
+--- 0 active threads ---
+------- CRASH DUMP END -------
+[Fri Oct 16 08:59:07.606 2020] [7216] listening on 127.0.0.1:9306
+[Fri Oct 16 08:59:07.606 2020] [7216] listening on 127.0.0.1:9080
+[Fri Oct 16 08:59:07.641 2020] [7216] accepting connections
+[Fri Oct 16 08:59:07.646 2020] [7528] prereading 3 indexes
+[Fri Oct 16 08:59:07.647 2020] [7528] prereaded 3 indexes in 0.001 sec
+[Sat Oct 17 00:36:45.795 2020] [7216] shutdown complete
+[Sat Oct 17 00:37:25.223 2020] [7284] listening on 127.0.0.1:9306
+[Sat Oct 17 00:37:25.223 2020] [7284] listening on 127.0.0.1:9080
+[Sat Oct 17 00:37:25.286 2020] [7284] accepting connections
+[Sat Oct 17 00:37:25.295 2020] [7620] prereading 3 indexes
+[Sat Oct 17 00:37:25.296 2020] [7620] prereaded 3 indexes in 0.002 sec
+[Sat Oct 17 22:55:42.268 2020] [7284] shutdown complete
+[Sun Oct 18 21:08:43.225 2020] [7072] listening on 127.0.0.1:9306
+[Sun Oct 18 21:08:43.225 2020] [7072] listening on 127.0.0.1:9080
+[Sun Oct 18 21:08:43.268 2020] [7072] accepting connections
+[Sun Oct 18 21:08:43.269 2020] [7480] prereading 3 indexes
+[Sun Oct 18 21:08:43.271 2020] [7480] prereaded 3 indexes in 0.001 sec
+[Mon Oct 19 20:23:06.318 2020] [7072] shutdown complete
+[Mon Oct 19 20:23:43.461 2020] [7116] listening on 127.0.0.1:9306
+[Mon Oct 19 20:23:43.461 2020] [7116] listening on 127.0.0.1:9080
+[Mon Oct 19 20:23:43.498 2020] [7116] accepting connections
+[Mon Oct 19 20:23:43.498 2020] [7348] prereading 3 indexes
+[Mon Oct 19 20:23:43.500 2020] [7348] prereaded 3 indexes in 0.001 sec
+[Tue Oct 20 00:46:39.112 2020] [7116] shutdown complete
+[Tue Oct 20 09:35:42.408 2020] [7104] listening on 127.0.0.1:9306
+[Tue Oct 20 09:35:42.408 2020] [7104] listening on 127.0.0.1:9080
+[Tue Oct 20 09:35:42.435 2020] [7104] accepting connections
+[Tue Oct 20 09:35:42.439 2020] [7292] prereading 3 indexes
+[Tue Oct 20 09:35:42.441 2020] [7292] prereaded 3 indexes in 0.002 sec
+[Tue Oct 20 09:36:07.202 2020] [7104] shutdown complete
+[Tue Oct 20 09:37:13.241 2020] [6944] listening on 127.0.0.1:9306
+[Tue Oct 20 09:37:13.242 2020] [6944] listening on 127.0.0.1:9080
+[Tue Oct 20 09:37:13.272 2020] [6944] accepting connections
+[Tue Oct 20 09:37:13.279 2020] [7208] prereading 3 indexes
+[Tue Oct 20 09:37:13.281 2020] [7208] prereaded 3 indexes in 0.002 sec
+[Wed Oct 21 20:33:07.793 2020] [7200] listening on 127.0.0.1:9306
+[Wed Oct 21 20:33:07.794 2020] [7200] listening on 127.0.0.1:9080
+[Wed Oct 21 20:33:07.819 2020] [7200] accepting connections
+[Wed Oct 21 20:33:07.836 2020] [7548] prereading 3 indexes
+[Wed Oct 21 20:33:07.837 2020] [7548] prereaded 3 indexes in 0.002 sec
+[Thu Oct 22 21:47:15.675 2020] [7200] shutdown complete
+[Thu Oct 22 21:53:03.351 2020] [6536] listening on 127.0.0.1:9306
+[Thu Oct 22 21:53:03.351 2020] [6536] listening on 127.0.0.1:9080
+[Thu Oct 22 21:53:03.378 2020] [6536] accepting connections
+[Thu Oct 22 21:53:03.379 2020] [7196] prereading 3 indexes
+[Thu Oct 22 21:53:03.385 2020] [7196] prereaded 3 indexes in 0.006 sec
+[Fri Oct 23 09:27:31.874 2020] [6536] shutdown complete
+[Fri Oct 23 09:33:16.091 2020] [6828] listening on 127.0.0.1:9306
+[Fri Oct 23 09:33:16.092 2020] [6828] listening on 127.0.0.1:9080
+[Fri Oct 23 09:33:16.114 2020] [6828] accepting connections
+[Fri Oct 23 09:33:16.114 2020] [7192] prereading 3 indexes
+[Fri Oct 23 09:33:16.116 2020] [7192] prereaded 3 indexes in 0.002 sec
+[Wed Oct 28 21:18:56.089 2020] [6828] shutdown complete
+[Wed Oct 28 21:19:09.387 2020] [7144] listening on 127.0.0.1:9306
+[Wed Oct 28 21:19:09.387 2020] [7144] listening on 127.0.0.1:9080
+[Wed Oct 28 21:19:09.411 2020] [7144] accepting connections
+[Wed Oct 28 21:19:09.416 2020] [7540] prereading 3 indexes
+[Wed Oct 28 21:19:09.420 2020] [7540] prereaded 3 indexes in 0.004 sec
+[Thu Oct 29 23:03:45.931 2020] [7144] shutdown complete
+[Thu Oct 29 23:04:27.062 2020] [7696] listening on 127.0.0.1:9306
+[Thu Oct 29 23:04:27.062 2020] [7696] listening on 127.0.0.1:9080
+[Thu Oct 29 23:04:27.086 2020] [7696] accepting connections
+[Thu Oct 29 23:04:27.087 2020] [7936] prereading 3 indexes
+[Thu Oct 29 23:04:27.089 2020] [7936] prereaded 3 indexes in 0.002 sec
+[Fri Oct 30 14:59:30.639 2020] [7272] listening on 127.0.0.1:9306
+[Fri Oct 30 14:59:30.640 2020] [7272] listening on 127.0.0.1:9080
+[Fri Oct 30 14:59:30.657 2020] [7272] accepting connections
+[Fri Oct 30 14:59:30.663 2020] [7788] prereading 3 indexes
+[Fri Oct 30 14:59:30.664 2020] [7788] prereaded 3 indexes in 0.001 sec
+[Tue Nov  3 09:51:15.139 2020] [7272] shutdown complete
+[Tue Nov  3 09:51:45.819 2020] [7068] listening on 127.0.0.1:9306
+[Tue Nov  3 09:51:45.819 2020] [7068] listening on 127.0.0.1:9080
+[Tue Nov  3 09:51:45.869 2020] [7068] accepting connections
+[Tue Nov  3 09:51:45.871 2020] [7440] prereading 3 indexes
+[Tue Nov  3 09:51:45.874 2020] [7440] prereaded 3 indexes in 0.004 sec
+[Mon Oct 26 03:52:28.331 2020] [7068] shutdown complete
+[Mon Nov 16 11:16:33.153 2020] [7552] listening on 127.0.0.1:9306
+[Mon Nov 16 11:16:33.154 2020] [7552] listening on 127.0.0.1:9080
+[Mon Nov 16 11:16:33.176 2020] [7552] accepting connections
+[Mon Nov 16 11:16:33.177 2020] [7776] prereading 3 indexes
+[Mon Nov 16 11:16:33.180 2020] [7776] prereaded 3 indexes in 0.003 sec
+[Mon Nov 16 18:30:05.350 2020] [7252] listening on 127.0.0.1:9306
+[Mon Nov 16 18:30:05.351 2020] [7252] listening on 127.0.0.1:9080
+[Mon Nov 16 18:30:05.388 2020] [7252] accepting connections
+[Mon Nov 16 18:30:05.392 2020] [7512] prereading 3 indexes
+[Mon Nov 16 18:30:05.395 2020] [7512] prereaded 3 indexes in 0.002 sec
+[Fri Nov 20 22:30:56.971 2020] [7252] shutdown complete
+[Fri Nov 20 22:31:06.009 2020] [7040] listening on 127.0.0.1:9306
+[Fri Nov 20 22:31:06.010 2020] [7040] listening on 127.0.0.1:9080
+[Fri Nov 20 22:31:06.032 2020] [7040] accepting connections
+[Fri Nov 20 22:31:06.032 2020] [4848] prereading 3 indexes
+[Fri Nov 20 22:31:06.033 2020] [4848] prereaded 3 indexes in 0.001 sec
+[Mon Nov 23 09:33:00.210 2020] [7048] listening on 127.0.0.1:9306
+[Mon Nov 23 09:33:00.210 2020] [7048] listening on 127.0.0.1:9080
+[Mon Nov 23 09:33:00.246 2020] [7048] accepting connections
+[Mon Nov 23 09:33:00.247 2020] [7404] prereading 3 indexes
+[Mon Nov 23 09:33:00.248 2020] [7404] prereaded 3 indexes in 0.001 sec
+[Sat Nov 28 19:09:16.840 2020] [7048] shutdown complete
+[Sat Nov 28 19:09:33.738 2020] [7528] listening on 127.0.0.1:9306
+[Sat Nov 28 19:09:33.738 2020] [7528] listening on 127.0.0.1:9080
+[Sat Nov 28 19:09:33.763 2020] [7528] accepting connections
+[Sat Nov 28 19:09:33.763 2020] [8000] prereading 3 indexes
+[Sat Nov 28 19:09:33.765 2020] [8000] prereaded 3 indexes in 0.001 sec
+[Sat Nov 28 08:53:37.270 2020] [7528] shutdown complete
+[Sat Dec 19 17:16:53.538 2020] [7276] listening on 127.0.0.1:9306
+[Sat Dec 19 17:16:53.538 2020] [7276] listening on 127.0.0.1:9080
+[Sat Dec 19 17:16:53.572 2020] [7276] accepting connections
+[Sat Dec 19 17:16:53.572 2020] [7508] prereading 3 indexes
+[Sat Dec 19 17:16:53.573 2020] [7508] prereaded 3 indexes in 0.001 sec
+[Tue Dec 29 09:42:49.893 2020] [7816] listening on 127.0.0.1:9306
+[Tue Dec 29 09:42:49.893 2020] [7816] listening on 127.0.0.1:9080
+[Tue Dec 29 09:42:49.915 2020] [7816] accepting connections
+[Tue Dec 29 09:42:49.918 2020] [7972] prereading 3 indexes
+[Tue Dec 29 09:42:49.919 2020] [7972] prereaded 3 indexes in 0.001 sec
+[Sun Jan  3 11:51:50.132 2021] [7292] listening on 127.0.0.1:9306
+[Sun Jan  3 11:51:50.132 2021] [7292] listening on 127.0.0.1:9080
+[Sun Jan  3 11:51:50.157 2021] [7292] accepting connections
+[Sun Jan  3 11:51:50.157 2021] [7628] prereading 3 indexes
+[Sun Jan  3 11:51:50.158 2021] [7628] prereaded 3 indexes in 0.001 sec
+[Sun Jan 10 17:52:38.744 2021] [6916] listening on 127.0.0.1:9306
+[Sun Jan 10 17:52:38.765 2021] [6916] listening on 127.0.0.1:9080
+[Sun Jan 10 17:52:38.783 2021] [6916] accepting connections
+[Sun Jan 10 17:52:38.786 2021] [7072] prereading 3 indexes
+[Sun Jan 10 17:52:38.787 2021] [7072] prereaded 3 indexes in 0.001 sec
+[Sun Jan 10 21:39:11.010 2021] [6916] shutdown complete
+[Sun Jan 10 22:20:03.009 2021] [14776] listening on 127.0.0.1:9306
+[Sun Jan 10 22:20:03.009 2021] [14776] listening on 127.0.0.1:9080
+[Sun Jan 10 22:20:03.040 2021] [14776] accepting connections
+[Sun Jan 10 22:20:03.040 2021] [19308] prereading 3 indexes
+[Sun Jan 10 22:20:03.040 2021] [19308] prereaded 3 indexes in 0.000 sec
+[Sun Jan 10 22:31:48.110 2021] [14776] shutdown complete
+[Sun Jan 10 22:31:49.669 2021] [16380] listening on 127.0.0.1:9306
+[Sun Jan 10 22:31:49.670 2021] [16380] listening on 127.0.0.1:9080
+[Sun Jan 10 22:31:49.715 2021] [16472] prereading 3 indexes
+[Sun Jan 10 22:31:49.715 2021] [16380] accepting connections
+[Sun Jan 10 22:31:49.715 2021] [16472] prereaded 3 indexes in 0.000 sec
+[Sun Jan 10 22:32:28.524 2021] [16380] shutdown complete
+[Sun Jan 10 22:39:22.741 2021] [1292] listening on 127.0.0.1:9306
+[Sun Jan 10 22:39:22.742 2021] [1292] listening on 127.0.0.1:9080
+[Sun Jan 10 22:39:22.831 2021] [1292] rotating index 'idiom': success
+[Sun Jan 10 22:39:22.901 2021] [1292] rotating index 'phrasal': success
+[Sun Jan 10 22:39:22.965 2021] [1292] rotating index 'commonwords': success
+[Sun Jan 10 22:39:22.970 2021] [8808] prereading 3 indexes
+[Sun Jan 10 22:39:22.970 2021] [1292] accepting connections
+[Sun Jan 10 22:39:22.970 2021] [8808] prereaded 3 indexes in 0.000 sec
+[Sun Jan 10 23:21:44.964 2021] [1292] shutdown complete
+[Sun Jan 10 23:31:51.379 2021] [18356] listening on 127.0.0.1:9306
+[Sun Jan 10 23:31:51.380 2021] [18356] listening on 127.0.0.1:9080
+[Sun Jan 10 23:31:51.406 2021] [9628] prereading 3 indexes
+[Sun Jan 10 23:31:51.406 2021] [18356] accepting connections
+[Sun Jan 10 23:31:51.407 2021] [9628] prereaded 3 indexes in 0.000 sec
+[Sun Jan 10 23:40:28.129 2021] [18356] shutdown complete
+[Sun Jan 10 23:40:57.863 2021] [13164] listening on 127.0.0.1:9306
+[Sun Jan 10 23:40:57.864 2021] [13164] listening on 127.0.0.1:9080
+[Sun Jan 10 23:40:57.892 2021] [13164] accepting connections
+[Sun Jan 10 23:40:57.892 2021] [16084] prereading 3 indexes
+[Sun Jan 10 23:40:57.892 2021] [16084] prereaded 3 indexes in 0.000 sec
+[Sun Jan 10 23:58:27.128 2021] [13164] shutdown complete
+[Sun Jan 10 23:58:46.914 2021] [2748] listening on 127.0.0.1:9306
+[Sun Jan 10 23:58:46.915 2021] [2748] listening on 127.0.0.1:9080
+[Sun Jan 10 23:58:46.943 2021] [2748] accepting connections
+[Sun Jan 10 23:58:46.943 2021] [16416] prereading 3 indexes
+[Sun Jan 10 23:58:46.943 2021] [16416] prereaded 3 indexes in 0.000 sec
+[Mon Jan 11 00:51:32.701 2021] [2748] shutdown complete
+[Mon Jan 11 01:11:19.784 2021] [6496] listening on 127.0.0.1:9306
+[Mon Jan 11 01:11:19.784 2021] [6496] listening on 127.0.0.1:9080
+[Mon Jan 11 01:11:19.824 2021] [6496] accepting connections
+[Mon Jan 11 01:11:19.824 2021] [6824] prereading 3 indexes
+[Mon Jan 11 01:11:19.853 2021] [6824] prereaded 3 indexes in 0.029 sec
+[Tue Jan 12 09:36:17.423 2021] [6496] shutdown complete
+[Tue Jan 12 09:36:52.464 2021] [6952] listening on 127.0.0.1:9306
+[Tue Jan 12 09:36:52.464 2021] [6952] listening on 127.0.0.1:9080
+[Tue Jan 12 09:36:52.490 2021] [6952] accepting connections
+[Tue Jan 12 09:36:52.494 2021] [6608] prereading 3 indexes
+[Tue Jan 12 09:36:52.496 2021] [6608] prereaded 3 indexes in 0.002 sec
+[Wed Jan 20 22:08:00.107 2021] [6952] shutdown complete
+[Wed Jan 20 22:07:40.617 2021] [6908] listening on 127.0.0.1:9306
+[Wed Jan 20 22:07:40.618 2021] [6908] listening on 127.0.0.1:9080
+[Wed Jan 20 22:07:40.645 2021] [6908] accepting connections
+[Wed Jan 20 22:07:40.661 2021] [7184] prereading 3 indexes
+[Wed Jan 20 22:07:40.662 2021] [7184] prereaded 3 indexes in 0.001 sec
+[Wed Jan 20 23:09:43.171 2021] [6908] shutdown complete
+[Wed Jan 20 23:09:54.714 2021] [9172] listening on 127.0.0.1:9306
+[Wed Jan 20 23:09:54.714 2021] [9172] listening on 127.0.0.1:9080
+[Wed Jan 20 23:09:54.748 2021] [4108] prereading 3 indexes
+[Wed Jan 20 23:09:54.748 2021] [9172] accepting connections
+[Wed Jan 20 23:09:54.748 2021] [4108] prereaded 3 indexes in 0.000 sec

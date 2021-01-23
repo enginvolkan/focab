@@ -7,24 +7,26 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.engin.focab.jpa.corpus.LexiModel;
+
 @Embeddable
 public class FavoriteEntry {
 	@NotNull
 	@OneToOne
-	private Vocabulary vocabulary;
+	private LexiModel lexiModel;
 	public FavoriteEntry() {
 	}	
-	public FavoriteEntry(Vocabulary vocabulary) {
+	public FavoriteEntry(LexiModel lexiModel) {
 		super();
-		this.vocabulary = vocabulary;
+		this.lexiModel = lexiModel;
 	}
 
-	public Vocabulary getVocabulary() {
-		return vocabulary;
+	public LexiModel getVocabulary() {
+		return lexiModel;
 	}
 
-	public void setVocabulary(Vocabulary vocabulary) {
-		this.vocabulary = vocabulary;
+	public void setVocabulary(LexiModel lexiModel) {
+		this.lexiModel = lexiModel;
 	}
 	
 	

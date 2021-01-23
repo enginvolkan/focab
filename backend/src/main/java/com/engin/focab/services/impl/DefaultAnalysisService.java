@@ -16,10 +16,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.engin.focab.jpa.IdiomAnalysis;
 import com.engin.focab.jpa.MovieAnalysisModel;
 import com.engin.focab.jpa.SubtitleModel;
 import com.engin.focab.jpa.SummerizedMovieAnalysisModel;
-import com.engin.focab.jpa.corpus.IdiomAnalysis;
 import com.engin.focab.repository.MovieAnalysisRepository;
 import com.engin.focab.repository.SubtitleRepository;
 import com.engin.focab.services.AnalysisService;
@@ -65,6 +65,8 @@ public class DefaultAnalysisService implements AnalysisService {
 		MovieAnalysisModel analysisResult = null;
 
 		Set<String> singleWords = new HashSet<>();
+
+		// What is this for?
 		Map<String, String> singleWordsMap = new HashMap<String, String>();
 
 		HashMap<String, List<String>> aggregatedIdiomMap = new HashMap<String, List<String>>();

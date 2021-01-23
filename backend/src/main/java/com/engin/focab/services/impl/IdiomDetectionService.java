@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.engin.focab.jpa.corpus.IdiomAnalysis;
+import com.engin.focab.jpa.IdiomAnalysis;
 import com.engin.focab.services.IndexedSearchService;
 
 import edu.stanford.nlp.simple.Sentence;

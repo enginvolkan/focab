@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import com.engin.focab.cronjob.IdiomRegexBuilderCronJob;
-import com.engin.focab.jpa.corpus.CommonWordModel;
+import com.engin.focab.jpa.corpus.LexiModel;
 import com.engin.focab.repository.CommonWordRepository;
 
 @SpringBootApplication
@@ -32,7 +32,7 @@ public class FocabApplication {
 	}
 
 	@Scheduled(cron = "0 0 22 * * *")
-//	@Scheduled(fixedDelay = 1000)
+//	@Scheduled(fixedDelay = 10000)
 	public void scheduleFixedDelayTask() {
 		System.out.println("IdiomLemmaBuilderCronJob is running...");
 		idiomLemmaBuilderCronJob.fillNullLemmas();
@@ -52,14 +52,15 @@ public class FocabApplication {
 
 	@Bean
 	public List<Set<String>> commonWords() {
-		List<CommonWordModel> commonWords = commonWordRepository.findAll();
+		List<LexiModel> commonWords = commonWordRepository.findAll();
 		List<Set<String>> listOfSets = new ArrayList<Set<String>>();
 
 		for (int i = 0; i < 5; i++) {
 			listOfSets.add(new HashSet<String>());
 		}
 
-		commonWords.stream().forEach(x -> listOfSets.get(x.getLevel()).add(x.getText()));
+		commonWords.stream().filter(x -> x.getCommonWordLevel() != null)
+				.forEach(x -> listOfSets.get(x.getCommonWordLevel()).add(x.getText()));
 		return listOfSets;
 	}
 

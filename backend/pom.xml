@@ -146,6 +146,18 @@
 			<artifactId>stanford-corenlp</artifactId>
 			<version>3.9.2</version>
 		</dependency>
+		<dependency>
+    <groupId>org.jfrog.artifactory.client</groupId>
+    <artifactId>artifactory-java-client-services</artifactId>
+    <version>0.16</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.jfrog.artifactory.client/artifactory-java-client-services -->
+<dependency>
+    <groupId>org.jfrog.artifactory.client</groupId>
+    <artifactId>artifactory-java-client-services</artifactId>
+    <version>0.16</version>
+</dependency>
+
 <!-- 		<dependency> -->
 <!-- 			<groupId>edu.stanford.nlp</groupId> -->
 <!-- 			<artifactId>stanford-corenlp</artifactId> -->

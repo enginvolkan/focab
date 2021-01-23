@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.engin.focab.jpa.FormattedSearchResult;
 import com.engin.focab.jpa.SearchResult;
-import com.engin.focab.jpa.Vocabulary;
+import com.engin.focab.jpa.corpus.LexiModel;
 
 public interface SearchService {
 

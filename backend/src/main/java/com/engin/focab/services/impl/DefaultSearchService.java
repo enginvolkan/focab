@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.engin.focab.jpa.DictionaryDefinition;
 import com.engin.focab.jpa.FormattedSearchResult;
 import com.engin.focab.jpa.SearchResult;
-import com.engin.focab.jpa.Vocabulary;
+import com.engin.focab.jpa.corpus.DictionaryDefinition;
+import com.engin.focab.jpa.corpus.LexiModel;
 import com.engin.focab.services.DictionaryService;
 import com.engin.focab.services.SearchService;
 

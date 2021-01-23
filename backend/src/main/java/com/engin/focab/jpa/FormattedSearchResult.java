@@ -2,6 +2,8 @@ package com.engin.focab.jpa;
 
 	import java.util.List;
 
+import com.engin.focab.jpa.corpus.DictionaryDefinition;
+
 	public class FormattedSearchResult {
 
 

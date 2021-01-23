@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.engin.focab.dtos.ExampleDto;
 import com.engin.focab.jpa.Customer;
-import com.engin.focab.jpa.Example;
+import com.engin.focab.jpa.corpus.ExampleModel;
 import com.engin.focab.services.FavoriteService;
 import com.engin.focab.services.SessionService;
 import com.engin.focab.services.VocabularyService;
@@ -32,8 +32,8 @@ public class LearnController {
 	@ResponseBody
 	public ExampleDto learn() throws IOException, InterruptedException {
 		Customer customer = sessionService.getCurrentCustomer();
-		Example example = favoriteService.getARandomExample(customer);
-		return convertToDtoExample(example);
+		ExampleModel exampleModel = favoriteService.getARandomExample(customer);
+		return convertToDtoExample(exampleModel);
 	}
 
 	public void setFavoriteService(FavoriteService favoriteService) {
@@ -44,16 +44,16 @@ public class LearnController {
 		this.sessionService = sessionService;
 	}
 
-	private ExampleDto convertToDtoExample(Example example) {
+	private ExampleDto convertToDtoExample(ExampleModel exampleModel) {
 		ModelMapper modelMapper = new ModelMapper();
-		PropertyMap<Example, ExampleDto> exampleMap = new PropertyMap<Example, ExampleDto>() {
+		PropertyMap<ExampleModel, ExampleDto> exampleMap = new PropertyMap<ExampleModel, ExampleDto>() {
 			protected void configure() {
 				map().setVocabulary(source.getVocabulary().getText());
 			};
 		};
 
 		modelMapper.addMappings(exampleMap);
-		ExampleDto exampleDto = modelMapper.map(example, ExampleDto.class);
+		ExampleDto exampleDto = modelMapper.map(exampleModel, ExampleDto.class);
 		return exampleDto;
 	}
 }

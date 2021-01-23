@@ -46,7 +46,8 @@ public class SphinxService implements IndexedSearchService {
 	@Override
 	public List<String> findCommonWordsByLevel(int level) {
 
-		String url = "http://localhost:9080/sql?query=select%20*%20from%20commonwords%20where%20level%3C%3d" + level
+		String url = "http://localhost:9080/sql?query=select%20*%20from%20commonwords%20where%20common_word_level%3C%3d"
+				+ level
 				+ "%20limit%205000;";
 		ArrayList<String> results = runSphinxQuery(url, 1);
 		return results;

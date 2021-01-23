@@ -15,8 +15,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.stereotype.Component;
 
-import com.engin.focab.jpa.Definition;
-import com.engin.focab.jpa.PhrasalVerbModel;
+import com.engin.focab.jpa.corpus.DefinitionModel;
+import com.engin.focab.jpa.corpus.LexiModel;
 
 @Component
 public class UsingEnglishScrapper {
@@ -24,7 +24,7 @@ public class UsingEnglishScrapper {
 
 	private String chromeDriverPath = "/home/engin/focab/backend/src/main/resources/chromedriver";
 
-	public ArrayList<PhrasalVerbModel> getPhrasalVebs() {
+	public ArrayList<LexiModel> getPhrasalVebs() {
 
 		// Set the path of the driver to driver executable. For Chrome, set the
 		// properties as following:
@@ -52,7 +52,7 @@ public class UsingEnglishScrapper {
 				}
 			});
 		}
-		ArrayList<PhrasalVerbModel> phrasalVerbs = new ArrayList<PhrasalVerbModel>();
+		ArrayList<LexiModel> phrasalVerbs = new ArrayList<LexiModel>();
 		System.out.println(as.size() + "links to go...");
 		for (String a : as) {
 			System.out.println("Trying:" + a);
@@ -88,15 +88,14 @@ public class UsingEnglishScrapper {
 						isSeparable = false;
 						break;
 					}
-					Definition definition = new Definition(text, meaning, isSeparable, sentence, "UsingEnglish");
-					PhrasalVerbModel phrasalVerb = new PhrasalVerbModel();
-					phrasalVerb.setText(text);
-					List<Definition> definitions = phrasalVerb.getDefinitions();
-					if (definitions == null) {
-						definitions = new ArrayList<Definition>();
+					DefinitionModel definitionModel = new DefinitionModel(text, meaning, isSeparable, sentence, "UsingEnglish");
+					LexiModel phrasalVerb = new LexiModel(text);
+					List<DefinitionModel> definitionModels = phrasalVerb.getDefinitions();
+					if (definitionModels == null) {
+						definitionModels = new ArrayList<DefinitionModel>();
 					}
-					definitions.add(definition);
-					phrasalVerb.setDefinitions(definitions);
+					definitionModels.add(definitionModel);
+					phrasalVerb.setDefinitions(definitionModels);
 					phrasalVerbs.add(phrasalVerb);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

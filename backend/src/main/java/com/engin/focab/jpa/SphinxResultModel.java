@@ -2,7 +2,7 @@ package com.engin.focab.jpa;
 
 import java.util.List;
 
-import com.engin.focab.jpa.corpus.IdiomModel;
+import com.engin.focab.jpa.corpus.LexiModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -62,7 +62,7 @@ public class SphinxResultModel {
 	private List<String> attrs = null;
 	@SerializedName("matches")
 	@Expose
-	private List<List<IdiomModel>> matches = null;
+	private List<List<LexiModel>> matches = null;
 	@SerializedName("meta")
 	@Expose
 	private Meta meta;
@@ -75,11 +75,11 @@ public class SphinxResultModel {
 		this.attrs = attrs;
 	}
 
-	public List<List<IdiomModel>> getMatches() {
+	public List<List<LexiModel>> getMatches() {
 		return matches;
 	}
 
-	public void setMatches(List<List<IdiomModel>> matches) {
+	public void setMatches(List<List<LexiModel>> matches) {
 		this.matches = matches;
 	}
 

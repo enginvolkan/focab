@@ -7,15 +7,15 @@ import java.util.Set;
 import org.springframework.stereotype.Component;
 
 import com.engin.focab.jpa.Customer;
-import com.engin.focab.jpa.Example;
 import com.engin.focab.jpa.FavoriteEntry;
 import com.engin.focab.jpa.SearchResult;
-import com.engin.focab.jpa.Vocabulary;
+import com.engin.focab.jpa.corpus.ExampleModel;
+import com.engin.focab.jpa.corpus.LexiModel;
 @Component
 public interface FavoriteService {
 
-	public boolean addFavorite(Vocabulary vocabulary, Customer customer);
-	public boolean removeFavorite(Vocabulary vocabulary, Customer customer);
+	public boolean addFavorite(LexiModel lexiModel, Customer customer);
+	public boolean removeFavorite(LexiModel lexiModel, Customer customer);
 	public Set<FavoriteEntry> getFavorites(Customer customer);
-	public Example getARandomExample(Customer customer) throws IOException, InterruptedException;
+	public ExampleModel getARandomExample(Customer customer) throws IOException, InterruptedException;
 }

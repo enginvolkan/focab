@@ -3,12 +3,13 @@ package com.engin.focab.cronjob;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.engin.focab.jpa.corpus.IdiomModel;
+import com.engin.focab.jpa.corpus.LexiModel;
 import com.engin.focab.repository.IdiomRepository;
 
 import edu.stanford.nlp.simple.Sentence;
@@ -23,9 +24,13 @@ public class IdiomRegexBuilderCronJob {
 	}
 
 	public void fillNullLemmas() {
-		IdiomModel[] idiomModelsWithNoRegex = getIdiomRepository().findNullRegex();
-		for (IdiomModel idiomModel : idiomModelsWithNoRegex) {
-			List<String> lemmaList = new Sentence(idiomModel.getText().toLowerCase(Locale.ENGLISH)).lemmas();
+		LexiModel[] idiomModelsWithNoRegex = getIdiomRepository().findNullRegex();
+		Properties props = new Properties();
+		props.setProperty("pos.model", "english-left3words-distsim.tagger");
+
+		for (LexiModel idiomModel : idiomModelsWithNoRegex) {
+			Sentence idiom = new Sentence(idiomModel.getText().toLowerCase(Locale.ENGLISH));
+			List<String> lemmaList = idiom.lemmas(props);
 
 			ArrayList<String> segments = new ArrayList<>();
 

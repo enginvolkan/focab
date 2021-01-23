@@ -4,15 +4,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.engin.focab.jpa.corpus.IdiomModel;
+import com.engin.focab.jpa.corpus.LexiModel;
 
 @Repository
-public interface IdiomRepository extends JpaRepository<IdiomModel, String>{
+public interface IdiomRepository extends JpaRepository<LexiModel, String> {
 
-	@Query(value="SELECT * FROM idiommodel as i where i.idiom LIKE %?1%",
+	@Query(value = "SELECT * FROM lexi as i where i.text LIKE %?1% AND type = 'IDIOM'",
 			  nativeQuery = true)
-	IdiomModel[] findSimilarIdioms(String word);
+	LexiModel[] findSimilarIdioms(String word);
 
-	@Query(value = "SELECT * FROM idioms where regex is null", nativeQuery = true)
-	IdiomModel[] findNullRegex();
+	@Query(value = "SELECT * FROM lexi where regex is null AND type = 'IDIOM'", nativeQuery = true)
+	LexiModel[] findNullRegex();
 }

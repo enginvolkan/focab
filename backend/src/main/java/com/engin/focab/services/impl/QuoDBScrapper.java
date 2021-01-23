@@ -19,9 +19,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.engin.focab.jpa.Example;
 import com.engin.focab.jpa.QuoDBResult;
-import com.engin.focab.jpa.Vocabulary;
+import com.engin.focab.jpa.corpus.ExampleModel;
+import com.engin.focab.jpa.corpus.LexiModel;
 import com.engin.focab.services.ScrapperService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -36,7 +36,7 @@ public class QuoDBScrapper implements ScrapperService {
 	private String chromeDriverPath;
 
 	@Override
-	public Example[] getExamples(Vocabulary vocabulary) throws InterruptedException {
+	public ExampleModel[] getExamples(LexiModel lexiModel) throws InterruptedException {
 
 		// Set the path of the driver to driver executable. For Chrome, set the
 		// properties as following:
@@ -48,10 +48,10 @@ public class QuoDBScrapper implements ScrapperService {
 
 		WebDriver driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.get(url + vocabulary.getText().replaceAll("/+/", " ") + parameters);
+		driver.get(url + lexiModel.getText().replaceAll("/+/", " ") + parameters);
 
 		List<WebElement> elements = driver.findElements(By.cssSelector("a[rel='popover']"));
-		Example[] examples = new Example[elements.size()];
+		ExampleModel[] examples = new ExampleModel[elements.size()];
 		int i = 0;
 
 		for (WebElement as : elements) {
@@ -60,7 +60,7 @@ public class QuoDBScrapper implements ScrapperService {
 			String id0 = as.getAttribute("onclick");
 			String id1 = id0.substring(22, id0.indexOf(','));
 			String id2 = id0.substring(id0.indexOf(',') + 2, id0.indexOf(')') - 1);
-			Example newExample = extractExample(id1, id2, vocabulary.getText(), vocabulary);
+			ExampleModel newExample = extractExample(id1, id2, lexiModel.getText(), lexiModel);
 			if (newExample != null) {
 				examples[i] = newExample;
 				i++;
@@ -71,7 +71,7 @@ public class QuoDBScrapper implements ScrapperService {
 		return examples;
 	}
 
-	private Example extractExample(String id1, String id2, String word, Vocabulary vocabulary) {
+	private ExampleModel extractExample(String id1, String id2, String word, LexiModel lexiModel) {
 		try {
 			URL url = new URL("http://api.quodb.com/quotes/" + id2 + "/" + id1);
 			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -106,7 +106,7 @@ public class QuoDBScrapper implements ScrapperService {
 
 			phrase = phrase.replaceAll(word, "<strong>" + word + "</strong>");
 
-			return new Example(phrase, title, url.getHost() + url.getPath(), vocabulary);
+			return new ExampleModel(phrase, title, url.getHost() + url.getPath(), lexiModel);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -7,8 +7,8 @@ import javax.persistence.EntityExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.engin.focab.jpa.SingleWord;
-import com.engin.focab.jpa.Vocabulary;
+import com.engin.focab.jpa.corpus.ExampleModel;
+import com.engin.focab.jpa.corpus.LexiModel;
 import com.engin.focab.repository.VocabularyRepository;
 import com.engin.focab.services.VocabularyService;
 
@@ -18,15 +18,15 @@ public class DefaultVocabularyService implements VocabularyService {
 	private VocabularyRepository vocabularyRepository;
 
 	@Override
-	public Optional<Vocabulary> findVocabulary(String text) {
+	public Optional<LexiModel> findVocabulary(String text) {
 //		String id = convertToID(text);
 		return vocabularyRepository.findById(text);
 	}
 
 	@Override
-	public Vocabulary createVocabulary(String text) {
+	public LexiModel createVocabulary(String text) {
 		try {
-			SingleWord vocabulary = new SingleWord(text);
+			LexiModel vocabulary = new LexiModel(text);
 			vocabularyRepository.save(vocabulary);
 			return vocabulary;
 		} catch (EntityExistsException e) {
@@ -40,4 +40,8 @@ public class DefaultVocabularyService implements VocabularyService {
 		return text.toLowerCase().trim().replaceAll(" ", "+");
 	}
 
+	@Override
+	public ExampleModel[] getExamples(LexiModel lexiModel) {
+		return (ExampleModel[]) lexiModel.getDefinitions().stream().map(x -> x.getExamples()).toArray();
+	}
 }

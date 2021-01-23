@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.engin.focab.jpa.Customer;
 import com.engin.focab.jpa.FavoriteEntry;
-import com.engin.focab.jpa.Vocabulary;
+import com.engin.focab.jpa.corpus.LexiModel;
 import com.engin.focab.services.FavoriteService;
 import com.engin.focab.services.SessionService;
 import com.engin.focab.services.VocabularyService;
@@ -38,23 +38,23 @@ public class FavoriteController {
 	@ResponseBody
 	public boolean addFavorite(@RequestParam String entry) {
 		Customer customer = sessionService.getCurrentCustomer();
-		Optional<Vocabulary> searchResult = vocabularyService.findVocabulary(entry);
-		Vocabulary vocabulary;
+		Optional<LexiModel> searchResult = vocabularyService.findVocabulary(entry);
+		LexiModel lexiModel;
 		
 		if(!searchResult.isPresent()) {
-			vocabulary = vocabularyService.createVocabulary(entry);
+			lexiModel = vocabularyService.createVocabulary(entry);
 		}else {
-			vocabulary = searchResult.get();
+			lexiModel = searchResult.get();
 		}
 		
-		return favoriteService.addFavorite(vocabulary, customer);
+		return favoriteService.addFavorite(lexiModel, customer);
 	}
 
 	@PostMapping("/removeFavorite")
 	@ResponseBody
 	public boolean removeFavorite(@RequestParam String entry) {
 		Customer customer = sessionService.getCurrentCustomer();
-		Optional<Vocabulary> searchResult = vocabularyService.findVocabulary(entry);
+		Optional<LexiModel> searchResult = vocabularyService.findVocabulary(entry);
 		
 		if(!searchResult.isPresent()) {
 			return favoriteService.removeFavorite(searchResult.get(), customer);

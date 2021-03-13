@@ -17,10 +17,10 @@ import com.engin.focab.jpa.corpus.LexiModel;
 import com.engin.focab.repository.CustomerRepository;
 import com.engin.focab.repository.ExampleRepository;
 import com.engin.focab.repository.FavoriteListRepository;
-import com.engin.focab.repository.VocabularyRepository;
+import com.engin.focab.repository.LexiRepository;
 import com.engin.focab.services.FavoriteService;
+import com.engin.focab.services.LexiDetailsService;
 import com.engin.focab.services.ScrapperService;
-import com.engin.focab.services.VocabularyService;
 
 @Component
 public class DefaultFavoriteService implements FavoriteService {
@@ -32,11 +32,11 @@ public class DefaultFavoriteService implements FavoriteService {
 	@Autowired
 	CustomerRepository customerRepository;
 	@Autowired
-	VocabularyRepository vocabularyRepository;
+	LexiRepository lexiRepository;
 	@Autowired
 	ScrapperService scrapperService;
 	@Autowired
-	VocabularyService vocabularyService;
+	LexiDetailsService lexiDetailsService;
 
 	@Override
 	public boolean addFavorite(LexiModel lexiModel, Customer customer) {
@@ -66,13 +66,15 @@ public class DefaultFavoriteService implements FavoriteService {
 
 	@Override
 	public Set<FavoriteEntry> getFavorites(Customer customer) {
-		FavoriteList favoriteList = favoriteListRepository.findFavoriteListByCustomer(customer.getId(), "default");
+		FavoriteList favoriteList = favoriteListRepository.findFavoriteListByCustomer(customer.getUsername(),
+				"default");
 		return favoriteList.getFavoriteEntries();
 	}
 
 	@Override
 	public ExampleModel getARandomExample(Customer customer) throws IOException, InterruptedException {
-		FavoriteEntry[] favoriteEntries = favoriteListRepository.findFavoriteListByCustomer(customer.getId(), "default")
+		FavoriteEntry[] favoriteEntries = favoriteListRepository
+				.findFavoriteListByCustomer(customer.getUsername(), "default")
 				.getFavoriteEntries().stream().toArray(n -> new FavoriteEntry[n]);
 		int size = favoriteEntries.length;
 		if (size == 0) {
@@ -93,7 +95,7 @@ public class DefaultFavoriteService implements FavoriteService {
 	private ExampleModel[] fetchExamples(LexiModel lexiModel) throws IOException, InterruptedException {
 
 		ExampleModel[] examples = scrapperService.getExamples(lexiModel);
-		List<ExampleModel> newExamples = Arrays.asList(vocabularyService.getExamples(lexiModel));
+		List<ExampleModel> newExamples = Arrays.asList(lexiDetailsService.getExamples(lexiModel));
 
 		for (ExampleModel exampleModel : examples) {
 			if (exampleModel.getText().toLowerCase().indexOf(lexiModel.getText().replaceAll("/+/", " ")) != -1) {

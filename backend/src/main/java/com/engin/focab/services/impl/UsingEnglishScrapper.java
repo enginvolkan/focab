@@ -88,8 +88,8 @@ public class UsingEnglishScrapper {
 						isSeparable = false;
 						break;
 					}
-					DefinitionModel definitionModel = new DefinitionModel(text, meaning, isSeparable, sentence, "UsingEnglish");
 					LexiModel phrasalVerb = new LexiModel(text);
+					DefinitionModel definitionModel = new DefinitionModel(phrasalVerb, meaning, sentence);
 					List<DefinitionModel> definitionModels = phrasalVerb.getDefinitions();
 					if (definitionModels == null) {
 						definitionModels = new ArrayList<DefinitionModel>();

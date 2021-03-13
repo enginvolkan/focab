@@ -9,25 +9,25 @@ import org.springframework.stereotype.Component;
 
 import com.engin.focab.jpa.corpus.ExampleModel;
 import com.engin.focab.jpa.corpus.LexiModel;
-import com.engin.focab.repository.VocabularyRepository;
-import com.engin.focab.services.VocabularyService;
+import com.engin.focab.repository.LexiRepository;
+import com.engin.focab.services.LexiDetailsService;
 
 @Component
-public class DefaultVocabularyService implements VocabularyService {
+public class DefaultLexiDetailsService implements LexiDetailsService {
 	@Autowired
-	private VocabularyRepository vocabularyRepository;
+	private LexiRepository lexiRepository;
 
 	@Override
-	public Optional<LexiModel> findVocabulary(String text) {
+	public Optional<LexiModel> findLexi(String text) {
 //		String id = convertToID(text);
-		return vocabularyRepository.findById(text);
+		return Optional.ofNullable(lexiRepository.findLexiByText(text));
 	}
 
 	@Override
 	public LexiModel createVocabulary(String text) {
 		try {
 			LexiModel vocabulary = new LexiModel(text);
-			vocabularyRepository.save(vocabulary);
+			lexiRepository.save(vocabulary);
 			return vocabulary;
 		} catch (EntityExistsException e) {
 			e.printStackTrace();

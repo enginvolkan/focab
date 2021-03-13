@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.apache.xmlrpc.XmlRpcException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.engin.focab.services.SubtitleService;
@@ -17,6 +19,7 @@ import com.github.wtekiela.opensub4j.response.SubtitleInfo;
 
 @Component
 public class OpenSubtitlesOrgSubtitleService implements SubtitleService {
+	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	private OpenSubtitlesClient client;
 	private OpenSubtitlesClient osClient;
@@ -43,7 +46,8 @@ public class OpenSubtitlesOrgSubtitleService implements SubtitleService {
 			}
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// Check https://www.opensubtitles.org/ in browser. It may be down from time to
+			// time
 			e.printStackTrace();
 		}
 		return client;
@@ -51,7 +55,7 @@ public class OpenSubtitlesOrgSubtitleService implements SubtitleService {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * com.engin.focab.services.impl.SubtitleService#getASubtitleByImdbId(java.lang.
 	 * String)

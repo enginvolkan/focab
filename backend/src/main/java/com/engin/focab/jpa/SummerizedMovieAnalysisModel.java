@@ -1,6 +1,6 @@
 package com.engin.focab.jpa;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.engin.focab.dtos.LexiDto;
 
 @Entity
 @Table(name = "summerizedanalysis")
@@ -35,11 +37,11 @@ public class SummerizedMovieAnalysisModel {
 
 	private String imdbId;
 
-	private HashMap<String, List<String>> idioms = new HashMap<String, List<String>>();
+	private ArrayList<LexiDto> idioms = new ArrayList<>();
 
-	private HashMap<String, List<String>> phrasalVerbs = new HashMap<String, List<String>>();
+	private ArrayList<LexiDto> phrasalVerbs = new ArrayList<>();
 
-	private HashMap<String, List<String>> singleWords = new HashMap<String, List<String>>();
+	private ArrayList<LexiDto> singleWords = new ArrayList<>();
 
 	private long idiomAverageDuration;
 	private long phrasalAverageDuration;
@@ -58,27 +60,27 @@ public class SummerizedMovieAnalysisModel {
 		this.imdbId = imdbId;
 	}
 
-	public HashMap<String, List<String>> getIdioms() {
+	public List<LexiDto> getIdioms() {
 		return idioms;
 	}
 
-	public void setIdioms(HashMap<String, List<String>> idioms) {
+	public void setIdioms(ArrayList<LexiDto> idioms) {
 		this.idioms = idioms;
 	}
 
-	public HashMap<String, List<String>> getPhrasalVerbs() {
+	public List<LexiDto> getPhrasalVerbs() {
 		return phrasalVerbs;
 	}
 
-	public void setPhrasalVerbs(HashMap<String, List<String>> phrasalVerbs) {
+	public void setPhrasalVerbs(ArrayList<LexiDto> phrasalVerbs) {
 		this.phrasalVerbs = phrasalVerbs;
 	}
 
-	public HashMap<String, List<String>> getSingleWords() {
+	public List<LexiDto> getSingleWords() {
 		return singleWords;
 	}
 
-	public void setSingleWords(HashMap<String, List<String>> singleWords) {
+	public void setSingleWords(ArrayList<LexiDto> singleWords) {
 		this.singleWords = singleWords;
 	}
 

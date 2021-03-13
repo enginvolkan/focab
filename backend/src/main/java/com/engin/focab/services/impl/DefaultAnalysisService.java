@@ -16,10 +16,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.engin.focab.dtos.LexiDto;
 import com.engin.focab.jpa.IdiomAnalysis;
 import com.engin.focab.jpa.MovieAnalysisModel;
 import com.engin.focab.jpa.SubtitleModel;
 import com.engin.focab.jpa.SummerizedMovieAnalysisModel;
+import com.engin.focab.repository.LexiRepository;
 import com.engin.focab.repository.MovieAnalysisRepository;
 import com.engin.focab.repository.SubtitleRepository;
 import com.engin.focab.services.AnalysisService;
@@ -46,6 +48,9 @@ public class DefaultAnalysisService implements AnalysisService {
 
 	@Autowired
 	private IdiomDetectionService idiomDetectionService;
+
+	@Autowired
+	private LexiRepository lexiRepository;
 
 	@Autowired
 	@Qualifier("constituencyParser")
@@ -142,14 +147,14 @@ public class DefaultAnalysisService implements AnalysisService {
 
 				List<String> namedEntities = sentence.nerTags(props);
 				for (int j = 0; j < sentenceLemmas.size(); j++) {
-					if(namedEntities.get(j).equals("O")) {
+					if (namedEntities.get(j).equals("O")) {
 						singleWordsMap.merge(sentenceLemmas.get(j).toLowerCase(Locale.ENGLISH), " " + subtitleIndex,
 								String::concat);
-				}else {
+					} else {
 						System.out.println(
 								"Named Entity disregarded: " + sentenceLemmas.get(j) + " | " + namedEntities.get(j));
-				}
 					}
+				}
 
 				Instant singleEnd = Instant.now();
 
@@ -166,7 +171,7 @@ public class DefaultAnalysisService implements AnalysisService {
 			}
 
 			// process single words set
-			Instant singleMassStart= Instant.now();
+			Instant singleMassStart = Instant.now();
 
 			singleWords.addAll(singleWordsDetectionService.reduce(singleWordsMap.keySet()));
 			if (!singleWords.isEmpty()) {
@@ -182,7 +187,6 @@ public class DefaultAnalysisService implements AnalysisService {
 			}
 
 			Instant singleMassEnd = Instant.now();
-
 
 			idiomAverageDuration = idiomTotalDuration / subtitles.size();
 			phrasalAverageDuration = phrasalTotalDuration / subtitles.size();
@@ -200,9 +204,10 @@ public class DefaultAnalysisService implements AnalysisService {
 		}
 
 		SummerizedMovieAnalysisModel summerizedAnalysis = new SummerizedMovieAnalysisModel(imdbId);
-		summerizedAnalysis.setIdioms(aggregatedIdiomMap);
-		summerizedAnalysis.setPhrasalVerbs(aggregatedPhrasalverbMap);
-		summerizedAnalysis.setSingleWords(aggregatedSingleWordMap);
+
+		summerizedAnalysis.setIdioms(convertMapKeysToDto(aggregatedIdiomMap));
+		summerizedAnalysis.setPhrasalVerbs(convertMapKeysToDto(aggregatedPhrasalverbMap));
+		summerizedAnalysis.setSingleWords(convertMapKeysToDto(aggregatedSingleWordMap));
 		summerizedAnalysis.setIdiomAverageDuration(idiomAverageDuration);
 		summerizedAnalysis.setPhrasalAverageDuration(phrasalAverageDuration);
 		summerizedAnalysis.setSingleAverageDuration(singleAverageDuration);
@@ -252,6 +257,19 @@ public class DefaultAnalysisService implements AnalysisService {
 			a.add(value);
 			m.put(key, a);
 		}
+	}
+
+	private ArrayList<LexiDto> convertMapKeysToDto(HashMap<String, List<String>> initialMap) {
+		ArrayList<LexiDto> lexis = new ArrayList<>();
+		for (Map.Entry<String, List<String>> entry : initialMap.entrySet()) {
+			String text = entry.getKey();
+			ArrayList<String> movieExamples = (ArrayList<String>) entry.getValue();
+			LexiDto lexi = new LexiDto(text);
+			lexi.setMovieExamples(movieExamples);
+			lexis.add(lexi);
+		}
+		return lexis;
+
 	}
 
 }

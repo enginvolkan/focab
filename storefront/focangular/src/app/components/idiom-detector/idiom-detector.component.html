@@ -1,0 +1,25 @@
+<div fxLayout class="form">
+    <form fxLayout class="searchbox">
+        <mat-form-field fxFlex="%50" class="inputbox">
+            <input name="search" matInput type="text" placeholder="Enter a sentence for idiom detection"
+                [(ngModel)]="sentence" (keydown.enter)="triggerSearch(sentence)">
+            <button mat-button *ngIf="sentence" matSuffix mat-icon-button aria-label="Clear" (click)="sentence=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+    </form>
+
+    <button mat-button color="primary" (click)="triggerSearch(sentence)">Go!</button>
+</div>
+
+
+<div *ngIf="idiomSearchResult.length>0" fxLayout="column" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="start">
+    <p>
+        <strong>Idioms: </strong>
+    </p>
+        <div *ngFor="let idioms of idiomSearchResult" fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-sm="100%" fxFill>
+            {{ idioms }}
+        </div>
+
+</div>

@@ -1,0 +1,15 @@
+<div fxLayout class="form" fxLayoutAlign="space-between center">
+    <form class="searchbox">
+
+        <mat-form-field class="inputbox">
+            <input name="search" matInput type="text" placeholder="Search for" [(ngModel)]="searchTerm"
+                (keydown.enter)="triggerSearch(searchTerm)">
+            <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="searchTerm=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+    </form>
+
+    <button mat-raised-button color="accent" (click)="triggerSearch(searchTerm)">Go!</button>
+</div>

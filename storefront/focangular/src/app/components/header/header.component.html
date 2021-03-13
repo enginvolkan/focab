@@ -1,0 +1,23 @@
+  <img src="../../assets/lexibag-logo.png" alt="logo" class="responsive" routerLinkActive="active"
+      routerLink="/home">
+
+  <!-- This fills the remaining space of the current row -->
+  <!-- <span class="header-middle"></span> -->
+
+  <span class="header-links" routerLinkActive="active" routerLink="/learn" fxHide.lt-md="true">Learn</span>
+  <span class="header-links" routerLinkActive="active" routerLink="/idiomSearch" fxHide.lt-md="true">Idiom Search</span>
+
+  <span class="header-search" fxFlex="35%" fxHide.lt-sm="true">
+    <app-search class="app-search"></app-search>
+  </span>
+
+  <span class="header-links" routerLinkActive="active" routerLink="/links" fxHide.lt-md="true">Lists</span>
+  <span class="header-links" routerLinkActive="active" routerLink="/movieSearch" fxHide.lt-md="true">Movie Search</span>
+
+  <span>
+    <button mat-flat-button color="primary" [hidden]="authenticated() !=null" routerLinkActive="active"
+      routerLink="/login">Login</button>
+    <button mat-stroked-button color="primary" [hidden]="authenticated() !=null">Register</button>
+    <button mat-stroked-button color="primary" [hidden]="authenticated() == null" (click)="logout()">Logout</button>
+  </span>
+

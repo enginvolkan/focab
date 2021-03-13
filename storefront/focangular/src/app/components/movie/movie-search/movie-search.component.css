@@ -1,0 +1,12 @@
+/* .movie-card-list{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+} */
+
+.movie-card{
+    display: block;
+    padding: 32px;
+    border: 1px solid black;
+    border-radius: 8px;
+}

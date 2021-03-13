@@ -1,0 +1,15 @@
+.example-card{
+    background-color: #D1C4E9;
+    border: 1px solid rgba(0,0,0,.125);
+    width: 70%;
+    margin: auto;
+    padding: 7px;
+}
+
+.example-header-text{
+    vertical-align: middle
+}
+
+.word-header{
+    vertical-align: middle
+    }

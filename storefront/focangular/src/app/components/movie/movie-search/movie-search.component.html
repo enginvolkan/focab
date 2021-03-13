@@ -1,0 +1,39 @@
+<div fxLayout class="form">
+    <form class="searchbox">
+        <mat-form-field class="inputbox">
+            <input name="search" matInput type="text" placeholder="Search for a Movie or TV Series"
+                [(ngModel)]="searchTerm" (keydown.enter)="triggerSearch(searchTerm)">
+            <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="searchTerm=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+    </form>
+
+    <button mat-raised-button color="accent" (click)="triggerSearch(searchTerm)">Go!</button>
+</div>
+
+
+<div *ngIf="movieSearchResult.search.length>0" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px"
+    fxLayoutAlign="space-around stretch">
+    <div *ngFor="let movieDetail of movieDetails" fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-sm="100%" fxFill>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title class="movie-header">
+                    <h5 class="movie-header-text"><span class="mr-4">{{ movieDetail.title }} </span>
+                    </h5>
+                </mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <a href="{{ movieDetail.imdbID}}"> <img mat-card-md-image src="{{ movieDetail.poster}}"></a>
+                <p>Year: {{ movieDetail.year}}
+                    <br>
+                    Type: {{ movieDetail.type }} </p>
+                    <button mat-flat-button color="accent" (click)="getDetails(movieDetail.imdbID,movieDetail.title)">
+                        <mat-icon>search</mat-icon> Details
+                    </button>
+             </mat-card-content>
+        </mat-card>
+    </div>
+</div>

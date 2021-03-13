@@ -1,0 +1,30 @@
+<p>{{movieEpisodeDetail.title}}</p>
+<p>{{movieEpisodeDetail.type}}</p>
+
+<div *ngIf="movieEpisodeDetail?.type=='series'; else elseBlock">
+    <mat-form-field>
+        <mat-label>Choose season</mat-label>
+        <mat-select [(ngModel)]="selectedEpisode" (selectionChange)='onSeasonSelected($event)'>
+            <mat-option *ngFor="let season of seasons" [value]="season">
+                {{season}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div fxLayout="column" *ngFor="let episode of episodes?.episodes">
+        <div class="episode-line" fxLayout="row wrap" fxLayoutAlign="space-between center" >
+            <div fxFlex="%70">
+                {{ episode.episode }} ) {{ episode.title }}
+            </div>
+            <div class="episode-button" fxFlex="%30">
+                <button mat-stroked-button color="primary"
+                    (click)="analyzeMovieOrEpisode(episode.imdbID)">Analyse</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+    <button mat-raised-button color="primary" (click)="analyzeMovieOrEpisode(movieEpisodeDetail.imdbID)">Analyse
+        Movie</button>
+</ng-template>

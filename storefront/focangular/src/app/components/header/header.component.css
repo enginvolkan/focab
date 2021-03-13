@@ -1,0 +1,29 @@
+.responsive {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* .header-middle {
+    flex: 1 1 auto;
+  } */
+
+/* .header-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+} */
+
+/* .header-links{
+  flex:1;
+  text-align: center;
+}
+.header-search{
+  flex:1.5;
+  text-align: center;
+}
+.app-search{
+  flex:1 1 auto;
+  text-align: center;
+} */

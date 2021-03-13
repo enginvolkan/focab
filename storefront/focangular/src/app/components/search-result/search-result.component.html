@@ -1,0 +1,39 @@
+<div *ngFor="let searchResultItem of searchResult">
+    <div class="no-exact-match">
+    <h5  *ngIf="searchResultItem.score==-999">No results found for the exact term! Do you still want to add it to bag?
+        <button mat-flat-button color="accent" (click)="addFavorite(searchResultItem.word)">
+            <mat-icon>add</mat-icon> Add to List
+        </button>
+    </h5>
+    </div>
+    <div *ngIf="searchResultItem.score!=-999">
+        <mat-card class="word-card">
+            <mat-card-header>
+                <mat-card-title class="word-header">
+                    <h3 class="word-header-text"><span class="mr-4">{{ searchResultItem.word }} </span>
+                        <button mat-flat-button color="accent" (click)="addFavorite(searchResultItem.word)">
+                            <mat-icon>add</mat-icon> Add to List
+                        </button>
+                    </h3>
+
+                </mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <mat-list class="word-definitions">
+                    <div class="definitions" *ngFor="let definition of searchResultItem.defs">
+                        <mat-list-item [ngSwitch]="definition.tag" class="list-group-item">
+                            <span *ngSwitchCase="'Noun'" class="badge mr-3 badge-primary">{{ definition.tag }}</span>
+                            <span *ngSwitchCase="'Verb'" class="badge mr-3 badge-warning">{{ definition.tag }}</span>
+                            <span *ngSwitchCase="'Adjective'"
+                                class="badge mr-3 badge-success">{{ definition.tag }}</span>
+                            <span *ngSwitchDefault class="badge mr-3 badge-secondary">{{ definition.tag }}</span>
+                            {{ definition.definition }}
+                        </mat-list-item>
+                    </div>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <br>
+    </div>
+</div>

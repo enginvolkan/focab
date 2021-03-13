@@ -1,0 +1,20 @@
+.form{
+    width: 100%;
+ }
+
+ .searchbox{
+   width: 100%;
+   height: auto;
+    font-size: 100%;   
+    min-width: 50px;
+    max-width: 500px; 
+  }
+  .inputbox{
+    width: 100%;
+
+  }
+
+  /* .responsive {
+   max-width: 100%;
+   height: auto;
+ } */

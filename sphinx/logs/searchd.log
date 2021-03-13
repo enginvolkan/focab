@@ -1266,3 +1266,32 @@ minidump located at:  C:/focab/sphinx/searchd.pid.5696.0000000000000000.mdmp
 [Wed Jan 20 23:09:54.748 2021] [4108] prereading 3 indexes
 [Wed Jan 20 23:09:54.748 2021] [9172] accepting connections
 [Wed Jan 20 23:09:54.748 2021] [4108] prereaded 3 indexes in 0.000 sec
+[Sun Jan 17 12:27:02.686 2021] [9172] shutdown complete
+[Sun Feb  7 20:49:57.267 2021] [7296] listening on 127.0.0.1:9306
+[Sun Feb  7 20:49:57.267 2021] [7296] listening on 127.0.0.1:9080
+[Sun Feb  7 20:49:57.302 2021] [7296] accepting connections
+[Sun Feb  7 20:49:57.308 2021] [7664] prereading 3 indexes
+[Sun Feb  7 20:49:57.405 2021] [7664] prereaded 3 indexes in 0.096 sec
+[Wed Feb 17 23:05:49.358 2021] [7296] shutdown complete
+[Wed Feb 17 23:05:21.673 2021] [7232] listening on 127.0.0.1:9306
+[Wed Feb 17 23:05:21.673 2021] [7232] listening on 127.0.0.1:9080
+[Wed Feb 17 23:05:21.704 2021] [7232] accepting connections
+[Wed Feb 17 23:05:21.704 2021] [7804] prereading 3 indexes
+[Wed Feb 17 23:05:21.706 2021] [7804] prereaded 3 indexes in 0.002 sec
+[Tue Mar  2 09:26:05.646 2021] [7920] listening on 127.0.0.1:9306
+[Tue Mar  2 09:26:05.646 2021] [7920] listening on 127.0.0.1:9080
+[Tue Mar  2 09:26:05.667 2021] [7920] accepting connections
+[Tue Mar  2 09:26:05.667 2021] [8156] prereading 3 indexes
+[Tue Mar  2 09:26:05.669 2021] [8156] prereaded 3 indexes in 0.002 sec
+[Tue Mar  2 11:31:16.261 2021] [7920] shutdown complete
+[Tue Mar  2 11:33:29.127 2021] [13644] listening on 127.0.0.1:9306
+[Tue Mar  2 11:33:29.127 2021] [13644] listening on 127.0.0.1:9080
+[Tue Mar  2 11:33:29.164 2021] [5180] prereading 3 indexes
+[Tue Mar  2 11:33:29.164 2021] [13644] accepting connections
+[Tue Mar  2 11:33:29.165 2021] [5180] prereaded 3 indexes in 0.000 sec
+[Tue Mar  2 12:03:07.265 2021] [13644] shutdown complete
+[Tue Mar  2 12:03:20.828 2021] [22820] listening on 127.0.0.1:9306
+[Tue Mar  2 12:03:20.828 2021] [22820] listening on 127.0.0.1:9080
+[Tue Mar  2 12:03:20.866 2021] [19904] prereading 3 indexes
+[Tue Mar  2 12:03:20.866 2021] [22820] accepting connections
+[Tue Mar  2 12:03:20.866 2021] [19904] prereaded 3 indexes in 0.000 sec

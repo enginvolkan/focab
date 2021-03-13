@@ -1,26 +1,26 @@
 package com.engin.focab.jpa.corpus;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "definition")
 public class DefinitionModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String definition;
-	private boolean isSeparable;
 
-	@OneToMany
-	private Set<ExampleModel> exampleModels = new HashSet<ExampleModel>();
+
+	private String examples;
 	@ManyToOne
 	private LexiModel lexiModel;
 
@@ -28,10 +28,10 @@ public class DefinitionModel {
 		super();
 	}
 
-	public DefinitionModel(String text, String definition, boolean isSeparable, String example, String source) {
+	public DefinitionModel(LexiModel lexi, String definition, String examples) {
 		this.definition = definition;
-		this.isSeparable = isSeparable;
-		this.exampleModels.add(new ExampleModel(example, source, null, lexiModel));
+		this.examples=examples;
+		this.lexiModel = lexi;
 	}
 
 	public String getDefinition() {
@@ -42,20 +42,13 @@ public class DefinitionModel {
 		this.definition = definition;
 	}
 
-	public boolean isSeparable() {
-		return isSeparable;
+
+	public List<String> getExamples() {
+		return Arrays.asList(examples.split("|"));
 	}
 
-	public void setSeparable(boolean isSeparable) {
-		this.isSeparable = isSeparable;
-	}
-
-	public Set<ExampleModel> getExamples() {
-		return exampleModels;
-	}
-
-	public void setExamples(Set<ExampleModel> exampleModels) {
-		this.exampleModels = exampleModels;
+	public void setExamples(String examples) {
+		this.examples = examples;
 	}
 
 	public LexiModel getVocabulary() {
@@ -67,7 +60,7 @@ public class DefinitionModel {
 	}
 
 	public Long getId() {
-		return id;
+		return id; 
 	}
 
 }

@@ -4,20 +4,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="customer")
+@Table(name = "customer")
 
 public class Customer {
 	public Customer(String string) {
 		super();
-		this.fullname = string;
+		this.username = string;
 //		favorites.add(new FavoriteList("default",this));
 	}
 
@@ -26,14 +23,10 @@ public class Customer {
 		super();
 	}
 
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String fullname;
-	@NotNull
-	private String email;
+	private String username;
 	private String password;
+	private String fullname;
 	private boolean enabled;
 	private int level;
 
@@ -41,7 +34,7 @@ public class Customer {
 	private Set<FavoriteList> favorites= new HashSet<FavoriteList>();
 
 	@OneToMany
-	private Set<Role> roles= new HashSet<Role>();
+	private Set<Authority> authority= new HashSet<Authority>();
 
 
 	public String getName() {
@@ -60,12 +53,12 @@ public class Customer {
 		this.favorites = favorites;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -76,12 +69,12 @@ public class Customer {
 		this.password = password;
 	}
 
-	public Set<Role> getRoles() {
-		return roles;
+	public Set<Authority> getRoles() {
+		return authority;
 	}
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
+	public void setRoles(Set<Authority> authority) {
+		this.authority = authority;
 	}
 
 	public boolean getEnabled() {
@@ -90,11 +83,6 @@ public class Customer {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
-	}
-
-
-	public Long getId() {
-		return id;
 	}
 
 

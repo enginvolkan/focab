@@ -1,7 +1,6 @@
 package com.engin.focab.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,12 +11,12 @@ import com.engin.focab.jpa.Customer;
 import com.engin.focab.jpa.omdbapi.OmdbApiEpisodeSearchResult;
 import com.engin.focab.jpa.omdbapi.OmdbApiSearchResult;
 import com.engin.focab.jpa.omdbapi.OmdbMovieOrSeriesDetailModel;
+import com.engin.focab.repository.AuthorityRepository;
 import com.engin.focab.repository.CustomerRepository;
-import com.engin.focab.repository.RoleRepository;
 import com.engin.focab.services.MovieInfoService;
 import com.engin.focab.services.SessionService;
 
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+//@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RestController
 @RequestMapping("/movieInfo")
 public class FindMovieController {
@@ -29,7 +28,7 @@ public class FindMovieController {
 	@Autowired
 	CustomerRepository customerRepository;
 	@Autowired
-	RoleRepository roleRepository;
+	AuthorityRepository authorityRepository;
 
 	@GetMapping("/findMovieOrSeries")
 	@ResponseBody

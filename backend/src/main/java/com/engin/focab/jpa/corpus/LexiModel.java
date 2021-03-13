@@ -38,8 +38,8 @@ public class LexiModel {
 	// @Column(columnDefinition = "boolean default true")
 	private Boolean isSeparable;
 
-	public void setSeperable(boolean isSeperable) {
-		this.isSeparable = isSeperable;
+	public void setSeperable(boolean isSeparable) {
+		this.isSeparable = isSeparable;
 	}
 
 	@OneToMany
@@ -89,8 +89,12 @@ public class LexiModel {
 		return regex;
 	}
 
-	public boolean isSeperable() {
+	public boolean isSeparable() {
 		return isSeparable;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 }

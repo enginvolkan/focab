@@ -32,7 +32,7 @@ public class FocabApplication {
 	}
 
 	@Scheduled(cron = "0 0 22 * * *")
-//	@Scheduled(fixedDelay = 10000)
+	// @Scheduled(fixedDelay = 10000)
 	public void scheduleFixedDelayTask() {
 		System.out.println("IdiomLemmaBuilderCronJob is running...");
 		idiomLemmaBuilderCronJob.fillNullLemmas();
@@ -73,4 +73,32 @@ public class FocabApplication {
 	public List<String> phrasalVerbFinalTags() {
 		return Arrays.asList("", "NN", "JJ", "DT", "CD", "IN", "NN VBN");
 	}
+
+	// Global CORS configuration
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurer() {
+//			@Override
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry.addMapping("/**").allowedOrigins("https://localhost:4200");
+//			}
+//		};
+//	}
+//
+//	@Bean
+//	CorsConfigurationSource corsConfigurationSource() {
+//		CorsConfiguration configuration = new CorsConfiguration();
+//		// This Origin header you can see that in Network tab
+//		configuration.setAllowedOrigins(Arrays.asList("https://localhost:4200"));
+//		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT"));
+//		configuration.setAllowedHeaders(Arrays.asList("content-type"));
+//		configuration.setAllowCredentials(true);
+//		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//		source.registerCorsConfiguration("/**", configuration);
+//		return source;
+//	}
+
+
+
+
 }

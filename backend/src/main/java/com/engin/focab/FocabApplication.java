@@ -13,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.session.web.http.CookieSerializer;
+import org.springframework.session.web.http.DefaultCookieSerializer;
 
 import com.engin.focab.cronjob.IdiomRegexBuilderCronJob;
 import com.engin.focab.jpa.corpus.LexiModel;
@@ -74,31 +76,17 @@ public class FocabApplication {
 		return Arrays.asList("", "NN", "JJ", "DT", "CD", "IN", "NN VBN");
 	}
 
-	// Global CORS configuration
-//	@Bean
-//	public WebMvcConfigurer corsConfigurer() {
-//		return new WebMvcConfigurer() {
-//			@Override
-//			public void addCorsMappings(CorsRegistry registry) {
-//				registry.addMapping("/**").allowedOrigins("https://localhost:4200");
-//			}
-//		};
-//	}
-//
-//	@Bean
-//	CorsConfigurationSource corsConfigurationSource() {
-//		CorsConfiguration configuration = new CorsConfiguration();
-//		// This Origin header you can see that in Network tab
-//		configuration.setAllowedOrigins(Arrays.asList("https://localhost:4200"));
-//		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT"));
-//		configuration.setAllowedHeaders(Arrays.asList("content-type"));
-//		configuration.setAllowCredentials(true);
-//		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//		source.registerCorsConfiguration("/**", configuration);
-//		return source;
-//	}
-
-
+	@Bean
+	public CookieSerializer cookieSerializer() {
+		DefaultCookieSerializer serializer = new DefaultCookieSerializer();
+		serializer.setCookieName("JSESSIONID");
+		serializer.setCookiePath("/");
+		serializer.setDomainNamePattern("^.+?\\.(\\w+\\.[a-z]+)$");
+		serializer.setSameSite("None");
+		serializer.setUseSecureCookie(true);
+		serializer.setUseHttpOnlyCookie(false);
+		return serializer;
+	}
 
 
 }

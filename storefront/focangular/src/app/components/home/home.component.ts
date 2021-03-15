@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
   greeting = {};
 
   constructor(private appService: AppService, private http: HttpClient) {
- //   http.get('/getFavorites', {withCredentials:true}).subscribe(data => this.greeting = data);
   }
 
   authenticated() { return this.appService.authenticated; }

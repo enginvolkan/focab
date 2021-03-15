@@ -16,21 +16,6 @@ export class AppService {
   constructor(private http: HttpClient) {
   }
 
-  authenticate(credentials, callback) {
-
-        const headers = new HttpHeaders(credentials ? {
-            authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password, )
-        } : {});
-
-        this.http.get('/user', {headers: headers}).subscribe(response => {
-
-                this.authenticated = true;
- 
-            return callback && callback();
-        });
-
-    }
-
 }
 
 @Injectable()
@@ -53,3 +38,4 @@ export class BackendUrlInterceptor implements HttpInterceptor {
     return next.handle(apiReq);
   }
 }
+

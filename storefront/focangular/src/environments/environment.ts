@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendEndpoint: "http://localhost:8080/focab"
+  backendEndpoint: "https://localhost:8080/focab"
 };
 
 /*

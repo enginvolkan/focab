@@ -41,5 +41,4 @@ package com.engin.focab.jpa.corpus;
 	}
 
 
-
 }

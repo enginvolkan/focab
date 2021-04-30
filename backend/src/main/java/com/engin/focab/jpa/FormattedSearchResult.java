@@ -52,5 +52,4 @@ import com.engin.focab.jpa.corpus.DictionaryDefinition;
 	this.defs = defs;
 	}
 
-
 }

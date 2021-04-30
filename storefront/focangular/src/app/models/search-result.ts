@@ -2,7 +2,7 @@ export class SearchResult{
 	word:string;
 	score:number;
 	tags:string[];
-	defs:string[];
+	defs:Definition[];
 
 	public equals(word:string):boolean{
 		if(this.word==word){
@@ -17,4 +17,14 @@ export class SearchResult{
 		this.score=score;
 	}
 
+}
+
+export class Definition{
+	definition:string;
+	tag:string;
+
+	constructor(definition:string,tag:string){
+		this.definition=definition;
+		this.tag=tag;
+	}
 }

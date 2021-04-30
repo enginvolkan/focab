@@ -4,25 +4,31 @@
             <mat-icon class="example-tab-icon">looks_one</mat-icon>
             Idioms
         </ng-template>
-        <div *ngFor="let resultItem of (result$|async).idioms; index as i">
+        <div *ngFor="let resultItem of (idioms|async); index as i">
             <mat-card class="word-card" >
                 <mat-card-header>
                     <mat-card-title class="word-header">
-                        <h3 class="word-header-text"><span class="mr-4">{{ resultItem.text }} </span>
-                            <!-- <button mat-flat-button color="accent" (click)="addFavorite(searchResultItem.word)">
-                            <mat-icon>add</mat-icon> Add to List
-                        </button> -->
+                        <h3 class="word-header-text"><span class="mr-4">{{ resultItem.text | indefinitepronoun}} </span>
+                        <button mat-flat-button color="primary" (click)="addToFavorites(resultItem.text)" [disabled]="checkFavoriteStatus()">
+                            <mat-icon>add</mat-icon> Add to Favorites
+                        </button>
+                        <button mat-flat-button color="accent" (click)="addToKnownWords(resultItem.text)" [disabled]="checkFavoriteStatus()">
+                            <mat-icon>add</mat-icon> Add to Known Words
+                        </button>
+                        <button mat-flat-button color="warn" (click)="addToBug(resultItem,'IDIOM')" >
+                            <mat-icon>add</mat-icon> Report a bug
+                        </button>
                         </h3>
 
                     </mat-card-title>
                 </mat-card-header>
 
                 <mat-card-content>
-                    <mat-accordion>
-                        <mat-expansion-panel>
+                    <mat-accordion multi>
+                        <mat-expansion-panel expanded>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Movie Examples
+                                    <b>Examples</b> 
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <mat-list class="word-definitions">
@@ -40,19 +46,18 @@
                                 </div>
                             </mat-list>
                         </mat-expansion-panel>
-                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel (afterExpand)="fetchIdiomDefinition(resultItem.text,i)">
                             <mat-expansion-panel-header> 
                                 <mat-panel-title>
-                                    Definition
+                                    <b>Definition</b>
                                 </mat-panel-title>
-                                <mat-panel-description>
-                                    Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                                </mat-panel-description>
                             </mat-expansion-panel-header>
                             <ng-template matExpansionPanelContent>
-                                <div *ngIf="panelOpenState">
-                                    <span [innerHTML] = "fetchDefinition('x')" ></span>
-                                </div>
+                                   <ul>
+                                    <li *ngFor="let definition of idiomDefinitions$[i] | async">
+                                      <span >{{definition}}</span>
+                                    </li>
+                                  </ul>
                               </ng-template>
                         </mat-expansion-panel>
                     </mat-accordion>
@@ -67,7 +72,67 @@
             <mat-icon class="example-tab-icon">looks_two</mat-icon>
             Phrasal Verbs
         </ng-template>
-        Content 2
+        <div *ngFor="let resultItem of (phrasalVerbs|async); index as i">
+            <mat-card class="word-card" >
+                <mat-card-header>
+                    <mat-card-title class="word-header">
+                        <h3 class="word-header-text"><span class="mr-4">{{ resultItem.text | indefinitepronoun}} </span>
+                        <button mat-flat-button color="primary" (click)="addToFavorites(resultItem.text)" [disabled]="checkFavoriteStatus()">
+                            <mat-icon>add</mat-icon> Add to Favorites
+                        </button>
+                        <button mat-flat-button color="accent" (click)="addToKnownWords(resultItem.text)" [disabled]="checkFavoriteStatus()">
+                            <mat-icon>add</mat-icon> Add to Known Words
+                        </button>
+                        <button mat-flat-button color="warn" (click)="addToBug(resultItem,'PHRASAL')" >
+                            <mat-icon>add</mat-icon> Report a bug
+                        </button>
+                        </h3>
+
+                    </mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <mat-accordion multi>
+                        <mat-expansion-panel expanded>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <b>Examples</b> 
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <mat-list class="word-definitions">
+                                <div class="definitions" *ngFor="let movieExample of resultItem.movieExamples">
+                                    <mat-list-item [ngSwitch]="movieExample" class="list-group-item">
+                                        <!-- <span *ngSwitchCase="'Noun'" class="badge mr-3 badge-primary">{{ definition.tag }}</span>
+                                <span *ngSwitchCase="'Verb'" class="badge mr-3 badge-warning">{{ definition.tag }}</span>
+                                <span *ngSwitchCase="'Adjective'"
+                                    class="badge mr-3 badge-success">{{ definition.tag }}</span>
+                                <span *ngSwitchDefault class="badge mr-3 badge-secondary">{{ definition.tag }}</span>
+                                {{ definition.definition }} -->
+                                        {{ movieExample}}
+                                    </mat-list-item>
+
+                                </div>
+                            </mat-list>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel (afterExpand)="fetchPhrasalDefinition(resultItem.text,i)">
+                            <mat-expansion-panel-header> 
+                                <mat-panel-title>
+                                    <b>Definition</b>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <ng-template matExpansionPanelContent>
+                                   <ul>
+                                    <li *ngFor="let definition of phrasalDefinitions$[i] | async">
+                                      <span >{{definition}}</span>
+                                    </li>
+                                  </ul>
+                              </ng-template>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </mat-card-content>
+            </mat-card>
+            <br>
+        </div>
     </mat-tab>
 
     <mat-tab>
@@ -76,6 +141,67 @@
             Single Words
         </ng-template>
 
-        Content 3
+        <div *ngFor="let resultItem of (singleWords|async); index as i">
+            <mat-card class="word-card" >
+                <mat-card-header>
+                    <mat-card-title class="word-header">
+                        <h3 class="word-header-text"><span class="mr-4">{{ resultItem.text | indefinitepronoun}} </span>
+                        <button mat-flat-button color="primary" (click)="addToFavorites(resultItem.text)" [disabled]="checkFavoriteStatus()">
+                            <mat-icon>add</mat-icon> Add to Favorites
+                        </button>
+                        <button mat-flat-button color="accent" (click)="addToKnownWords(resultItem.text)" [disabled]="checkFavoriteStatus()">
+                            <mat-icon>add</mat-icon> Add to Known Words
+                        </button>
+                        <button mat-flat-button color="warn" (click)="addToBug(resultItem,'IDIOM')" >
+                            <mat-icon>add</mat-icon> Report a bug
+                        </button>
+                        </h3>
+
+                    </mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <mat-accordion multi>
+                        <mat-expansion-panel expanded>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <b>Examples</b> 
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <mat-list class="word-definitions">
+                                <div class="definitions" *ngFor="let movieExample of resultItem.movieExamples">
+                                    <mat-list-item [ngSwitch]="movieExample" class="list-group-item">
+                                        <!-- <span *ngSwitchCase="'Noun'" class="badge mr-3 badge-primary">{{ definition.tag }}</span>
+                                <span *ngSwitchCase="'Verb'" class="badge mr-3 badge-warning">{{ definition.tag }}</span>
+                                <span *ngSwitchCase="'Adjective'"
+                                    class="badge mr-3 badge-success">{{ definition.tag }}</span>
+                                <span *ngSwitchDefault class="badge mr-3 badge-secondary">{{ definition.tag }}</span>
+                                {{ definition.definition }} -->
+                                        {{ movieExample}}
+                                    </mat-list-item>
+
+                                </div>
+                            </mat-list>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel (afterExpand)="fetchSingleWordDefinition(resultItem.text,i)">
+                            <mat-expansion-panel-header> 
+                                <mat-panel-title>
+                                    <b>Definition</b>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <ng-template matExpansionPanelContent>
+                                <ul>
+                                    <li *ngFor="let definition of singleWordDefinitions$[i] | async">
+                                      <span >{{definition}}</span>
+                                    </li>
+                                  </ul>
+                              </ng-template>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </mat-card-content>
+            </mat-card>
+            <br>
+        </div>
+
     </mat-tab>
 </mat-tab-group>

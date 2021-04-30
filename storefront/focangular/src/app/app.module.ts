@@ -36,10 +36,13 @@ import { PipeModule } from './pipe/pipe.module';
 import { BasicAuthInterceptor } from './authentication/basic-auth.interceptor';
 import { ErrorInterceptor } from './authentication/error.interceptor';
 import { WithCredentialsInterceptor } from './authentication/with-credentials.interceptor';
+import { AuthenticationService } from './authentication/authentication.service';
+import { BugService } from './services/bug.service';
+import { KnownWordsListComponent } from './components/known-words-list/known-words-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent, SearchComponent, SearchResultComponent, HomeComponent, LoginComponent, HeaderComponent, FooterComponent, FavoritesListComponent, LearnComponent, SpinnerComponent, MovieSearchComponent, MovieEpisodeDetailComponent, AnalyzeComponent, IdiomDetectorComponent
+    AppComponent, SearchComponent, SearchResultComponent, HomeComponent, LoginComponent, HeaderComponent, FooterComponent, FavoritesListComponent, LearnComponent, SpinnerComponent, MovieSearchComponent, MovieEpisodeDetailComponent, AnalyzeComponent, IdiomDetectorComponent, KnownWordsListComponent
   ],
   entryComponents: [SpinnerComponent,MovieEpisodeDetailComponent],
 
@@ -59,6 +62,8 @@ import { WithCredentialsInterceptor } from './authentication/with-credentials.in
             IdiomService,
             FavoriteService,
           MovieService,
+          AuthenticationService,
+          BugService,
         LexiService],
   bootstrap: [AppComponent]
 })

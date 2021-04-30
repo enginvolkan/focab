@@ -13,7 +13,6 @@ import com.engin.focab.dtos.ExampleDto;
 import com.engin.focab.jpa.Customer;
 import com.engin.focab.jpa.corpus.ExampleModel;
 import com.engin.focab.services.FavoriteService;
-import com.engin.focab.services.LexiDetailsService;
 import com.engin.focab.services.SessionService;
 
 //@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
@@ -22,8 +21,6 @@ public class LearnController {
 
 	@Autowired
 	private FavoriteService favoriteService;
-	@Autowired
-	private LexiDetailsService lexiDetailsService;
 	@Autowired
 	private SessionService sessionService;
 

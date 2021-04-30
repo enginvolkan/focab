@@ -22,6 +22,11 @@ import com.engin.focab.jpa.corpus.DictionaryDefinition;
 	this.score = score;
 	}
 
+	public FormattedSearchResult(String word) {
+		super();
+		this.word = word;
+	}
+
 	public String getWord() {
 	return word;
 	}
@@ -47,5 +52,5 @@ import com.engin.focab.jpa.corpus.DictionaryDefinition;
 	this.defs = defs;
 	}
 
-	
+
 }

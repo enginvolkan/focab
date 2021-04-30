@@ -51,17 +51,20 @@ public class DefaultFavoriteService implements FavoriteService {
 		}
 		FavoriteEntry favoriteEntry = new FavoriteEntry(lexiModel);
 		Set<FavoriteEntry> favoriteEntries = favoriteList.getFavoriteEntries();
-		favoriteEntries.add(favoriteEntry);
-		favoriteList.setFavoriteEntries(favoriteEntries);
-		favoriteListRepository.save(favoriteList);
-
-		return true;
+		if (favoriteEntries.stream().noneMatch(x -> x.getVocabulary().equals(lexiModel))) {
+			favoriteEntries.add(favoriteEntry);
+			favoriteList.setFavoriteEntries(favoriteEntries);
+			favoriteListRepository.save(favoriteList);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public boolean removeFavorite(LexiModel lexiModel, Customer customer) {
 		FavoriteList favoriteList = customer.getFavorites().iterator().next();
-		return favoriteList.getFavoriteEntries().remove(new FavoriteEntry(lexiModel));
+		Set<FavoriteEntry> favoriteEntries = favoriteList.getFavoriteEntries();
+		return favoriteEntries.removeIf(x -> x.getVocabulary().equals(lexiModel));
 	}
 
 	@Override
@@ -74,8 +77,8 @@ public class DefaultFavoriteService implements FavoriteService {
 	@Override
 	public ExampleModel getARandomExample(Customer customer) throws IOException, InterruptedException {
 		FavoriteEntry[] favoriteEntries = favoriteListRepository
-				.findFavoriteListByCustomer(customer.getUsername(), "default")
-				.getFavoriteEntries().stream().toArray(n -> new FavoriteEntry[n]);
+				.findFavoriteListByCustomer(customer.getUsername(), "default").getFavoriteEntries().stream()
+				.toArray(n -> new FavoriteEntry[n]);
 		int size = favoriteEntries.length;
 		if (size == 0) {
 			return null;

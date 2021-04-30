@@ -2,7 +2,6 @@ package com.engin.focab.controllers;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,25 +12,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.engin.focab.jpa.Customer;
 import com.engin.focab.jpa.corpus.LexiModel;
-import com.engin.focab.services.FavoriteService;
+import com.engin.focab.services.KnownWordsService;
 import com.engin.focab.services.LexiDetailsService;
 import com.engin.focab.services.SessionService;
 
 //@CrossOrigin(origins = "http://localhost:4200", allowCredentials="true")
 @RestController
-public class FavoriteController {
+public class KnownWordsController {
 
 	@Autowired
-	private FavoriteService favoriteService;
+	private KnownWordsService knownWordsService;
 	@Autowired
 	private LexiDetailsService lexiDetailsService;
 	@Autowired
 	private SessionService sessionService;
 
 
-	@PostMapping("/addFavorite")
+	@PostMapping("/addKnownWord")
 	@ResponseBody
-	public boolean addFavorite(@RequestParam String entry) {
+	public boolean addKnownWord(@RequestParam String entry) {
 		Customer customer = sessionService.getCurrentCustomer();
 		Optional<LexiModel> searchResult = lexiDetailsService.findLexi(entry);
 		LexiModel lexiModel;
@@ -42,38 +41,30 @@ public class FavoriteController {
 			lexiModel = searchResult.get();
 		}
 
-		return favoriteService.addFavorite(lexiModel, customer);
+		return knownWordsService.addKnownWord(lexiModel, customer);
 	}
 
-	@PostMapping("/removeFavorite")
+	@PostMapping("/removeKnownWord")
 	@ResponseBody
-	public boolean removeFavorite(@RequestParam String entry) {
+	public boolean removeKnownWord(@RequestParam String entry) {
 		Customer customer = sessionService.getCurrentCustomer();
 		Optional<LexiModel> searchResult = lexiDetailsService.findLexi(entry);
 
 		if (searchResult.isPresent()) {
-			return favoriteService.removeFavorite(searchResult.get(), customer);
+			return knownWordsService.removeKnownWord(searchResult.get(), customer);
 		}else {
 			return false;
 		}
 
 	}
 
-	@GetMapping("/getFavorites")
+	@GetMapping("/getKnownWords")
 	@ResponseBody
-	public List<String> getFavorites() {
+	public List<String> getKnownWords() {
 		Customer customer = sessionService.getCurrentCustomer();
 
-		return favoriteService.getFavorites(customer).stream().map(x -> x.getVocabulary().getText())
-				.collect(Collectors.toList());
+		return knownWordsService.getKnownWords(customer);
 	}
 
-	public void setFavoriteService(FavoriteService favoriteService) {
-		this.favoriteService = favoriteService;
-	}
-
-	public void setSessionService(SessionService sessionService) {
-		this.sessionService = sessionService;
-	}
 
 }

@@ -1295,3 +1295,45 @@ minidump located at:  C:/focab/sphinx/searchd.pid.5696.0000000000000000.mdmp
 [Tue Mar  2 12:03:20.866 2021] [19904] prereading 3 indexes
 [Tue Mar  2 12:03:20.866 2021] [22820] accepting connections
 [Tue Mar  2 12:03:20.866 2021] [19904] prereaded 3 indexes in 0.000 sec
+[Thu Feb 25 15:20:24.158 2021] [22820] shutdown complete
+[Fri Mar 19 00:43:06.506 2021] [7204] listening on 127.0.0.1:9306
+[Fri Mar 19 00:43:06.507 2021] [7204] listening on 127.0.0.1:9080
+[Fri Mar 19 00:43:06.538 2021] [7204] accepting connections
+[Fri Mar 19 00:43:06.538 2021] [7508] prereading 3 indexes
+[Fri Mar 19 00:43:06.556 2021] [7508] prereaded 3 indexes in 0.018 sec
+[Fri Mar 19 00:46:11.162 2021] [7204] shutdown complete
+[Fri Mar 19 09:13:34.793 2021] [7396] listening on 127.0.0.1:9306
+[Fri Mar 19 09:13:34.794 2021] [7396] listening on 127.0.0.1:9080
+[Fri Mar 19 09:13:34.817 2021] [7396] accepting connections
+[Fri Mar 19 09:13:34.827 2021] [7908] prereading 3 indexes
+[Fri Mar 19 09:13:34.828 2021] [7908] prereaded 3 indexes in 0.001 sec
+[Fri Mar 19 17:26:51.657 2021] [7396] shutdown complete
+[Fri Mar 19 17:27:35.429 2021] [8152] listening on 127.0.0.1:9306
+[Fri Mar 19 17:27:35.429 2021] [8152] listening on 127.0.0.1:9080
+[Fri Mar 19 17:27:35.465 2021] [8152] accepting connections
+[Fri Mar 19 17:27:35.465 2021] [8396] prereading 3 indexes
+[Fri Mar 19 17:27:35.466 2021] [8396] prereaded 3 indexes in 0.001 sec
+[Mon Mar 29 09:04:39.523 2021] [8152] shutdown complete
+[Mon Mar 29 09:04:28.326 2021] [7968] listening on 127.0.0.1:9306
+[Mon Mar 29 09:04:28.326 2021] [7968] listening on 127.0.0.1:9080
+[Mon Mar 29 09:04:28.347 2021] [7968] accepting connections
+[Mon Mar 29 09:04:28.350 2021] [6136] prereading 3 indexes
+[Mon Mar 29 09:04:28.352 2021] [6136] prereaded 3 indexes in 0.002 sec
+[Mon Apr  5 08:52:30.775 2021] [7968] shutdown complete
+[Mon Apr  5 08:52:17.154 2021] [8232] listening on 127.0.0.1:9306
+[Mon Apr  5 08:52:17.155 2021] [8232] listening on 127.0.0.1:9080
+[Mon Apr  5 08:52:17.177 2021] [8232] accepting connections
+[Mon Apr  5 08:52:17.178 2021] [8504] prereading 3 indexes
+[Mon Apr  5 08:52:17.181 2021] [8504] prereaded 3 indexes in 0.002 sec
+[Fri Mar 26 03:38:25.100 2021] [8232] shutdown complete
+[Fri Apr 16 12:01:48.644 2021] [7620] listening on 127.0.0.1:9306
+[Fri Apr 16 12:01:48.665 2021] [7620] listening on 127.0.0.1:9080
+[Fri Apr 16 12:01:48.718 2021] [7620] accepting connections
+[Fri Apr 16 12:01:48.743 2021] [8144] prereading 3 indexes
+[Fri Apr 16 12:01:48.747 2021] [8144] prereaded 3 indexes in 0.004 sec
+[Sat Apr 24 21:30:48.525 2021] [7620] shutdown complete
+[Sat Apr 24 21:30:09.143 2021] [7028] listening on 127.0.0.1:9306
+[Sat Apr 24 21:30:09.143 2021] [7028] listening on 127.0.0.1:9080
+[Sat Apr 24 21:30:09.177 2021] [7028] accepting connections
+[Sat Apr 24 21:30:09.182 2021] [7512] prereading 3 indexes
+[Sat Apr 24 21:30:09.184 2021] [7512] prereaded 3 indexes in 0.002 sec

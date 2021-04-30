@@ -43,10 +43,13 @@ public class SummerizedMovieAnalysisModel {
 
 	private ArrayList<LexiDto> singleWords = new ArrayList<>();
 
-	private long idiomAverageDuration;
-	private long phrasalAverageDuration;
-	private long singleAverageDuration;
-	private long singleMassDuration;
+	private long lemmaTotalDuration;
+	private long idiomTotalDuration;
+	private long phrasalTotalDuration;
+	private long singleTotalDuration;
+	private long aggregationDuration;
+	private long downloadDuration;
+	private long dbsaveDuration;
 
 	/////////////////////
 	// Getters and Setters
@@ -84,36 +87,60 @@ public class SummerizedMovieAnalysisModel {
 		this.singleWords = singleWords;
 	}
 
-	public long getIdiomAverageDuration() {
-		return idiomAverageDuration;
+	public long getIdiomTotalDuration() {
+		return idiomTotalDuration;
 	}
 
-	public void setIdiomAverageDuration(long idiomAverageDuration) {
-		this.idiomAverageDuration = idiomAverageDuration;
+	public void setIdiomTotalDuration(long idiomTotalDuration) {
+		this.idiomTotalDuration = idiomTotalDuration;
 	}
 
-	public long getPhrasalAverageDuration() {
-		return phrasalAverageDuration;
+	public long getPhrasalTotalDuration() {
+		return phrasalTotalDuration;
 	}
 
-	public void setPhrasalAverageDuration(long phrasalAverageDuration) {
-		this.phrasalAverageDuration = phrasalAverageDuration;
+	public void setPhrasalTotalDuration(long phrasalTotalDuration) {
+		this.phrasalTotalDuration = phrasalTotalDuration;
 	}
 
-	public long getSingleAverageDuration() {
-		return singleAverageDuration;
+	public long getAggregationDuration() {
+		return aggregationDuration;
 	}
 
-	public void setSingleAverageDuration(long singleAverageDuration) {
-		this.singleAverageDuration = singleAverageDuration;
+	public void setAggregationDuration(long aggregationDuration) {
+		this.aggregationDuration = aggregationDuration;
 	}
 
-	public long getSingleMassDuration() {
-		return singleMassDuration;
+	public long getSingleTotalDuration() {
+		return singleTotalDuration;
 	}
 
-	public void setSingleMassDuration(long singleMassDuration) {
-		this.singleMassDuration = singleMassDuration;
+	public void setSingleTotalDuration(long singleTotalDuration) {
+		this.singleTotalDuration = singleTotalDuration;
+	}
+
+	public long getDownloadDuration() {
+		return downloadDuration;
+	}
+
+	public void setDownloadDuration(long downloadDuration) {
+		this.downloadDuration = downloadDuration;
+	}
+
+	public long getLemmaTotalDuration() {
+		return lemmaTotalDuration;
+	}
+
+	public void setLemmaTotalDuration(long lemmaTotalDuration) {
+		this.lemmaTotalDuration = lemmaTotalDuration;
+	}
+
+	public long getDbsaveDuration() {
+		return dbsaveDuration;
+	}
+
+	public void setDbsaveDuration(long dbsaveDuration) {
+		this.dbsaveDuration = dbsaveDuration;
 	}
 
 }

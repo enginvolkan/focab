@@ -10,6 +10,9 @@ package com.engin.focab.jpa.corpus;
 	public DictionaryDefinition() {
 	}
 
+	public DictionaryDefinition(String definition) {
+		this.definition = definition;
+	}
 
 	public String getTag() {
 		return tag;
@@ -38,5 +41,5 @@ package com.engin.focab.jpa.corpus;
 	}
 
 
-	
+
 }

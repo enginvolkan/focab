@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class DatamuseDictionaryService implements DictionaryService {
 	@Override
 	public List<SearchResult> search(String s) {
 		try {
-			URL url = new URL(buildURL(s));
+			URL url = new URL(buildURL(URLEncoder.encode(s, StandardCharsets.UTF_8.toString())));
 			HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
 			urlConnection.setRequestProperty("Accept", "application/json");
 
@@ -33,11 +35,11 @@ public class DatamuseDictionaryService implements DictionaryService {
 			while ((line = reader.readLine()) != null) {
 				stringBuilder.append(line + "\n");
 			}
-			
+
 			Gson gson = new Gson();
 			Type listType = new TypeToken<ArrayList<SearchResult>>(){}.getType();
 			return gson.fromJson(stringBuilder.toString(),listType);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -48,7 +50,7 @@ public class DatamuseDictionaryService implements DictionaryService {
 	public SearchResult define(String s) {
 		List<SearchResult> searchResult = search(s);
 		return searchResult!=null?searchResult.get(0):null;
-		
+
 	}
 
 	private String buildURL(final String word) {

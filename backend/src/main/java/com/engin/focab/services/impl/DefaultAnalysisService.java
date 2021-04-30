@@ -5,18 +5,24 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.engin.focab.constants.FocabConstants;
 import com.engin.focab.dtos.LexiDto;
+import com.engin.focab.exceptions.OpenSubtitlesException;
 import com.engin.focab.jpa.IdiomAnalysis;
 import com.engin.focab.jpa.MovieAnalysisModel;
 import com.engin.focab.jpa.SubtitleModel;
@@ -25,15 +31,18 @@ import com.engin.focab.repository.LexiRepository;
 import com.engin.focab.repository.MovieAnalysisRepository;
 import com.engin.focab.repository.SubtitleRepository;
 import com.engin.focab.services.AnalysisService;
+import com.engin.focab.services.IndexedSearchService;
 import com.engin.focab.services.PhrasalVerbsDetectionService;
 import com.engin.focab.services.SrtParserService;
 import com.engin.focab.services.SubtitleService;
 import com.github.wtekiela.opensub4j.response.SubtitleFile;
+import com.google.common.collect.Iterables;
 
 import edu.stanford.nlp.simple.Sentence;
 
 @Component
 public class DefaultAnalysisService implements AnalysisService {
+
 
 	@Autowired
 	private MovieAnalysisRepository movieAnalysisRepository;
@@ -64,36 +73,64 @@ public class DefaultAnalysisService implements AnalysisService {
 
 	@Value("${movie.analysis.useStoredAnalysis}")
 	private boolean useStoredAnalysis;
+	@Autowired
+	private IndexedSearchService indexedSearchService;
 
 	@Override
 	public SummerizedMovieAnalysisModel analyzeMovie(String imdbId) {
 		MovieAnalysisModel analysisResult = null;
 
-		Set<String> singleWords = new HashSet<>();
-
-		// What is this for?
-		Map<String, String> singleWordsMap = new HashMap<String, String>();
-
-		HashMap<String, List<String>> aggregatedIdiomMap = new HashMap<String, List<String>>();
-		HashMap<String, List<String>> aggregatedPhrasalverbMap = new HashMap<String, List<String>>();
-		HashMap<String, List<String>> aggregatedSingleWordMap = new HashMap<String, List<String>>();
-
+		Long lemmaTotalDuration = 0L;
 		Long idiomTotalDuration = 0L;
 		Long phrasalTotalDuration = 0L;
-		Long idiomAverageDuration = 0L;
-		Long phrasalAverageDuration = 0L;
-		Long singleAverageDuration = 0L;
 		Long singleTotalDuration = 0L;
-		Long singleMassProcessingDuration = 0L;
+		Long aggregationDuration = 0L;
+		Long downloadDuration = 0L;
+		Long dbsaveDuration = 0L;
 
-		if (useStoredAnalysis == true) {
-			analysisResult = movieAnalysisRepository.findMovieAnalysisByImdbId(imdbId);
-		}
+		Instant dbStart = Instant.EPOCH;
+		Instant dbEnd = Instant.EPOCH;
+		Instant downloadStart = Instant.EPOCH;
+		Instant downloadEnd = Instant.EPOCH;
+		Instant lemmaStart;
+		Instant lemmaEnd;
+		Instant idiomStart;
+		Instant idiomEnd;
+		Instant phrasalStart;
+		Instant phrasalEnd;
+		Instant singleStart;
+		Instant singleEnd;
+		Instant aggregationStart;
+		Instant aggregationEnd;
+		Instant dbsaveStart;
+		Instant dbsaveEnd;
 
-		if (analysisResult == null) {
-			analysisResult = new MovieAnalysisModel();
-			imdbId = imdbId.substring(2);
+		Instant batchSphinxStart;
+		Instant batchSphinxEnd;
+
+		Duration lemmaDuration;
+		Duration idiomDuration;
+		Duration phrasalDuration;
+		Duration singleDuration;
+
+		dbStart = Instant.now();
+		System.out.println("Start:" + dbStart.toString());
+
+		imdbId = imdbId.substring(2);
+		Optional<MovieAnalysisModel> savedAnalysis = movieAnalysisRepository.findById(imdbId);
+		analysisResult = savedAnalysis.isEmpty() ? new MovieAnalysisModel(imdbId) : savedAnalysis.get();
+		dbEnd = Instant.now();
+
+		// Either it is the first time or analysis is forced to be repeated
+		if (savedAnalysis.isEmpty() || !useStoredAnalysis) {
+
+			downloadStart = Instant.now();
+
 			SubtitleFile file = subtitleService.getASubtitleByImdbId(imdbId); // 0702019 0248654
+
+			if (file == null) {
+				throw new OpenSubtitlesException("OpenSubtitles.org is not reachable");
+			}
 			analysisResult.setFullSubtitles(file.getContentAsString("UTF-8"));
 			ArrayList<SubtitleModel> subtitles = srtParserService
 					.getSubtitlesFromString(analysisResult.getFullSubtitles());
@@ -103,115 +140,175 @@ public class DefaultAnalysisService implements AnalysisService {
 
 			Properties props = new Properties();
 			props.setProperty("pos.model", "english-left3words-distsim.tagger");
-			props.setProperty("ner.model",
-					"english.all.3class.distsim.crf.ser.gz,english.conll.4class.distsim.crf.ser.gz,english.muc.7class.distsim.crf.ser.gz");
-			props.setProperty("ner.useSUTime", "false");
-			props.setProperty("ner.applyFineGrained", "false");
+			downloadEnd = Instant.now();
+			System.out.println("Download end:" + downloadEnd.toString());
+
+			// try to search for a larger idiom set for all sentences at once
+			batchSphinxStart = Instant.now();
+			allAtOnce(subtitles, props);
+			batchSphinxEnd = Instant.now();
+
+			System.out.println("Batch Sphinx:" + Duration.between(batchSphinxStart, batchSphinxEnd).toMillis());
 
 			//// process each subtitle
 			for (int i = 0; i < subtitles.size(); i++) {
+				lemmaStart = Instant.now();
+
 				SubtitleModel subtitle = subtitles.get(i);
 				Sentence sentence = new Sentence(subtitle.getText());
 				List<String> sentenceLemmas = sentence.lemmas(props);
+				lemmaEnd = Instant.now();
 
 				//// find idioms
-				Instant idiomStart = Instant.now();
+				idiomStart = Instant.now();
 				Set<String> idiomSet = idiomDetectionService.detectIdioms(sentence, sentenceLemmas).getIdiomSet();
 				if (!idiomSet.isEmpty()) {
 					subtitle.setIdioms(idiomSet);
 					idiomSubtitles.add(subtitle);
-					for (String idiom : idiomSet) {
-						addToMap(aggregatedIdiomMap, idiom, sentence.text());
-					}
-
 				}
-				Instant idiomEnd = Instant.now();
+				idiomEnd = Instant.now();
 
 				//// find phrasal verbs
-				Instant phrasalStart = Instant.now();
+				phrasalStart = Instant.now();
 				List<String> phrasalSet = phrasalDetectionService.detectPhrasalVerbs(sentence, sentenceLemmas);
 				if (!phrasalSet.isEmpty()) {
 					subtitle.setPhrasalVerbs(phrasalSet);
 					phrasalVerbSubtitles.add(subtitle);
-					for (String phrasal : phrasalSet) {
-						addToMap(aggregatedPhrasalverbMap, phrasal, sentence.text());
-					}
 				}
-				Instant phrasalEnd = Instant.now();
+				phrasalEnd = Instant.now();
 
-				subtitleRepository.save(subtitle);
 
 				//// detect single words
-				Instant singleStart = Instant.now();
-				final int subtitleIndex = i;
-
-				List<String> namedEntities = sentence.nerTags(props);
-				for (int j = 0; j < sentenceLemmas.size(); j++) {
-					if (namedEntities.get(j).equals("O")) {
-						singleWordsMap.merge(sentenceLemmas.get(j).toLowerCase(Locale.ENGLISH), " " + subtitleIndex,
-								String::concat);
-					} else {
-						System.out.println(
-								"Named Entity disregarded: " + sentenceLemmas.get(j) + " | " + namedEntities.get(j));
-					}
+				singleStart = Instant.now();
+				String singleWords = singleWordsDetectionService.findSingleWords(sentence, sentenceLemmas);
+				if (!StringUtils.isBlank(singleWords)) {
+					subtitle.setSingleWords(singleWords);
+					singleWordSubtitles.add(subtitle);
 				}
+				singleEnd = Instant.now();
 
-				Instant singleEnd = Instant.now();
+				// subtitleRepository.save(subtitle);
+
 
 				//// find phrasal verbs
 				//// find adj+noun tuples
-				Duration idiomDuration = Duration.between(idiomStart, idiomEnd);
-				Duration phrasalDuration = Duration.between(phrasalStart, phrasalEnd);
-				Duration singleDuration = Duration.between(singleStart, singleEnd);
+				idiomDuration = Duration.between(idiomStart, idiomEnd);
+				phrasalDuration = Duration.between(phrasalStart, phrasalEnd);
+				singleDuration = Duration.between(singleStart, singleEnd);
+				lemmaDuration = Duration.between(lemmaStart, lemmaEnd);
 
+				lemmaTotalDuration = lemmaTotalDuration + lemmaDuration.toMillis();
 				idiomTotalDuration = idiomTotalDuration + idiomDuration.toMillis();
 				phrasalTotalDuration = phrasalTotalDuration + phrasalDuration.toMillis();
 				singleTotalDuration = singleTotalDuration + singleDuration.toMillis();
 
 			}
 
-			// process single words set
-			Instant singleMassStart = Instant.now();
+			dbsaveStart = Instant.now();
 
-			singleWords.addAll(singleWordsDetectionService.reduce(singleWordsMap.keySet()));
-			if (!singleWords.isEmpty()) {
-				for (String singleWord : singleWords) {
-					String[] subtitleIds = singleWordsMap.get(singleWord).split(" ");
-					for (int i = 0; i < subtitleIds.length; i++) {
-						if (!subtitleIds[i].isBlank()) {
-							addToMap(aggregatedSingleWordMap, singleWord,
-									subtitles.get(Integer.valueOf(subtitleIds[i]).intValue()).getText());
-						}
-					}
-				}
-			}
-
-			Instant singleMassEnd = Instant.now();
-
-			idiomAverageDuration = idiomTotalDuration / subtitles.size();
-			phrasalAverageDuration = phrasalTotalDuration / subtitles.size();
-			singleAverageDuration = singleTotalDuration / subtitles.size();
-			singleMassProcessingDuration = Duration.between(singleMassStart, singleMassEnd).toSeconds();
-
-			analysisResult.setImdbId(imdbId);
 			analysisResult.setIdioms(idiomSubtitles);
 			analysisResult.setPhrasalVerbs(phrasalVerbSubtitles);
 			analysisResult.setSingleWords(singleWordSubtitles);
 
-//			movieAnalysisRepository.save(analysisResult);
-//			subtitleRepository.saveAll(subtitles);
-//			movieAnalysisRepository.save(analysisResult);
+			subtitleRepository.saveAll(idiomSubtitles);
+			subtitleRepository.saveAll(phrasalVerbSubtitles);
+			subtitleRepository.saveAll(singleWordSubtitles);
+
+			movieAnalysisRepository.save(analysisResult);
+
+			dbsaveEnd = Instant.now();
+			dbsaveDuration = Duration.between(dbsaveStart, dbsaveEnd).toMillis();
+
+		}
+		downloadDuration = Duration.between(downloadStart, downloadEnd).toMillis()
+				+ Duration.between(dbStart, dbEnd).toMillis();
+
+		aggregationStart = Instant.now();
+		SummerizedMovieAnalysisModel summerizedAnalysis = summarize(analysisResult);
+		aggregationEnd = Instant.now();
+		aggregationDuration = Duration.between(aggregationStart, aggregationEnd).toMillis();
+
+		summerizedAnalysis.setLemmaTotalDuration(lemmaTotalDuration);
+		summerizedAnalysis.setIdiomTotalDuration(idiomTotalDuration);
+		summerizedAnalysis.setPhrasalTotalDuration(phrasalTotalDuration);
+		summerizedAnalysis.setSingleTotalDuration(singleTotalDuration);
+		summerizedAnalysis.setAggregationDuration(aggregationDuration);
+		summerizedAnalysis.setDownloadDuration(downloadDuration);
+		summerizedAnalysis.setDbsaveDuration(dbsaveDuration);
+
+		System.out.println("End:" + Instant.now().toString());
+
+		return summerizedAnalysis;
+
+	}
+
+	private void allAtOnce(ArrayList<SubtitleModel> subtitles, Properties props) {
+		HashSet<String> foundSet = new HashSet<>();
+		HashSet<String> allLemmas = new HashSet<>();
+		HashMap<String, String> idiomsAndRegex = new HashMap<>();
+		List<String> allSentencesInLemmas = new ArrayList<>();
+
+		for (int i = 0; i < subtitles.size(); i++) {
+			SubtitleModel subtitle = subtitles.get(i);
+			Sentence sentence = new Sentence(subtitle.getText().toLowerCase());
+			List<String> lemmas = sentence.lemmas(props);
+			allSentencesInLemmas.add(String.join(" ", lemmas));
+			allLemmas.addAll(lemmas);
+		}
+		Iterable<List<String>> chunkList = Iterables.partition(allLemmas, 200);
+		for (List<String> list : chunkList) {
+			String allWords = list.stream()
+					.filter(x -> !FocabConstants.WORDS_TO_SKIP.contains(x)
+							&& Pattern.compile(FocabConstants.WORD_REGEX_PATTERN).matcher(x).matches())
+					.collect(Collectors.joining("|"));
+			if (allWords.length() > 1) {
+				// Find a larger set for all possible idioms
+				idiomsAndRegex.putAll(indexedSearchService.findIdiomsByWordWithRegex(allWords));
+			}
 		}
 
-		SummerizedMovieAnalysisModel summerizedAnalysis = new SummerizedMovieAnalysisModel(imdbId);
+		for (Iterator<String> iterator = allSentencesInLemmas.iterator(); iterator.hasNext();) {
+			String sentence = iterator.next();
+			idiomsAndRegex.forEach((k, v) -> {
+				if (sentence.matches(v)) {
+					foundSet.add(k);
+				}
+			});
+		}
+
+		System.out.println(foundSet.size() + "idioms found!");
+
+
+	}
+
+	private SummerizedMovieAnalysisModel summarize(MovieAnalysisModel analysisResult) {
+
+		SummerizedMovieAnalysisModel summerizedAnalysis = new SummerizedMovieAnalysisModel(analysisResult.getImdbId());
+		HashMap<String, List<String>> aggregatedIdiomMap = new HashMap<>();
+		HashMap<String, List<String>> aggregatedPhrasalverbMap = new HashMap<>();
+		HashMap<String, List<String>> aggregatedSingleWordMap = new HashMap<>();
+
+		for (SubtitleModel subtitle : analysisResult.getIdioms()) {
+			for (String idiom : subtitle.getIdioms()) {
+				addToMap(aggregatedIdiomMap, idiom, subtitle.getText());
+			}
+		}
+
+		for (SubtitleModel subtitle : analysisResult.getPhrasalVerbs()) {
+			for (String phrasal : subtitle.getPhrasalVerbs()) {
+				addToMap(aggregatedPhrasalverbMap, phrasal, subtitle.getText());
+			}
+		}
+
+		for (SubtitleModel subtitle : analysisResult.getSingleWords()) {
+			for (String single : subtitle.getSingleWords().split(" ")) {
+				addToMap(aggregatedSingleWordMap, single, subtitle.getText());
+			}
+		}
 
 		summerizedAnalysis.setIdioms(convertMapKeysToDto(aggregatedIdiomMap));
 		summerizedAnalysis.setPhrasalVerbs(convertMapKeysToDto(aggregatedPhrasalverbMap));
 		summerizedAnalysis.setSingleWords(convertMapKeysToDto(aggregatedSingleWordMap));
-		summerizedAnalysis.setIdiomAverageDuration(idiomAverageDuration);
-		summerizedAnalysis.setPhrasalAverageDuration(phrasalAverageDuration);
-		summerizedAnalysis.setSingleAverageDuration(singleAverageDuration);
-		summerizedAnalysis.setSingleMassDuration(singleMassProcessingDuration);
 
 		return summerizedAnalysis;
 	}
@@ -271,5 +368,6 @@ public class DefaultAnalysisService implements AnalysisService {
 		return lexis;
 
 	}
+
 
 }

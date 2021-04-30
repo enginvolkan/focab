@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.engin.focab.jpa.corpus.LexiModel;
+
 @Entity
 @Table(name = "customer")
 
@@ -36,6 +38,8 @@ public class Customer {
 	@OneToMany
 	private Set<Authority> authority= new HashSet<Authority>();
 
+	@OneToMany
+	private Set<LexiModel> knownWords = new HashSet<LexiModel>();
 
 	public String getName() {
 		return fullname;
@@ -100,6 +104,18 @@ public class Customer {
 
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
+	}
+
+	public Set<LexiModel> getKnownWords() {
+		return knownWords;
+	}
+
+	public void setKnownWords(Set<LexiModel> knownWords) {
+		this.knownWords = knownWords;
+	}
+
+	public Set<Authority> getAuthority() {
+		return authority;
 	}
 
 }

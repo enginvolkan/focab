@@ -24,7 +24,8 @@ public class SphinxService implements IndexedSearchService {
 	@Override
 	public HashSet<String> findIdiomsByWord(String word) {
 
-		String url = "http://localhost:9080/search?index=idiom&match=" + word.replace(" ", "%20") + "&limit=200";
+		String url = "http://localhost:9080/search?index=idiom&match=" + word.replace(" ", "%20").replace("-", "%20")
+				+ "&limit=1000";
 		HashSet<String> resultSet = new HashSet<String>(runSphinxQuery(url, 2));
 		return resultSet;
 	}
@@ -32,13 +33,15 @@ public class SphinxService implements IndexedSearchService {
 	@Override
 	public HashMap<String, String> findIdiomsByWordWithRegex(String word) {
 
-		String url = "http://localhost:9080/search?index=idiom&match=" + word.replace(" ", "%20") + "&limit=200";
+		String url = "http://localhost:9080/search?index=idiom&match=" + word.replace(" ", "%20").replace("-", "%20")
+				+ "&limit=1000";
 		return runSphinxQuery(url, 1, 2);
 	}
 	@Override
 	public HashSet<String> findPhrasalsByWord(String word) {
 
-		String url = "http://localhost:9080/search?index=phrasal&match=" + word.replace(" ", "%20") + "&limit=200";
+		String url = "http://localhost:9080/search?index=phrasal&match=" + word.replace(" ", "%20").replace("-", "%20")
+				+ "&limit=1000";
 		HashSet<String> resultSet = new HashSet<String>(runSphinxQuery(url, 1));
 		return resultSet;
 	}

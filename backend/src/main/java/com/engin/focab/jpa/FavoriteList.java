@@ -2,32 +2,34 @@ package com.engin.focab.jpa;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 public class FavoriteList implements Serializable{
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)  
-    private Integer	FavoriteId;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer	favoriteId;
     private String name;
     @ManyToOne
     private Customer customer;
 
-    @ElementCollection  
+    @ElementCollection
+	@CollectionTable(name = "favoriteentries", joinColumns = @JoinColumn(name = "favorite_id"), uniqueConstraints = {
+			@UniqueConstraint(columnNames = { "favorite_id", "lexi_model_id" }) })
     private Set<FavoriteEntry> favoriteEntries = new HashSet<FavoriteEntry>();
 
-    
+
 	public FavoriteList() {
 		super();
 	}
@@ -63,9 +65,9 @@ public class FavoriteList implements Serializable{
 	}
 
 	public Integer getFavoriteId() {
-		return FavoriteId;
+		return favoriteId;
 	}
-	
+
 
 
 }

@@ -42,7 +42,7 @@ public class LexiModel {
 		this.isSeparable = isSeparable;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "lexiModel")
 	private List<DefinitionModel> definitionModels;
 
 	// Constructors

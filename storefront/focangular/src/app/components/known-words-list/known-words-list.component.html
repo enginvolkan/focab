@@ -1,0 +1,8 @@
+<ul>
+    <li *ngFor="let item of knownWords$ | async as list">{{item | indefinitepronoun}}
+        <button mat-flat-button color="accent" (click)="removeKnownWord(item)" >
+            <mat-icon>add</mat-icon> Remove Known Word
+        </button>
+        
+    </li>
+</ul>

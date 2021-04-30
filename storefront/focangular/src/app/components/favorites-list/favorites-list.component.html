@@ -1,1 +1,7 @@
-<p>favorites-list works!</p>
+<ul>
+    <li *ngFor="let item of favorites$ | async as list">{{item | indefinitepronoun}}
+        <button mat-flat-button color="primary" (click)="removeFavorite(item)" >
+            <mat-icon>add</mat-icon> Remove Favorite
+        </button>
+    </li>
+</ul>

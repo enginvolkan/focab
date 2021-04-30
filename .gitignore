@@ -1,3 +1,4 @@
 sphinx/searchd.pid
 sphinx/logs
 sphinx/indexes
+sphinx/logs/searchd.log

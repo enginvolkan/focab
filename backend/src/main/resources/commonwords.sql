@@ -5000,3 +5000,4 @@ INSERT INTO `focab`.`commonwords` (`id`, `word`, `level`) VALUES ('4999', 'kid',
 INSERT INTO `focab`.`commonwords` (`id`, `word`, `level`) VALUES ('5000', 'middle-class','5000');
 INSERT INTO `focab`.`commonwords` (`id`, `word`, `level`) VALUES ('5001', 'apology','5001');
 INSERT INTO `focab`.`commonwords` (`id`, `word`, `level`) VALUES ('5002', 'till','5002');
+INSERT INTO `focab`.`commonwords` (`id`, `word`, `level`) VALUES ('5003', 'hmm','5003');

@@ -1,6 +1,8 @@
 package com.engin.focab.controllers;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +26,7 @@ public class BugController {
 	public boolean addBug(@RequestBody BugDto bugDto) {
 
 		BugModel bug = new BugModel(bugDto.getText(), bugDto.getType(),
-				StringEscapeUtils.unescapeHtml(String.join(" | ", bugDto.getSentences())));
+				URLDecoder.decode(String.join(" | ", bugDto.getSentences()), StandardCharsets.UTF_8));
 		bugRepository.save(bug);
 		return true;
 	}

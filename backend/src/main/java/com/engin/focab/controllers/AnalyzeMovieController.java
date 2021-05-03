@@ -39,10 +39,10 @@ public class AnalyzeMovieController {
 		Customer customer = sessionService.getCurrentCustomer();
 
 		if (customer != null) {
-			return personalizationService.personalize(analysisService.analyzeMovie(imdbId), customer);
+			SummerizedMovieAnalysisModel analysis = analysisService.analyzeMovie(imdbId);
+			return personalizationService.personalize(analysis, customer);
 		} else {
 			return new SummerizedMovieAnalysisModel("");
-
 		}
 
 	}

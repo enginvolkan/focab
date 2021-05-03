@@ -43,7 +43,6 @@ import edu.stanford.nlp.simple.Sentence;
 @Component
 public class DefaultAnalysisService implements AnalysisService {
 
-
 	@Autowired
 	private MovieAnalysisRepository movieAnalysisRepository;
 	@Autowired
@@ -73,6 +72,8 @@ public class DefaultAnalysisService implements AnalysisService {
 
 	@Value("${movie.analysis.useStoredAnalysis}")
 	private boolean useStoredAnalysis;
+	@Value("${movie.analysis.useStoredSubtitles}")
+	private boolean useStoredSubtitles;
 	@Autowired
 	private IndexedSearchService indexedSearchService;
 
@@ -118,38 +119,38 @@ public class DefaultAnalysisService implements AnalysisService {
 
 		imdbId = imdbId.substring(2);
 		Optional<MovieAnalysisModel> savedAnalysis = movieAnalysisRepository.findById(imdbId);
-		analysisResult = savedAnalysis.isEmpty() ? new MovieAnalysisModel(imdbId) : savedAnalysis.get();
+		analysisResult = canUseSavedAnalysis(savedAnalysis) ? savedAnalysis.get() : new MovieAnalysisModel(imdbId);
 		dbEnd = Instant.now();
 
-		// Either it is the first time or analysis is forced to be repeated
-		if (savedAnalysis.isEmpty() || !useStoredAnalysis) {
+		if (!canUseSavedAnalysis(savedAnalysis)) {
+			if (canUseSavedSubtitles(savedAnalysis)) {
+				analysisResult.setFullSubtitles(savedAnalysis.get().getFullSubtitles());
+			} else {
 
-			downloadStart = Instant.now();
+				downloadStart = Instant.now();
 
-			SubtitleFile file = subtitleService.getASubtitleByImdbId(imdbId); // 0702019 0248654
+				SubtitleFile file = subtitleService.getASubtitleByImdbId(imdbId); // 0702019 0248654
 
-			if (file == null) {
-				throw new OpenSubtitlesException("OpenSubtitles.org is not reachable");
+				if (file == null) {
+					throw new OpenSubtitlesException("OpenSubtitles.org is not reachable");
+				}
+				analysisResult.setFullSubtitles(file.getContentAsString("UTF-8"));
+				downloadEnd = Instant.now();
+
 			}
-			analysisResult.setFullSubtitles(file.getContentAsString("UTF-8"));
 			ArrayList<SubtitleModel> subtitles = srtParserService
 					.getSubtitlesFromString(analysisResult.getFullSubtitles());
 			ArrayList<SubtitleModel> idiomSubtitles = new ArrayList<SubtitleModel>();
 			ArrayList<SubtitleModel> phrasalVerbSubtitles = new ArrayList<SubtitleModel>();
 			ArrayList<SubtitleModel> singleWordSubtitles = new ArrayList<SubtitleModel>();
-
 			Properties props = new Properties();
 			props.setProperty("pos.model", "english-left3words-distsim.tagger");
-			downloadEnd = Instant.now();
 			System.out.println("Download end:" + downloadEnd.toString());
-
 			// try to search for a larger idiom set for all sentences at once
 			batchSphinxStart = Instant.now();
 			allAtOnce(subtitles, props);
 			batchSphinxEnd = Instant.now();
-
 			System.out.println("Batch Sphinx:" + Duration.between(batchSphinxStart, batchSphinxEnd).toMillis());
-
 			//// process each subtitle
 			for (int i = 0; i < subtitles.size(); i++) {
 				lemmaStart = Instant.now();
@@ -177,7 +178,6 @@ public class DefaultAnalysisService implements AnalysisService {
 				}
 				phrasalEnd = Instant.now();
 
-
 				//// detect single words
 				singleStart = Instant.now();
 				String singleWords = singleWordsDetectionService.findSingleWords(sentence, sentenceLemmas);
@@ -188,7 +188,6 @@ public class DefaultAnalysisService implements AnalysisService {
 				singleEnd = Instant.now();
 
 				// subtitleRepository.save(subtitle);
-
 
 				//// find phrasal verbs
 				//// find adj+noun tuples
@@ -203,26 +202,22 @@ public class DefaultAnalysisService implements AnalysisService {
 				singleTotalDuration = singleTotalDuration + singleDuration.toMillis();
 
 			}
-
 			dbsaveStart = Instant.now();
-
 			analysisResult.setIdioms(idiomSubtitles);
 			analysisResult.setPhrasalVerbs(phrasalVerbSubtitles);
 			analysisResult.setSingleWords(singleWordSubtitles);
-
 			subtitleRepository.saveAll(idiomSubtitles);
 			subtitleRepository.saveAll(phrasalVerbSubtitles);
 			subtitleRepository.saveAll(singleWordSubtitles);
-
 			movieAnalysisRepository.save(analysisResult);
 
 			dbsaveEnd = Instant.now();
 			dbsaveDuration = Duration.between(dbsaveStart, dbsaveEnd).toMillis();
 
-		}
-		downloadDuration = Duration.between(downloadStart, downloadEnd).toMillis()
-				+ Duration.between(dbStart, dbEnd).toMillis();
+			downloadDuration = Duration.between(downloadStart, downloadEnd).toMillis()
+					+ Duration.between(dbStart, dbEnd).toMillis();
 
+		}
 		aggregationStart = Instant.now();
 		SummerizedMovieAnalysisModel summerizedAnalysis = summarize(analysisResult);
 		aggregationEnd = Instant.now();
@@ -240,6 +235,14 @@ public class DefaultAnalysisService implements AnalysisService {
 
 		return summerizedAnalysis;
 
+	}
+
+	private boolean canUseSavedSubtitles(Optional<MovieAnalysisModel> savedAnalysis) {
+		return useStoredSubtitles && savedAnalysis.isPresent();
+	}
+
+	private boolean canUseSavedAnalysis(Optional<MovieAnalysisModel> savedAnalysis) {
+		return useStoredAnalysis && savedAnalysis.isPresent();
 	}
 
 	private void allAtOnce(ArrayList<SubtitleModel> subtitles, Properties props) {
@@ -277,7 +280,6 @@ public class DefaultAnalysisService implements AnalysisService {
 		}
 
 		System.out.println(foundSet.size() + "idioms found!");
-
 
 	}
 
@@ -368,6 +370,5 @@ public class DefaultAnalysisService implements AnalysisService {
 		return lexis;
 
 	}
-
 
 }

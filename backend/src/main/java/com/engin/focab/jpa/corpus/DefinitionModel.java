@@ -3,6 +3,7 @@ package com.engin.focab.jpa.corpus;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,7 @@ public class DefinitionModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(unique = true)
 	private String definition;
 
 
@@ -60,7 +62,7 @@ public class DefinitionModel {
 	}
 
 	public Long getId() {
-		return id; 
+		return id;
 	}
 
 }

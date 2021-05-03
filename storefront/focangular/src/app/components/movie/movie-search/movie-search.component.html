@@ -1,6 +1,6 @@
-<div fxLayout class="form">
-    <form class="searchbox">
-        <mat-form-field class="inputbox">
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="32px" class="form">
+    <form fxFlex="80" >
+        <mat-form-field class="searchbox">
             <input name="search" matInput type="text" placeholder="Search for a Movie or TV Series"
                 [(ngModel)]="searchTerm" (keydown.enter)="triggerSearch(searchTerm)">
             <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="searchTerm=''">
@@ -10,11 +10,11 @@
 
     </form>
 
-    <button mat-raised-button color="accent" (click)="triggerSearch(searchTerm)">Go!</button>
+    <button fxFlex="20" mat-raised-button color="accent" (click)="triggerSearch(searchTerm)">Go!</button>
 </div>
 
 
-<div *ngIf="movieSearchResult.search.length>0" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px"
+<div *ngIf="movieSearchResult?.search.length>0" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px"
     fxLayoutAlign="space-around stretch">
     <div *ngFor="let movieDetail of movieDetails" fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-sm="100%" fxFill>
         <mat-card>

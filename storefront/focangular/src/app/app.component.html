@@ -51,15 +51,13 @@ Also in header component
       <div fxLayout="column">
         <a mat-button routerLink="/learn" (click)="sidenav.toggle()">Learn</a>
         <a mat-button routerLink="/idiomSearch" (click)="sidenav.toggle()">Idiom Search</a>
-        <a mat-button routerLink="/lists" (click)="sidenav.toggle()">Lists</a>
+        <a mat-button routerLink="/favorites" (click)="sidenav.toggle()">Favorites</a>
         <a mat-button routerLink="/movieSearch" (click)="sidenav.toggle()">Movie Search</a>
-        <a mat-button routerLink="/myAccount" (click)="sidenav.toggle()">My Account</a>
+        <a mat-button routerLink="/knownwords" (click)="sidenav.toggle()">Known Words</a>
       </div>
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <app-header class="header" fxFill fxLayoutAlign="space-between center">
-      </app-header>
       <app-alert></app-alert>
       <router-outlet></router-outlet>
 

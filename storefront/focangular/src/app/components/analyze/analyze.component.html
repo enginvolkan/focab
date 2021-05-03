@@ -1,10 +1,11 @@
-<mat-tab-group mat-align-tabs="center">
+<div *ngIf="(result$ | async) as result">
+    <mat-tab-group mat-align-tabs="center">
     <mat-tab>
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">looks_one</mat-icon>
             Idioms
         </ng-template>
-        <div *ngFor="let resultItem of (idioms|async); index as i">
+        <div *ngFor="let resultItem of result.idioms; index as i">
             <mat-card class="word-card" >
                 <mat-card-header>
                     <mat-card-title class="word-header">
@@ -72,7 +73,7 @@
             <mat-icon class="example-tab-icon">looks_two</mat-icon>
             Phrasal Verbs
         </ng-template>
-        <div *ngFor="let resultItem of (phrasalVerbs|async); index as i">
+        <div *ngFor="let resultItem of result.phrasalVerbs; index as i">
             <mat-card class="word-card" >
                 <mat-card-header>
                     <mat-card-title class="word-header">
@@ -141,7 +142,7 @@
             Single Words
         </ng-template>
 
-        <div *ngFor="let resultItem of (singleWords|async); index as i">
+        <div *ngFor="let resultItem of result.singleWords; index as i">
             <mat-card class="word-card" >
                 <mat-card-header>
                     <mat-card-title class="word-header">
@@ -205,3 +206,4 @@
 
     </mat-tab>
 </mat-tab-group>
+</div>

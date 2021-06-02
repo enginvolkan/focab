@@ -32,7 +32,7 @@ public class SummerizedMovieAnalysisModel {
 	// Fields
 	//////////////
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer pk;
 
 	private String imdbId;

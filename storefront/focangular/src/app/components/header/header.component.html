@@ -11,14 +11,34 @@
     <app-search class="app-search"></app-search>
   </span>
 
-  <span class="header-links" routerLinkActive="active" routerLink="/favorites" fxHide.lt-md="true">Favorites</span>
-  <span class="header-links" routerLinkActive="active" routerLink="/knownwords" fxHide.lt-md="true">Known Words</span>
   <span class="header-links" routerLinkActive="active" routerLink="/movieSearch" fxHide.lt-md="true">Movie Search</span>
 
   <span>
     <button mat-flat-button color="primary" [hidden]="authenticated() !=null" routerLinkActive="active"
       routerLink="/login">Login</button>
     <button mat-stroked-button color="primary" [hidden]="authenticated() !=null">Register</button>
-    <button mat-stroked-button color="primary" [hidden]="authenticated() == null" (click)="logout()">Logout</button>
   </span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" color="primary" [hidden]="authenticated() == null">
+    <mat-icon class="icon">account_circle</mat-icon>
+    &nbsp;&nbsp;&nbsp; {{(getUser() | async).fullname }}
+  </button>
+  <mat-menu #menu="matMenu" #afterMenu="matMenu" xPosition="after">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+    <button mat-menu-item routerLink="/profile">
+      <mat-icon>badge</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item routerLink="/knownwords">
+      <mat-icon>disabled_visible</mat-icon>
+      <span>Known Words</span>
+    </button>
+    <button mat-menu-item routerLink="/favorites">
+      <mat-icon>collections_bookmark</mat-icon>
+      <span>Favorites</span>
+    </button>
+  </mat-menu>
 

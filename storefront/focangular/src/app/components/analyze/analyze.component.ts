@@ -16,6 +16,7 @@ import { KnownWordsListService } from 'src/app/services/known-words-list.service
 import { OverlayRef } from '@angular/cdk/overlay';
 import { OverlayService } from 'src/app/services/overlay.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
+import { Subtitle } from 'src/app/models/subtitle.model';
 
 @Component({
   selector: 'app-analyze',
@@ -40,6 +41,7 @@ export class AnalyzeComponent implements OnInit {
   idioms: Observable<Lexi[]>;
   phrasalVerbs: Observable<Lexi[]>;
   singleWords: Observable<Lexi[]>;
+  fullSubtitles$: Observable<Subtitle[]>;
 
   idiomDefinitions$: Observable<string[]>[] = [];
   phrasalDefinitions$: Observable<string[]>[] = [];
@@ -54,6 +56,7 @@ export class AnalyzeComponent implements OnInit {
       this.idioms = this.result$.pipe(map((x) => x.idioms));
       this.phrasalVerbs = this.result$.pipe(map((x) => x.phrasalVerbs));
       this.singleWords = this.result$.pipe(map((x) => x.singleWords));
+      this.fullSubtitles$ = this.movieService.getFullSubtitles(this.imdbId);
     });
   }
 
@@ -154,5 +157,9 @@ export class AnalyzeComponent implements OnInit {
       this.alertService.success('Bug reported!');
       console.log('Report bug result: ' + flag);
     });
+  }
+
+  split(text: string):string[] {
+    return text.split(' ');
   }
 }

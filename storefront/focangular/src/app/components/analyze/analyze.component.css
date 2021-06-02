@@ -1,0 +1,35 @@
+.idiom{
+    color: black;
+    background-color: cornflowerblue;
+    border-radius: 25pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: bold;
+}
+
+.phrasal{
+    color: black;
+    background-color: coral;
+    border-radius: 25pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: bold;
+}
+
+.single-word{
+    color: black;
+    background-color:lemonchiffon;
+    border-radius: 25pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: bold;
+}
+.tag-row{
+    padding-top: 4px;
+}

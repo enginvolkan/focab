@@ -1,6 +1,7 @@
 package com.engin.focab.controllers;
 
 import java.net.MalformedURLException;
+import java.util.List;
 
 import org.apache.xmlrpc.XmlRpcException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.engin.focab.jpa.Customer;
+import com.engin.focab.jpa.SubtitleModel;
 import com.engin.focab.jpa.SummerizedMovieAnalysisModel;
 import com.engin.focab.repository.AuthorityRepository;
 import com.engin.focab.repository.CustomerRepository;
@@ -43,6 +45,20 @@ public class AnalyzeMovieController {
 			return personalizationService.personalize(analysis, customer);
 		} else {
 			return new SummerizedMovieAnalysisModel("");
+		}
+
+	}
+
+	@GetMapping("/getFullSubtitles")
+	@ResponseBody
+	public List<SubtitleModel> fullSubtitles(@RequestParam String imdbId) {
+		Customer customer = sessionService.getCurrentCustomer();
+
+		if (customer != null) {
+			List<SubtitleModel> subtitles = analysisService.getFullSubtitles(imdbId);
+			return subtitles;
+		} else {
+			return List.of(new SubtitleModel());
 		}
 
 	}

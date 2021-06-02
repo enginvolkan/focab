@@ -19,37 +19,37 @@
 	<properties>
 		<java.version>${jre.version}</java.version>
 		<maven.compiler.source>${jre.version}</maven.compiler.source>
-        <maven.compiler.target>${jre.version}</maven.compiler.target>
+		<maven.compiler.target>${jre.version}</maven.compiler.target>
 	</properties>
-	
-<profiles>
-  <profile>
-    <id>WinProfile</id>
-    <activation>
-      <os>
-        <family>windows</family>
-      </os>
-    </activation>
-    <properties>
-      <war.directory>C:\tomcat\webapps</war.directory>
-            <jre.version>11</jre.version>
-    </properties>
-  </profile>
-  
-  <profile>
-    <id>UnixProfile</id>
-    <activation>
-      <os>
-        <family>unix</family>
-      </os>
-    </activation>
-    <properties>
-      <war.directory>${user.home}/tomcat/webapps</war.directory>
-                  <jre.version>10</jre.version>
-      
-    </properties>
-  </profile>
-</profiles>
+
+	<profiles>
+		<profile>
+			<id>WinProfile</id>
+			<activation>
+				<os>
+					<family>windows</family>
+				</os>
+			</activation>
+			<properties>
+				<war.directory>C:\tomcat\webapps</war.directory>
+				<jre.version>11</jre.version>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>UnixProfile</id>
+			<activation>
+				<os>
+					<family>unix</family>
+				</os>
+			</activation>
+			<properties>
+				<war.directory>${user.home}/tomcat/webapps</war.directory>
+				<jre.version>11</jre.version>
+
+			</properties>
+		</profile>
+	</profiles>
 
 	<dependencies>
 		<dependency>
@@ -60,10 +60,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency> 
-		    <groupId>org.springframework.boot</groupId> 
-		    <artifactId>spring-boot-starter-validation</artifactId> 
-		</dependency>		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-core</artifactId>
@@ -132,7 +132,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			</dependency>
+		</dependency>
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
@@ -150,24 +150,32 @@
 			<version>3.9.2</version>
 		</dependency>
 		<dependency>
-    		<groupId>org.jfrog.artifactory.client</groupId>
-    		<artifactId>artifactory-java-client-services</artifactId>
-    		<version>0.16</version>
+			<groupId>org.jfrog.artifactory.client</groupId>
+			<artifactId>artifactory-java-client-services</artifactId>
+			<version>0.16</version>
 		</dependency>
-
-<!-- 		<dependency> -->
-<!-- 			<groupId>edu.stanford.nlp</groupId> -->
-<!-- 			<artifactId>stanford-corenlp</artifactId> -->
-<!-- 			<version>3.9.2</version> -->
-<!-- 			<classifier>models</classifier> -->
-<!-- 		</dependency> -->
-<!-- 	<dependency> -->
-<!-- 		<groupId>engin.edu.stanford.nlp</groupId> -->
-<!-- 		<artifactId>engin.stanford-corenlp</artifactId> -->
-<!-- 		<version>3.9.2</version> -->
-<!-- 		<scope>system</scope> -->
-<!-- 		<systemPath>${project.basedir}/lib/stanford-corenlp-3.9.2-models.jar</systemPath> -->
-<!-- 	</dependency> -->
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>2.7.3</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>edu.stanford.nlp</groupId> -->
+		<!-- <artifactId>stanford-corenlp</artifactId> -->
+		<!-- <version>3.9.2</version> -->
+		<!-- <classifier>models</classifier> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>engin.edu.stanford.nlp</groupId> -->
+		<!-- <artifactId>engin.stanford-corenlp</artifactId> -->
+		<!-- <version>3.9.2</version> -->
+		<!-- <scope>system</scope> -->
+		<!-- <systemPath>${project.basedir}/lib/stanford-corenlp-3.9.2-models.jar</systemPath> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

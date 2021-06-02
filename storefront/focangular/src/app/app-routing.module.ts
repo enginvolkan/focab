@@ -9,6 +9,7 @@ import { KnownWordsListComponent } from './components/known-words-list/known-wor
 import { LearnComponent } from './components/learn/learn.component';
 import { LoginComponent } from './components/login/login.component';
 import { MovieSearchComponent } from './components/movie/movie-search/movie-search.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'idiomSearch', component: IdiomDetectorComponent, canActivate: [AuthGuard]},
   { path: 'analyze', component: AnalyzeComponent, canActivate: [AuthGuard]},
   { path: 'favorites', component: FavoritesListComponent, canActivate: [AuthGuard]},
-  { path: 'knownwords', component: KnownWordsListComponent, canActivate: [AuthGuard]}
+  { path: 'knownwords', component: KnownWordsListComponent, canActivate: [AuthGuard]},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
 
 ];
 

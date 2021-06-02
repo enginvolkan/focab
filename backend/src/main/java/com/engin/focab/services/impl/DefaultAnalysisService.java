@@ -1,8 +1,10 @@
 package com.engin.focab.services.impl;
 
+import java.net.MalformedURLException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,7 +16,9 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.xmlrpc.XmlRpcException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -74,11 +78,13 @@ public class DefaultAnalysisService implements AnalysisService {
 	private boolean useStoredAnalysis;
 	@Value("${movie.analysis.useStoredSubtitles}")
 	private boolean useStoredSubtitles;
+	@Value("${movie.analysis.saveEmptySubtitles}")
+	private boolean saveEmptySubtitles;
 	@Autowired
 	private IndexedSearchService indexedSearchService;
 
 	@Override
-	public SummerizedMovieAnalysisModel analyzeMovie(String imdbId) {
+	public SummerizedMovieAnalysisModel analyzeMovie(String imdbId) throws MalformedURLException, XmlRpcException {
 		MovieAnalysisModel analysisResult = null;
 
 		Long lemmaTotalDuration = 0L;
@@ -143,6 +149,8 @@ public class DefaultAnalysisService implements AnalysisService {
 			ArrayList<SubtitleModel> idiomSubtitles = new ArrayList<SubtitleModel>();
 			ArrayList<SubtitleModel> phrasalVerbSubtitles = new ArrayList<SubtitleModel>();
 			ArrayList<SubtitleModel> singleWordSubtitles = new ArrayList<SubtitleModel>();
+			ArrayList<SubtitleModel> emptySubtitles = new ArrayList<SubtitleModel>();
+
 			Properties props = new Properties();
 			props.setProperty("pos.model", "english-left3words-distsim.tagger");
 			System.out.println("Download end:" + downloadEnd.toString());
@@ -150,7 +158,8 @@ public class DefaultAnalysisService implements AnalysisService {
 			batchSphinxStart = Instant.now();
 			allAtOnce(subtitles, props);
 			batchSphinxEnd = Instant.now();
-			System.out.println("Batch Sphinx:" + Duration.between(batchSphinxStart, batchSphinxEnd).toMillis());
+			System.out
+					.println("Batch Sphinx Duration:" + Duration.between(batchSphinxStart, batchSphinxEnd).toMillis());
 			//// process each subtitle
 			for (int i = 0; i < subtitles.size(); i++) {
 				lemmaStart = Instant.now();
@@ -187,6 +196,11 @@ public class DefaultAnalysisService implements AnalysisService {
 				}
 				singleEnd = Instant.now();
 
+				if (saveEmptySubtitles && CollectionUtils.isEmpty(subtitle.getIdioms())
+						&& CollectionUtils.isEmpty(subtitle.getPhrasalVerbs())
+						&& StringUtils.isBlank(subtitle.getSingleWords())) {
+					emptySubtitles.add(subtitle);
+				}
 				// subtitleRepository.save(subtitle);
 
 				//// find phrasal verbs
@@ -206,9 +220,11 @@ public class DefaultAnalysisService implements AnalysisService {
 			analysisResult.setIdioms(idiomSubtitles);
 			analysisResult.setPhrasalVerbs(phrasalVerbSubtitles);
 			analysisResult.setSingleWords(singleWordSubtitles);
+			analysisResult.setEmptySubtitles(emptySubtitles);
 			subtitleRepository.saveAll(idiomSubtitles);
 			subtitleRepository.saveAll(phrasalVerbSubtitles);
 			subtitleRepository.saveAll(singleWordSubtitles);
+			subtitleRepository.saveAll(emptySubtitles);
 			movieAnalysisRepository.save(analysisResult);
 
 			dbsaveEnd = Instant.now();
@@ -234,7 +250,6 @@ public class DefaultAnalysisService implements AnalysisService {
 		System.out.println("End:" + Instant.now().toString());
 
 		return summerizedAnalysis;
-
 	}
 
 	private boolean canUseSavedSubtitles(Optional<MovieAnalysisModel> savedAnalysis) {
@@ -258,7 +273,7 @@ public class DefaultAnalysisService implements AnalysisService {
 			allSentencesInLemmas.add(String.join(" ", lemmas));
 			allLemmas.addAll(lemmas);
 		}
-		Iterable<List<String>> chunkList = Iterables.partition(allLemmas, 200);
+		Iterable<List<String>> chunkList = Iterables.partition(allLemmas, 50);
 		for (List<String> list : chunkList) {
 			String allWords = list.stream()
 					.filter(x -> !FocabConstants.WORDS_TO_SKIP.contains(x)
@@ -279,7 +294,7 @@ public class DefaultAnalysisService implements AnalysisService {
 			});
 		}
 
-		System.out.println(foundSet.size() + "idioms found!");
+		System.out.println(foundSet.size() + " idioms found!");
 
 	}
 
@@ -369,6 +384,23 @@ public class DefaultAnalysisService implements AnalysisService {
 		}
 		return lexis;
 
+	}
+
+	@Override
+	public List<SubtitleModel> getFullSubtitles(String imdbId) {
+		imdbId = imdbId.substring(2);
+		Optional<MovieAnalysisModel> savedAnalysis = movieAnalysisRepository.findById(imdbId);
+		Set<SubtitleModel> fullSubtitles = new HashSet<>();
+		if (savedAnalysis.isPresent()) {
+			fullSubtitles.addAll(savedAnalysis.get().getIdioms());
+			fullSubtitles.addAll(savedAnalysis.get().getPhrasalVerbs());
+			fullSubtitles.addAll(savedAnalysis.get().getSingleWords());
+			fullSubtitles.addAll(savedAnalysis.get().getEmptySubtitles());
+			List<SubtitleModel> result = fullSubtitles.stream().sorted(Comparator.comparing(SubtitleModel::getId))
+					.collect(Collectors.toList());
+			return result;
+		}
+		return List.of(new SubtitleModel());
 	}
 
 }

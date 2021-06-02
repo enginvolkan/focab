@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -47,8 +47,24 @@ export class AuthenticationService {
         // Cookies will be removed by the backend response    
             }
         );
-
-
-
     }
+
+    updateProfile(name: string, level: number):Observable<User> {
+
+        const body:string = "{\"fullname\":\""+name+"\",\"level\":\""+level+"\"}";
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json' 
+        });
+        return this.http.post<User>('/updateProfile',body,{headers: headers}).pipe(tap(
+        user => {
+            // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
+            let localuser:User = JSON.parse(localStorage.getItem("currentUser"));
+            localuser.level = user.level;
+            localuser.fullname = user.fullname;
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.currentUserSubject.next(user);
+            return user;
+        }));
+    }
+    
 }

@@ -72,6 +72,7 @@ public class FocabWebSecurityConfig extends WebSecurityConfigurerAdapter {
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
 		config.addAllowedOrigin("https://localhost:4200");
+		config.addAllowedOrigin("https://vps-zap749787-1.zap-srv.com");
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		source.registerCorsConfiguration("/**", config);

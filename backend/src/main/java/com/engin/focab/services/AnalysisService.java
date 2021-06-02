@@ -1,6 +1,7 @@
 package com.engin.focab.services;
 
 import java.net.MalformedURLException;
+import java.util.List;
 
 import org.apache.xmlrpc.XmlRpcException;
 
@@ -12,5 +13,7 @@ public interface AnalysisService {
 
 	public SubtitleModel analyzeSentence(String sentence, boolean analyseIdioms, boolean analysePhrasalVerbs,
 			boolean analyseSingleWords);
+
+	public List<SubtitleModel> getFullSubtitles(String imdbId);
 
 }

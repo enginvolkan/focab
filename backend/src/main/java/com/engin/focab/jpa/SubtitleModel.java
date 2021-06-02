@@ -32,7 +32,7 @@ public class SubtitleModel {
 	//////////////
 	// Fields
 	//////////////
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private int pk;
 

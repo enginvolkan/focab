@@ -33,8 +33,8 @@ public class FocabApplication {
 		SpringApplication.run(FocabApplication.class, args);
 	}
 
-	@Scheduled(cron = "0 0 22 * * *")
-	// @Scheduled(fixedDelay = 10000)
+	// @Scheduled(cron = "0 0 22 * * *")
+	@Scheduled(fixedDelay = 3600000)
 	public void scheduleFixedDelayTask() {
 		System.out.println("IdiomLemmaBuilderCronJob is running...");
 		idiomLemmaBuilderCronJob.fillNullLemmas();
@@ -87,6 +87,5 @@ public class FocabApplication {
 		serializer.setUseHttpOnlyCookie(false);
 		return serializer;
 	}
-
 
 }

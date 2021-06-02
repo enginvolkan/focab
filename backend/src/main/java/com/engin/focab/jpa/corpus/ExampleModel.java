@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class ExampleModel {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull

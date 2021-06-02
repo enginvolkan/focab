@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "movieanalysis")
 
 public class MovieAnalysisModel {
-	
+
 	//////////////
 	//Constractors
 	//////////////
@@ -41,7 +41,10 @@ public class MovieAnalysisModel {
 
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<SubtitleModel> singleWords = new ArrayList<SubtitleModel>();
-	
+
+	@OneToMany(cascade = CascadeType.PERSIST)
+	private List<SubtitleModel> emptySubtitles = new ArrayList<SubtitleModel>();
+
 	@Column(columnDefinition = "LONGTEXT")
 	private String fullSubtitles;
 
@@ -82,6 +85,18 @@ public class MovieAnalysisModel {
 
 	public void setSingleWords(List<SubtitleModel> singleWords) {
 		this.singleWords = singleWords;
+	}
+
+	public List<SubtitleModel> getEmptySubtitles() {
+		return emptySubtitles;
+	}
+
+	public void setEmptySubtitles(List<SubtitleModel> emptySubtitles) {
+		this.emptySubtitles = emptySubtitles;
+	}
+
+	public void setIdioms(List<SubtitleModel> idioms) {
+		this.idioms = idioms;
 	}
 
 }

@@ -29,7 +29,7 @@ public class SingleWordDetectionService {
 	public Set<String> getCustomersCommonWords() {
 		if (CollectionUtils.isEmpty(customersCommonWords)) {
 			int customerLevel = sessionService.getCurrentCustomer().getLevel() / 1000;
-			commonWords.stream().limit(customerLevel).forEach(set -> customersCommonWords.addAll(set));
+			commonWords.stream().limit(customerLevel + 1).forEach(set -> customersCommonWords.addAll(set));
 		}
 		return customersCommonWords;
 	}

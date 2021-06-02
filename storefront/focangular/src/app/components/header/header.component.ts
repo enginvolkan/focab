@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -21,5 +23,9 @@ export class HeaderComponent implements OnInit {
   }
   
   ngOnInit() {
+  }
+
+  getUser():Observable<User>{
+    return this.authenticationService.currentUser;
   }
 }

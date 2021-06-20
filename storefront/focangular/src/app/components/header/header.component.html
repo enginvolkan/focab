@@ -21,7 +21,7 @@
 
   <button mat-icon-button [matMenuTriggerFor]="menu" color="primary" [hidden]="authenticated() == null">
     <mat-icon class="icon">account_circle</mat-icon>
-    &nbsp;&nbsp;&nbsp; {{(getUser() | async).fullname }}
+    &nbsp;&nbsp;&nbsp; {{(getUser() | async)?.fullname }}
   </button>
   <mat-menu #menu="matMenu" #afterMenu="matMenu" xPosition="after">
     <button mat-menu-item (click)="logout()">

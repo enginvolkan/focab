@@ -40,11 +40,13 @@ import { AuthenticationService } from './authentication/authentication.service';
 import { BugService } from './services/bug.service';
 import { KnownWordsListComponent } from './components/known-words-list/known-words-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent, SearchComponent, SearchResultComponent, HomeComponent, LoginComponent, HeaderComponent, FooterComponent, FavoritesListComponent, LearnComponent, SpinnerComponent, MovieSearchComponent, MovieEpisodeDetailComponent, AnalyzeComponent, IdiomDetectorComponent, KnownWordsListComponent, ProfileComponent, PasswordResetComponent
+    AppComponent, SearchComponent, SearchResultComponent, HomeComponent, LoginComponent, HeaderComponent, FooterComponent, FavoritesListComponent, LearnComponent, SpinnerComponent, MovieSearchComponent, MovieEpisodeDetailComponent, AnalyzeComponent, IdiomDetectorComponent, KnownWordsListComponent, ProfileComponent, ForgotPasswordComponent, ResetPasswordComponent, RegisterComponent
   ],
   entryComponents: [SpinnerComponent,MovieEpisodeDetailComponent],
 

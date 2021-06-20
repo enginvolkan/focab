@@ -8,10 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.joda.time.DateTime;
+
+/**
+ * Implementation of
+ * https://www.baeldung.com/spring-security-registration-i-forgot-my-password
+ *
+ * @author Engin Volkan
+ *
+ */
 @Entity
 public class PasswordResetToken {
 
-	private static final int EXPIRATION = 60 * 24;
+	private static final int EXPIRATION = 24;
 
 	@Id
 	private String token;
@@ -22,10 +31,16 @@ public class PasswordResetToken {
 
 	private Date expiryDate;
 
+	public PasswordResetToken() {
+		super();
+	}
+
 	public PasswordResetToken(String token, Customer user) {
 		super();
 		this.token = token;
 		this.user = user;
+		this.expiryDate = new DateTime().plusHours(EXPIRATION).toDate();
+
 	}
 
 	public String getToken() {

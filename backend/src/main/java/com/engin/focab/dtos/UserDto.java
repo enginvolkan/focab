@@ -4,6 +4,7 @@ public class UserDto {
     private String fullname;
 	private String username;
 	private int level;
+	private String password;
 
 
 	public UserDto(String fullname, String username, int level) {
@@ -12,7 +13,15 @@ public class UserDto {
 		this.level = level;
     }
 
-    public String getFullname() {
+	public UserDto(String fullname, String username, int level, String password) {
+		super();
+		this.fullname = fullname;
+		this.username = username;
+		this.level = level;
+		this.password = password;
+	}
+
+	public String getFullname() {
         return this.fullname;
     }
 
@@ -34,6 +43,14 @@ public class UserDto {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

@@ -13,15 +13,15 @@ public class GmailService {
     private JavaMailSender emailSender;
 	@Value("${spring.mail.username}")
 	private String emailAddress;
-	@Value("${server.contextPath}")
-	private String contextPath;
+	@Value("${server.storefrontPath}")
+	private String storefrontPath;
 
 	public void sendProfileUpdateEmail(String to) {
 		sendSimpleMessage(to, "Lexibag Profile Updated", "You've just updated your Lexibag profile!");
 	}
 
 	public void sendResetPasswordEmail(String to, String token) {
-		String url = contextPath + "/user/changePassword?token=" + token;
+		String url = storefrontPath + "/resetPassword/" + token;
 		sendSimpleMessage(to, "Lexibag Password Reset", "Please use the link below to update your password. \n " + url);
 	}
 

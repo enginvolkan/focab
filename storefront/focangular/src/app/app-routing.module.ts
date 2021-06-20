@@ -9,8 +9,10 @@ import { KnownWordsListComponent } from './components/known-words-list/known-wor
 import { LearnComponent } from './components/learn/learn.component';
 import { LoginComponent } from './components/login/login.component';
 import { MovieSearchComponent } from './components/movie/movie-search/movie-search.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -23,7 +25,9 @@ const routes: Routes = [
   { path: 'analyze', component: AnalyzeComponent, canActivate: [AuthGuard]},
   { path: 'favorites', component: FavoritesListComponent, canActivate: [AuthGuard]},
   { path: 'knownwords', component: KnownWordsListComponent, canActivate: [AuthGuard]},
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'forgotPassword', component: ForgotPasswordComponent},
+  { path: 'resetPassword/:token', component: ResetPasswordComponent}
 
 ];
 

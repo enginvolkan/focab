@@ -43,7 +43,8 @@ public class FocabWebSecurityConfig extends WebSecurityConfigurerAdapter {
 		repository.setCookiePath("/");
 
 		http.cors().and().httpBasic().and().authorizeRequests()
-				.antMatchers("/login", "/home")
+				.antMatchers("/login", "/home", "/resetPassword", "/validatePasswordResetToken",
+						"/changePasswordForToken", "/register")
 				.permitAll()
 				.anyRequest().authenticated()
 				.and().logout()

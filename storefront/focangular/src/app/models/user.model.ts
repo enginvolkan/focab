@@ -3,4 +3,5 @@ export class User {
     fullname: string;
     authdata?: string;
     level:number;
+    password: string;
 }   

@@ -5,6 +5,7 @@ import { map, tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { GenericResponse } from '../models/generic-response';
 
 
 // Based on https://jasonwatmore.com/post/2019/06/26/angular-8-basic-http-authentication-tutorial-example
@@ -65,6 +66,32 @@ export class AuthenticationService {
             this.currentUserSubject.next(user);
             return user;
         }));
+    }
+
+    generateForgotPasswordToken(username: string):Observable<GenericResponse>{
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json' 
+        });
+        return this.http.post<GenericResponse>('/resetPassword?email='+username,"",{headers: headers});
+    }
+
+    checkForgotPasswordTokenValidity(token: string):Observable<GenericResponse>{
+        console.log(token)
+
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json' 
+        });
+        return this.http.get<GenericResponse>('/validatePasswordResetToken?token='+token,{headers: headers});
+    }
+
+    resetPassword(password: string, token:string):Observable<GenericResponse>{
+        console.log(token + password);
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json' 
+        });
+        const body:string = "{\"token\":\""+token+"\",\"password\":\""+password+"\"}";
+
+        return this.http.post<GenericResponse>('/changePasswordForToken',body,{headers: headers});
     }
     
 }
